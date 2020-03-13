@@ -1,6 +1,6 @@
-# Explore the Data Lake with SQL On-Demand and Spark
+# Explore the Data Lake with SQL Analytics on-demand and Spark
 
-## Task 1 - Explore the Data Lake with SQL On-Demand
+## Task 1 - Explore the Data Lake with SQL Analytics on-demand
 
 Lorem ipsum...
 
