@@ -3,11 +3,16 @@
 In this exercise, you will leverage a model that was previously trained to make predictions using the T-SQL `Predict` statement. For context, the following are the high level steps taken to get a model ready for use from T-SQL. All the steps are performed within your Azure Synapse Analytics Studio.
 
 1.	Within a notebook, a data scientist will:
+    
     a.	Train a model using Spark ML, the machine learning library included with Apache Spark.   
+    
     b.	Convert the model to the ONNX format using the `onnxml` tools.  
+    
     c.	Save the ONNX version of the model to a table in the SQL Pool database.
 2.	To use the model for making predictions, in a SQL Script a data engineer will:
+    
     a.	Read the model into a binary variable by querying it from the table in which it was stored.
+    
     b.	Execute a query using the `FROM PREDICT` statement as you would a table. This statement defines both the model to use and the query to execute that will provide the data used for prediction. 
 
 In this exercise, you will focus on step (2) from the above. 
