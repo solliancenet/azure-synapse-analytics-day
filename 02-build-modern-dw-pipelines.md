@@ -53,7 +53,7 @@ In this task, you will see how easy it is to write into a SQL Pool table with Sp
 
     ![](media/studio-notebooks-ex2-ingest-cell-2.png)
 
-    - **Cell 3**, writes the data retrieve from Blob Storage into a staging table in Azure Synapse Analytics using the SQL Analytics connector.
+    - **Cell 3** writes the data retrieve from Blob Storage into a staging table in Azure Synapse Analytics using the SQL Analytics connector.
 
     ![](media/studio-notebooks-ex2-ingest-cell-3.png)
 
@@ -86,6 +86,8 @@ In this task, you will see how easy it is to write into a SQL Pool table with Sp
 ### Bonus Challenge
 
 Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** notebook. This notebook demonstrates how easy it is create and run notebooks using C# for Spark. The notebook shows the code for retrieving data from Azure Blob Storage and writing that into a staging table in Azure Synapse Analytics using a JDBC connection.
+
+Run each cell in this notebook and observe the output. Be aware, however, that writing data into a staging table in Azure Synapse Analytics with this notebook takes a long time, so you don't need to wait on the notebook to finish before attempting to query the `staging.WwiSalesDataCSharp` table to observe the data being written or to move on to the next task.
 
 ## Task 2 - Explore, modify, and run a DataFlow
 
