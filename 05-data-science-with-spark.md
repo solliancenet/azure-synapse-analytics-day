@@ -39,5 +39,5 @@ FROM PREDICT(MODEL = @model,
 If you are curious, you can see the notebook that was used to train this model. To do so, follow these steps:
 
 1. Open Synapse Analytics Studio, and then navigate to the `Develop hub`.
-2. Under Notebooks, select the notebook called `Exercise 6 Model Training`. 
+2. Under Notebooks, select the notebook called `Exercise 5 - Model Training`. 
 3. Feel free to read thru the notebook, but do not execute it. The results of executing each cell in the notebook have been saved with the notebook so that you can see results, without having to run it.
