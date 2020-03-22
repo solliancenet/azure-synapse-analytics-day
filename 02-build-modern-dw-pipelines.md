@@ -111,8 +111,6 @@ TODO: Start by adding the Ingest notebook to a pipeline? And then, build out a d
 
    studio-data-flows--enrich-customer-data
 
-TODO: Add the notebook from Task 1 to the pipeline? This would require adding something to drop the staging table, since it is currently failing if the table exists.
-
 ## Task 3 - Monitor pipelines
 
 In this task, you review the pipeline monitoring functionality in Azure Synapse Analytics.
