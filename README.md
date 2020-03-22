@@ -24,7 +24,7 @@ By the end of this lab, you will have performed a non-exhaustive list of operati
 
 The diagram below provides a unified view of the exercises in the lab and their estimated times for completion.
 
-![Azure Synapse Analytics Lab Exercises](./media/exercises.png)
+![Azure Synapse Analytics Lab Exercises](./media/exercises.png "Solution architecture")
 
 ## Exercise 1 - [Explore the data lake with SQL Analytics on-demand and Spark](./01-explore-data-lake.md)
 
