@@ -11,7 +11,7 @@ In this exercise, you examine various methods for ingesting data into Azure Syna
 
 ## Task 1 - Explore and modify a notebook
 
-In this task, you will see how easy it is to write into a SQL Pool table with Spark thanks to the SQL Analytics Connector.
+In this task, you see how easy it is to write into a SQL Pool table with Spark thanks to the SQL Analytics Connector. Notebooks are used to write the code required to write to SQL Pool tables using Spark.
 
 1. In Synapse Analytics Studio, select **Develop** from the left-hand menu.
 
@@ -37,6 +37,8 @@ In this task, you will see how easy it is to write into a SQL Pool table with Sp
 
    - **Executors**: Enter 3.
    - **Executor size**: Select Medium (8 vCPU, 56GB memory).
+
+   > This configuration allocates the resources that allow your notebook to execute Spark jobs, and allows you to set how many resources should be made available to execute the job.
 
    ![In the Configure session dialog, Step 1 indicated to set Executors 3, Step 2 indicates to set Executor size to Medium, and Step 3 says to select the Apply button.](media/ex02-notebooks-configure-session.png "Synapse Analytics Notebooks")
 
