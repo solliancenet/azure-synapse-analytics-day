@@ -298,12 +298,9 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform an
 
 ## Task 3 - Monitor pipelines
 
-After you finish building and debugging your data flow and its associated pipeline, you will want to be able to monitor execution of the pipeline and all of the activities contained within it, including the Data Flow activity. In this task, you review the pipeline monitoring functionality in Azure Synapse Analytics.
+After you finish building and debugging your data flow and its associated pipeline, you will want to be able to monitor execution of the pipeline and all of the activities contained within it, including the Data Flow activity. In this task, you review the [pipeline monitoring functionality in Azure Synapse Analytics](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-monitoring) using the pipeline run you initiated at the end of the previous task.
 
-TODO: Use this article as a reference for the language and steps.
-<https://docs.microsoft.com/en-us/azure/data-factory/concepts-data-flow-monitoring>
-
-1. Select **Monitor** from the left-hand menu.
+1. In Synapse Analytics Studio, select **Monitor** from the left-hand menu.
 
    ![Monitor is selected and highlighted in the Synapse Analytics menu.](media/ex02-menu-monitor.png "Synapse Analytics menu")
 
@@ -313,39 +310,65 @@ TODO: Use this article as a reference for the language and steps.
 
 3. Select the top `Exercise 2 - Enrich Data` pipeline run from the list. This will have a status of `In progress`.
 
-   ![](media/ex02-monitoring-pipeline-runs.png)
+   ![The first "Exercise 2 - Enrich Data" item in the list of pipeline runs is highlighted.](media/ex02-monitoring-pipeline-runs.png "Pipeline run list")
 
-4. On the pipeline run details screen, you will see a graphical representation of the activities within the pipeline, as well as a list of the individual activity runs.
+4. On the pipeline run details screen, you will see a graphical representation of the activities within the pipeline, as well as a list of the individual activity runs. Both provide status indicators for each activity.
 
-   ![](media/ex02-monitoring-pipeline-runs-details.png)
+   > This view allows you to monitor the overall status of the pipeline run, and observe the status of each activity contained within the pipeline. The screen will auto-refresh for five minutes. If your pipeline run takes longer than that, you can get updates by selecting the Refresh button on the canvas toolbar.
 
-5. TODO: Copy activity monitoring
+   ![The pipeline run canvas is displayed, with activities list in the graph and in a list for in the Activity runs panel.](media/ex02-monitoring-pipeline-runs-details.png "Pipeline run details")
 
-   ![](media/ex02-monitoring-copy-activity-output.png)
+5. To get a better understanding of the types of information you can get from the monitoring capabilities, let's explore what information is available for each of the activities in the Activity runs list. Start by hovering your mouse cursor over the **Import Customer dimension** activity and select the **Output** icon that appears.
 
-   ![](media/ex02-monitoring-copy-activity-output-details.png)
+   ![The output icon is highlighted on the Import Customer dimension activity row.](media/ex02-monitoring-copy-activity-output.png "Copy activity output")
 
-   ![](media/ex02-monitoring-copy-activity.png)
+6. In the **Output** dialog, you will see details about the size of data read and written, the number of rows read and copied, the duration of the copy activity, and other information relating to the copy activity run. This information can be used for things like troubleshooting. For example, you could compare the copy run to data, such as number of rows read and written, to expected numbers from the source and sink.
 
-   ![](media/ex02-monitoring-copy-activity-details.png)
+   ![The Output dialog for the Import Customer dimension activity is displayed.](media/ex02-monitoring-copy-activity-output-details.png "Copy activity output")
 
-6. TODO: Data Flow monitoring
+7. Close the Output dialog.
 
-   ![](media/ex02-monitoring-data-flow.png)
+8. Next, hover your mouse cursor over the **Import Customer dimension** activity again, this time selecting the **Details** icon that appears.
 
-   ![](media/ex02-monitoring-data-flow-details.png)
+   ![The Details icon is highlighted on the Import Customer dimension activity row.](media/ex02-monitoring-copy-activity.png "Copy activity run")
 
-   ![](media/ex02-monitoring-data-flow-select.png)
+9. The **Details** dialog provides the data found on the Output dialog examine above, but expands on that to include graphics for the source and sink and a more detailed look at the activity run.
 
-   ![](media/ex02-monitoring-data-flow-sink.png)
+   ![The Details dialog for the copy activity is displayed.](media/ex02-monitoring-copy-activity-details.png "Copy activity details")
 
-7. When the pipeline execution completes, all activities runs will reflect a status of Succeeded.
+10. Close the Details dialog.
 
-   ![A screenshot of the activity runs for the Exercise 2 - Enrich Data pipeline is displayed with all activities showing a status of Succeeded.](media/ex02-monitor-ex2-enrich-data-activity-runs-succeeded.png "Pipeline run monitoring")
+11. Now, hover your mouse cursor over the **Enrich Customer Data** activity and select the **Details** icon that appears.
 
-8. Switching to the Gantt view, provides a graphical representation of the run times of the various activities within the pipeline.
+    ![The Details icon is highlighted on the Enrich Customer Data Mapping Data Flow activity row.](media/ex02-monitoring-data-flow.png "Data flow activity")
 
-   ![](media/ex02-monitoring-ex2-enrich-data-activity-runs-gantt.png)
+12. The Details dialog for data flow details takes you to a full-screen view of your data flow.
+
+    > The initial view provides a details panel containing statistics for the sinks defined within the data flow. The information for these includes the number of rows written and the processing times for writing to each sink.
+
+    ![The data flow Details dialog is displayed.](media/ex02-monitoring-data-flow-details.png "Data Flow activity details")
+
+13. Select the **SelectDesiredColumns** transformation step of the data flow.
+
+    > Selecting any component of the data flow opens a new panel with details related to the processing that occurred for that component.
+
+    ![The SelectDesiredColumns transformation step is highlighted in the graph on the details dialog.](media/ex02-monitoring-data-flow-select.png "Data Flow activity details")
+
+14. Try selecting another component, such as the **EnrichCustomerData** sink, and view the information available.
+
+    ![The EnrichCustomerData sink component is highlighted in the graph and the associated details panel is displayed on the right-hand side of the screen.](media/ex02-monitoring-data-flow-sink.png "Data Flow activity details")
+
+15. When the pipeline execution completes, all activities runs will reflect a status of Succeeded.
+
+    ![A screenshot of the activity runs for the Exercise 2 - Enrich Data pipeline is displayed with all activities showing a status of Succeeded.](media/ex02-monitor-ex2-enrich-data-activity-runs-succeeded.png "Pipeline run monitoring")
+
+16. Close the data flow activity Details dialog by selecting the **X** on the right-hand side of the toolbar.
+
+    ![The X (close) button is highlighted on the data flow Details dialog toolbar.](media/ex02-monitor-data-flow-close.png "Data flow details")
+
+17. Back on the Exercise 2 - Enrich Data pipeline run screen, switch to the Gantt view. This view provides a graphical representation of the run times of the various activities within the pipeline.
+
+    ![The Gantt view option is selected and highlighted on the pipeline run dialog.](media/ex02-monitoring-ex2-enrich-data-activity-runs-gantt.png "Pipeline run Gantt view")
 
 ## Task 4 - Monitor Spark applications
 
