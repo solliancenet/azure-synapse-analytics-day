@@ -10,7 +10,7 @@ In this task, you will see how easy it is to write into a SQL Pool table with Sp
 
    ![Develop is selected and highlighted in the Synapse Analytics menu.](media/studio-menu-develop.png "Synapse Analytics menu")
 
-2. In the Develop menu, expand **Notebooks** and select the notebook named **Exercise 2 - Ingest Sales Data**.
+2. In the Develop menu, expand **Notebooks** and select the notebook named `Exercise 2 - Ingest Sales Data`.
 
    ![The Exercise 2 - Ingest Sales Data notebook is selected and highlighted in the list of notebooks.](media/studio-notebooks-ex2-ingest.png "Synapse Analytics Notebooks")
 
@@ -18,7 +18,7 @@ In this task, you will see how easy it is to write into a SQL Pool table with Sp
 
    ![The Spark pool is selected in the Attach to drop-down.](media/studio-notebooks-toolbar-attach-to.png "Synapse Analytics Notebooks")
 
-4. Ensure Spark (Scala) is selected in the Language drop-down list.
+4. Ensure **Spark (Scala)** is selected in the Language drop-down list.
 
    ![Spark (Scala) is selected in the Language drop-down.](media/studio-notebooks-toolbar-language.png "Synapse Analytics Notebooks")
 
@@ -43,9 +43,9 @@ In this task, you will see how easy it is to write into a SQL Pool table with Sp
 
    ![The Run all button on the notebook toolbar is highlighted.](media/studio-notebooks-toolbar-run-all.png "Synapse Analytics Notebooks")
 
-10. While the notebook is running, let's take a look at what is happening in each cell.
+10. While the notebook is running, let's take a look at what each cell is doing.
 
-    - **Cell 1** sets the required configuration to connect to an Azure Blob Storage account. A SAS token is used to restrict the notebook to only read and list actions on the storage account container.
+    - **Cell 1** sets the required configuration to connect to an Azure Blob Storage account. A shared access signature or [SAS token](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) is used to grant limited access to the storage account. The SAS token specified restricts the notebook to only read and list actions on blob storage container.
 
     ![Cell 1 of the notebook is displayed.](media/studio-notebooks-ex2-ingest-cell-1.png "Synapse Analytics Notebooks")
 
@@ -95,25 +95,74 @@ In this task, you will see how easy it is to write into a SQL Pool table with Sp
 
 Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** notebook. This notebook demonstrates how easy it is create and run notebooks using C# for Spark. The notebook shows the code for retrieving data from Azure Blob Storage and writing that into a staging table in Azure Synapse Analytics using a JDBC connection.
 
-Run each cell in this notebook and observe the output. Be aware, however, that writing data into a staging table in Azure Synapse Analytics with this notebook takes a long time, so you don't need to wait on the notebook to finish before attempting to query the `staging.WwiSalesDataCSharp` table to observe the data being written or to move on to the next task.
+You can run each cell in this notebook and observe the output. Be aware, however, that writing data into a staging table in Azure Synapse Analytics with this notebook takes a long time, so you don't need to wait on the notebook to finish before attempting to query the `staging.WwiSalesDataCSharp` table to observe the data being written or to move on to the next task.
+
+Running the following query every 5-10 seconds allows you to observe the count of records in the table, and how it changes as new records are being added by the notebook.
+
+TODO: Type of more instructions around how to run this query.
+
+```sql
+SELECT COUNT(*) FROM [staging].[WwiSalesDataCSharp]
+```
 
 ## Task 2 - Explore, modify, and run a Data Flow
 
-In this task, you use a Pipeline containing a Data Flow to explore, transform and load data into an Azure Synapse Analytics table. Using pipelines and data flows allows you to perform data ingestion and transformations, like you did in Task 1, without having to write any code.
+In this task, you use a Pipeline containing a Data Flow to explore, transform and load data into an Azure Synapse Analytics table. Using pipelines and data flows allows you to perform data ingestion and transformations, similar to what you did in Task 1, but without having to write any code.
 
-TODO: Start by adding the Ingest notebook to a pipeline? And then, build out a data flow by adding it to that pipeline
+1. In Synapse Analytics Studio, select **Orchestrate** from the left-hand menu.
 
-1. In Synapse Analytics Studio, select **Develop** from the left-hand menu.
+   ![Orchestrate is selected and highlighted in the Synapse Analytics menu.](media/studio-menu-orchestrate.png "Synapse Analytics menu")
 
-   ![Develop is selected and highlighted in the Synapse Analytics menu.](media/studio-menu-develop.png "Synapse Analytics menu")
+2. In the Orchestrate menu, expand **Pipelines** and select the pipeline named **Exercise 2 - Enrich Data**.
 
-2. In the Develop menu, expand **Data flows** and select the data flow named **EnrichCustomerData**.
+   ![In the Orchestrate menu, Pipelines is expanded and the Exercise 2 - Enrich Data pipeline his selected and highlighted.](media/studio-orchestrate-ex2-enrich-data.png "Pipelines")
 
-   studio-data-flows--enrich-customer-data
+3. Selecting a pipeline opens the design interface for that pipeline, which is where you can review and edit the pipeline using a code-free, graphical interface. This view shows the various activities within the pipeline and the links and relationships between those activities.
+
+   ![](media/studio-orchestrate-ex2-enrich-data-designer.png)
+
+4. Now, let's take a closer look at the activities within the pipeline. In the designer, select the **Copy data** activity named `Import Customer dimension`.
+
+   ![](media/ex02-orchestrate-copy-data-general.png)
+
+5. Below the graphical designer, you will see a series of tabs, each of which provides additional details about the activity. The **General** tab displays the name and description assigned to the activity, along with a few other properties.
+
+6. Select the **Source** tab.
+
+   ![](media/ex02-orchestrate-copy-data-source.png)
+
+7. Select the **Sink** tab.
+
+   ![](media/ex02-orchestrate-copy-data-sink.png)
+
+8. Select the **Mapping** tab.
+
+   ![](media/ex02-orchestrate-copy-data-mapping.png)
+
+9. Now, let's take a look at the **Mapping Data Flow** activity. Select it in the designer.
+
+   ![](media/ex02-orchestrate-data-flow-general.png)
+
+10. Select the **Settings** tab.
+
+    ![](media/ex02-orchestrate-data-flow-settings.png)
+
+11. The properties on the tabs within the pipeline define the behavior of the data flow within the pipeline. Let's take a look at the actual data flow. Double-click the **Mapping Data Flow** activity in the designer to open the Data Flow in a new tab.
+
+    ![](media/ex02-orchestrate-data-flow.png)
+
+12. In this view, you can see each component of the data flow in more detail.
+
+13. From a high level, the `PostalCodes` and `DimCustomer` components on the left are data sources used to ingest data into the data flow. The `EnrichedCustomerData` and `EnrichedCustomerDataAdls` components on the right are sinks, used to write data to data stores. The remaining components between the sources and sinks are transformation steps, which are can perform filtering, joins, select, and other transformational actions on the ingested data.
+
+    ![](media/ex02-orchestrate-data-flow-components.png)
 
 ## Task 3 - Monitor pipelines
 
-In this task, you review the pipeline monitoring functionality in Azure Synapse Analytics.
+After you finish building and debugging your data flow and its associated pipeline, you will want to be able to monitor execution of the pipeline and all of the activities contained within it, including the Data Flow activity. In this task, you review the pipeline monitoring functionality in Azure Synapse Analytics.
+
+TODO: Use this article as a reference for the language and steps.
+<https://docs.microsoft.com/en-us/azure/data-factory/concepts-data-flow-monitoring>
 
 1. Select **Monitor** from the left-hand menu.
 
@@ -122,6 +171,42 @@ In this task, you review the pipeline monitoring functionality in Azure Synapse 
 2. Under Orchestration, select **Pipeline runs**.
 
    ![Pipeline runs is selected and highlighted under the Orchestration section of the monitor resource list.](media/studio-monitor-pipeline-runs.png "Synapse Analytics Monitor")
+
+3. Select the top `Exercise 2 - Enrich Data` pipeline run from the list. This will have a status of `In progress`.
+
+   ![](media/studio-monitoring-pipeline-runs.png)
+
+4. On the pipeline run details screen, you will see a graphical representation of the activities within the pipeline, as well as a list of the individual activity runs.
+
+   ![](media/studio-monitoring-pipeline-runs-details.png)
+
+5. TODO: Copy activity monitoring
+
+   ![](media/studio-monitoring-copy-activity-output.png)
+
+   ![](media/studio-monitoring-copy-activity-output-details.png)
+
+   ![](media/studio-monitoring-copy-activity.png)
+
+   ![](media/studio-monitoring-copy-activity-details.png)
+
+6. TODO: Data Flow monitoring
+
+   ![](media/studio-monitoring-data-flow.png)
+
+   ![](media/studio-monitoring-data-flow-details.png)
+
+   ![](media/studio-monitoring-data-flow-select.png)
+
+   ![](media/studio-monitoring-data-flow-sink.png)
+
+7. When the pipeline execution completes, all activities runs will reflect a status of Succeeded.
+
+   ![A screenshot of the activity runs for the Exercise 2 - Enrich Data pipeline is displayed with all activities showing a status of Succeeded.](media/studio-monitor-ex2-enrich-data-activity-runs-succeeded.png "Pipeline run monitoring")
+
+8. Switching to the Gantt view, provides a graphical representation of the run times of the various activities within the pipeline.
+
+   ![](media/studio-monitoring-ex2-enrich-data-activity-runs-gantt.png)
 
 ## Task 4 - Monitor Spark applications
 
