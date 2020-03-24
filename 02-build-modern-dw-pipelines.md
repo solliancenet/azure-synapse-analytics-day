@@ -106,13 +106,19 @@ Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** no
 
 You can run each cell in this notebook and observe the output. Be aware, however, that writing data into a staging table in Azure Synapse Analytics with this notebook takes a long time, so you don't need to wait on the notebook to finish before attempting to query the `staging.WwiSalesDataCSharp` table to observe the data being written or to move on to the next task.
 
-Running the following query every 5-10 seconds allows you to observe the count of records in the table, and how it changes as new records are being added by the notebook.
+To observe the data being written into the table:
 
-TODO: Type of more instructions around how to run this query.
+1. Select **Data** from the left-hand menu, expand Databases, SQLPool01, and Tables.
 
-```sql
-SELECT COUNT(*) FROM [staging].[WwiSalesDataCSharp]
-```
+2. Right-click the table named `staging.WwiSalesDataCSharp` and choose **New SQL Script** then **SELECT TOP 1000 rows**.
+
+3. Replace the `SELECT` query in the editor with the query below, then select **Run** on the toolbar.
+
+   ```sql
+   SELECT COUNT(*) FROM [staging].[WwiSalesDataCSharp]
+   ```
+
+4. Re-run the query every 5-10 seconds to watch the count of records in the table, and how it changes as new records are being added by the notebook.
 
 ## Task 2 - Explore, modify, and run a Pipeline containing a Data Flow
 
@@ -389,8 +395,6 @@ In this task, you examine the Apache Spark application monitoring capabilities b
    ![Last 24 hours is selected and highlighted in the Time range list.](media/ex02-monitor-activities-spark-time-range.png "Synapse Analytics Monitor")
 
 4. From the list of Spark applications, select the first job, which should have a status of `In progress`.
-
-   TODO: Check on this status, as it should really be Complete or Success, but doesn't seem to update correctly.
 
    ![The current Spark application is highlighted in the applications list.](media/ex02-monitor-activities-spark-application-list.png "Synapse Analytics Monitor")
 
