@@ -20,7 +20,7 @@ All the of the steps are performed within your Azure Synapse Analytics Studio.
     
     a.	Read the model into a binary variable by querying it from the table in which it was stored.
     
-    b.	Execute a query using the `FROM PREDICT` statement as you would a table. This statement defines both the model to use and the query to execute that will provide the data used for prediction. 
+    b.	Execute a query using the `FROM PREDICT` statement as you would a table. This statement defines both the model to use and the query to execute that will provide the data used for prediction. You can then take these predictions and insert them into a table for use by downstream analytics applications.
 
 > What is ONNX? [ONNX](https://onnx.ai/) is an acronymn for the Open Neural Network eXchange and is an open format built to represent machine learning models, regardless of what frameworks were used to create the model. This enables model portability, as models in the ONNX format can be run using a wide variety of frameworks, tools, runtimes and platforms. Think of it like a universal file format for machine learning models.   
 
