@@ -4,7 +4,11 @@ In this exercise you will explore data using the engine of your choices (SQL or 
 
 ## Task 1 - Explore the Data Lake with SQL Analytics on-demand
 
-1. In this task, you will browse your data lake. Go into the ```wwi``` folder, select the year and month folders of your choice, then select a file, right click and select **New SQL script**. A script is automatically generated. Run this script to see how SQL on demand queries the file and returns the first 100 rows of that file with the header allowing you to easily explore data in the file.
+1. In this task, you will browse your data lake. Go into the ```wwi``` folder, select the year and month folders of your choice, then select a file, right click and select **New SQL script**.
+
+
+
+A script is automatically generated. Run this script to see how SQL on demand queries the file and returns the first 100 rows of that file with the header allowing you to easily explore data in the file.
 
 ## Task 2 - Explore the Data Lake and create a table with Spark
 
