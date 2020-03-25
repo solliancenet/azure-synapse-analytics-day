@@ -2,7 +2,15 @@
 
 In this exercise you will use several of the capabilities associated with SQL Pools to analyze the data.
 
-## Task 1 - Use SQL Analytics pool query to understand a dataset
+SQL data warehouses have been for a long time the centers of gravity in data platforms. Modern data warehouses are capable of providing high performance, distributed, and governed workloads, regardless of the data volumes at hand.
+
+The SQL Analytics pool in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
+
+- [Exercise 4 - High Performance Analysis with SQL Analytics pool](#exercise-4---high-performance-analysis-with-sql-analytics-pool)
+  - [Task 1 - Use a SQL Analytics pool query to understand a dataset](#task-1---use-a-sql-analytics-pool-query-to-understand-a-dataset)
+  - [Task 2 - Investigate query performance and table design](#task-2---investigate-query-performance-and-table-design)
+
+## Task 1 - Use a SQL Analytics pool query to understand a dataset
 
 In this task you will try to understand who your best customers are.
 
@@ -11,8 +19,9 @@ In this task you will try to understand who your best customers are.
 ![Example Chart](media/ex05-chart-sample.png)
 
 Solution:
-1.	Open Synapse Analytics Studio, and then navigate to the `Develop hub`.
-2. Under SQL scripts, select the script called `Exercise 4 - Analyze Transactions`. 
+
+1. Open Synapse Analytics Studio, and then navigate to the `Develop` hub.
+2. Under `SQL scripts`, select the script called `Exercise 4 - Analyze Transactions`. 
 3. Run the script against the SQL Pool database. 
 4. When the results appear, for the **View** toggle, select **Chart**.
 5. For the Chart type, select `Column`.
@@ -21,13 +30,13 @@ Solution:
 
 ![Example Chart](media/ex05-chart.png)
 
-## Task 2 - Investigate query performance
+## Task 2 - Investigate query performance and table design
 
 In this task you will try to understand at a general level the implications of table design. You will run the same set of queries against two different fact tables (```FactSale_Fast``` and ```FactSale_Slow```). The two fact tables have (with one notable exception) the same structure and contain identical data.
 
 First, let's set the stage by performing the following steps:
 
-1. Open Synapse Analytics Studio, and then navigate to the `Develop hub`.
+1. Open Synapse Analytics Studio, and then navigate to the `Develop` hub.
 2. Under SQL scripts, select the script called `Exercise 4 - Investigate query performance`.
 3. Select line 1 and then select `Run`.
 
@@ -57,7 +66,7 @@ First, let's set the stage by performing the following steps:
 
 Solution:
 
-1. In Synapse Analytics Studio, navigate to the `Data hub`.
+1. In Synapse Analytics Studio, navigate to the `Data` hub.
 2. Under Databases, expand the SQL pool node (the one that has its name ending in `(SQL pool)`), expand `Tables`, and locate the ```wwi_perf.FactSale_Slow``` table.
 3. Right click the table and then select `New SQL script`, `CREATE`.
 
