@@ -37,11 +37,12 @@ In this task, you will author a T-SQL query that uses a pre-trained model to mak
 3. Replace the contents of this script with following:
 
 ```
-DECLARE @model varbinary(max) = (select Data from models where id = 1);
+-- Retrieve the latest hex encoded ONNX model from the table
+DECLARE @model varbinary(max) = (SELECT Model FROM [wwi].[Models] WHERE Id = (SELECT Top(1) max(ID) FROM [wwi].[Models]));
 
-SELECT preds.quantity, inputs.*
-FROM PREDICT(MODEL = @model, 
-    DATA = wwi.FactSale inputs) WITH (quantity int) as preds
+-- Run a prediction query
+SELECT d.*, p.*
+FROM PREDICT(MODEL = @model, DATA = [wwi].[SampleData] AS d) WITH (prediction real) AS p;
 
 ```
 4. Select Run from the menubar.
@@ -52,9 +53,13 @@ FROM PREDICT(MODEL = @model,
 
     ![Viewing the prediction results in the query result pane](media/ex05-view-prediction-results.png)
 
-## Task 2 - Examining the model training notebook (Optional)
-If you are curious, you can see the notebook that was used to train this model. To do so, follow these steps:
+## Task 2 - Examining the model training and registration process (Optional)
+If you are curious, you can see the notebook and SQL scripts that were used to train and register this model. To do so, follow these steps:
 
 1. Open Synapse Analytics Studio, and then navigate to the `Develop hub`.
 2. Under Notebooks, select the notebook called `Exercise 5 - Model Training`. 
-3. Feel free to read thru the notebook, but do not execute it. The results of executing each cell in the notebook have been saved with the notebook so that you can see results, without having to run it.
+3. This notebook handles training the model, converting the model to ONNX and uploading the ONNX model to Azure Storage.
+4. Feel free to read thru the notebook, but do not execute it. The results of executing each cell in the notebook have been saved with the notebook so that you can see results, without having to run it. 
+5. One step that is not shown by the notebook is an offline step that converts the ONNX model to hexadecimal. The resulting hex encoded model is also upload to Azure Storage. This conversion is currently peformed with [this PowerShell script](artifacts/05/convert-to-hex.ps1), but could be automated using any scripting platform. 
+6. Once you have read thru the notebook, return to the `Develop hub`, expand **SQL scripts** and select `Exercise 5 - Register model`. View but do not run this script. 
+7. This script uses PolyBase to load the hex encoded model from Azure Storage into a table within the SQL Pool database. Once the model is inserted into the table in this way, it is available for use by the Predict statement as was shown in Task 1.
