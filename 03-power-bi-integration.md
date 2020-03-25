@@ -55,15 +55,34 @@ In this task, you will use Power BI Desktop to create the dataset used by the re
     ![Viewing the dataset listing](media/ex03-view-new-dataset.png)
 
 ## Task 2 - Create a Power BI report in Synapse
-In this task, you will use the dataset you published to create a new Power BI report within Synapse Analytics Studio. 
+In this task, you will use the dataset you recently published to create a new Power BI report within Synapse Analytics Studio. 
 
-1. Open Synapse Analytics Studio, and then navigate to the `Develop hub`.
-2. Expand **Power BI** and then select **Power BI datasets**.
-3. Select your newly created dataset within the panel that appears. When you hover over the dataset, and button for creating a New Power BI report will appear. Select that.
-4. This will launch a new tabbed document with the Power BI report designer. Also note, that your new report appears under the Power BI reports folder in the `Develop hub`.
-5. Within the Power BI designer, under Fields, select the fields **SalespersonKey** and **TotalExcludingTax**.
-6. Under the Visualizations, drag the **SalespersonKey** field and drop it into the **Legend** field.
-7. Under Visualizations, select the `100% Stacked column chart` visualization. You should now have a chart that lets you quickly assess each sales person's contribution to the total.
-8. From the file menu within the designer, select **Save As**. 
-9. In the dialog that appears, provide a unique name for your report and then select **Save**.
-10. This report is now available to all authorized users within Synsapse Analytics Studio and the Power BI workspace. 
+1. Select your newly created dataset within the panel that appears. When you hover over the dataset, and button for creating a New Power BI report will appear. Select that button.
+
+    ![Selecting new Power BI report from dataset](media/ex03-select-new-power-bi-report.png)
+
+2. This will launch a new tabbed document with the Power BI report designer. Also note, that your new report appears under the Power BI reports folder in the `Develop hub`.
+
+    ![Viewing the new Power BI report](media/ex03-new-report-document.png)
+
+3. Within the Power BI designer, under Fields, select the fields **SalespersonKey** and **TotalExcludingTax**.
+
+    ![Selecting the fields from the Fields list](media/ex03-pbi-choose-fields.png)
+
+4. Under the Visualizations, drag the **SalespersonKey** field and drop it into the **Legend** field.
+
+    ![Setting the Legend field](media/ex03-pbi-set-legend.png)
+
+5. Under Visualizations, select the `100% Stacked column chart` visualization. You should now have a chart that lets you quickly assess each sales person's contribution to the total.
+
+    ![Selecting the 100% Stacked column chart](media/ex03-pbi-stacked-col-viz.png)
+
+6. From the file menu within the designer, select **Save As**. 
+
+    ![Selecting Save As from the File menu](media/ex03-file-save-as.png)
+
+7. In the dialog that appears, provide a unique name for your report and then select **Save**.
+
+    ![The Save your report dialog](media/ex03-save-your-report.png)
+
+8. This report is now available to all authorized users within Synsapse Analytics Studio and the Power BI workspace. 
