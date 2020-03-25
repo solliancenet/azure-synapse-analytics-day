@@ -164,13 +164,13 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform an
 
 5. Select the **Source** tab. The source defines the location from which data will be copied by the activity. The **Source dataset** field is a pointer to the location of the source data.
 
-   > Take a moment to review the various properties available on the Source tab. Data is being retrieve from a SQL database and, in this case, the entire table is being copied.
+   > Take a moment to review the various properties available on the Source tab. Data is being retrieve from files stored in a data lake.
 
    ![The Source tab for the Copy data activity is selected and highlighted.](media/ex02-orchestrate-copy-data-source.png "Pipeline canvas property tabs")
 
 6. Next, select the **Sink** tab. The sink specifies where the copied data will be written. Similar to the Source, the sink uses a dataset to define a pointer to the target data store.
 
-   > Reviewing the fields on this tab, you will notices that it is possible to define the copy method, table options, and to provide pre-copy scripts to execute. For this copy activity, the `wwi.DimCustomer` table is truncated prior to being loaded with the data copied from the source specified on the Source tab. Also, take special note of the sink dataset, `wwi_dimcustomer_asa`. This dataset points to the `wwi.DimCustomer` table in Synapse Analytics, which is one of the data sources for the Mapping Data Flow. We will need to ensure that the copy activity successfully populates this table prior to running the data flow.
+   > Reviewing the fields on this tab, you will notice that it is possible to define the copy method, table options, and to provide pre-copy scripts to execute. Also, take special note of the sink dataset, `wwi_staging_dimcustomer_asa`. The dataset requires a parameter named `UniqueId`, which is populated using a substring of the Pipeline Run Id. This dataset points to the `wwi_staging.DimCustomer_UniqueId` table in Synapse Analytics, which is one of the data sources for the Mapping Data Flow. We will need to ensure that the copy activity successfully populates this table prior to running the data flow.
 
    ![The Sink tab for the Copy data activity is selected and highlighted.](media/ex02-orchestrate-copy-data-sink.png "Pipeline canvas property tabs")
 
@@ -184,7 +184,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform an
 
 9. Select the **Settings** tab and take a moment to look over the properties available here.
 
-   > The Settings tab includes a pointer to the Data flow being executed by the Mapping Data Flow activity, along with the Integration Runtime and compute resource type and size to use. If you wish to use staging, you can also specify that here.
+   > The Settings tab includes a pointer to the Data flow being executed by the Mapping Data Flow activity, parameters to pass into the data flow, as well as the Integration Runtime and compute resource type and size to use. If you wish to use staging, you can also specify that here.
 
    ![The Settings tab of the Mapping Data Flow is selected and highlighted.](media/ex02-orchestrate-data-flow-settings.png "Pipeline canvas property tabs")
 
@@ -208,7 +208,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform an
 
 13. Select the **Projection** tab.
 
-    > The **Projections** tab allows you to define the schema of the data being ingested from a data source. A schema is required for each data source in a data flow to allow downstream transformations to perform actions against the fields in the data source. Note that selecting **Import schema** requires an active debug session to retrieve the schema data from the underlying data source, as it uses the Spark cluster to read the schema. However, you can manually enter a schema without an active debug session. In the screenshot above, notice the `Zip` column is highlighted. The schema inferred by the import process set the column type to `integer`. For US zip code data, the data type was changed to `string` so leading zeros are not discarded from the five-digit zip codes. It is import to review the schema to ensure the correct types are set, both for working with the data and to ensure it is displayed and stored correctly in the data sink.
+    > The **Projections** tab allows you to define the schema of the data being ingested from a data source. A schema is required for each data source in a data flow to allow downstream transformations to perform actions against the fields in the data source. Note that selecting **Import schema** requires an active debug session to retrieve the schema data from the underlying data source, as it uses the Spark cluster to read the schema. In the screenshot above, notice the `Zip` column is highlighted. The schema inferred by the import process set the column type to `integer`. For US zip code data, the data type was changed to `string` so leading zeros are not discarded from the five-digit zip codes. It is import to review the schema to ensure the correct types are set, both for working with the data and to ensure it is displayed and stored correctly in the data sink.
 
     ![The Projections tab for the PostalCodes data source is selected, and the Zip column of the imported schema is highlighted.](media/ex02-orchestrate-data-flow-sources-postal-codes-projection.png "Data flow canvas")
 
@@ -264,7 +264,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform an
 
 23. Select the `DimCustomer` data source on the data flow canvas graph.
 
-    > Take a few minutes to review the various tabs in the configuration panel for this data source to get a better understand of how it is configured, as you did above. Note that this data source relies on the `DimCustomer` table from Azure Synapse Analytics for its data. Before running the pipeline, you will add a dependency to the Mapping Data Flow activity to ensure the Copy activity has populated the `DimCustomer` in Azure Synapse Analytics before allowing the data flow to execute.
+    > Take a few minutes to review the various tabs in the configuration panel for this data source to get a better understand of how it is configured, as you did above. Note that this data source relies on the `wwi_staging.DimCustomer_UniqueId` table from Azure Synapse Analytics for its data. `UniqueId` is supplied by a parameter to the data flow, which contains a substring of the Pipeline Run Id. Before running the pipeline, you will add a dependency to the Mapping Data Flow activity to ensure the Copy activity has populated the `wwi_staging.DimCustomer_UniqueId` in Azure Synapse Analytics before allowing the data flow to execute.
 
     ![The DimCustomer data source is highlighted on the data flow canvas graph.](media/ex02-orchestrate-data-flow-sources-dim-customer.png "Data flow canvas")
 
