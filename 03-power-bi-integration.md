@@ -1,6 +1,6 @@
 # Exercise 3 - Power BI integration
 
-In this exercise, you will realize another benefit of the fully integrated environment provided by Azure Synapse Analytics. Here, you will create a Power BI Report and build a visualization within Synapse Analytics Studio. You will not have to leave this environment to log into a separate Power BI web site. 
+In this exercise, you will realize another benefit of the fully integrated environment provided by Azure Synapse Analytics. Here, you will create a Power BI Report and build a visualization within Synapse Analytics Studio. Once you have published a dataset, you will not have to leave this environment to log into a separate Power BI web site in order to view and edit reports. 
 
 The Power BI Workspace has already been created for you.
 
