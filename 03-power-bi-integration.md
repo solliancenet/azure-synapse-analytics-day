@@ -1,8 +1,8 @@
 # Exercise 3 - Power BI integration
 
-In this exercise, you will create a Power BI Report and build a visualization within Synapse Analytics Studio.
+In this exercise, you will realize another benefit of the fully integrated environment provided by Azure Synapse Analytics. Here, you will create a Power BI Report and build a visualization within Synapse Analytics Studio. You will not have to leave this environment to log into a separate Power BI web site. 
 
-The Power BI Workspace has alreadby been created for you.
+The Power BI Workspace has already been created for you.
 
 ## Task 1 - Create a Power BI dataset in Synapse
 In this task, you will use Power BI Desktop to create the dataset used by the report.
