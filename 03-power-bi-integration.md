@@ -57,7 +57,7 @@ In this task, you will use Power BI Desktop to create the dataset used by the re
 ## Task 2 - Create a Power BI report in Synapse
 In this task, you will use the dataset you recently published to create a new Power BI report within Synapse Analytics Studio. 
 
-1. Select your newly created dataset within the panel that appears. When you hover over the dataset, and button for creating a New Power BI report will appear. Select that button.
+1. Select your newly created dataset within the panel that appears. When you hover over the dataset, a button for creating a new Power BI report will appear. Select that button.
 
     ![Selecting new Power BI report from dataset](media/ex03-select-new-power-bi-report.png)
 
