@@ -30,7 +30,10 @@ In this exercise, you will focus on step (2) from the above.
 In this task, you will author a T-SQL query that uses a pre-trained model to make predictions. 
 
 1. Open Synapse Analytics Studio, and then navigate to the `Data hub`.
-2. Under the Databases listing, right click `SQLPool01` and then select `New SQL Script`, and then `Empty script`.
+2. Expand the Databases listing, right click your SQL Pool and then select `New SQL Script`, and then `Empty script`.
+
+    ![Showing the context menu, selecting New SQL Script, Empty Script](media/ex05-new-sql-script.png)
+
 3. Replace the contents of this script with following:
 
 ```
@@ -41,8 +44,13 @@ FROM PREDICT(MODEL = @model,
     DATA = wwi.FactSale inputs) WITH (quantity int) as preds
 
 ```
-4. Select the Run icon.
-5. View the results, notice that the `quantity` column is the model's prediction of how many items of the kind represented by `StockItemKey` that the customer identified by `CustomerKey` will purchase. 
+4. Select Run from the menubar.
+
+    ![The Run button](media/ex05-select-run.png)
+
+5. View the results, notice that the `Prediction` column is the model's prediction of how many items of the kind represented by `StockItemKey` that the customer identified by `CustomerKey` will purchase. 
+
+    ![Viewing the prediction results in the query result pane](media/ex05-view-prediction-results.png)
 
 ## Task 2 - Examining the model training notebook (Optional)
 If you are curious, you can see the notebook that was used to train this model. To do so, follow these steps:
