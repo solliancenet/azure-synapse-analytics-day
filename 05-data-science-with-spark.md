@@ -29,22 +29,22 @@ In this exercise, you will focus on step (2) from the above.
 ## Task 1 - Making predictions with a trained model
 In this task, you will author a T-SQL query that uses a pre-trained model to make predictions. 
 
-1. Open Synapse Analytics Studio, and then navigate to the `Data hub`.
+1. Open Synapse Analytics Studio, and then navigate to the `Data` hub.
 2. Expand the Databases listing, right click your SQL Pool and then select `New SQL Script`, and then `Empty script`.
 
     ![Showing the context menu, selecting New SQL Script, Empty Script](media/ex05-new-sql-script.png)
 
 3. Replace the contents of this script with following:
 
-```
+```sql
 -- Retrieve the latest hex encoded ONNX model from the table
-DECLARE @model varbinary(max) = (SELECT Model FROM [wwi].[Models] WHERE Id = (SELECT Top(1) max(ID) FROM [wwi].[Models]));
+DECLARE @model varbinary(max) = (SELECT Model FROM [wwi_ml].[MLModel] WHERE Id = (SELECT Top(1) max(ID) FROM [wwi_ml].[MLModel]));
 
 -- Run a prediction query
 SELECT d.*, p.*
-FROM PREDICT(MODEL = @model, DATA = [wwi].[SampleData] AS d) WITH (prediction real) AS p;
-
+FROM PREDICT(MODEL = @model, DATA = [wwi_ml].[SampleData] AS d) WITH (prediction real) AS p;
 ```
+
 4. Select Run from the menubar.
 
     ![The Run button](media/ex05-select-run.png)
@@ -56,7 +56,7 @@ FROM PREDICT(MODEL = @model, DATA = [wwi].[SampleData] AS d) WITH (prediction re
 ## Task 2 - Examining the model training and registration process (Optional)
 If you are curious, you can see the notebook and SQL scripts that were used to train and register this model. To do so, follow these steps:
 
-1. Open Synapse Analytics Studio, and then navigate to the `Develop hub`.
+1. Open Synapse Analytics Studio, and then navigate to the `Develop` hub.
 2. Under Notebooks, select the notebook called `Exercise 5 - Model Training`. 
 3. This notebook handles training the model, converting the model to ONNX and uploading the ONNX model to Azure Storage.
 4. Feel free to read thru the notebook, but do not execute it. The results of executing each cell in the notebook have been saved with the notebook so that you can see results, without having to run it. 
