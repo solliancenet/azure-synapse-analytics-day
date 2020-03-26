@@ -10,6 +10,11 @@ The SQL Analytics pool in Azure Synapse Analytics is the new incarnation of the 
   - [Task 1 - Use a SQL Analytics pool query to understand a dataset](#task-1---use-a-sql-analytics-pool-query-to-understand-a-dataset)
   - [Task 2 - Investigate query performance and table design](#task-2---investigate-query-performance-and-table-design)
 
+>Note:
+>The tasks in this exercise must me run against a SQL pool (as opposed to the ones from exercise 1 which were run against the SQL on-demand pool). Make sure you have a SQL pool selected before running each query:
+
+![Run queries against a SQL pool](./media/ex04-run-on-sql-pool.png)
+
 ## Task 1 - Use a SQL Analytics pool query to understand a dataset
 
 In this task you will try to understand who your best customers are.
