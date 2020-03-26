@@ -20,7 +20,7 @@ In this task, you will use Power BI Desktop to create the dataset used by the re
 
     ![Select Start in first screen of wizard](media/ex03-pbids-install-pbidesktop.png)
 
-5. In the step by step dialog that appears, hover over your SQL Pool and select the link that appears labeled **Download .pbids file**. 
+5. In the step by step dialog that appears, select your SQL Pool and then download the suggested `pbids` file. 
 
     ![Selecting Download](media/ex03-download-pbid.png)
 
