@@ -39,26 +39,11 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
    ![Spark (Scala) is selected in the Language drop-down.](media/ex02-notebooks-toolbar-language.png "Synapse Analytics Notebooks")
 
-5. At the bottom left corner of the open notebook, select **Configure session**.
-
-   ![The Configure session link is highlighted.](media/ex02-notebooks-configure-session-link.png "Synapse Analytics Notebooks")
-
-6. In the Configure session dialog, enter the following:
-
-   - **Executors**: Enter 3.
-   - **Executor size**: Select Medium (8 vCPU, 56GB memory).
-
-   > This configuration allocates the resources that allow your notebook to execute Spark jobs, and allows you to set how many resources should be made available to execute the job.
-
-   ![In the Configure session dialog, Step 1 indicated to set Executors 3, Step 2 indicates to set Executor size to Medium, and Step 3 says to select the Apply button.](media/ex02-notebooks-configure-session.png "Synapse Analytics Notebooks")
-
-7. Select **Apply** in the Configure session dialog.
-
-8. Next, in the first cell of the notebook, **Cell 1**, locate the variable named `uniqueId` on line 8.
+5. Next, in the first cell of the notebook, **Cell 1**, locate the variable named `uniqueId` on line 8.
 
    ![The uniqueId variable on line 8 of Cell 1 is highlighted.](media/ex02-notebooks-configure-unique-id.png "Synapse Analytics Notebooks")
 
-9. Update the value of the `uniqueId` variable, setting it to the unique identifier you were assigned for this workshop. This will be the _UNIQUEID_ component of your username, as mentioned above. For example:
+6. Update the value of the `uniqueId` variable, setting it to the unique identifier you were assigned for this workshop. This will be the _UNIQUEID_ component of your username, as mentioned above. For example:
 
    ```scala
    val uniqueId = "A04"
@@ -70,61 +55,61 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
    > **Note**: You may notice the **Publish all** button is highlighted after making changes. Please **do not publish** your changes, as this will impact the notebook used by all workshop attendees. You do not need to publish the changes to run the notebook in the steps below.
 
-10. Select **Run all** from the notebook toolbar to execute each cell within the notebook.
+7. Select **Run all** from the notebook toolbar to execute each cell within the notebook.
 
-    ![The Run all button on the notebook toolbar is highlighted.](media/ex02-notebooks-toolbar-run-all.png "Synapse Analytics Notebooks")
+   ![The Run all button on the notebook toolbar is highlighted.](media/ex02-notebooks-toolbar-run-all.png "Synapse Analytics Notebooks")
 
-    > **Note**: If you see output from the cells containing the message, `Error : java.lang.Exception: You must enter the unique identifier you were assigned for this workshop into the uniqueId variable before proceeding`, return to step 9 above and enter your assigned unique identifier.
+   > **Note**: If you see output from the cells containing the message, `Error : java.lang.Exception: You must enter the unique identifier you were assigned for this workshop into the uniqueId variable before proceeding`, return to step 9 above and enter your assigned unique identifier.
 
-11. While the notebook is running, let's take a look at what each cell is doing.
+8. While the notebook is running, let's take a look at what each cell is doing.
 
-    - **Cell 1** imports required libraries and sets a few variables. The `adlsPath` variable defines the path used to connect to an Azure Data Lake Storage (ADLS) Gen2 account. Connecting to ADLS Gen2 from a notebook in Azure Synapse Analytics uses the power of Azure Active Directory (AAD) pass-through between compute and storage. The `uniqueId` provides a unique value to use for creating a new table in Azure Synapse Analytics.
+   - **Cell 1** imports required libraries and sets a few variables. The `adlsPath` variable defines the path used to connect to an Azure Data Lake Storage (ADLS) Gen2 account. Connecting to ADLS Gen2 from a notebook in Azure Synapse Analytics uses the power of Azure Active Directory (AAD) pass-through between compute and storage. The `uniqueId` provides a unique value to use for creating a new table in Azure Synapse Analytics.
 
-    ![Cell 1 of the notebook is displayed.](media/ex02-notebooks-ingest-cell-1.png "Synapse Analytics Notebooks")
+   ![Cell 1 of the notebook is displayed.](media/ex02-notebooks-ingest-cell-1.png "Synapse Analytics Notebooks")
 
-    - **Cell 2** loads data from CSV files in the data lake into a DataSet. Note the `option` parameters in the `read` command on line 7. These options specify the settings to use when reading the CSV files. The options tell Spark that the first row of each file containers the column headers, the separator in the files in the `|` character, and that we want Spark to infer the schema of the files based on an analysis of the contents of each column. Finally, we display the first five records of the data retrieved and print the inferred schema to the screen.
+   - **Cell 2** loads data from CSV files in the data lake into a DataSet. Note the `option` parameters in the `read` command on line 7. These options specify the settings to use when reading the CSV files. The options tell Spark that the first row of each file containers the column headers, the separator in the files in the `|` character, and that we want Spark to infer the schema of the files based on an analysis of the contents of each column. Finally, we display the first five records of the data retrieved and print the inferred schema to the screen.
 
-    ![Cell 2 of the notebook is displayed.](media/ex02-notebooks-ingest-cell-2.png "Synapse Analytics Notebooks")
+   ![Cell 2 of the notebook is displayed.](media/ex02-notebooks-ingest-cell-2.png "Synapse Analytics Notebooks")
 
-    - **Cell 3** writes the data retrieve from Blob Storage into a staging table in Azure Synapse Analytics using the SQL Analytics connector. Using the connector simplifies connecting to Azure Synapse Analytics because it uses AAD pass-through. There is no need to create a password, identity, external table, or format sources, as it is all managed by the connector.
+   - **Cell 3** writes the data retrieve from Blob Storage into a staging table in Azure Synapse Analytics using the SQL Analytics connector. Using the connector simplifies connecting to Azure Synapse Analytics because it uses AAD pass-through. There is no need to create a password, identity, external table, or format sources, as it is all managed by the connector.
 
-    ![Cell 3 of the notebook is displayed.](media/ex02-notebooks-ingest-cell-3.png "Synapse Analytics Notebooks")
+   ![Cell 3 of the notebook is displayed.](media/ex02-notebooks-ingest-cell-3.png "Synapse Analytics Notebooks")
 
-12. When Cell 2 finishes running, take a moment to review the associated output.
+9. When Cell 2 finishes running, take a moment to review the associated output.
 
-    > The output of Cell 2 provides some insight into the structure of the data and the data types that have been inferred. The `show(5)` command results in the first five rows of the data read being output, allowing you to see the columns and a sample of data contained within each. The `printSchema()` command outputs a list of columns and their inferred types.
+   > The output of Cell 2 provides some insight into the structure of the data and the data types that have been inferred. The `show(5)` command results in the first five rows of the data read being output, allowing you to see the columns and a sample of data contained within each. The `printSchema()` command outputs a list of columns and their inferred types.
 
-    ![The output from the execution of Cell 2 is displayed, with the result of the show(5) command shown first, followed by the output from the printSchema() command.](media/ex02-notebooks-ingest-cell-2-output.png "Synapse Analytics Notebooks")
+   ![The output from the execution of Cell 2 is displayed, with the result of the show(5) command shown first, followed by the output from the printSchema() command.](media/ex02-notebooks-ingest-cell-2-output.png "Synapse Analytics Notebooks")
 
-13. Next scroll down to Cell 3 and select the arrow icon below the cell to expand the details for the Spark job.
+10. Next scroll down to Cell 3 and select the arrow icon below the cell to expand the details for the Spark job.
 
     > This pane allows you to monitor the underlying Spark jobs, and observe the status of each. As you can see, Cell 3 is split into two Spark jobs and the progress of each can be observed. We will take a deeper look at monitoring Spark applications in Task 4 below.
 
     ![The Spark job status pane is displayed below Cell 3, with the progress of each Spark job visible.](media/ex02-notebooks-ingest-cell-3-spark-job.png "Synapse Analytics Notebooks")
 
-14. When the execution of Cell 3 completes, select **Data** from the left-hand menu.
+11. When the execution of Cell 3 completes, select **Data** from the left-hand menu.
 
     ![Data is selected and highlighted in the Synapse Analytics menu.](media/ex02-menu-data.png "Synapse Analytics menu")
 
-15. Expand **Databases** and then expand the **SQLPool01** database.
+12. Expand **Databases** and then expand the **SQLPool01** database.
 
     ![The Databases folder is expanded, showing a list of databases within the Azure Synapse Analytics workspace. SQLPool01 is expanded and highlighted.](media/ex02-data-sqlpool01.png "Synapse Analytics Databases")
 
-16. Expand **Tables** and locate the table named `wwi_staging.Sale_UNIQUEID`, where `UNIQUEID` is the unique identifier assigned to you for this workshop. which you retrieved from your username above (e.g., `A03`).
+13. Expand **Tables** and locate the table named `wwi_staging.Sale_UNIQUEID`, where `UNIQUEID` is the unique identifier assigned to you for this workshop. which you retrieved from your username above (e.g., `A03`).
 
     > If you do not see the table, select the Actions ellipsis next to Tables, and then select **Refresh** from the fly-out menu.
 
     ![The list of tables in the SQLPool01 database is expanded and the wwi_staging.Sale_UNIQUEID table is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data.png "Synapse Analytics Databases")
 
-17. To the right of the `wwi_staging.Sale_UNIQUEID` table, select the Actions ellipsis.
+14. To the right of the `wwi_staging.Sale_UNIQUEID` table, select the Actions ellipsis.
 
     ![The Actions ellipsis button is highlighted next to the wwi_staging.Sale_UNIQUEID table.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions.png "Synapse Analytics Databases")
 
-18. In the Actions menu, select **New SQL script > Select TOP 1000 rows**.
+15. In the Actions menu, select **New SQL script > Select TOP 1000 rows**.
 
     ![In the Actions menu for the wwi_staging.Sale_UNIQUEID table, New SQL script > Select TOP 1000 rows is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions-select.png "Synapse Analytics Databases")
 
-19. Observe the results in the output pane, and see how easy it was to use Spark notebooks to write data from Blob Storage into Azure Synapse Analytics.
+16. Observe the results in the output pane, and see how easy it was to use Spark notebooks to write data from Blob Storage into Azure Synapse Analytics.
 
 ### Bonus Challenge
 
@@ -494,6 +479,8 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
 4. From the list of Spark applications, select the first job, which should have a status of `In progress`.
 
+   > **Note**: You may see a status of `Cancelled`, and this does not prevent you from completing the following steps. Azure Synapse Analytics is still in preview, and the status gets set to `Cancelled` when the Spark pool used to run the Spark application times out.
+
    ![The current Spark application is highlighted in the applications list.](media/ex02-monitor-activities-spark-application-list.png "Synapse Analytics Monitor")
 
 5. On the **Log query** screen, you will see a detailed view of the job, broken into three different sections.
@@ -516,38 +503,38 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
 9. To look closer at any individual stage, you can use the **Job IDs** drop-down to select the stage number. In this case, select the drop-down and choose **5** from the list.
 
-   ![Stage 5 is highlighted in the Job IDs drop-down list.](media/ex02-monitor-activities-spark-applications-all-job-ids-5.png "Synapse Analytics Monitor")
+![Stage 5 is highlighted in the Job IDs drop-down list.](media/ex02-monitor-activities-spark-applications-all-job-ids-5.png "Synapse Analytics Monitor")
 
-10. This view isolates the specific stage within the graphical view.
+11. This view isolates the specific stage within the graphical view.
 
     ![Stage 5 is displayed.](media/ex02-monitor-activities-spark-applications-stage-5.png "Synapse Analytics Monitor")
 
-11. Return the view to all stages by selecting **All job IDs** in the job ID drop-down list.
+12. Return the view to all stages by selecting **All job IDs** in the job ID drop-down list.
 
     ![All job IDs is highlighted in the Job IDs drop-down list.](media/ex02-monitor-activities-spark-applications-all-job-ids.png "Synapse Analytics Monitor")
 
-12. Within the graph section, you also have the ability to **Playback** the Spark application.
+13. Within the graph section, you also have the ability to **Playback** the Spark application.
 
     ![The Playback button is highlighted.](media/ex02-monitor-activities-spark-applications-playback.png "Synapse Analytics Monitor")
 
     > **Note**: Playback functionality is not available until the job status changes out of the `In progress` status. The job's status will remain listed as `In progress` until the underlying Spark resources are cleaned up by Azure Synapse Analytics, which can take some time.
 
-13. Running a Playback allows you to observe the time required to complete each stage, as well as review the rows read or written as the job progresses.
+14. Running a Playback allows you to observe the time required to complete each stage, as well as review the rows read or written as the job progresses.
 
     ![A screenshot of an in-progress playback is displayed. The playback is at 1m 49s into the Spark application run, and Stage 6 is showing a Stage progress of 6.25%.](media/ex02-monitor-activities-spark-applications-playback-progress.png "Synapse Analytics Monitor")
 
-14. You can also preform a playback on an individual stage. Returning to a view of only Stage 5, the **Playback** button shows the rows written at this stage, along with the progress of reads and writes.
+15. You can also preform a playback on an individual stage. Returning to a view of only Stage 5, the **Playback** button shows the rows written at this stage, along with the progress of reads and writes.
 
     ![A screenshot of an in-progress playback for Stage 5 is displayed, with the stage progress showing 43.75% complete.](media/ex02-monitor-activities-spark-applications-playback-stage-5.png "Synapse Analytics Monitor")
 
-15. You can also change the view to see which stages were involved in read and write activities. In the **Display** drop-down, select **Read**.
+16. You can also change the view to see which stages were involved in read and write activities. In the **Display** drop-down, select **Read**.
 
     ![Read is selected and highlighted in the Display drop-down list.](media/ex02-monitor-activities-spark-applications-display-drop-down-read.png "Synapse Analytics Monitor")
 
-16. In the read graph, stages that involved read tasks are highlighted in orange.
+17. In the read graph, stages that involved read tasks are highlighted in orange.
 
     ![In the graph, stages that involved read tasks are highlighted in orange.](media/ex02-monitor-activities-spark-applications-display-read.png "Synapse Analytics Monitor")
 
-17. Next, select **Written** from the Display drop-down list, and observe the stages where data was written.
+18. Next, select **Written** from the Display drop-down list, and observe the stages where data was written.
 
     ![In the graph, stages where data was written are highlighted in orange.](media/ex02-monitor-activities-spark-applications-display-written.png "Synapse Analytics Monitor")
