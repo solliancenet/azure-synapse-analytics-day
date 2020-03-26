@@ -66,7 +66,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
     ![The Run all button on the notebook toolbar is highlighted.](media/ex02-notebooks-toolbar-run-all.png "Synapse Analytics Notebooks")
 
-    > **Note**: If you see output from the cells containing the message, `Error : java.lang.Exception: You must enter the unique identifier you were assigned for this workshop into the uniqueId variable before proceeding.` return to step 9 above and enter your assigned unique identifier.
+    > **Note**: If you see output from the cells containing the message, `Error : java.lang.Exception: You must enter the unique identifier you were assigned for this workshop into the uniqueId variable before proceeding`, return to step 9 above and enter your assigned unique identifier.
 
 12. While the notebook is running, let's take a look at what each cell is doing.
 
@@ -124,6 +124,8 @@ Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** no
 
 You can run each cell in this notebook and observe the output. Be aware, however, that writing data into a staging table in Azure Synapse Analytics with this notebook takes several minutes, so you don't need to wait on the notebook to finish before attempting to query the `wwi_staging.Sale_CSharp_UNIQUEID` table to observe the data being written or to move on to the next task.
 
+> **Important**: Do not forget to set the `uniqueId` variable with the unique identifier assigned to you for this workshop.
+
 To observe the data being written into the table:
 
 1. Select **Data** from the left-hand menu, expand Databases, SQLPool01, and Tables.
@@ -140,7 +142,7 @@ To observe the data being written into the table:
 
 4. Select **Run** on the toolbar.
 
-   > Re-run the query every 5-10 seconds to watch the count of records in the table, and how it changes as new records are being added by the notebook.
+   > Re-run the query every 5-10 seconds to watch the count of records in the table, and how it changes as new records are being added by the notebook. The notebook limits the number of rows to 1500, so if you see a count of 1500, the notebook has completed processing.
 
 ## Task 2 - Explore, modify, and run a Pipeline containing a Data Flow
 
