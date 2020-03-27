@@ -16,7 +16,15 @@ The tasks you will perform in this exercise are:
 
 In this task, you will browse your data lake using SQL on-demand.
 
-1. In a web browser, navigate to the [Azure portal](https://portal.azure.com) and then click on the **Synapse workspace** resource.
+1. In a web browser, navigate to the [Azure portal](https://portal.azure.com) and then select **Resource groups**.
+
+   ![Open Azure resource group](./media/00-open-resource-groups.png)
+
+   Select the **Synapse Analytics** resource group.
+
+   ![Open Synapse Analytics resource group](./media/00-open-synapse-resource-group.png)
+
+   Select the **Synapse Analytics** workspace.
 
    ![Open Azure Synapse Analytics workspace](./media/00-open-workspace.png)
 
