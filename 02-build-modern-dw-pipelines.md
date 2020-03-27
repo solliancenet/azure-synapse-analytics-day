@@ -87,7 +87,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
     ![The Spark job status pane is displayed below Cell 3, with the progress of each Spark job visible.](media/ex02-notebooks-ingest-cell-3-spark-job.png "Cell 3 Spark Job status")
 
-11. When the execution of Cell 3 completes, select **Data** from the left-hand menu.
+11. After 3-5 minutes the execution of Cell 3 will complete. Once it has completed, select **Data** from the left-hand menu.
 
     ![Data is selected and highlighted in the Synapse Analytics menu.](media/ex02-menu-data.png "Synapse Analytics menu")
 
