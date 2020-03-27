@@ -10,8 +10,7 @@ The SQL Analytics pool in Azure Synapse Analytics is the new incarnation of the 
   - [Task 1 - Use a SQL Analytics pool query to understand a dataset](#task-1---use-a-sql-analytics-pool-query-to-understand-a-dataset)
   - [Task 2 - Investigate query performance and table design](#task-2---investigate-query-performance-and-table-design)
 
-> Note:
-> The tasks in this exercise must me run against a SQL pool (as opposed to the ones from exercise 1 which were run against the SQL on-demand pool). Make sure you have a SQL pool selected before running each query:
+> Note: The tasks in this exercise must me run against a SQL pool (as opposed to the ones from exercise 1 which were run against the SQL on-demand pool). Make sure you have a SQL pool selected before running each query:
 
 ![Run queries against a SQL pool](./media/ex04-run-on-sql-pool.png)
 
@@ -27,11 +26,12 @@ Solution:
 
 1. Open Synapse Analytics Studio, and then navigate to the `Develop` hub.
 2. Under `SQL scripts`, select the script called `Exercise 4 - Analyze Transactions`.
-3. Run the script against the SQL Pool database.
-4. When the results appear, for the **View** toggle, select **Chart**.
-5. For the Chart type, select `Column`.
-6. For the Category column, leave the selection at `(none)`.
-7. For the Legend (series) column, select `CustomerKey`.
+3. Change the **Connect to** drop down to the **SQLPoolXX** database
+4. Select **Run** to execute the script
+5. When the results appear, for the **View** toggle, select **Chart**.
+6. For the Chart type, select `Column`.
+7. For the Category column, leave the selection at `(none)`.
+8. For the Legend (series) column, select `CustomerKey`.
 
 ![Example Chart](media/ex05-chart.png)
 
@@ -41,8 +41,8 @@ In this task you will try to understand at a general level the implications of t
 
 First, let's set the stage by performing the following steps:
 
-1. Open Synapse Analytics Studio, and then navigate to the `Develop` hub.
-2. Under SQL scripts, select the script called `Exercise 4 - Investigate query performance`.
+1. In the `Develop` hub, under SQL scripts, select the script called `Exercise 4 - Investigate query performance`.
+2. Change the **Connect to** drop down to the **SQLPoolXX** database
 3. Select line 1 and then select `Run`.
 
    ![Run a count on FactSale_Slow](./media/ex04-query-selection-01.png)
