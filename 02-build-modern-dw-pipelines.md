@@ -121,7 +121,10 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
 Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** notebook.
 
-1. Select **Develop** from the left-hand menu, expand **Notebooks** and select the notebook.
+1. In Synapse Analytics Studio, select **Develop** from the left-hand menu. Expand **Notebooks** and select the notebook named `Exercise 2 - Bonus Notebook with CSharp`.
+
+   ![Open bonus notebook with CSharp from Develop hub](./media/ex02-csharp-for-spark-notebook.png "Open bonus notebook with CSharp from Develop hub")
+
 2. Notice the language of choice being C# for Spark:
 
     ![CSharp for Spark](./media/ex02-csharp-for-spark.png)
