@@ -2,6 +2,8 @@
 
 In this exercise, you examine various methods for ingesting data into Azure Synapse Analytics and Azure Data Lake Storage Gen2. You use notebooks and Data Flows to ingest, transform, and load data.
 
+The tasks you will perform in this exercise are:
+
 - Build Modern Data Warehouse pipelines
   - Task 1 - Explore and modify a notebook
     - Bonus Challenge

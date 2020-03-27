@@ -6,6 +6,8 @@ SQL data warehouses have been for a long time the centers of gravity in data pla
 
 The SQL Analytics pool in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
 
+The tasks you will perform in this exercise are:
+
 - Exercise 4 - High Performance Analysis with SQL Analytics pool
   - Task 1 - Use a SQL Analytics pool query to understand a dataset
   - Task 2 - Investigate query performance and table design
