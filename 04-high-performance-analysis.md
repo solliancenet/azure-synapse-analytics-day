@@ -9,9 +9,9 @@ The SQL Analytics pool in Azure Synapse Analytics is the new incarnation of the 
 - [Exercise 4 - High Performance Analysis with SQL Analytics pool](#exercise-4---high-performance-analysis-with-sql-analytics-pool)
   - [Task 1 - Use a SQL Analytics pool query to understand a dataset](#task-1---use-a-sql-analytics-pool-query-to-understand-a-dataset)
   - [Task 2 - Investigate query performance and table design](#task-2---investigate-query-performance-and-table-design)
+  - [Bonus Challenge](#bonus-challenge)
 
-> Note:
-> The tasks in this exercise must me run against a SQL pool (as opposed to the ones from exercise 1 which were run against the SQL on-demand pool). Make sure you have a SQL pool selected before running each query:
+> **Note**: The tasks in this exercise must me run against a SQL pool (as opposed to the ones from exercise 1 which were run against the SQL on-demand pool). Make sure you have a SQL pool selected before running each query:
 
 ![Run queries against a SQL pool](./media/ex04-run-on-sql-pool.png)
 
@@ -21,19 +21,20 @@ In this task you will try to understand who your best customers are.
 
 **Challenge:** Can you author and run a query that will aggregate the total quantity of items purchased by customer and then visualize the result with a chart similar to the following?
 
-![Example Chart](media/ex05-chart-sample.png)
+![Example Chart](media/ex05-chart-sample.png "Example chart")
 
 Solution:
 
 1. Open Synapse Analytics Studio, and then navigate to the `Develop` hub.
 2. Under `SQL scripts`, select the script called `Exercise 4 - Analyze Transactions`.
-3. Run the script against the SQL Pool database.
-4. When the results appear, for the **View** toggle, select **Chart**.
-5. For the Chart type, select `Column`.
-6. For the Category column, leave the selection at `(none)`.
-7. For the Legend (series) column, select `CustomerKey`.
+3. Change the **Connect to** drop-down to the **SQLPoolXX** database.
+4. Select **Run** to execute the script against the SQL Pool database.
+5. When the results appear, for the **View** toggle, select **Chart**.
+6. For the Chart type, select `Column`.
+7. For the Category column, leave the selection at `(none)`.
+8. For the Legend (series) column, select `CustomerKey`.
 
-![Example Chart](media/ex05-chart.png)
+![Example Chart](media/ex05-chart.png "Example chart")
 
 ## Task 2 - Investigate query performance and table design
 
@@ -41,33 +42,35 @@ In this task you will try to understand at a general level the implications of t
 
 First, let's set the stage by performing the following steps:
 
-1. Open Synapse Analytics Studio, and then navigate to the `Develop` hub.
-2. Under SQL scripts, select the script called `Exercise 4 - Investigate query performance`.
+1. Under **SQL Scripts** in the `Develop` hub within Synapse Analytics Studio, select the script called `Exercise 4 - Investigate query performance`.
+2. Change the **Connect to** drop-down to the **SQLPoolXX** database.
 3. Select line 1 and then select `Run`.
 
-   ![Run a count on FactSale_Slow](./media/ex04-query-selection-01.png)
+   ![Run a count on FactSale_Slow](./media/ex04-query-selection-01.png "Run script")
 
    Notice the quick response time (usually under 1 second) and the result - 83.4 million records.
 
 4. Select line 3 and then select `Run`.
 
-   ![Run a count on FactSale_Fast](./media/ex04-query-selection-02.png)
+   ![Run a count on FactSale_Fast](./media/ex04-query-selection-02.png "Run script")
 
    Notice the quick response time (usually under 1 second) and the result - 83.4 million records.
 
 5. Select lines 5 to 20 and then select `Run`.
 
-   ![Run a complex query on FactSale_Slow](./media/ex04-query-selection-03.png)
+   ![Run a complex query on FactSale_Slow](./media/ex04-query-selection-03.png "Run script")
 
    Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones which benefit from the initialization of various internal data and communications buffers). Make a note on the amount of time needed to run the query (typically 5 to 15 seconds).
 
 6. Select lines 22 to 37 and then select `Run`.
 
-   ![Run a complex query on FactSale_Fast](./media/ex04-query-selection-04.png)
+   ![Run a complex query on FactSale_Fast](./media/ex04-query-selection-04.png "Run script")
 
    Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones which benefit from the initialization of various internal data and communications buffers). Make a note on the amount of time needed to run the query (typically 1 to 3 seconds).
 
-**Challenge**: Can you explain the significant difference in performance between the two seemingly identical tables? Further more, can you explain why the first set of queries (the simple counts) were not that further apart in execution times?
+## Bonus Challenge
+
+Can you explain the significant difference in performance between the two seemingly identical tables? Further more, can you explain why the first set of queries (the simple counts) were not that further apart in execution times?
 
 Solution:
 
@@ -75,7 +78,7 @@ Solution:
 2. Under Databases, expand the SQL pool node (the one that has its name ending in `(SQL pool)`), expand `Tables`, and locate the `wwi_perf.FactSale_Slow` table.
 3. Right click the table and then select `New SQL script`, `CREATE`.
 
-   ![View table structure](./media/ex04-view-table-definition.png)
+   ![View table structure](./media/ex04-view-table-definition.png "Table structure")
 
 4. In the CREATE script, note the `DISTRIBUTION = ROUND_ROBIN` option used to distribute the table.
 
