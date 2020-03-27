@@ -73,7 +73,7 @@ In this task, you will browse your data lake using SQL on-demand.
 
    ![Run Spark notebook on data lake file](./media/ex01-spark-notebook-03.png "Attach notebook to Spark pool")
 
-   > **Note**: The first time you run a notebook in a Spark pool, Synapse creates a new session. This can take up to 3 minutes.
+   > **Note**: The first time you run a notebook in a Spark pool, Synapse creates a new session. This can take approximately 3 minutes.
 
 4. As you can see, the output is not formatted very well. To change this, replace the last line of code with the following:
 
