@@ -26,7 +26,7 @@ The diagram below provides a unified view of the exercises in the lab and their 
 
 ![Azure Synapse Analytics Lab Exercises](./media/exercises.png "Solution architecture")
 
-## Exercise 1 - [Explore the data lake with Azure Synapse SQL Serverless and Azure Synapse Spark](./01-explore-data-lake.md)
+## Exercise 1 - Explore the data lake with Azure Synapse SQL Serverless and Azure Synapse Spark
 
 In this exercise you will explore data using the engine of your choices (SQL or Spark).
 
@@ -50,7 +50,7 @@ The visual approach in data exploration, analysis, and interpretation is one of 
 
 Azure Synapse Analytics integrates natively with Power BI, a proven and highly successful data presentation and exploration platform. The Power BI experience is available inside Synapse Studio.
 
-## Exercise 4 - [High Performance Analysis with Azure Synapse SQL Pools](./04-high-performance-analysis.md)
+## Exercise 4 - High Performance Analysis with Azure Synapse SQL Pools
 
 In this exercise you will try to understand customer details using a query and chart visualizations. You will also explore the performance of various queries.
 
