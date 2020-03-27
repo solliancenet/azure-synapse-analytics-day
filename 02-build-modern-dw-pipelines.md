@@ -119,7 +119,14 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
 ### Bonus Challenge
 
-Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** notebook. This notebook demonstrates how easy it is create and run notebooks using C# for Spark. The notebook shows the code for retrieving data from Azure Blob Storage and writing that into a staging table in Azure Synapse Analytics using a JDBC connection.
+Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** notebook.
+
+1. Select **Develop** from the left-hand menu, expand **Notebooks** and select the notebook.
+2. Notice the language of choice being C# for Spark:
+
+    ![CSharp for Spark](./media/ex02-csharp-for-spark.png)
+
+This notebook demonstrates how easy it is create and run notebooks using C# for Spark. The notebook shows the code for retrieving data from Azure Blob Storage and writing that into a staging table in Azure Synapse Analytics using a JDBC connection.
 
 You can run each cell in this notebook and observe the output. Be aware, however, that writing data into a staging table in Azure Synapse Analytics with this notebook takes several minutes, so you don't need to wait on the notebook to finish before attempting to query the `wwi_staging.Sale_CSharp_UNIQUEID` table to observe the data being written or to move on to the next task.
 
