@@ -16,36 +16,36 @@ The tasks you will perform in this exercise are:
 
 In this task, you will browse your data lake using SQL on-demand.
 
-1. In a web browser, navigate to the [Azure portal](https://portal.azure.com) and sign in using the user account provided to you for this workshop.
+1. In a web browser, navigate to the [Azure portal](https://portal.azure.com) and then click on the **Synapse workspace** resource.
 
-2. Browse to the **Synapse-Analytics-XX** resource group and select the **Synapse workspace** resource.
+   ![Open Azure Synapse Analytics workspace](./media/00-open-workspace.png)
 
-3. Open Synapse Analytics Studio, and then navigate to the `Data` hub.
+2. Open Synapse Analytics Studio, and then navigate to the `Data` hub.
 
-4. Under `Storage accounts`, expand the **Storage account** node, expand the data lake storage account, and then select the `wwi` file system.
+3. Under `Storage accounts`, expand the **Storage account** node, expand the data lake storage account, and then select the `wwi` file system.
 
-5. Inside the selected file system, navigate to `factsale-parquet` -> `2012` -> `Q1` -> `InvoiceDateKey=2012-01-01`.
+4. Inside the selected file system, navigate to `factsale-parquet` -> `2012` -> `Q1` -> `InvoiceDateKey=2012-01-01`.
 
-6. Right-click the Parquet file and select `New SQL script - Select TOP 100 rows`.
+5. Right-click the Parquet file and select `New SQL script - Select TOP 100 rows`.
 
    > A script is automatically generated. Run this script to see how SQL on demand queries the file and returns the first 100 rows of that file with the header allowing you to easily explore data in the file.
 
    ![Start new SQL script from data lake file](./media/ex01-sql-on-demand-01.png "Create a new SQL script")
 
-7. Ensure the newly created script is connected to the `SQL on-demand` pool and then select `Run`. Data is loaded by the on-demand SQL pool and processed as if was coming from any regular relational database.
+6. Ensure the newly created script is connected to the `SQL on-demand` pool and then select `Run`. Data is loaded by the on-demand SQL pool and processed as if was coming from any regular relational database.
 
    ![Run SQL script on data lake file](./media/ex01-sql-on-demand-02.png "Execute SQL script")
 
-8. Let's change the initial script to load multiple Parquet files at once.
+7. Let's change the initial script to load multiple Parquet files at once.
 
    - In line 2, replace `TOP 100 *` with `COUNT(*)`.
    - In line 5, replace the path to the individual file with `https://asadatalake02.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*`.
 
-9. Select `Run` to re-run the script.
+8. Select `Run` to re-run the script.
 
    ![Run SQL on-demand script loading multiple Parquet data lake files](./media/ex01-sql-on-demand-03.png)
 
-10. In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 4 - Read with SQL on-demand` SQL script, and then select `Run`.
+9.  In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 4 - Read with SQL on-demand` SQL script, and then select `Run`.
 
     ![Run SQL on-demand script loading multiple CSV data lake files](./media/ex01-sql-on-demand-04.png)
 
