@@ -26,7 +26,7 @@ The diagram below provides a unified view of the exercises in the lab and their 
 
 ![Azure Synapse Analytics Lab Exercises](./media/exercises.png "Solution architecture")
 
-## Exercise 1 - [Explore the data lake with SQL Analytics on-demand and Spark](./01-explore-data-lake.md)
+## Exercise 1 - [Explore the data lake with Synapse Analytics SQL On-demand and Spark](./01-explore-data-lake.md)
 
 In this exercise you will explore data using the engine of your choices (SQL or Spark).
 
@@ -44,13 +44,13 @@ Azure Synapse Analytics provides two significant categories of features - data f
 
 ## Exercise 3 - [Power BI integration](./03-power-bi-integration.md)
 
-In this exercise you will build a Power BI report in Synapse.
+In this exercise you will build a Power BI report in Azure Synapse Analytics.
 
 The visual approach in data exploration, analysis, and interpretation is one of the essential tools for both technical users (data engineers, data scientists) and business users. Having a highly flexible and performant data presentation layer is a must for any modern data platform.
 
 Azure Synapse Analytics integrates natively with Power BI, a proven and highly successful data presentation and exploration platform. The Power BI experience is available inside Synapse Studio.
 
-## Exercise 4 - [High Performance Analysis with SQL Analytics pool](./04-high-performance-analysis.md)
+## Exercise 4 - [High Performance Analysis with Azure Syanpse Analytics SQL Pools](./04-high-performance-analysis.md)
 
 In this exercise you will try to understand customer details using a query and chart visualizations. You will also explore the performance of various queries.
 
@@ -60,8 +60,8 @@ The SQL Analytics pool in Azure Synapse Analytics is the new incarnation of the 
 
 ## Exercise 5 - [Data Science with Spark](./05-data-science-with-spark.md)
 
-In this exercise you will play the role of a Data Scientist that based on the <TBD> dataset, using Synapse Notebook, creates a model to predict <TBD>.
+In this exercise you will play the role of a Data Scientist that based on the <TBD> dataset, using Synapse Spark, creates a model to predict <TBD>.
 
 Modern era data environments must handle in a performant and seamless way any data an organization might have. In almost all cases, this means a combination of relational SQL-style capabilities and big data ones. In the world of massively distributed big data processing platforms, Spark is almost an implicit choice.
 
-Azure Synapse Analytics provides Apache Spark pools to support data science workloads. They enable data scientists to perform all their specific tasks while benefiting from the integration with the other Synapse services.
+Azure Synapse Analytics provides Apache Spark to support data science workloads. They enable data scientists to perform all their specific tasks while benefiting from the integration with the other Synapse services.
