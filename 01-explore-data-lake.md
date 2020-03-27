@@ -47,7 +47,11 @@ In this task, you will browse your data lake using SQL on-demand.
 7. Let's change the initial script to load multiple Parquet files at once.
 
    - In line 2, replace `TOP 100 *` with `COUNT(*)`.
-   - In line 5, replace the path to the individual file with `https://asadatalake02.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*`.
+   - In line 5, replace the path to the individual file with
+
+```
+https://asadatalake02.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*
+```
 
 8. Select `Run` to re-run the script.
 
