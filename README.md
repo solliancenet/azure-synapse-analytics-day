@@ -50,7 +50,7 @@ The visual approach in data exploration, analysis, and interpretation is one of 
 
 Azure Synapse Analytics integrates natively with Power BI, a proven and highly successful data presentation and exploration platform. The Power BI experience is available inside Synapse Studio.
 
-## Exercise 4 - [High Performance Analysis with Azure Syanpse SQL Pools](./04-high-performance-analysis.md)
+## Exercise 4 - [High Performance Analysis with Azure Synapse SQL Pools](./04-high-performance-analysis.md)
 
 In this exercise you will try to understand customer details using a query and chart visualizations. You will also explore the performance of various queries.
 
