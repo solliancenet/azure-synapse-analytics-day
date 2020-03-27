@@ -52,7 +52,7 @@ Azure Synapse Analytics integrates natively with Power BI, a proven and highly s
 
 ## Exercise 4 - [High Performance Analysis with SQL Analytics pool](./04-high-performance-analysis.md)
 
-In this exercise you will try to understand <TBD> using a query and chart visualizations.
+In this exercise you will try to understand customer details using a query and chart visualizations. You will also explore the performance of various queries.
 
 SQL data warehouses have been for a long time the centers of gravity in data platforms. Modern data warehouses are capable of providing high performance, distributed, and governed workloads, regardless of the data volumes at hand.
 
