@@ -30,6 +30,8 @@ In this task, you will browse your data lake using SQL on-demand.
 
 2. Open Synapse Analytics Studio, and then navigate to the `Data` hub.
 
+   ![Open Data hub in Synapse Analytics Studio](./media/ex01-open-data-hub.png)
+
 3. Under `Storage accounts`, expand the **Storage account** node, expand the data lake storage account, and then select the `wwi` file system.
 
 4. Inside the selected file system, navigate to `factsale-parquet` -> `2012` -> `Q1` -> `InvoiceDateKey=2012-01-01`.
