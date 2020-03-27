@@ -6,9 +6,9 @@ Understanding data through data exploration is one of the core challenges faced 
 
 In Azure Synapse Analytics, you have the possibility of using either the SQL Serverless engine, the big-data Spark engine, or both.
 
-- [Explore the Data Lake with SQL Analytics on-demand and Spark](#explore-the-data-lake-with-sql-analytics-on-demand-and-spark)
-  - [Task 1 - Explore the Data Lake with SQL Analytics on-demand](#task-1---explore-the-data-lake-with-sql-analytics-on-demand)
-  - [Task 2 - Explore the Data Lake with Spark](#task-2---explore-the-data-lake-with-spark)
+- Explore the Data Lake with SQL Analytics on-demand and Spark
+  - Task 1 - Explore the Data Lake with SQL Analytics on-demand
+  - Task 2 - Explore the Data Lake with Spark
 
 ## Task 1 - Explore the Data Lake with SQL Analytics on-demand
 

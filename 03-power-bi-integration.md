@@ -4,9 +4,9 @@ In this exercise, you will realize another benefit of the fully integrated envir
 
 The Power BI Workspace has already been created for you.
 
-- [Exercise 3 - Power BI integration](#exercise-3---power-bi-integration)
-  - [Task 1 - Create a Power BI dataset in Synapse](#task-1---create-a-power-bi-dataset-in-synapse)
-  - [Task 2 - Create a Power BI report in Synapse](#task-2---create-a-power-bi-report-in-synapse)
+- Exercise 3 - Power BI integration
+  - Task 1 - Create a Power BI dataset in Synapse
+  - Task 2 - Create a Power BI report in Synapse
 
 ---
 
