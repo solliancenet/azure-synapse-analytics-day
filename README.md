@@ -26,7 +26,7 @@ The diagram below provides a unified view of the exercises in the lab and their 
 
 ![Azure Synapse Analytics Lab Exercises](./media/exercises.png "Solution architecture")
 
-## Exercise 1 - [Explore the data lake with SQL Analytics on-demand and Spark](./01-explore-data-lake.md)
+## Exercise 1 - Explore the data lake with SQL Analytics on-demand and Spark
 
 In this exercise you will explore data using the engine of your choices (SQL or Spark).
 
@@ -34,7 +34,7 @@ Understanding data through data exploration is one of the core challenges faced 
 
 In Azure Synapse Analytics, you have the possibility of using either the on-demand SQL engine, the big-data Spark engine, or both.
 
-## Exercise 2 - [Build Modern Data Warehouse pipelines](./02-build-modern-dw-pipelines.md)
+## Exercise 2 - Build Modern Data Warehouse pipelines
 
 In this exercise you will use a pipeline with parallel activities to bring data into the Data Lake, transform it and load it into the SQL Pool. You will also monitor the progress of the associated tasks.
 
@@ -42,7 +42,7 @@ Once data is properly understood and interpreted, moving it to the various desti
 
 Azure Synapse Analytics provides two significant categories of features - data flows and data orchestrations (implemented as pipelines). They cover the whole range of needs, from design and development to triggering, execution, and monitoring.
 
-## Exercise 3 - [Power BI integration](./03-power-bi-integration.md)
+## Exercise 3 - Power BI integration
 
 In this exercise you will build a Power BI report in Synapse.
 
@@ -50,7 +50,7 @@ The visual approach in data exploration, analysis, and interpretation is one of 
 
 Azure Synapse Analytics integrates natively with Power BI, a proven and highly successful data presentation and exploration platform. The Power BI experience is available inside Synapse Studio.
 
-## Exercise 4 - [High Performance Analysis with SQL Analytics pool](./04-high-performance-analysis.md)
+## Exercise 4 - High Performance Analysis with SQL Analytics pool
 
 In this exercise you will try to understand customer details using a query and chart visualizations. You will also explore the performance of various queries.
 
@@ -58,7 +58,7 @@ SQL data warehouses have been for a long time the centers of gravity in data pla
 
 The SQL Analytics pool in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
 
-## Exercise 5 - [Data Science with Spark](./05-data-science-with-spark.md)
+## Exercise 5 - Data Science with Spark
 
 In this exercise you will play the role of a Data Scientist that based on the <TBD> dataset, using Synapse Notebook, creates a model to predict <TBD>.
 
