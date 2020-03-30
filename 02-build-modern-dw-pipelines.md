@@ -429,7 +429,7 @@ After you finish building and debugging your data flow and its associated pipeli
 
 4. On the pipeline run details screen, you will see a graphical representation of the activities within the pipeline, as well as a list of the individual activity runs. Both provide status indicators for each activity.
 
-   > This view allows you to monitor the overall status of the pipeline run, and observe the status of each activity contained within the pipeline. The screen will auto-refresh for five minutes. If your pipeline run takes longer than that, you can get updates by selecting the Refresh button on the canvas toolbar.
+   > This view allows you to monitor the overall status of the pipeline run, and observe the status of each activity contained within the pipeline. The screen will auto-refresh for five minutes. If auto-refresh does not occur or your pipeline run takes longer than five minutes, you can get updates by selecting the Refresh button on the canvas toolbar.
 
    ![The pipeline run canvas is displayed, with activities list in the graph and in a list for in the Activity runs panel.](media/ex02-monitoring-pipeline-runs-details.png "Pipeline run details")
 
