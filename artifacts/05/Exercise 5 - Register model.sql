@@ -5,13 +5,13 @@ CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'fQv2fKq#FN7r'
 CREATE DATABASE SCOPED CREDENTIAL StorageCredential
 WITH
 IDENTITY = 'SHARED ACCESS SIGNATURE'
-, SECRET = '<INSERT YOUR STORAGE ACCOUNT KEY>'
+, SECRET = '<blob_storage_account_key>'
 ;
 
 -- Create an external data source with CREDENTIAL option.
 CREATE EXTERNAL DATA SOURCE ModelStorage
 WITH
-( LOCATION = 'wasbs://<container>@<accountName>.blob.core.windows.net'
+( LOCATION = 'wasbs://models@<blob_storage>.blob.core.windows.net'
 , CREDENTIAL = StorageCredential
 , TYPE = HADOOP
 )
@@ -28,7 +28,7 @@ USE_TYPE_DEFAULT = False
 );
 
 
-CREATE EXTERNAL TABLE [dbo].[ModelsExt]
+CREATE EXTERNAL TABLE [wwi_ml].[MLModelExt]
 (
 [Model] [varbinary](max) NULL
 )
@@ -44,10 +44,10 @@ GO
 
 -- Verify access by running query
 SELECT Model, 'A simple model.'
-FROM dbo.ModelsExt
+FROM wwi_ml.MLModelExt
 
 
-CREATE TABLE [wwi].[Models]
+CREATE TABLE [wwi_ml].[MLModel]
 (
 [Id] [int] IDENTITY(1,1) NOT NULL,
 [Model] [varbinary](max) NULL,
@@ -60,6 +60,6 @@ heap
 )
 GO
 
-INSERT INTO [wwi].[Models]
+INSERT INTO [wwi_ml].[MLModel]
 SELECT Model, 'A linear regression model.'
-FROM [dbo].[ModelsExt]
+FROM [wwi_ml].[MLModelExt]

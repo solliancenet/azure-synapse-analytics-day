@@ -1,0 +1,68 @@
+{
+    "name": "wwi_dimsupplier_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "SupplierKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWISupplierID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Supplier",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Category",
+                "type": "nvarchar"
+            },
+            {
+                "name": "PrimaryContact",
+                "type": "nvarchar"
+            },
+            {
+                "name": "SupplierReference",
+                "type": "nvarchar"
+            },
+            {
+                "name": "PaymentDays",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "PostalCode",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ValidFrom",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "ValidTo",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "LineageKey",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "DimSupplier"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,98 @@
+{
+    "name": "wwi_facttransaction_adls",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "asadatalake01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "wwi-facttransaction.csv",
+                "folderPath": "bronze",
+                "fileSystem": "dev"
+            },
+            "columnDelimiter": "|",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": ""
+        },
+        "schema": [
+            {
+                "name": "Transaction Key",
+                "type": "String"
+            },
+            {
+                "name": "Date Key",
+                "type": "String"
+            },
+            {
+                "name": "Customer Key",
+                "type": "String"
+            },
+            {
+                "name": "Bill To Customer Key",
+                "type": "String"
+            },
+            {
+                "name": "Supplier Key",
+                "type": "String"
+            },
+            {
+                "name": "Transaction Type Key",
+                "type": "String"
+            },
+            {
+                "name": "Payment Method Key",
+                "type": "String"
+            },
+            {
+                "name": "WWI Customer Transaction ID",
+                "type": "String"
+            },
+            {
+                "name": "WWI Supplier Transaction ID",
+                "type": "String"
+            },
+            {
+                "name": "WWI Invoice ID",
+                "type": "String"
+            },
+            {
+                "name": "WWI Purchase Order ID",
+                "type": "String"
+            },
+            {
+                "name": "Supplier Invoice Number",
+                "type": "String"
+            },
+            {
+                "name": "Total Excluding Tax",
+                "type": "String"
+            },
+            {
+                "name": "Tax Amount",
+                "type": "String"
+            },
+            {
+                "name": "Total Including Tax",
+                "type": "String"
+            },
+            {
+                "name": "Outstanding Balance",
+                "type": "String"
+            },
+            {
+                "name": "Is Finalized",
+                "type": "String"
+            },
+            {
+                "name": "Lineage Key",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

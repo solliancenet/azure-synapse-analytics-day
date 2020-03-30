@@ -1,0 +1,76 @@
+{
+    "name": "wwi_dimcity_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "CityKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWICityID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "City",
+                "type": "nvarchar"
+            },
+            {
+                "name": "StateProvince",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Country",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Continent",
+                "type": "nvarchar"
+            },
+            {
+                "name": "SalesTerritory",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Region",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Subregion",
+                "type": "nvarchar"
+            },
+            {
+                "name": "LatestRecordedPopulation",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "ValidFrom",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "ValidTo",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "LineageKey",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "DimCity"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

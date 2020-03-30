@@ -1,0 +1,47 @@
+{
+    "name": "wwi_dimtransactiontype_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "TransactionTypeKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWITransactionTypeID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "TransactionType",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ValidFrom",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "ValidTo",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "LineageKey",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "DimTransactionType"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

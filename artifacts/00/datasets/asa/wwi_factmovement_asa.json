@@ -1,0 +1,72 @@
+{
+    "name": "wwi_factmovement_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "MovementKey",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "DateKey",
+                "type": "date"
+            },
+            {
+                "name": "StockItemKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "CustomerKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "SupplierKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "TransactionTypeKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWIStockItemTransactionID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWIInvoiceID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWIPurchaseOrderID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Quantity",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "LineageKey",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "FactMovement"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

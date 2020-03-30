@@ -1,0 +1,80 @@
+{
+    "name": "wwi_dimdate_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "Date",
+                "type": "date"
+            },
+            {
+                "name": "DayNumber",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Day",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Month",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ShortMonth",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CalendarMonthNumber",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "CalendarMonthLabel",
+                "type": "nvarchar"
+            },
+            {
+                "name": "CalendarYear",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "CalendarYearLabel",
+                "type": "nvarchar"
+            },
+            {
+                "name": "FiscalMonthNumber",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "FiscalMonthLabel",
+                "type": "nvarchar"
+            },
+            {
+                "name": "FiscalYear",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "FiscalYearLabel",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ISOWeekNumber",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "DimDate"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

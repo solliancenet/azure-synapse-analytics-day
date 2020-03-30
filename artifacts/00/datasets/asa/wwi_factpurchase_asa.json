@@ -1,0 +1,70 @@
+{
+    "name": "wwi_factpurchase_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "PurchaseKey",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "DateKey",
+                "type": "date"
+            },
+            {
+                "name": "SupplierKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "StockItemKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWIPurchaseOrderID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "OrderedOuters",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "OrderedQuantity",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "ReceivedOuters",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Package",
+                "type": "nvarchar"
+            },
+            {
+                "name": "IsOrderFinalized",
+                "type": "bit"
+            },
+            {
+                "name": "LineageKey",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "FactPurchase"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

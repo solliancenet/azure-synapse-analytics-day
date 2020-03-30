@@ -1,0 +1,70 @@
+{
+    "name": "wwi_factmovement_adls",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "asadatalake01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "wwi-factmovement.csv",
+                "folderPath": "bronze",
+                "fileSystem": "dev"
+            },
+            "columnDelimiter": "|",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": ""
+        },
+        "schema": [
+            {
+                "name": "Movement Key",
+                "type": "String"
+            },
+            {
+                "name": "Date Key",
+                "type": "String"
+            },
+            {
+                "name": "Stock Item Key",
+                "type": "String"
+            },
+            {
+                "name": "Customer Key",
+                "type": "String"
+            },
+            {
+                "name": "Supplier Key",
+                "type": "String"
+            },
+            {
+                "name": "Transaction Type Key",
+                "type": "String"
+            },
+            {
+                "name": "WWI Stock Item Transaction ID",
+                "type": "String"
+            },
+            {
+                "name": "WWI Invoice ID",
+                "type": "String"
+            },
+            {
+                "name": "WWI Purchase Order ID",
+                "type": "String"
+            },
+            {
+                "name": "Quantity",
+                "type": "String"
+            },
+            {
+                "name": "Lineage Key",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,2144 @@
+{
+    "name": "Import WWI Data",
+    "properties": {
+        "activities": [
+            {
+                "name": "Import City dimension",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.DimCity",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "City Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "CityKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI City ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWICityID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "City",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "City",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "State Province",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "StateProvince",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Country",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Country",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Continent",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Continent",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Sales Territory",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "SalesTerritory",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Region",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Region",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Subregion",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Subregion",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Latest Recorded Population",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LatestRecordedPopulation",
+                                    "type": "Int64"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid From",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidFrom",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid To",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidTo",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_dimcity_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_dimcity_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Customer dimension",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.DimCustomer",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Customer Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "CustomerKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Customer ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWICustomerID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Customer",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Customer",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Bill To Customer",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "BillToCustomer",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Category",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Category",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Buying Group",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "BuyingGroup",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Primary Contact",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "PrimaryContact",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Postal Code",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "PostalCode",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid From",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidFrom",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid To",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidTo",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_dimcustomer_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_dimcustomer_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Date dimension",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.DimDate",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Date",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "Date",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Day Number",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "DayNumber",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Day",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Day",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Month",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Month",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Short Month",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "ShortMonth",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Calendar Month Number",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "CalendarMonthNumber",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Calendar Month Label",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "CalendarMonthLabel",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Calendar Year",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "CalendarYear",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Calendar Year Label",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "CalendarYearLabel",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Fiscal Month Number",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "FiscalMonthNumber",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Fiscal Month Label",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "FiscalMonthLabel",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Fiscal Year",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "FiscalYear",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Fiscal Year Label",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "FiscalYearLabel",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "ISO Week Number",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "ISOWeekNumber",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_dimdate_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_dimdate_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Employee dimension",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.DimEmployee",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Employee Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "EmployeeKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Employee ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIEmployeeID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Employee",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Employee",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Preferred Name",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "PreferredName",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Is Salesperson",
+                                    "type": "Boolean"
+                                },
+                                "sink": {
+                                    "name": "IsSalesperson",
+                                    "type": "Boolean"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid From",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidFrom",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid To",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidTo",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_dimemployee_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_dimemployee_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Payment Method dimension",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.DimPaymentMethod",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Payment Method Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "PaymentMethodKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Payment Method ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIPaymentMethodID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Payment Method",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "PaymentMethod",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid From",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidFrom",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid To",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidTo",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_dimpaymentmethod_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_dimpaymentmethod_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Stock Item dimension",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.DimStockItem",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Stock Item Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "StockItemKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Stock Item ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIStockItemID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Stock Item",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Stock Item",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Color",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Color",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Selling Package",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "SellingPackage",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Buying Package",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Buying Package",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Brand",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Brand",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Size",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Size",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lead Time Days",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LeadTimeDays",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Quantity Per Outer",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "QuantityPerOuter",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Is Chiller Stock",
+                                    "type": "Boolean"
+                                },
+                                "sink": {
+                                    "name": "IsChillerStock",
+                                    "type": "Boolean"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Barcode",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Barcode",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Tax Rate",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TaxRate",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Unit Price",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "UnitPrice",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Recommended Retail Price",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "RecommendedRetailPrice",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Typical Weight Per Unit",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TypicalWeightPerUnit",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid From",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidFrom",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid To",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidTo",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_dimstockitem_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_dimstockitem_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Supplier dimension",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.DimSupplier",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Supplier Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "SupplierKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Supplier ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWISupplierID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Supplier",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Supplier",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Category",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Category",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Primary Contact",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "PrimaryContact",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Supplier Reference",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "SupplierReference",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Payment Days",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "PaymentDays",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Postal Code",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "PostalCode",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid From",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidFrom",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid To",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidTo",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_dimsupplier_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_dimsupplier_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Transaction Type dimension",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.DimTransactionType",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Transaction Type Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "TransactionTypeKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Transaction Type ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWITransactionTypeID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Transaction Type",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "TransactionType",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid From",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidFrom",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Valid To",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "ValidTo",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_dimtransactiontype_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_dimtransactiontype_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Movement fact",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true,
+                            "enablePartitionDiscovery": false
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.FactMovement",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Date Key",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "DateKey",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Stock Item Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "StockItemKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Customer Key",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "CustomerKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Supplier Key",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "SupplierKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Transaction Type Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "TransactionTypeKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Stock Item Transaction ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIStockItemTransactionID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Invoice ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIInvoiceID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Purchase Order ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIPurchaseOrderID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Quantity",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "Quantity",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_factmovement_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_factmovement_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Order fact",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.FactOrder",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "City Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "CityKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Customer Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "CustomerKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Stock Item Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "StockItemKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Order Date Key",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "OrderDateKey",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Picked Date Key",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "PickedDateKey",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Salesperson Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "SalespersonKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Picker Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "PickerKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Order ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIOrderID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Backorder ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIBackorderID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Description",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Description",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Package",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Package",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Quantity",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "Quantity",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Unit Price",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "UnitPrice",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Tax Rate",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TaxRate",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Total Excluding Tax",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TotalExcludingTax",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Tax Amount",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TaxAmount",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Total Including Tax",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TotalIncludingTax",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_factorder_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_factorder_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Purchase fact",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.FactPurchase",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Date Key",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "DateKey",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Supplier Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "SupplierKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Stock Item Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "StockItemKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Purchase Order ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIPurchaseOrderID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Ordered Outers",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "OrderedOuters",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Ordered Quantity",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "OrderedQuantity",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Received Outers",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "ReceivedOuters",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Package",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Package",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Is Order Finalized",
+                                    "type": "Boolean"
+                                },
+                                "sink": {
+                                    "name": "IsOrderFinalized",
+                                    "type": "Boolean"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_factpurchase_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_factpurchase_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Stock Holding fact",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.FactStockHolding",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Stock Item Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "StockItemKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Quantity On Hand",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "QuantityOnHand",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Bin Location",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "BinLocation",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Last Stocktake Quantity",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LastStocktakeQuantity",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Last Cost Price",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "LastCostPrice",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Reorder Level",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "ReorderLevel",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Target Stock Level",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "TargetStockLevel",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_factstockholding_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_factstockholding_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            },
+            {
+                "name": "Import Transaction fact",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.FactTransaction",
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "Date Key",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "DateKey",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Customer Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "CustomerKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Bill To Customer Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "BillToCustomerKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Supplier Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "SupplierKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Transaction Type Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "TransactionTypeKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Payment Method Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "PaymentMethodKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Customer Transaction ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWICustomerTransaction ID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Supplier Transaction ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWISupplierTransaction ID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Invoice ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIInvoiceID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Purchase Order ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIPurchaseOrderID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Supplier Invoice Number",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "SupplierInvoiceNumber",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Total Excluding Tax",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TotalExcludingTax",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Tax Amount",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TaxAmount",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Total Including Tax",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TotalIncludingTax",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Outstanding Balance",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "OutstandingBalance",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Is Finalized",
+                                    "type": "Boolean"
+                                },
+                                "sink": {
+                                    "name": "IsFinalized",
+                                    "type": "Boolean"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_facttransaction_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_facttransaction_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": []
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

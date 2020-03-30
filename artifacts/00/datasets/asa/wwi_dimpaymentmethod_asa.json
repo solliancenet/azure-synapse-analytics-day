@@ -1,0 +1,47 @@
+{
+    "name": "wwi_dimpaymentmethod_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "PaymentMethodKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWIPaymentMethodID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "PaymentMethod",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ValidFrom",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "ValidTo",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "LineageKey",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "DimPaymentMethod"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

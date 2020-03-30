@@ -1,0 +1,52 @@
+{
+    "name": "EnrichCustomerData",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "external_postalcode_adls",
+                        "type": "DatasetReference"
+                    },
+                    "name": "PostalCodes"
+                },
+                {
+                    "dataset": {
+                        "referenceName": "wwi_staging_dimcustomer_asa",
+                        "type": "DatasetReference"
+                    },
+                    "name": "DimCustomer"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "wwi_staging_enrichedcustomer_asa",
+                        "type": "DatasetReference"
+                    },
+                    "name": "EnrichedCustomerData"
+                },
+                {
+                    "dataset": {
+                        "referenceName": "staging_enrichedcustomer_adls",
+                        "type": "DatasetReference"
+                    },
+                    "name": "EnrichedCustomerDataAdls"
+                }
+            ],
+            "transformations": [
+                {
+                    "name": "PostalCodeFilter"
+                },
+                {
+                    "name": "JoinOnPostalCode"
+                },
+                {
+                    "name": "SelectDesiredColumns"
+                }
+            ],
+            "script": "parameters{\n\tUniqueId as string\n}\nsource(output(\n\t\tCity as string,\n\t\tState as string,\n\t\tZip as string,\n\t\tLatitude as double,\n\t\tLongitude as double,\n\t\tTimezone as short,\n\t\tDST as boolean\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> PostalCodes\nsource(output(\n\t\tCustomerKey as integer,\n\t\tWWICustomerID as integer,\n\t\tCustomer as string,\n\t\tBillToCustomer as string,\n\t\tCategory as string,\n\t\tBuyingGroup as string,\n\t\tPrimaryContact as string,\n\t\tPostalCode as string,\n\t\tValidFrom as timestamp,\n\t\tValidTo as timestamp,\n\t\tLineageKey as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> DimCustomer\nPostalCodes filter(and(\n    greaterOrEqual(toInteger(Zip), 90000),\n    lesserOrEqual(toInteger(Zip), 98000)\n)) ~> PostalCodeFilter\nDimCustomer, PostalCodeFilter join(PostalCode == Zip,\n\tjoinType:'inner',\n\tbroadcast: 'none')~> JoinOnPostalCode\nJoinOnPostalCode select(mapColumn(\n\t\tCustomerKey,\n\t\tWWICustomerID,\n\t\tCustomer,\n\t\tBillToCustomer,\n\t\tCategory,\n\t\tBuyingGroup,\n\t\tPrimaryContact,\n\t\tPostalCode,\n\t\tValidFrom,\n\t\tValidTo,\n\t\tLineageKey,\n\t\tCity,\n\t\tState,\n\t\tLatitude,\n\t\tLongitude,\n\t\tTimezone,\n\t\tDST\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectDesiredColumns\nSelectDesiredColumns sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\trecreate:true,\n\tformat: 'table',\n\tstaged: false,\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> EnrichedCustomerData\nSelectDesiredColumns sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tpartitionFileNames:[(concat('enrichedcustomer_', $UniqueId, '.parquet'))],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> EnrichedCustomerDataAdls"
+        }
+    }
+}

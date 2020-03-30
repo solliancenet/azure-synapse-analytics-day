@@ -1,0 +1,63 @@
+{
+    "name": "wwi_factstockholding_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "StockHoldingKey",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "StockItemKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "QuantityOnHand",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "BinLocation",
+                "type": "nvarchar"
+            },
+            {
+                "name": "LastStocktakeQuantity",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "LastCostPrice",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "ReorderLevel",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "TargetStockLevel",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "LineageKey",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "FactStockHolding"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

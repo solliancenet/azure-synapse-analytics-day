@@ -1,0 +1,25 @@
+{
+    "name": "wwi_staging_dimcustomer_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "parameters": {
+            "UniqueId": {
+                "type": "string"
+            }
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [],
+        "typeProperties": {
+            "schema": "wwi_staging",
+            "table": {
+                "value": "@concat('DimCustomer_',dataset().UniqueId)",
+                "type": "Expression"
+            }
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,125 @@
+{
+    "name": "wwi_factsale_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "SaleKey",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "CityKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "CustomerKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "BillToCustomerKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "StockItemKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "InvoiceDateKey",
+                "type": "date"
+            },
+            {
+                "name": "DeliveryDateKey",
+                "type": "date"
+            },
+            {
+                "name": "SalespersonKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWIInvoiceID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Description",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Package",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Quantity",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "UnitPrice",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "TaxRate",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 3
+            },
+            {
+                "name": "TotalExcludingTax",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "TaxAmount",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "Profit",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "TotalIncludingTax",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "TotalDryItems",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "TotalChillerItems",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "LineageKey",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "FactSale"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

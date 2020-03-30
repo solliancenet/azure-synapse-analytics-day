@@ -1,0 +1,67 @@
+{
+    "name": "wwi_dimcustomer_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "CustomerKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWICustomerID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Customer",
+                "type": "nvarchar"
+            },
+            {
+                "name": "BillToCustomer",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Category",
+                "type": "nvarchar"
+            },
+            {
+                "name": "BuyingGroup",
+                "type": "nvarchar"
+            },
+            {
+                "name": "PrimaryContact",
+                "type": "nvarchar"
+            },
+            {
+                "name": "PostalCode",
+                "type": "nvarchar"
+            },
+            {
+                "name": "ValidFrom",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "ValidTo",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "LineageKey",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "DimCustomer"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

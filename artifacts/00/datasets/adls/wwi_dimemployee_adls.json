@@ -1,0 +1,58 @@
+{
+    "name": "wwi_dimemployee_adls",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "asadatalake01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "fileName": "wwi-dimemployee.csv",
+                "folderPath": "bronze",
+                "fileSystem": "dev"
+            },
+            "columnDelimiter": "|",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": ""
+        },
+        "schema": [
+            {
+                "name": "Employee Key",
+                "type": "String"
+            },
+            {
+                "name": "WWI Employee ID",
+                "type": "String"
+            },
+            {
+                "name": "Employee",
+                "type": "String"
+            },
+            {
+                "name": "Preferred Name",
+                "type": "String"
+            },
+            {
+                "name": "Is Salesperson",
+                "type": "String"
+            },
+            {
+                "name": "Valid From",
+                "type": "String"
+            },
+            {
+                "name": "Valid To",
+                "type": "String"
+            },
+            {
+                "name": "Lineage Key",
+                "type": "String"
+            }
+        ]
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

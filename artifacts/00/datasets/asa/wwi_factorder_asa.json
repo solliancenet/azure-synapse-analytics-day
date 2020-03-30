@@ -1,0 +1,114 @@
+{
+    "name": "wwi_factorder_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "OrderKey",
+                "type": "bigint",
+                "precision": 19
+            },
+            {
+                "name": "CityKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "CustomerKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "StockItemKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "OrderDateKey",
+                "type": "date"
+            },
+            {
+                "name": "PickedDateKey",
+                "type": "date"
+            },
+            {
+                "name": "SalespersonKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "PickerKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWIOrderID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWIBackorderID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Description",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Package",
+                "type": "nvarchar"
+            },
+            {
+                "name": "Quantity",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "UnitPrice",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "TaxRate",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 3
+            },
+            {
+                "name": "TotalExcludingTax",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "TaxAmount",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "TotalIncludingTax",
+                "type": "decimal",
+                "precision": 18,
+                "scale": 2
+            },
+            {
+                "name": "LineageKey",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "FactOrder"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

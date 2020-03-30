@@ -1,0 +1,270 @@
+{
+    "name": "Import WWI Data - Fact Sale Full",
+    "properties": {
+        "activities": [
+            {
+                "name": "Copy data1",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "SqlDWSink",
+                        "preCopyScript": "truncate table wwi.FactSale",
+                        "allowPolyBase": true,
+                        "polyBaseSettings": {
+                            "rejectValue": 0,
+                            "rejectType": "value",
+                            "useTypeDefault": false
+                        },
+                        "disableMetricsCollection": false
+                    },
+                    "enableStaging": true,
+                    "stagingSettings": {
+                        "linkedServiceName": {
+                            "referenceName": "asastore01",
+                            "type": "LinkedServiceReference"
+                        },
+                        "path": "staging"
+                    },
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "name": "City Key",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "CityKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Customer Key",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "CustomerKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Bill To Customer Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "BillToCustomerKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Stock Item Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "StockItemKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Invoice Date Key",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "InvoiceDateKey",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Delivery Date Key",
+                                    "type": "DateTime"
+                                },
+                                "sink": {
+                                    "name": "DeliveryDateKey",
+                                    "type": "DateTime"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Salesperson Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "SalespersonKey",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "WWI Invoice ID",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "WWIInvoiceID",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Description",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Description",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Package",
+                                    "type": "String"
+                                },
+                                "sink": {
+                                    "name": "Package",
+                                    "type": "String"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Quantity",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "Quantity",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Unit Price",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "UnitPrice",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Tax Rate",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TaxRate",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Total Excluding Tax",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TotalExcludingTax",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Tax Amount",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TaxAmount",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Profit",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "Profit",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Total Including Tax",
+                                    "type": "Decimal"
+                                },
+                                "sink": {
+                                    "name": "TotalIncludingTax",
+                                    "type": "Decimal"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Total Dry Items",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "TotalDryItems",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Total Chiller Items",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "TotalChillerItems",
+                                    "type": "Int32"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "name": "Lineage Key",
+                                    "type": "Int32"
+                                },
+                                "sink": {
+                                    "name": "LineageKey",
+                                    "type": "Int32"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "wwi_factsale_adls",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "wwi_factsale_asa",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": []
+    },
+    "type": "Microsoft.Synapse/workspaces/pipelines"
+}

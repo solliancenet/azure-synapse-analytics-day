@@ -1,0 +1,21 @@
+{
+    "name": "staging_enrichedcustomer_adls",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "asadatalake01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Parquet",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobFSLocation",
+                "folderPath": "customer",
+                "fileSystem": "staging"
+            },
+            "compressionCodec": "snappy"
+        },
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

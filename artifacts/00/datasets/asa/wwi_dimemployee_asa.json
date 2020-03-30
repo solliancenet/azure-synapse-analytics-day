@@ -1,0 +1,55 @@
+{
+    "name": "wwi_dimemployee_asa",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "sqlpool01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlDWTable",
+        "schema": [
+            {
+                "name": "EmployeeKey",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "WWIEmployeeID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Employee",
+                "type": "nvarchar"
+            },
+            {
+                "name": "PreferredName",
+                "type": "nvarchar"
+            },
+            {
+                "name": "IsSalesperson",
+                "type": "bit"
+            },
+            {
+                "name": "ValidFrom",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "ValidTo",
+                "type": "datetime2",
+                "scale": 7
+            },
+            {
+                "name": "LineageKey",
+                "type": "int",
+                "precision": 10
+            }
+        ],
+        "typeProperties": {
+            "schema": "wwi",
+            "table": "DimEmployee"
+        }
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}
