@@ -1,0 +1,1 @@
+# Setup the Azure Synapse Analytics workspace
