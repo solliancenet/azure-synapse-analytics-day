@@ -59,7 +59,7 @@ https://asadatalake02.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*
 
    ![Run SQL on-demand script loading multiple Parquet data lake files](./media/ex01-sql-on-demand-03.png)
 
-9.  In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 4 - Read with SQL on-demand` SQL script, and then select `Run`.
+9.  In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 1 - Read with SQL on-demand` SQL script, and then select `Run`.
 
     ![Run SQL on-demand script loading multiple CSV data lake files](./media/ex01-sql-on-demand-04.png)
 
