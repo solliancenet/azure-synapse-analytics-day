@@ -79,30 +79,56 @@ In this task, you will browse your data lake using SQL on-demand.
 
    ![New Spark notebook from data lake file](./media/ex01-spark-notebook-02.png "Review the notebook")
 
-3. Attach the notebook to a Spark pool and run the command.
+3. Attach the notebook to a Spark pool.
 
    ![Run Spark notebook on data lake file](./media/ex01-spark-notebook-03.png "Attach notebook to Spark pool")
 
+4. Before running the notebook, select **Configure session**, which you will find at the bottom left-hand side of the notebook.
+
+   ![The Configure session link is highlighted at the bottom of the notebook.](media/ex-shared-configure-session.png "Configure session")
+
+5. In the Configure session dialog, enter the following configuration:
+
+   - **Executors**: Set to `1`.
+   - **Executor size**: Ensure `Small (4 vCPU, 28GB memory)` is selected.
+
+6. Select **Apply** to save the session configuration.
+
+7. Select **Run all** on the notebook toolbar to execute the notebook.
+
    > **Note**: The first time you run a notebook in a Spark pool, Synapse creates a new session. This can take approximately 3 minutes.
 
-4. As you can see, the output is not formatted very well. To change this, replace the last line of code with the following:
+8. As you can see, the output is not formatted very well. To change this, replace the last line of code with the following:
 
    ```python
    display(data_path.limit(100))
    ```
 
-5. Run the notebook again to see the improved display.
+9. Run the notebook again to see the improved display.
 
    ![Improve dataset formatting in Spark notebook](./media/ex01-spark-notebook-04.png "Execute notebook")
 
-6. Notice the included charting capabilities that enable visual exploration of your data. Select `View Options` and change the X Axis Column from `Sales Key` to `Customer Key`.
+10. Notice the included charting capabilities that enable visual exploration of your data. Select `View Options` and change the X Axis Column from `Sales Key` to `Customer Key`.
 
-   ![View charts on data in Spark notebook](./media/ex01-spark-notebook-05.png "Review charted data")
+    ![View charts on data in Spark notebook](./media/ex01-spark-notebook-05.png "Review charted data")
 
-7. In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 1 - Read with Spark` notebook, and then select `Run`.
+11. In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 1 - Read with Spark` notebook
 
-   ![Run Spark notebook loading multiple CSV data lake files](./media/ex01-spark-notebook-06.png "Run the Spark notebook")
+12. As you did above, before running the notebook, select **Configure session**, which you will find at the bottom left-hand side of the notebook.
 
-   > This notebook demonstrates the same functionality, except this time it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
+    ![The Configure session link is highlighted at the bottom of the notebook.](media/ex-shared-configure-session.png "Configure session")
 
-8. Close all open tabs in Azure Synapse Analytics Studio, choosing to discard changes when prompted.
+13. In the Configure session dialog, enter the following configuration:
+
+    - **Executors**: Set to `1`.
+    - **Executor size**: Ensure `Small (4 vCPU, 28GB memory)` is selected.
+
+14. Select **Apply** to save the session configuration.
+
+15. and then select `Run`.
+
+    ![Run Spark notebook loading multiple CSV data lake files](./media/ex01-spark-notebook-06.png "Run the Spark notebook")
+
+    > This notebook demonstrates the same functionality, except this time it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
+
+16. Close all open tabs in Azure Synapse Analytics Studio, choosing to discard changes when prompted.
