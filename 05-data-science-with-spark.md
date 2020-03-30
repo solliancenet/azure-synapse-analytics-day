@@ -75,6 +75,6 @@ If you are curious, you can see the notebook and SQL scripts that were used to t
 
 5. One step that is not shown by the notebook is an offline step that converts the ONNX model to hexadecimal. The resulting hex encoded model is also upload to Azure Storage. This conversion is currently performed with [this PowerShell script](artifacts/05/convert-to-hex.ps1), but could be automated using any scripting platform.
 
-6. Once you have read thru the notebook, return to the `Develop hub`, expand **SQL scripts** and select `Exercise 5 - Register model`. View but do not run this script.
+6. Once you have read thru the notebook, return to the `Develop hub`, expand **SQL scripts** and select `Exercise 5 - Register model`. View but **do not run this script**.
 
 7. This script uses PolyBase to load the hex encoded model from Azure Storage into a table within the SQL Pool database. Once the model is inserted into the table in this way, it is available for use by the Predict statement as was shown in Task 1.
