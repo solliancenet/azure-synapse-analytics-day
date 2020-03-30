@@ -18,52 +18,56 @@ In this task, you will browse your data lake using SQL on-demand.
 
 1. In a web browser, navigate to the Azure portal (`https://portal.azure.com`) and then select **Resource groups**.
 
-   ![Open Azure resource group](./media/00-open-resource-groups.png)
+   ![Open Azure resource group](./media/00-open-resource-groups.png "Azure resource groups")
 
-   Select the **Synapse Analytics** resource group.
+2. Select the **Synapse Analytics** resource group.
 
-   ![Open Synapse Analytics resource group](./media/00-open-synapse-resource-group.png)
+   ![Open Synapse Analytics resource group](./media/00-open-synapse-resource-group.png "Resources list")
 
-   Select the **Synapse Analytics** workspace.
+3. Select the **Synapse Analytics** workspace.
 
-   ![Open Azure Synapse Analytics workspace](./media/00-open-workspace.png)
+   ![Open Azure Synapse Analytics workspace](./media/00-open-workspace.png "Azure Synapse workspace")
 
-2. Open Synapse Analytics Studio, and then navigate to the `Data` hub.
+4. On the Synapse workspace blade, open Synapse Studio by selecting **Launch Synapse Studio** from the toolbar.
+
+   ![The Launch Synapse Studio button is highlighted on the Synapse workspace toolbar.](media/ex01-launch-synapse-studio.png "Launch Synapse Studio")
+
+5. In Synapse Studio, navigate to the `Data` hub.
 
    ![Open Data hub in Synapse Analytics Studio](./media/ex01-open-data-hub.png)
 
-3. Under `Storage accounts`, expand the **Storage account** node, expand the data lake storage account, and then select the `wwi` file system.
+6. Under `Storage accounts`, expand the **Storage account** node, expand the data lake storage account, and then select the `wwi` file system.
 
-4. Inside the selected file system, navigate to `factsale-parquet` -> `2012` -> `Q1` -> `InvoiceDateKey=2012-01-01`.
+7. Inside the selected file system, navigate to `factsale-parquet` -> `2012` -> `Q1` -> `InvoiceDateKey=2012-01-01`.
 
-5. Right-click the Parquet file and select `New SQL script - Select TOP 100 rows`.
+8. Right-click the Parquet file and select `New SQL script - Select TOP 100 rows`.
 
    > A script is automatically generated. Run this script to see how SQL on demand queries the file and returns the first 100 rows of that file with the header allowing you to easily explore data in the file.
 
    ![Start new SQL script from data lake file](./media/ex01-sql-on-demand-01.png "Create a new SQL script")
 
-6. Ensure the newly created script is connected to the `SQL on-demand` pool and then select `Run`. Data is loaded by the on-demand SQL pool and processed as if was coming from any regular relational database.
+9. Ensure the newly created script is connected to the `SQL on-demand` pool and then select `Run`. Data is loaded by the on-demand SQL pool and processed as if was coming from any regular relational database.
 
    ![Run SQL script on data lake file](./media/ex01-sql-on-demand-02.png "Execute SQL script")
 
-7. Let's change the initial script to load multiple Parquet files at once.
+10. Let's change the initial script to load multiple Parquet files at once.
 
-   - In line 2, replace `TOP 100 *` with `COUNT(*)`.
-   - In line 5, replace the path to the individual file with
+    - In line 2, replace `TOP 100 *` with `COUNT(*)`.
+    - In line 5, replace the path to the individual file with
 
-```
-https://asadatalake02.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*
-```
+    ```python
+    https://asadatalake02.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*
+    ```
 
-8. Select `Run` to re-run the script.
+11. Select `Run` to re-run the script.
 
-   ![Run SQL on-demand script loading multiple Parquet data lake files](./media/ex01-sql-on-demand-03.png)
+    ![Run SQL on-demand script loading multiple Parquet data lake files](./media/ex01-sql-on-demand-03.png)
 
-9.  In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 1 - Read with SQL on-demand` SQL script, and then select `Run`.
+12. In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 1 - Read with SQL on-demand` SQL script, and then select `Run`.
 
     ![Run SQL on-demand script loading multiple CSV data lake files](./media/ex01-sql-on-demand-04.png)
 
-> This query demonstrates the same functionality, except this time it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
+    > This query demonstrates the same functionality, except this time it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
 
 ## Task 2 - Explore the Data Lake with Spark
 
