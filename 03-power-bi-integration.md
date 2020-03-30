@@ -26,7 +26,7 @@ In this task, you will use Power BI Desktop to create the dataset used by the re
 
 1. Open Synapse Analytics Studio, and then navigate to the `Develop hub`.
 
-2. Expand **Power BI -> MS Azure Labs** and then select **Power BI datasets**.
+2. Expand **Power BI**, expand the first node under it, and then select **Power BI datasets**.
 
    ![Selecting Power BI datasets in the Develop panel](media/ex03-pbi-menu.png "Select Power BI datasets")
 
