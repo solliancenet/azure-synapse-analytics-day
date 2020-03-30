@@ -112,6 +112,8 @@ In this task, you will browse your data lake using SQL on-demand.
 
     ![View charts on data in Spark notebook](./media/ex01-spark-notebook-05.png "Review charted data")
 
+    > **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. By not saving, you will ensure the next user in the shared environment gets the original copy of the notebook.
+
 11. In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 1 - Read with Spark` notebook
 
 12. As you did above, before running the notebook, select **Configure session**, which you will find at the bottom left-hand side of the notebook.
@@ -125,10 +127,10 @@ In this task, you will browse your data lake using SQL on-demand.
 
 14. Select **Apply** to save the session configuration.
 
-15. and then select `Run`.
-
-    ![Run Spark notebook loading multiple CSV data lake files](./media/ex01-spark-notebook-06.png "Run the Spark notebook")
+15. Select `Run all` on the toolbar to execute the notebook.
 
     > This notebook demonstrates the same functionality, except this time it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
 
-16. Close all open tabs in Azure Synapse Analytics Studio, choosing to discard changes when prompted.
+    ![Run Spark notebook loading multiple CSV data lake files](./media/ex01-spark-notebook-06.png "Run the Spark notebook")
+
+    > **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. By not saving, you will ensure the next user in the shared environment gets the original copy of the notebook.
