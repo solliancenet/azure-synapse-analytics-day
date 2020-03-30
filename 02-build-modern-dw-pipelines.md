@@ -57,7 +57,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
    > **Note**: You may notice the **Publish all** button is highlighted after making changes. Please **do not publish** your changes, as this will impact the notebook used by all workshop attendees. You do not need to publish the changes to run the notebook in the steps below.
 
-7. Select **Run all** from the notebook toolbar to execute each cell within the notebook. It can take a minute or two for the Spark session to start. You can continue with the steps below to review the notebook contents.
+7. Select **Run all** from the notebook toolbar to execute each cell within the notebook. It can take several minutes for the Spark session to start. You can continue with the steps below to review the notebook contents.
 
    ![The Run all button on the notebook toolbar is highlighted.](media/ex02-notebooks-toolbar-run-all.png "Select Run all")
 
