@@ -13,7 +13,7 @@ The tasks you will perform in this exercise are:
   - Task 2 - Investigate query performance and table design
     - Bonus Challenge
 
-> **Note**: The tasks in this exercise must me run against a SQL pool (as opposed to the ones from exercise 1 which were run against the SQL on-demand pool). Make sure you have a SQL pool selected before running each query:
+> **Note**: The tasks in this exercise must be run against a SQL pool (as opposed to the ones from exercise 1 which were run against the SQL on-demand pool). Make sure you have a SQL pool selected before running each query:
 
 ![Run queries against a SQL pool](./media/ex04-run-on-sql-pool.png)
 
