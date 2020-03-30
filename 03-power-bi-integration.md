@@ -58,7 +58,7 @@ In this task, you will use Power BI Desktop to create the dataset used by the re
 
     ![Selecting the wwi.FactSale table and viewing the preview](media/ex03-pbi-directquery.png "Set query type")
 
-11. From the **File** menu, select **Publish** and then select **Publish to Power BI**. If prompted to save your changes, select Save and provide a unique name that includes your _UNIQUEID_, which you retrieved from your username, as described above. This will also be the name used for the dataset. You may be prompted to login a second time. Follow the login prompts to login with the credentials provided to you.
+11. From the **File** menu, select **Publish** and then select **Publish to Power BI**. If prompted to save your changes, select Save and provide a unique name having the format `user_dataset_UNIQUEID` (where _UNIQUEID_ is the unique identifier which you retrieved from your username, as described above). This will also be the name used for the dataset. You may be prompted to login a second time. Follow the login prompts to login with the credentials provided to you.
 
     ![Selecting Publish to Power BI from the File menu](media/ex03-publish-menu.png "Publish to Power BI")
 
