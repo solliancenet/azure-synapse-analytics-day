@@ -17,7 +17,7 @@ The tasks you will perform in this exercise are:
 
 ![Run queries against a SQL pool](./media/ex04-run-on-sql-pool.png)
 
-## Task 1 - Use a SQL Analytics pool query to understand a dataset
+## Task 1 - Use a SQL Synapse Pool query to understand a dataset
 
 In this task you will try to understand who your best customers are.
 

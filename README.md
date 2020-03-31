@@ -60,7 +60,7 @@ The Azure Synapse SQL Pools in Azure Synapse Analytics is the new incarnation of
 
 ## Exercise 5 - Data Science with Azure Synapse Spark
 
-In this exercise you will play the role of a Data Scientist that based on the WWI sales dataset, using Synapse Spark, creates a model to predict customer purchase volumes.
+In this exercise you will play the role of a Data Scientist that based on the WWI sales dataset, using Azure Synapse Spark, creates a model to predict customer purchase volumes.
 
 Modern era data environments must handle in a performant and seamless way any data an organization might have. In almost all cases, this means a combination of relational SQL-style capabilities and big data ones. In the world of massively distributed big data processing platforms, Spark is almost an implicit choice.
 
