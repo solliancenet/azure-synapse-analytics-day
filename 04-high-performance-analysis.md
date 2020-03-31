@@ -1,4 +1,4 @@
-# Exercise 4 - High Performance Analysis with SQL Analytics pool
+# Exercise 4 - High Performance Analysis with Azure Synapse SQL Pools
 
 In this exercise you will use several of the capabilities associated with SQL Pools to analyze the data.
 
