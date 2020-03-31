@@ -34,7 +34,7 @@ Understanding data through data exploration is one of the core challenges faced 
 
 In Azure Synapse Analytics, you have the possibility of using either the SQL Serverless engine, the big-data Spark engine, or both.
 
-## Exercise 2 - Build Modern Data Warehouse pipelines
+## Exercise 2 - Build Modern Data Warehouse with Synapse Pipelines
 
 In this exercise you will use a pipeline with parallel activities to bring data into the Data Lake, transform it and load it into the Azure Synapse SQL Pool. You will also monitor the progress of the associated tasks.
 
