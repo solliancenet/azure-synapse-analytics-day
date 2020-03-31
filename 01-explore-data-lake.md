@@ -12,7 +12,7 @@ The tasks you will perform in this exercise are:
   - Task 1 - Explore the Data Lake with SQL Analytics on-demand
   - Task 2 - Explore the Data Lake with Spark
 
-## Task 1 - Explore the Data Lake with SQL Analytics on-demand
+## Task 1 - Explore the Data Lake with Synapse SQL on-demand
 
 In this task, you will browse your data lake using SQL on-demand.
 
