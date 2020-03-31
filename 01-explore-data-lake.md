@@ -1,4 +1,4 @@
-# Exercise 1 - Explore the Data Lake with Synapse SQL Serverless and Synapse Spark
+# Exercise 1 - Explore the Data Lake with Synapse SQL on-demand and Synapse Spark
 
 In this exercise you will explore data using the engine of your choice (SQL or Spark).
 
