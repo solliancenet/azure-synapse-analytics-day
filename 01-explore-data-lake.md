@@ -12,7 +12,7 @@ The tasks you will perform in this exercise are:
   - Task 1 - Explore the Data Lake with SQL Analytics on-demand
   - Task 2 - Explore the Data Lake with Spark
 
-## Task 1 - Explore the Data Lake with Synapse SQL on-demand
+## Task 1 - Explore the data lake with Azure Synapse SQL On-demand
 
 In this task, you will browse your data lake using SQL on-demand.
 
@@ -69,7 +69,7 @@ In this task, you will browse your data lake using SQL on-demand.
 
     > This query demonstrates the same functionality, except this time it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
 
-## Task 2 - Explore the Data Lake with Spark
+## Task 2 - Explore the data lake with Azure Synapse Spark
 
 1. Navigate to the `Data` hub, browse to the data lake storage account folder `wwi/factsale-parquet/2012/Q1/InvoiceDateKey=2012-01-01`, then right-click the Parquet file and select `New notebook`.
 
