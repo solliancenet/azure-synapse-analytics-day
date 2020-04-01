@@ -60,7 +60,7 @@
     `wwi-factsale-big-4.csv` | 3.0 GB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-4.csv
     `wwi-factsale.csv` | 1.8 GB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale.csv
     `wwi-factstockholding.csv` | 8.9 KB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factstockholding.csv
-    `wwi-facttransaction.csv | 7.2 MB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-facttransaction.csv
+    `wwi-facttransaction.csv` | 7.2 MB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-facttransaction.csv
 
 ## Task 3 - Import datasets, data flows and pipelines
 
