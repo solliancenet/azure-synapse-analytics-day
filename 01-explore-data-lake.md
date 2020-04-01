@@ -8,13 +8,13 @@ In Azure Synapse Analytics, you have the possibility of using either the SQL Ser
 
 The tasks you will perform in this exercise are:
 
-- Explore the Data Lake with SQL Analytics on-demand and Spark
-  - Task 1 - Explore the Data Lake with SQL Analytics on-demand
-  - Task 2 - Explore the Data Lake with Spark
+- Explore the Data Lake with SQL On-demand and Spark
+  - Task 1 - Explore the Data Lake with Synapse SQL On-demand
+  - Task 2 - Explore the Data Lake with Synapse Spark
 
 ## Task 1 - Explore the data lake with Azure Synapse SQL On-demand
 
-In this task, you will browse your data lake using SQL on-demand.
+In this task, you will browse your data lake using SQL On-demand.
 
 1. In a web browser, navigate to the Azure portal (`https://portal.azure.com`) and then select **Resource groups**.
 
