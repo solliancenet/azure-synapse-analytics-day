@@ -201,7 +201,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform an
 
    ![The cloned version of the data flow is displayed, with the name of the cloned data flow highlighted in the Data flows list.](media/ex02-develop-data-flows-clone.png "Data flows")
 
-5. In the bottom of the screen, you will be able to update the name in the configuration panel. Replace the **copyX** value after the underscore in the Name with your assigned _UNIQUEID_ from your username. For example, `EnrichCustomerData_A03`.
+5. On the right of the screen, you will be able to select the **Settings** button to update the name in the settings panel. Replace the **copyX** value after the underscore in the Name with your assigned _UNIQUEID_ from your username. For example, `EnrichCustomerData_A03`.
 
    ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-develop-data-flows-clone-rename.png "Data flows")
 
