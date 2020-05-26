@@ -1,5 +1,7 @@
 # Exercise 5 - Data Science with Azure Synapse Spark
 
+> **Note**: An explicit whitelisting of the Synapse workspace is required to run `PREDICT` function queries. As part of the lab, you will not be able to run through this exercise. Please check with instructor to see if this is enabled in your lab.
+
 Azure Synapse Analytics provides a unified environment for both data science and data engineering. What this means in practice, is that your data scientists can train and deploy models using Azure Synapse Analytics and your data engineers can write T-SQL queries that use those models to make predictions against tabular data stored in a SQL Pool database table.
 
 In this exercise, you will leverage a model that was previously trained to make predictions using the T-SQL `Predict` statement.
