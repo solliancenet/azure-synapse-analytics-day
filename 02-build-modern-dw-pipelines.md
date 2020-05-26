@@ -221,7 +221,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform an
 
    ![The cloned version of the pipeline is displayed, with the name of the cloned pipeline highlighted in the Pipelines list.](media/ex02-orchestrate-pipelines-clone-copy.png "Pipelines")
 
-10. In the configuration panel of the cloned pipeline, replace the **copyX** value after the underscore in the Name with your assigned _UNIQUEID_ from your username. For example, `Exercise 2 - Enrich Data_A03`.
+10. On the right of the screen, you will be able to select the **Settings** button to update the name in the settings panel. Replace the **copyX** value after the underscore in the Name with your assigned _UNIQUEID_ from your username. For example, `Exercise 2 - Enrich Data_A03`.
 
     ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-orchestrate-pipelines-clone-rename.png "Pipelines")
 
