@@ -551,7 +551,7 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
 8. Return to the Synapse Analytics Monitoring page for your Spark application.
 
-9. To look closer at any individual stage, you can use the **Job IDs** drop-down to select the stage number. In this case, select the drop-down and choose **5** from the list.
+9. To look closer at any individual stage, you can use the **Job IDs** drop-down to select the stage number. 
 
    ![Stage 5 is highlighted in the Job IDs drop-down list.](media/ex02-monitor-activities-spark-applications-all-job-ids-5.png "Synapse Analytics Monitor")
 
