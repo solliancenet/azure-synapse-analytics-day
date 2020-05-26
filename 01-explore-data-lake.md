@@ -56,7 +56,7 @@ In this task, you will browse your data lake using SQL On-demand.
     - In line 5, replace the path to the individual file with
 
     ```python
-    https://asadatalake02.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*
+    https://<yourdatalake storage account name>.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*
     ```
 
 11. Select `Run` to re-run the script.
