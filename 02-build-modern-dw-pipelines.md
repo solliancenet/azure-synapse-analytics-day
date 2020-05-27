@@ -120,7 +120,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
     ![The Actions ellipsis button is highlighted next to the wwi_staging.Sale_UNIQUEID table.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions.png "Synapse Analytics Databases")
 
-19. In the Actions menu, select **New SQL script > Select TOP 1000 rows**.
+19. In the Actions menu, select **New SQL script > Select TOP 100 rows**.
 
     ![In the Actions menu for the wwi_staging.Sale_UNIQUEID table, New SQL script > Select TOP 1000 rows is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions-select.png "Synapse Analytics Databases")
 
