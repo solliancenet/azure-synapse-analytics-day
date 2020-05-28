@@ -159,6 +159,8 @@ Before running the notebook:
 
 4. Select **Apply** to save the session configuration.
 
+5. Replace `<asa-sql-password>` in Cell 3 Line 6 with the password for `asa.sql.admin`.
+
 To observe the data being written into the table:
 
 1. Select **Data** from the left-hand menu, expand Databases, SQLPool01, and Tables.
