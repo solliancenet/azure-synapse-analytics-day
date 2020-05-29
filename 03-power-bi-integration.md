@@ -105,6 +105,8 @@ If you do not see a list of data fields under Fields follow the steps below for 
 4. Under **Authentication Method** select `OAuth2` and select **Sign In**.
 
    ![Selecting the right workspace to work on](media/ex03-enter-dataset-credentials.png "Selecting the right workspace to work on")
+   
+5. Navigate back to your Synapse workspace in the previous tab and **refresh** the browser window to continue with the lab.
 
 ---
 
