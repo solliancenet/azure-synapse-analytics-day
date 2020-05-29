@@ -86,6 +86,30 @@ In this task, you will learn how to use a collaborative approach to create a new
 
    ![Viewing the new Power BI report](media/ex03-new-report-document.png "View report")
 
+---
+
+**Important**:
+
+If you do not see a list of data fields under Fields follow the steps below for a fix.
+
+1. Navigate to [www.powerbi.com](www.powerbi.com) on a new browser tab. Select **Sign In** and use the credential provided to you.
+
+2. Select `Workspaces` from the left menu and select the `PowerBIWorkspace` as shows in the screenshot.
+
+   ![Selecting the right workspace to work on](media/ex03-selecting-workspace.png "Selecting the right workspace to work on")
+   
+3. Navigate to **Settings** and select **Datasets** tab. From the list of datasets select `wwifactsales` to enter new **Data Source credentials**.
+
+   ![Changing settings for the wwifactsales dataset](media/ex03-setting-dataset-credentials.png "Changing settings for the wwifactsales dataset")
+   
+4. Under **Authentication Method** select `OAuth2` and select **Sign In**.
+
+   ![Selecting the right workspace to work on](media/ex03-enter-dataset-credentials.png "Selecting the right workspace to work on")
+   
+5. Navigate back to your Synapse workspace in the previous tab and **refresh** the browser window to continue with the lab.
+
+---
+
 3. Within the Power BI designer, under Fields, select the fields **SalespersonKey** and **TotalExcludingTax**.
 
    ![Selecting the fields from the Fields list](media/ex03-pbi-choose-fields.png "Select fields")
