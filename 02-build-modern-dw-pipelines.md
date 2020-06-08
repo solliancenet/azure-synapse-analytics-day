@@ -122,7 +122,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
 19. In the Actions menu, select **New SQL script > Select TOP 100 rows**.
 
-    ![In the Actions menu for the wwi_staging.Sale_UNIQUEID table, New SQL script > Select TOP 1000 rows is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions-select.png "Synapse Analytics Databases")
+    ![In the Actions menu for the wwi_staging.Sale_UNIQUEID table, New SQL script > Select TOP 100 rows is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions-select.png "Synapse Analytics Databases")
 
 20. Observe the results in the output pane, and see how easy it was to use Spark notebooks to write data from Blob Storage into Azure Synapse Analytics.
 
@@ -163,7 +163,7 @@ To observe the data being written into the table:
 
 1. Select **Data** from the left-hand menu, expand Databases, SQLPool01, and Tables.
 
-2. Right-click the table named `wwi_staging.Sale_CSharp_UNIQUEID`, where `UNIQUEID` is the unique identifier assigned to you for this workshop, and choose **New SQL Script** then **SELECT TOP 1000 rows**.
+2. Right-click the table named `wwi_staging.Sale_CSharp_UNIQUEID`, where `UNIQUEID` is the unique identifier assigned to you for this workshop, and choose **New SQL Script** then **SELECT TOP 100 rows**.
 
    > If you do not see the table, select the Actions ellipsis next to Tables, and then select **Refresh** from the fly-out menu.
 
