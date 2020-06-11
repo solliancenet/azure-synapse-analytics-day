@@ -108,7 +108,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
    ![Improve dataset formatting in Spark notebook](./media/ex01-spark-notebook-04.png "Execute notebook")
 
-10. Notice the included charting capabilities that enable visual exploration of your data. Select `View Options` and change the X-Axis Column from `Sales Key` to `Customer Key`.
+10. Notice the included charting capabilities that enable visual exploration of your data. Switch to **Chart** view. Select **View Options** and change the **Key** to `CustomerKey` and **Values** to `CityKey`.
 
     ![View charts on data in Spark notebook](./media/ex01-spark-notebook-05.png "Review charted data")
 
