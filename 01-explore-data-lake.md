@@ -1,10 +1,10 @@
 # Exercise 1 - Explore the data lake with Azure Synapse SQL On-demand and Azure Synapse Spark
 
-In this exercise you will explore data using the engine of your choice (SQL or Spark).
+In this exercise, you will explore data using the engine of your choice (SQL or Spark).
 
 Understanding data through data exploration is one of the core challenges faced today by data engineers and data scientists as well. Depending on the underlying structure of the data as well as the specific requirements of the exploration process, different data processing engines will offer varying degrees of performance, complexity, and flexibility.
 
-In Azure Synapse Analytics, you have the possibility of using either the SQL Serverless engine, the big-data Spark engine, or both.
+In Azure Synapse Analytics, you can use either the SQL Serverless engine, the big-data Spark engine, or both.
 
 The tasks you will perform in this exercise are:
 
@@ -42,15 +42,15 @@ In this task, you will browse your data lake using SQL On-demand.
 
 8. Right-click the Parquet file and select `New SQL script - Select TOP 100 rows`.
 
-   > A script is automatically generated. Run this script to see how SQL on demand queries the file and returns the first 100 rows of that file with the header allowing you to easily explore data in the file.
+   > A script is automatically generated. Run this script to see how SQL on demand queries the file and returns the first 100 rows of that file with the header, allowing you to easily explore data in the file
 
    ![Start new SQL script from data lake file](./media/ex01-sql-on-demand-01.png "Create a new SQL script")
 
-9. Ensure the newly created script is connected to the `SQL on-demand` pool and then select `Run`. Data is loaded by the on-demand SQL pool and processed as if was coming from any regular relational database.
+9. Ensure the newly created script is connected to the `SQL on-demand` pool and select `Run`. Data is loaded by the on-demand SQL pool and processed as if it was coming from any regular relational database.
 
    ![Run SQL script on data lake file](./media/ex01-sql-on-demand-02.png "Execute SQL script")
 
-10. Let's change the initial script to load multiple Parquet files at once.
+10. Let us change the initial script to load multiple Parquet files at once.
 
     - In line 2, replace `TOP 100 *` with `COUNT(*)`.
     - In line 5, replace the path to the individual file with
@@ -67,7 +67,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
     ![Run SQL on-demand script loading multiple CSV data lake files](./media/ex01-sql-on-demand-04.png)
 
-    > This query demonstrates the same functionality, except this time it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
+    > This query demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
 
 ## Task 2 - Explore the data lake with Azure Synapse Spark
 
@@ -104,7 +104,7 @@ In this task, you will browse your data lake using SQL On-demand.
    display(data_path.limit(100))
    ```
 
-9. Run the notebook again to see the improved display.
+9. Rerun the notebook again to see the improved display.
 
    ![Improve dataset formatting in Spark notebook](./media/ex01-spark-notebook-04.png "Execute notebook")
 
@@ -112,7 +112,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
     ![View charts on data in Spark notebook](./media/ex01-spark-notebook-05.png "Review charted data")
 
-11. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. By not saving, you will ensure the next user in the shared environment gets the original copy of the notebook.
+11. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. By not saving, you will ensure that the next user in the shared environment gets the original copy of the notebook.
 
 12. In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 1 - Read with Spark` notebook
 
@@ -129,7 +129,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
 16. Select `Run all` on the toolbar to execute the notebook.
 
-    > This notebook demonstrates the same functionality, except this time it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
+    > This notebook demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
 
     ![Run Spark notebook loading multiple CSV data lake files](./media/ex01-spark-notebook-06.png "Run the Spark notebook")
 

@@ -18,7 +18,7 @@
 
 8. For the remainder of this guide, the following terms will be used for various ASA-related resources (make sure you replace them with actual names and values):
 
-    ASA resource | To be referred as
+    ASA resource | To be referred to as
     --- | ---
     Workspace resource group | `WorkspaceResourceGroup`
     Workspace | `Workspace`
@@ -62,7 +62,7 @@
     `wwi-factstockholding.csv` | 8.9 KB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factstockholding.csv
     `wwi-facttransaction.csv` | 7.2 MB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-facttransaction.csv
 
-## Task 3 - Import datasets, data flows and pipelines
+## Task 3 - Import datasets, data flows, and pipelines
 
 ### Import datasets pointing to `PrimaryStorage`
 
@@ -255,11 +255,11 @@ Pipeline | Source code
 
 1. Ensure the `MasterUser` has a Power BI Pro susbcription assigned.
 
-2. Sign in to the [Power BI portal](https://powerbi.com) using the credentials of `MasterUser` and create a new Power BI workspace. In the reminder of this guide, this workspace will be refered as `PowerBIWorkspace`.
+2. Sign in to the [Power BI portal](https://powerbi.com) using the credentials of `MasterUser` and create a new Power BI workspace. In the remainder of this guide, this workspace will be referred to as `PowerBIWorkspace`.
 
 3. Perform all the steps described in [Exercise 3 - Task 1](03-power-bi-integration.md##task-1---create-a-power-bi-dataset-in-synapse). In step 11, instead of using the suggested naming convention, name your dataset `wwifactsales`.
 
-4. In the Power BI portal, edit the security settings of the `wwifactsales` dataset and configure it to authenticate to `SQLPool01` using the credentials of the `asa.sql.admin` account. This allows the `Direct Query` option to work properly for all participants in the lab.
+4. In the Power BI portal, edit the security settings of the `wwifactsales` dataset and configure it to authenticate to `SQLPool01` using the credentials of the `asa.sql.admin` account. This allows the `Direct Query` option to work correctly for all participants in the lab.
 
 ## Task 6 - Import all SQL scripts and Spark notebooks
 
@@ -283,9 +283,9 @@ Spark notebook name | Source code | Replacements
 `Exercise 2 - Bonus Notebook with CSharp` | [Exercise 2 - Bonus Notebook with CSharp.ipynb](./artifacts/02/Exercise%202%20-%20Bonus%20Notebook%20with%20CSharp.ipynb) | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`; In cell 3 - `<sql_staging_password>` with the password of `asa.sql.staging` created above in Task 4, step 3; In cell 3 - `<workspace>` with the name of the `Workspace`; In cell 3 - `<sql_pool>` with the name of `SQLPool1`
 `Exercise 5 - Model Training` | [Exercise 5 - Model Training.ipynb](./artefacts/../artifacts/05/Exercise%205%20-%20Model%20Training.ipynb) | In cell 3 - `<primary_storage>` with the actual name of `PrimaryStorage`; In cell 21 - `<blob_storage>` with the storage account name of `BlobStorage`; In cell 21 - `<blob_storage_account_key>` with the storage account key of `BlobStorage`
 
-## Task 7 - Prepare machine learning model
+## Task 7 - Prepare a machine learning model
 
-Prepare the `models` container in `BlobStorage` by creating in it two folders: `onnx` and `hex`.
+Prepare the `models` container in `BlobStorage` by creating two folders: `onnx` and `hex`.
 
 To prepare the machine learning model for Exercise 5, you have two options:
 
@@ -302,7 +302,7 @@ To prepare the machine learning model for Exercise 5, you have two options:
 
 ### Train and convert a new machine learning model
 
-1. Run the `Exercise 5 - Model training` Spark notebook to train the machine learning  model and save it in ONNX format. The model will be saved as `model.onnx` in the `onnx` folder in the `models` container of `BlobStorage`.
+1. Run the `Exercise 5 - Model training` Spark notebook to train the machine learning model and save it in ONNX format. The model will be saved as `model.onnx` in the `onnx` folder in the `models` container of `BlobStorage`.
 
 2. Use the [convertion PowerShell script](./artifacts/00/ml/convert-to-hex.ps1) to transform `model.onnx` into `model.onnx.hex`.
    
