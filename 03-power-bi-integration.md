@@ -1,6 +1,6 @@
 # Exercise 3 - Power BI integration
 
-In this exercise, you will realize another benefit of the fully integrated environment provided by Azure Synapse Analytics. Here, you will create a Power BI Report and build a visualization within Synapse Analytics Studio. Once you have published a dataset, you will not have to leave this environment to log into a separate Power BI web site in order to view and edit reports.
+In this exercise, you will realize another benefit of the fully integrated environment provided by Azure Synapse Analytics. Here, you will create a Power BI Report and build a visualization within Synapse Analytics Studio. Once you have published a dataset, you will not have to leave this environment to log into a separate Power BI website to view and edit reports.
 
 The Power BI Workspace has already been created for you.
 
@@ -14,7 +14,7 @@ The tasks you will perform in this exercise are:
 
 **Important**:
 
-In the tasks below, you will be asked to enter a unique identifier in several places. You can find your unique identifer by looking at the username you were provided for logging into the Azure portal. Your username is in the format `user-UNIQUEID@msazurelabs.onmicrosoft.com`, where the _UNIQUEID_ component looks like `A01`, `B22`, or `C04`, as examples.
+In the tasks below, you will be asked to enter a unique identifier in several places. You can find your unique identifier by looking at the username you were provided for logging into the Azure portal. Your username is in the format `user-UNIQUEID@msazurelabs.onmicrosoft.com`, where the _UNIQUEID_ component looks like `A01`, `B22`, or `C04`, as examples.
 
 Please locate this value and note it for the steps below.
 
@@ -36,7 +36,7 @@ In this task, you will use Power BI Desktop to create the dataset used by the re
 
 4. In the panel that appears, if a prompt appears to Install Power BI Desktop, select **Start**.
 
-   ![Select Start in first screen of wizard](media/ex03-pbids-install-pbidesktop.png "Select Start")
+   ![Select Start in the first screen of wizard](media/ex03-pbids-install-pbidesktop.png "Select Start")
 
 5. In the step by step dialog that appears, select your SQL Pool and then select **Continue**.
 
@@ -50,7 +50,7 @@ In this task, you will use Power BI Desktop to create the dataset used by the re
 
    ![Signing in with a Microsoft account](media/ex03-login-pbi.png "Sign in")
 
-9. In the Navigator dialog, within the list of tables select **wwi.FactSale**, confirm the preview shows some data and then select **Load**.
+9. In the Navigator dialog, within the list of tables select **wwi.FactSale**, confirm the preview shows some data, and then select **Load**.
 
    ![Selecting the wwi.FactSale table and viewing the preview](media/ex03-load-table-pbi.png "Select table")
 
@@ -76,7 +76,7 @@ In this task, you will use Power BI Desktop to create the dataset used by the re
 
 ## Task 2 - Create a Power BI report in Synapse
 
-In this task, you will learn how to use a collaborative approach to create a new Power BI report within Synapse Analytics Studio. To do this, you will use a dataset that was not originally created by you.
+In this task, you will learn how to use a collaborative approach to create a new Power BI report within Synapse Analytics Studio. To do this, you will use a dataset that was not created by you.
 
 1. Select the `wwifactsales` dataset within the panel that appears. When you hover over the dataset, a button for creating a new Power BI report will appear. Select that button.
 
@@ -90,11 +90,11 @@ In this task, you will learn how to use a collaborative approach to create a new
 
 **Important**:
 
-If you do not see a list of data fields under Fields follow the steps below for a fix.
+If you do not see a list of data fields under Fields, follow the steps below for a fix.
 
 1. Navigate to [www.powerbi.com](www.powerbi.com) on a new browser tab. Select **Sign In** and use the credential provided to you.
 
-2. Select `Workspaces` from the left menu and select the `PowerBIWorkspace` as shows in the screenshot.
+2. Select `Workspaces` from the left menu and select the `PowerBIWorkspace` as shown in the screenshot.
 
    ![Selecting the right workspace to work on](media/ex03-selecting-workspace.png "Selecting the right workspace to work on")
    
