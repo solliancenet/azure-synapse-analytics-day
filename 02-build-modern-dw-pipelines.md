@@ -148,6 +148,7 @@ You can run each cell in this notebook and observe the output. Be aware, however
 Before running the notebook:
 
 1. **Important**: Do not forget to set the `uniqueId` variable with the unique identifier assigned to you for this workshop.
+   > Note: Replace the `uniqueId` with the **UniqueId** provided in the environment details section on Lab Environment tab on the right.
 
 2. Select **Configure session**, which you will find at the bottom left-hand side of the notebook.
 
