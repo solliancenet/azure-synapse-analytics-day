@@ -78,11 +78,12 @@ Solution:
 
 1. In Synapse Analytics Studio, navigate to the `Data` hub.
 2. Under Databases, expand the SQL pool node (the one that has its name ending in `(SQL pool)`), expand `Tables`, and locate the `wwi_perf.FactSale_Slow` table.
+   
    ![Open table structure](./media/ex04-expandtables.png "Table structure")
 
 3. Right-click the table and then select `New SQL script`, `CREATE`.
 
-   ![View table structure](./media/ex04viewtable.png "Table structure")
+   ![View table structure](./media/ex04-viewtable.png "Table structure")
 
 4. In the CREATE script, note the `DISTRIBUTION = ROUND_ROBIN` option used to distribute the table.
 
