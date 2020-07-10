@@ -115,7 +115,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
     > If you do not see the table, select the Actions ellipsis next to Tables and then select **Refresh** from the fly-out menu.
 
-    ![The list of tables in the SQLPool01 database is expanded and the wwi_staging.Sale_UNIQUEID table is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data.png "Synapse Analytics Database Tables")
+    ![The list of tables in the SQLPool01 database is expanded and the wwi_staging.Sale_UNIQUEID table is highlighted.](media/ex2-wwi-staging-table.png "Synapse Analytics Database Tables")
 
 18. To the right of the `wwi_staging.Sale_UNIQUEID` table, select the Actions ellipsis.
 
