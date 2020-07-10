@@ -73,7 +73,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
     ![The Run all button on the notebook toolbar is highlighted.](media/ex02-notebooks-toolbar-run-all.png "Select Run all")
 
-    > **Note**: If you see the output from the cells containing the message, `Error : java.lang.Exception: You must enter the unique identifier you were assigned for this workshop into the uniqueId variable before proceeding`, return to step 9 above, and enter your assigned unique identifier.
+    > **Note**: If you see the output from the cells containing the message, `Error : java.lang.Exception: You must enter the unique identifier you were assigned for this workshop into the uniqueId variable before proceeding`, return to step 6 above, and enter your assigned unique identifier.
 
 11. While the notebook is running, let's take a look at what each cell is doing.
 
