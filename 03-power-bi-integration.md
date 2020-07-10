@@ -128,6 +128,6 @@ If you do not see a list of data fields under Fields, follow the steps below for
 
 7. In the dialog that appears, provide a unique name for your report that included your _UNIQUEID_ from your username (e.g.,`keysales206184`) and then select **Save**.
 
-   ![The Save your report dialog](media/ex03-save-your-report.png "Save report")
+   ![The Save your report dialog](media/ex03-pbireport.png "Save report")
 
 8. This report is now available to all authorized users within Synapse Analytics Studio and the Power BI workspace.
