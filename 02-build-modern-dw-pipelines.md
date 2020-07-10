@@ -56,7 +56,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
    ![The uniqueId variable is highlighted and its value is set to an example value of "A03".](media/ex02-notebooksetuniqueid.png "Updated UniqueId variable")
 
-   > **Note**: You may notice the **Publish all** button is highlighted after making changes. Please **do not publish** your changes, as this will impact the notebook used by all workshop attendees. You do not need to publish the changes to run the notebook in the steps below.
+   > **Note**: You may notice the **Publish all** button is highlighted after making changes.You do not need to publish the changes to run the notebook in the steps below.However you can publish the changes if you want to save the changes made. 
 
 7. Before running the notebook, select **Configure session**, which you will find at the bottom left-hand side of the notebook.
 
