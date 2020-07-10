@@ -203,9 +203,9 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
 5. On the right of the screen, you will be able to select the **Settings** button to update the name in the settings panel. Replace the **copyX** value after the underscore in the Name with your assigned _UNIQUEID_ from your username. For example, `EnrichCustomerData_206184`.
  
-  > Note: Replace the `uniqueId` with the **UniqueId** provided in the environment details section on Lab Environment tab on the right.
+   > Note: Replace the `uniqueId` with the **UniqueId** provided in the environment details section on Lab Environment tab on the right.
    
-  ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-dataflowclonename.png "Data flows")
+   ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-dataflowclonename.png "Data flows")
 
 6. Next, select **Orchestrate** from the left-hand menu.
 
