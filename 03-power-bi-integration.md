@@ -126,7 +126,7 @@ If you do not see a list of data fields under Fields, follow the steps below for
 
    ![Selecting Save As from the File menu](media/ex03-file-save-as.png "Save As")
 
-7. In the dialog that appears, provide a unique name for your report that included your _UNIQUEID_ from your username (e.g., `keysalesA03`) and then select **Save**.
+7. In the dialog that appears, provide a unique name for your report that included your _UNIQUEID_ from your username (e.g., `keysales206184`) and then select **Save**.
 
    ![The Save your report dialog](media/ex03-save-your-report.png "Save report")
 
