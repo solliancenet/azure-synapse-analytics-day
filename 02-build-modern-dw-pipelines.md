@@ -35,15 +35,15 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
 3. If not already attached, attach your Spark Compute by selecting it from the **Attach to** drop-down list.
 
-   ![The Spark pool is selected in the Attach to drop-down.](media/ex02-notebooks-toolbar-attach-to.png "Attach Spark Compute")
+   ![The Spark pool is selected in the Attach to drop-down.](media/ex02-attachsparkpool.png "Attach Spark Compute")
 
 4. Ensure **Spark (Scala)** is selected in the Language drop-down list.
 
-   ![Spark (Scala) is selected in the Language drop-down.](media/ex02-notebooks-toolbar-language.png "Select Language")
+   ![Spark (Scala) is selected in the Language drop-down.](media/ex02-sparklanguage.png "Select Language")
 
 5. Next, in the first cell of the notebook, **Cell 1**, locate the variable named `uniqueId` on line 8.
 
-   ![The uniqueId variable on line 8 of Cell 1 is highlighted.](media/ex02-notebooks-configure-unique-id.png "Update UniqueId variable")
+   ![The uniqueId variable on line 8 of Cell 1 is highlighted.](media/ex02-notebookuniqueid.png "Update UniqueId variable")
 
 6. Update the value of the `uniqueId` variable, setting it to the unique identifier you were assigned for this workshop. This will be the _UNIQUEID_ component of your username, as mentioned above. For example:
   
@@ -54,7 +54,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
    
    > **Important**: Every workshop attendee needs to set this variable to their assigned unique identifier to ensure the table name this notebook targets is unique. Failure to set this value will prevent the notebook from running.
 
-   ![The uniqueId variable is highlighted and its value is set to an example value of "A03".](media/ex02-notebooks-configure-set-unique-id.png "Updated UniqueId variable")
+   ![The uniqueId variable is highlighted and its value is set to an example value of "A03".](media/ex02-notebooksetuniqueid.png "Updated UniqueId variable")
 
    > **Note**: You may notice the **Publish all** button is highlighted after making changes. Please **do not publish** your changes, as this will impact the notebook used by all workshop attendees. You do not need to publish the changes to run the notebook in the steps below.
 
@@ -71,7 +71,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
 10. Select **Run all** from the notebook toolbar to execute each cell within the notebook. It can take several minutes for the Spark session to start. You can continue with the steps below to review the notebook contents.
 
-    ![The Run all button on the notebook toolbar is highlighted.](media/ex02-notebooks-toolbar-run-all.png "Select Run all")
+    ![The Run all button on the notebook toolbar is highlighted.](media/ex02-runall.png "Select Run all")
 
     > **Note**: If you see the output from the cells containing the message, `Error : java.lang.Exception: You must enter the unique identifier you were assigned for this workshop into the uniqueId variable before proceeding`, return to step 6 above, and enter your assigned unique identifier.
 
@@ -79,7 +79,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
     - **Cell 1** imports required libraries and sets a few variables. The `adlsPath` variable defines the path used to connect to an Azure Data Lake Storage (ADLS) Gen2 account. Connecting to ADLS Gen2 from a notebook in Azure Synapse Analytics uses the power of Azure Active Directory (AAD) pass-through between compute and storage. The `uniqueId` provides a unique value to use for creating a new table in Azure Synapse Analytics.
 
-    ![Cell 1 of the notebook is displayed.](media/ex02-notebooks-ingest-cell-1.png "Notebook Cell 1")
+    ![Cell 1 of the notebook is displayed.](media/ex02-notebookingest-cell1.png "Notebook Cell 1")
 
     - **Cell 2** loads data from CSV files in the data lake into a DataSet. Note the `option` parameters in the `read` command on line 7. These options specify the settings to use when reading the CSV files. The options tell Spark that the first row of each file containers the column headers, the separator in the files in the `|` character, and that we want Spark to infer the schema of the files based on an analysis of the contents of each column. Finally, we display the first five records of the data retrieved and print the inferred schema to the screen.
 
@@ -107,7 +107,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
 15. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. 
 
-16. Expand **Databases** and then expand the **SQLPool01** database.
+16. Under **Workspace** tab expand **Databases** and then expand the **SQLPool01** database.
 
     ![The Databases folder is expanded, showing a list of databases within the Azure Synapse Analytics workspace. SQLPool01 is expanded and highlighted.](media/ex02-data-sqlpool01.png "Synapse Analytics Databases")
 
@@ -119,11 +119,11 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
 18. To the right of the `wwi_staging.Sale_UNIQUEID` table, select the Actions ellipsis.
 
-    ![The Actions ellipsis button is highlighted next to the wwi_staging.Sale_UNIQUEID table.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions.png "Synapse Analytics Databases")
+    ![The Actions ellipsis button is highlighted next to the wwi_staging.Sale_UNIQUEID table.](media/ex02-tables-staging-wwi-sales-data-actions.png "Synapse Analytics Databases")
 
 19. In the Actions menu, select **New SQL script > Select TOP 100 rows**.
 
-    ![In the Actions menu for the wwi_staging.Sale_UNIQUEID table, New SQL script > Select TOP 100 rows is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions-select.png "Synapse Analytics Databases")
+    ![In the Actions menu for the wwi_staging.Sale_UNIQUEID table, New SQL script > Select TOP 100 rows is highlighted.](media/ex02-tables-staging-wwi-sales-data-actions-select.png "Synapse Analytics Databases")
 
 20. Observe the results in the output pane, and see how easy it was to use Spark notebooks to write data from Blob Storage into Azure Synapse Analytics.
 
@@ -205,7 +205,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
  
  > Note: Replace the `uniqueId` with the **UniqueId** provided in the environment details section on Lab Environment tab on the right.
    
-   ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-develop-data-flows-clone-rename.png "Data flows")
+   ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-dataflowclonename.png "Data flows")
 
 6. Next, select **Orchestrate** from the left-hand menu.
 
@@ -227,7 +227,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
  
  > Note: Replace the `uniqueId` with the **UniqueId** provided in the environment details section on Lab Environment tab on the right.
    
-    ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-orchestrate-pipelines-clone-rename.png "Pipelines")
+    ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-pipelineclonename.png "Pipelines")
 
 11. Next, you also need to update the Mapping Data Flow activity to use your cloned Data flow. Select the **Enriched Customer Data** Mapping Data Flow activity in the graph for your cloned pipeline.
 
@@ -241,7 +241,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
     > **Important**: You may see data flows for other workshop participants in the list of data flows. Make sure you carefully select the data flow that ends with your assigned _UNIQUEID_.
 
-    ![The Data flow drop-down list is expanded, and the cloned data flow created above is selected and highlighted in the list.](media/ex02-orchestrate-data-flow-select.png "Mapping Data Flow activity")
+    ![The Data flow drop-down list is expanded, and the cloned data flow created above is selected and highlighted in the list.](media/ex02-dataflowsettingname.png "Mapping Data Flow activity")
 
     > While you are on the Settings tab, take a moment to look at the other settings configurable on this tab. They include parameters to pass into the data flow, the Integration Runtime and compute resource type and size to use. If you wish to use staging, you can also specify that here.
 
@@ -423,7 +423,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
     > This Publish all dialog allows you to review the changes that will be saved. In the dialog, you should see two pending changes. The first is for your cloned pipeline and the second for your cloned data flow. **Important**: Be sure the only changes you see are your cloned pipeline and data flow. If any other changes appear, cancel the publish and close any other open tabs, choosing to discard changes when prompted. Then, select **Publish all** again.
 
-    ![The Publish all dialog is displayed with a list of pending changes. The Publish button is highlighted.](media/ex02-publish-all.png "Publish all")
+    ![The Publish all dialog is displayed with a list of pending changes. The Publish button is highlighted.](media/ex02-Publishall.png "Publish all")
 
 48. Within a few seconds, you will receive a notification that the publish completed. Select **Dismiss** in the notification.
 
@@ -453,7 +453,7 @@ After you finish building and debugging your data flow and its associated pipeli
 
 3. Select the pipeline whose name includes your _UNIQUEID_ from the list (e.g., `Exercise 2 - Enrich Data_A03`). This will have a status of `In progress`.
 
-   ![The first "Exercise 2 - Enrich Data" item in the list of pipeline runs is highlighted.](media/ex02-monitoring-pipeline-runs.png "Pipeline run list")
+   ![The first "Exercise 2 - Enrich Data" item in the list of pipeline runs is highlighted.](media/ex02-monitorpipelinerun.png "Pipeline run list")
 
 4. On the pipeline run details screen, you will see a graphical representation of the activities within the pipeline, as well as a list of the individual activity runs. Both provide status indicators for each activity.
 
