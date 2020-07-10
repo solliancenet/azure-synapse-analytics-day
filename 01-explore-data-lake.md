@@ -38,17 +38,19 @@ In this task, you will browse your data lake using SQL On-demand.
 
 6. Switch to the `Linked` tab. Under `Storage accounts`, expand the **Storage account** node, expand the data lake storage account, and then select the `wwi` file system.
 
+   ![Open Linked tab in Synapse Analytics Studio](./media/ex01-linked-wwi.png)
+
 7. Inside the selected file system, navigate to `factsale-parquet` -> `2012` -> `Q1` -> `InvoiceDateKey=2012-01-01`.
 
 8. Once you are in `InvoiceDateKey=2012-01-01` right-click the Parquet file and select `New SQL script - Select TOP 100 rows`.
 
    > A script is automatically generated. Run this script to see how SQL on demand queries the file and returns the first 100 rows of that file with the header, allowing you to easily explore data in the file
 
-   ![Start new SQL script from data lake file](./media/ex01-sql-on-demand-01.png "Create a new SQL script")
+   ![Start new SQL script from data lake file](./media/ex01-wwi-file.png "Create a new SQL script")
 
 9. Ensure the newly created script is connected to the `SQL on-demand` pool and select `Run`. Data is loaded by the on-demand SQL pool and processed as if it was coming from any regular relational database.
 
-   ![Run SQL script on data lake file](./media/ex01-sql-on-demand-02.png "Execute SQL script")
+   ![Run SQL script on data lake file](./media/ex01-ondemand.png "Execute SQL script")
 
 10. Let us change the initial script to load multiple Parquet files at once.
 
@@ -61,7 +63,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
 11. Select `Run` to re-run the script.
 
-    ![Run SQL on-demand script loading multiple Parquet data lake files](./media/ex01-sql-on-demand-03.png)
+    ![Run SQL on-demand script loading multiple Parquet data lake files](./media/ex01-ondemand-count.png)
 
 12. In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 1 - Read with SQL on-demand` SQL script, and then select `Run`.
 
@@ -81,7 +83,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
 3. Attach the notebook to a Spark pool.
 
-   ![Run Spark notebook on data lake file](./media/ex01-spark-notebook-03.png "Attach notebook to Spark pool")
+   ![Run Spark notebook on data lake file](./media/ex01-attachsparkpool.png "Attach notebook to Spark pool")
 
 4. Before running the notebook, select **Configure session**, which you will find at the bottom left-hand side of the notebook.
 
