@@ -108,11 +108,11 @@ In this task, you will browse your data lake using SQL On-demand.
 
 9. Rerun the notebook again to see the improved display.
 
-   ![Improve dataset formatting in Spark notebook](./media/ex01-spark-notebook-04.png "Execute notebook")
+   ![Improve dataset formatting in Spark notebook](./media/ex01-sparknotebook.png "Execute notebook")
 
 10. Notice the included charting capabilities that enable visual exploration of your data. Switch to **Chart** view. Select **View Options** and change the **Key** to `CustomerKey` and **Values** to `CityKey`.
 
-    ![View charts on data in Spark notebook](./media/ex01-sparknotebook.png.png "Review charted data")
+    ![View charts on data in Spark notebook](./media/ex01-spark-notebook-05.png "Review charted data")
 
 11. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. 
 
@@ -133,6 +133,6 @@ In this task, you will browse your data lake using SQL On-demand.
 
     > This notebook demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
 
-    ![Run Spark notebook loading multiple CSV data lake files](./media/ex01-readsparknotebook.png.png "Run the Spark notebook")
+    ![Run Spark notebook loading multiple CSV data lake files](./media/ex01-readsparknotebook.png "Run the Spark notebook")
 
 17. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool.
