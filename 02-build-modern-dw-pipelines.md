@@ -109,7 +109,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
 16. Under **Workspace** tab expand **Databases** and then expand the **SQLPool01** database.
 
-    ![The Databases folder is expanded, showing a list of databases within the Azure Synapse Analytics workspace. SQLPool01 is expanded and highlighted.](media/ex02-data-sqlpool01.png "Synapse Analytics Databases")
+    ![The Databases folder is expanded, showing a list of databases within the Azure Synapse Analytics workspace. SQLPool01 is expanded and highlighted.](media/ex02-datasqlpool.png "Synapse Analytics Databases")
 
 17. Expand **Tables** and locate the table named `wwi_staging.Sale_UNIQUEID`, where `UNIQUEID` is the unique identifier assigned to you for this workshop. Which you retrieved from your username above (e.g., `206184`).
 
