@@ -1,7 +1,5 @@
 # Azure Synapse Analytics Lab
 
-Lab time: 90 minutes
-
 ## Wide World Importers
 
 Wide World Importers (WWI) is a wholesale novelty goods importer and distributor operating from the San Francisco bay area.
