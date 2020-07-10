@@ -15,7 +15,7 @@ The tasks you will perform in this exercise are:
 
 **Important**:
 
-In the tasks below, you will be asked to enter a unique identifier in several places. You can find your unique identifier by looking at the username you were provided for logging into the Azure portal. Your username is in the format `user-UNIQUEID@msazurelabs.onmicrosoft.com`, where the _UNIQUEID_ component looks like `A01`, `B22`, or `C04`, as examples.
+In the tasks below, you will be asked to enter a unique identifier in several places. You can find your unique identifier by looking at the username you were provided for logging into the Azure portal. Your username is in the format `odl_user_UNIQUEID@msazurelabs.onmicrosoft.com`, where the _UNIQUEID_ component looks like `206184`, `206137`, or `205349`, as examples.
 
 Please locate this value and note it for the steps below.
 
@@ -48,7 +48,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 6. Update the value of the `uniqueId` variable, setting it to the unique identifier you were assigned for this workshop. This will be the _UNIQUEID_ component of your username, as mentioned above. For example:
 
    ```scala
-   val uniqueId = "A03"
+   val uniqueId = "206184"
    ```
 
    > **Important**: Every workshop attendee needs to set this variable to their assigned unique identifier to ensure the table name this notebook targets is unique. Failure to set this value will prevent the notebook from running.
