@@ -24,7 +24,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
    ![Open Synapse Analytics resource group](./media/00-open-synapse-resource-group.png "Resources list")
   
-3. **Important**:**Resume** the SQLPool if it is in paused state before performing the lab steps.
+3. **Important**: **Resume** the SQLPool if it is in paused state before performing the lab steps.
    ![Open SQLPool](./media/00-resume-sqlpool.png "Resources list")
 
 4. Select the **Synapse Analytics** workspace.
