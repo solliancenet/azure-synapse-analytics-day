@@ -227,7 +227,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
  
  > Note: Replace the `uniqueId` with the **UniqueId** provided in the environment details section on Lab Environment tab on the right.
    
-    ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-pipelineclonename.png "Pipelines")
+   ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-pipelineclonename.png "Pipelines")
 
 11. Next, you also need to update the Mapping Data Flow activity to use your cloned Data flow. Select the **Enriched Customer Data** Mapping Data Flow activity in the graph for your cloned pipeline.
 
