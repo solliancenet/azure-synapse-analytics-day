@@ -46,11 +46,12 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
    ![The uniqueId variable on line 8 of Cell 1 is highlighted.](media/ex02-notebooks-configure-unique-id.png "Update UniqueId variable")
 
 6. Update the value of the `uniqueId` variable, setting it to the unique identifier you were assigned for this workshop. This will be the _UNIQUEID_ component of your username, as mentioned above. For example:
-
+  
    ```scala
    val uniqueId = "206184"
    ```
-
+   > Note: Replace the `uniqueId` with the **UniqueId** provided in the environment details section on Lab Environment tab on the right.
+   
    > **Important**: Every workshop attendee needs to set this variable to their assigned unique identifier to ensure the table name this notebook targets is unique. Failure to set this value will prevent the notebook from running.
 
    ![The uniqueId variable is highlighted and its value is set to an example value of "A03".](media/ex02-notebooks-configure-set-unique-id.png "Updated UniqueId variable")
@@ -104,13 +105,13 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
     ![Data is selected and highlighted in the Synapse Analytics menu.](media/ex02-menu-data.png "Synapse Analytics menu")
 
-15. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. By not saving, you will ensure that the next user in the shared environment gets the original copy of the notebook.
+15. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. 
 
 16. Expand **Databases** and then expand the **SQLPool01** database.
 
     ![The Databases folder is expanded, showing a list of databases within the Azure Synapse Analytics workspace. SQLPool01 is expanded and highlighted.](media/ex02-data-sqlpool01.png "Synapse Analytics Databases")
 
-17. Expand **Tables** and locate the table named `wwi_staging.Sale_UNIQUEID`, where `UNIQUEID` is the unique identifier assigned to you for this workshop. Which you retrieved from your username above (e.g., `A03`).
+17. Expand **Tables** and locate the table named `wwi_staging.Sale_UNIQUEID`, where `UNIQUEID` is the unique identifier assigned to you for this workshop. Which you retrieved from your username above (e.g., `206184`).
 
     > If you do not see the table, select the Actions ellipsis next to Tables and then select **Refresh** from the fly-out menu.
 
@@ -177,9 +178,7 @@ To observe the data being written into the table:
 
    > Re-run the query every 5-10 seconds to watch the count of records in the table, and how it changes as new records are being added by the notebook. The notebook limits the number of rows to 1500, so if you see a count of 1500, the notebook has completed processing.
 
-5. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. By not saving, you will ensure that the next user in the shared environment gets the original copy of the notebook.
-
-## Task 2 - Explore, modify, and run a Pipeline containing a Data Flow
+5. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool.
 
 In this task, you use a Pipeline containing a Data Flow to explore, transform, and load data into an Azure Synapse Analytics table. Using pipelines and data flows allows you to perform data ingestion and transformations, similar to what you did in Task 1, but without having to write any code.
 
@@ -201,8 +200,10 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
    ![The cloned version of the data flow is displayed, with the name of the cloned data flow highlighted in the Data flows list.](media/ex02-develop-data-flows-clone.png "Data flows")
 
-5. On the right of the screen, you will be able to select the **Settings** button to update the name in the settings panel. Replace the **copyX** value after the underscore in the Name with your assigned _UNIQUEID_ from your username. For example, `EnrichCustomerData_A03`.
-
+5. On the right of the screen, you will be able to select the **Settings** button to update the name in the settings panel. Replace the **copyX** value after the underscore in the Name with your assigned _UNIQUEID_ from your username. For example, `EnrichCustomerData_206184`.
+ 
+ > Note: Replace the `uniqueId` with the **UniqueId** provided in the environment details section on Lab Environment tab on the right.
+   
    ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-develop-data-flows-clone-rename.png "Data flows")
 
 6. Next, select **Orchestrate** from the left-hand menu.
@@ -221,8 +222,10 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
    ![The cloned version of the pipeline is displayed, with the name of the cloned pipeline highlighted in the Pipelines list.](media/ex02-orchestrate-pipelines-clone-copy.png "Pipelines")
 
-10. On the right of the screen, you will be able to select the **Settings** button to update the name in the settings panel. Replace the **copyX** value after the underscore in the Name with your assigned _UNIQUEID_ from your username. For example, `Exercise 2 - Enrich Data_A03`.
-
+10. On the right of the screen, you will be able to select the **Settings** button to update the name in the settings panel. Replace the **copyX** value after the underscore in the Name with your assigned _UNIQUEID_ from your username. For example, `Exercise 2 - Enrich Data_206184`.
+ 
+ > Note: Replace the `uniqueId` with the **UniqueId** provided in the environment details section on Lab Environment tab on the right.
+   
     ![The Name property is displayed with the UNIQUEID value replacing the "copy1" value after the underscore.](media/ex02-orchestrate-pipelines-clone-rename.png "Pipelines")
 
 11. Next, you also need to update the Mapping Data Flow activity to use your cloned Data flow. Select the **Enriched Customer Data** Mapping Data Flow activity in the graph for your cloned pipeline.
