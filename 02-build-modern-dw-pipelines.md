@@ -159,6 +159,8 @@ Before running the notebook:
 
 4. Select **Apply** to save the session configuration.
 
+5. **Run** the notebook after applying the above configurations.
+
 To observe the data being written into the table:
 
 1. Select **Data** from the left-hand menu, expand Databases, SQLPool01, and Tables.
