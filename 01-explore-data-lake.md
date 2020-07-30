@@ -57,7 +57,7 @@ In this task, you will browse your data lake using SQL On-demand.
     - In line 2, replace `TOP 100 *` with `COUNT(*)`.
     - In line 5, replace the path to the individual file with
  
- > Note: Ensure to replace the storage account name from the environment details page.
+     > Note: Ensure to replace the storage account name from the environment details page.
 
     ```python
     https://<yourdatalake storage account name>.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*
