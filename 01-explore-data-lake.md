@@ -26,6 +26,8 @@ In this task, you will browse your data lake using SQL On-demand.
 
 3. Select **SQLPool** and **resume** it before starting the testing.
 
+   ![Resume sqlpool](./media/00-resume-sqlpool.png "Resume")
+
 4. Select the **Synapse Analytics** workspace.
 
    ![Open Azure Synapse Analytics workspace](./media/00-open-workspace.png "Azure Synapse workspace")
@@ -84,7 +86,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
 3. Attach the notebook to a Spark pool.
 
-   ![Run Spark notebook on data lake file](./media/ex01-spark-notebook-03.png "Attach notebook to Spark pool")
+   ![Run Spark notebook on data lake file](./media/ex01-attachsparkpool.png "Attach notebook to Spark pool")
 
 4. Before running the notebook, select **Configure session**, which you will find at the bottom left-hand side of the notebook.
 
