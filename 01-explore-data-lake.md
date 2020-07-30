@@ -62,7 +62,7 @@ In this task, you will browse your data lake using SQL On-demand.
     ```python
     https://<yourdatalake storage account name>.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*
     ```
-   > Note: Replace the 'yourdatalakestorageaccountname' with the **Storage Account Name** provided in the environment details section on Lab Environment tab on the right.
+   > Note: Replace 'yourdatalakestorageaccountname' with the **Storage Account Name** provided in the environment details section on Lab Environment tab on the right.
    
 12. Select `Run` to re-run the script.
 
