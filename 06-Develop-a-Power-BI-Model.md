@@ -45,7 +45,7 @@ In this task, you will prepare your environment.
    ![ws name.](media/6.4.png)
 
 
-8. When notified that the feature requires a restart, click OK.
+8. When notified that the feature requires a restart, click **OK**.
 
 9. Close Power BI Desktop.
 
