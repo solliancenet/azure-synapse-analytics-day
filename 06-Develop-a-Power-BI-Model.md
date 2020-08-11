@@ -26,55 +26,88 @@ In this task, you will prepare your environment.
 
 3. If you are not signed in using the lab Azure credentials, you must switch user accounts.
 
-4. On the File tab (backstage view), select Option and Settings, and then select Options.
+4. On the **File** tab (backstage view), select **Option and Settings**, and then select **Options**.
+
+   ![ws name.](media/6.1.png)
+
+5. In the **Options** window, at the left, select the **Preview Features** page.
+
+   ![ws name.](media/6.2.png)
+
+6. Check the **Store Datasets Using Enhanced Metadata Format** checkbox.
+
+   ![ws name.](media/6.3.png)
+   
+   *This preview feature is required to complete your model design.*
+
+7. Click **OK**.
+
+   ![ws name.](media/6.4.png)
 
 
-  ![ws name.](media/6.1.png)
+8. When notified that the feature requires a restart, click OK.
 
-5. In the Options window, at the left, select the Preview Features page.
+9. Close Power BI Desktop.
 
-  ![ws name.](media/6.2.png)
+10. Open a new InPrivate web browser session (for Chrome, use incognito), and then navigate to https://powerbi.com.
 
-6. Check the Store Datasets Using Enhanced Metadata Format checkbox.
+11. If you are not signed in to the Power BI service using the lab Azure credentials, then sign out, and then sign in using the lab Azure credentials.
 
-  ![ws name.](media/6.3.png)
-  *This preview feature is required to complete your model design.*
+12. At the top-right corner, ensure the new look is **On**.
 
-7.	Click OK.
+    ![ws name.](media/6.5.png)
 
-8.	When notified that the feature requires a restart, click OK.
-9.	Close Power BI Desktop.
-10.	Open a new InPrivate web browser session (for Chrome, use incognito), and then navigate to https://powerbi.com.
-11.	If you are not signed in to the Power BI service using the lab Azure credentials, then sign out, and then sign in using the lab Azure credentials.
-12.	At the top-right corner, ensure the new look is On.
 
 
 ### **Subtask 2: Download a Dataset File**
 
 In this task, you will download a Power BI data source file from Synapse Studio.
-1.	In the Azure Synapse web browser session (opened in your previous lab), navigate to Synapse Studio.
-2.	At the left, select the Develop hub.
-3.	In the Develop pane, expand the Power BI group, and then select Power BI Datasets.
-4.	In the Power BI Datasets pane, click New Power BI Dataset.
-5.	In the right pane, at the bottom-left on the pane, click Start.
-6.	Select your SQL pool, and then click Continue.
-7.	To download a .pbids file, click Download.
 
-*A .pbids file contains a connection to your SQL pool. It’s a convenient way to start your project. When opened, it’ll create a new Power BI Desktop solution that already stores the connection details to your SQL pool*.
+1. In the Azure Synapse web browser session (opened in your previous lab), navigate to **Synapse Studio**.
 
-8.	When the .pbids file has downloaded, open it.
+2. At the left, select the **Develop** hub.
 
-*When the file opens, it’ll prompt you to create queries using the connection. You’ll define those queries in the next task.*
+   ![ws name.](media/6.6.png)
+
+3. In the **Develop** pane, expand the **Power BI** group, and then select **Power BI Datasets**.
+
+   ![ws name.](media/6.7.png)
+
+4. In the **Power BI Datasets** pane, click **New Power BI Dataset**.
+
+   ![ws name.](media/6.8.png)
+
+5. In the right pane, at the bottom-left on the pane, click **Start**.
+
+   ![ws name.](media/6.9.png)
+
+6. Select your SQL pool, and then click **Continue**.
+
+   ![ws name.](media/6.10.png)
+
+7. To download a *.pbids* file, click **Download**.
+
+   ![ws name.](media/6.11.png)
+
+   *A .pbids file contains a connection to your SQL pool. It’s a convenient way to start your project. When opened, it’ll create a new Power BI Desktop solution that already stores the connection details to your SQL pool*.
+
+8. When the .pbids file has downloaded, open it.
+
+   *When the file opens, it’ll prompt you to create queries using the connection. You’ll define those queries in the next task.*
+   
+   
 
 ### **Subtask 3: Create Model Queries**
 
 In this task, you will create six Power Query queries that will each load as a table to your model.
 
-*Power Query is a Microsoft technology used to connect to connect to data stores, profile data, and transform data. You’ll define query for each table your model.*
+   *Power Query is a Microsoft technology used to connect to connect to data stores, profile data, and transform data. You’ll define query for each table your model.*
 
-1.	In Power BI Desktop, in the Navigator window, select (don’t check) the wwi.DimCity table.
-2.	In the right pane, notice the preview result, which shows a subset of the table rows.
-3.	To create queries (which will become model tables), check the following six tables:
+1. In Power BI Desktop, in the **Navigator** window, select (don’t check) the **wwi.DimCity** table.
+
+2. In the right pane, notice the preview result, which shows a subset of the table rows.
+
+3. To create queries (which will become model tables), check the following six tables:
 
 •	wwi.DimCity
 •	wwi.DimCustomer
@@ -83,29 +116,52 @@ In this task, you will create six Power Query queries that will each load as a t
 •	wwi.DimStockItem
 •	wwi.FactSale
 
-4.	To apply transformations to the queries, at the bottom-right, click Transform Data.
+   ![ws name.](media/6.12.png)
 
-*Transforming the data allows you to define what data will be available in your model.*
 
-5.	In the Connection Settings window, select the DirectQuery option.
+4. To apply transformations to the queries, at the bottom-right, click **Transform Data**.
 
-*This decision is important. DirectQuery is a storage mode. A model table that uses DirectQuery storage mode doesn’t store data. So, when a Power BI report visual queries a DirectQuery table, Power BI sends a native query to the data source. This storage mode is often used for large data stores like Azure Synapse Analytics (because it’s impractical or uneconomic to import large data volumes) or when near real-time results are required.*
+   ![ws name.](media/6.13.png)
 
-6.	Click OK.
 
-7.	In the **Power Query Editor** window, in the **Queries** pane (located at the left), notice there is one query for each table you requested.
+   *Transforming the data allows you to define what data will be available in your model.*
 
-*You’ll now revise the definition of each query. Each query will become a model table when they are applied to the model. So, you’ll now rename them so they’re described in more friendly and concise ways, and apply transformations to deliver the columns required by reports.*
+5. In the **Connection Settings** window, select the **DirectQuery** option.
 
-8.	Select the **wwi DimCity** query.
+   ![ws name.](media/6.14.png)
 
-9.	In the **Query Settings** pane (located at the right), to rename the query, in the **Name** box, replace the text with **Geography**, and then press **Enter**.
 
-10.	On the **Home** ribbon tab, from inside the **Manage Columns** group, click the **Choose Columns** icon.
+   *This decision is important. DirectQuery is a storage mode. A model table that uses DirectQuery storage mode doesn’t store data. So, when a Power BI report visual queries a DirectQuery table, Power BI sends a native query to the data source. This storage mode is often used for large data stores like Azure Synapse Analytics (because it’s impractical or uneconomic to import large data volumes) or when near real-time results are required.*
 
-11.	In the **Choose Columns** window, to uncheck all checkboxes, uncheck the first checkbox.
+6. Click **OK**.
 
-12.	Check the following seven columns.
+   ![ws name.](media/6.15.png)
+
+
+7. In the **Power Query Editor** window, in the **Queries** pane (located at the left), notice there is one query for each table you requested.
+
+   ![ws name.](media/6.16.png)
+
+   *You’ll now revise the definition of each query. Each query will become a model table when they are applied to the model. So, you’ll now rename them so they’re described in more friendly and concise ways, and apply transformations to deliver the columns required by reports.*
+
+8. Select the **wwi DimCity** query.
+
+   ![ws name.](media/6.17.png)   
+
+9. In the **Query Settings** pane (located at the right), to rename the query, in the **Name** box, replace the text with **Geography**, and then press **Enter**.
+
+   ![ws name.](media/6.18.png)
+
+10. On the **Home** ribbon tab, from inside the **Manage Columns** group, click the **Choose Columns** icon.
+
+    ![ws name.](media/6.19.png)
+
+
+11. In the **Choose Columns** window, to uncheck all checkboxes, uncheck the first checkbox.
+
+    ![ws name.](media/6.20.png)
+
+12. Check the following seven columns.
 
 •	CityKey
 •	City
