@@ -109,12 +109,12 @@ In this task, you will create six Power Query queries that will each load as a t
 
 3. To create queries (which will become model tables), check the following six tables:
 
-•	wwi.DimCity
-•	wwi.DimCustomer
-•	wwi.DimDate
-•	wwi.DimEmployee
-•	wwi.DimStockItem
-•	wwi.FactSale
+- wwi.DimCity
+- wwi.DimCustomer
+- wwi.DimDate
+- wwi.DimEmployee
+- wwi.DimStockItem
+- wwi.FactSale
 
    ![ws name.](media/6.12.png)
 
@@ -163,13 +163,13 @@ In this task, you will create six Power Query queries that will each load as a t
 
 12. Check the following seven columns.
 
-•	CityKey
-•	City
-•	StateProvince
-•	Country
-•	SalesTerritory
-•	Region
-•	Subregion
+- CityKey
+- City
+- StateProvince
+- Country
+- SalesTerritory
+- Region
+- Subregion
 
    ![ws name.](media/6.21.png)
 
@@ -228,10 +228,10 @@ In this task, you will create six Power Query queries that will each load as a t
 
 25. Remove all columns, except:
 
-•	CustomerKey
-•	Customer
-•	Category
-•	BuyingGroup
+- CustomerKey
+- Customer
+- Category
+- BuyingGroup
 
    ![ws name.](media/6.30.png)
 
@@ -250,18 +250,18 @@ In this task, you will create six Power Query queries that will each load as a t
  
 30. Remove all columns, except:
 
-•	Date
-•	CalendarMonthNumber
-•	CalendarMonthLabel
-•	CalendarYear
-•	CalendarYearLabel
+- Date
+- CalendarMonthNumber
+- CalendarMonthLabel
+- CalendarYear
+- CalendarYearLabel
 
    ![ws name.](media/6.32.png)
 
-31.	Rename the following columns:
+31. Rename the following columns:
 
-•	**CalendarMonthLabel** as **Month**
-•	**CalendarYearLabel** as **Year**
+- **CalendarMonthLabel** as **Month**
+- **CalendarYearLabel** as **Year**
  
 32. To add a computed column, on the **Add Column** ribbon tab, from inside the **General** group, click **Custom Column**.
 
@@ -308,8 +308,8 @@ In this task, you will create six Power Query queries that will each load as a t
  
 43. Remove all columns, except:
 
-•	EmployeeKey
-•	Employee
+- EmployeeKey
+- Employee
 
    ![ws name.](media/6.39.png)
 
@@ -330,9 +330,9 @@ In this task, you will create six Power Query queries that will each load as a t
  
 49. Remove all columns, except:
 
-•	StockItemKey
-•	Stock Item
-•	Color
+- StockItemKey
+- Stock Item
+- Color
 
 50. Rename the **Stock Item** column as **Product**.
 
@@ -348,21 +348,21 @@ In this task, you will create six Power Query queries that will each load as a t
 
 54. Remove all columns, except:
 
-•	CityKey
-•	CustomerKey
-•	StockItemKey
-•	InvoiceDateKey
-•	SalespersonKey
-•	Quantity
-•	UnitPrice
-•	Profit
+- CityKey
+- CustomerKey
+- StockItemKey
+- InvoiceDateKey
+- SalespersonKey
+- Quantity
+- UnitPrice
+- Profit
 
    ![ws name.](media/6.42.png)
 
 55. Rename the following columns:
 
-•	**UnitPrice** as **Unit Price**
-•	**Profit** as **Profit Amount**
+- **UnitPrice** as **Unit Price**
+- **Profit** as **Profit Amount**
 
 56. Add a computed column using the following formula to create the **Sale Amount** column.
 
@@ -410,8 +410,8 @@ In this task, you will create relationships between all model tables. Each relat
 
 1.	In Power BI Desktop, in the model diagram, organize the tables as follows:
 
-•	Position the **Sale** table at the center of the diagram, and then surround it with the five dimension tables
-•	Ensure that the **Date** and **Geography** tables are next to each other
+-	Position the **Sale** table at the center of the diagram, and then surround it with the five dimension tables
+-	Ensure that the **Date** and **Geography** tables are next to each other
 
    ![ws name.](media/6.47.png)
 
@@ -446,10 +446,10 @@ In this task, you will create relationships between all model tables. Each relat
 
 7.	Create four additional relationships and configure each to assume referential integrity:
 
-•	Relate the **Sale** table **CustomerKey** column to the **Customer** table **CustomerKey** column
-•	Relate the **Sale** table **InvoiceDateKey** column to the **Date** table **Date** column
-•	Relate the **Sale** table **SalespersonKey** column to the **Salesperson** table **EmployeeKey** column
-•	Relate the **Sale** table **StockItemKey** column to the **Product** table **StockItemKey** column
+- Relate the **Sale** table **CustomerKey** column to the **Customer** table **CustomerKey** column
+- Relate the **Sale** table **InvoiceDateKey** column to the **Date** table **Date** column
+- Relate the **Sale** table **SalespersonKey** column to the **Salesperson** table **EmployeeKey** column
+- Relate the **Sale** table **StockItemKey** column to the **Product** table **StockItemKey** column
  
 8.	Verify that all tables are now related.
 
@@ -484,9 +484,9 @@ In this task, you will add two hierarchies to the **Geography** table and config
    ![ws name.](media/6.55.png)
 
 5.	Add the following three additional columns to the hierarchy, in this order:
-•	Sales Territory
-•	State-Province
-•	City
+- Sales Territory
+- State-Province
+- City
 
 6.	To complete the hierarchy configuration, click **Apply Level Changes**.
 
@@ -494,9 +494,9 @@ In this task, you will add two hierarchies to the **Geography** table and config
 
 7.	Create a second hierarchy in the **Geography** table named **Geography**, with the following levels:
 
-•	Country
-•	State-Province
-•	City
+- Country
+- State-Province
+- City
 
    ![ws name.](media/6.57.png)
 
@@ -510,8 +510,8 @@ In this task, you will add two hierarchies to the **Geography** table and config
 
 10. Set the following additional column data categorizations:
 
-•	Categorize the **State-Province** column as **State or Province**
-•	Categorize the **City**column as **City**
+- Categorize the **State-Province** column as **State or Province**
+- Categorize the **City**column as **City**
 
    *Configuration of the **Geography** table is now complete.*
    
@@ -522,8 +522,8 @@ In this task, you will add a hierarchy to the Date table and configure the Month
 
 1.	In the **Date** table, create a hierarchy named **Calendar**, with the following levels:
 
-•	Year
-•	Month
+- Year
+- Month
 
 2.	In the **Date** table, select the **Month** column.
 
@@ -550,9 +550,9 @@ In this task, you will configure the **Sale** table columns.
 
 3.	To multi-select columns, first press the **Ctrl** key, and then select the following three columns:
 
-•	Profit Amount
-•	Sale Amount
-•	Unit Price
+-Profit Amount
+-Sale Amount
+- Unit Price
 
 4.	In the **Properties** pane, in the **Formatting** section, in the **Format** dropdown list, select **Currency**.
 
@@ -576,12 +576,12 @@ In this task, you will hide columns that are not appropriate for reporting.
 
 1.	Multi-select the following 10 columns:
 
-•	**Geography** table **CityKey** column
-•	**Date** table **MonthKey** column
-•	**Customer** table **CustomerKey** column
-•	**Salesperson** table **EmployeeKey** column
-•	**Product** table **StockItemKey** column
-•	**Sale** table **CityKey**, **CustomerKey**, **InvoiceDateKey**, **SalespersonKey**, and **StockItemKey** columns
+- **Geography** table **CityKey** column
+- **Date** table **MonthKey** column
+- **Customer** table **CustomerKey** column
+- **Salesperson** table **EmployeeKey** column
+- **Product** table **StockItemKey** column
+- **Sale** table **CityKey**, **CustomerKey**, **InvoiceDateKey**, **SalespersonKey**, and **StockItemKey** columns
  
 2.	In the **Properties** pane, set the **Is Hidden** property to **Yes**.
 
@@ -689,9 +689,9 @@ In this task, you will design a simple report to test query performance.
 
 7.	Drag and drop the following visuals into the table visual:
 
-•	**Date** table **Month** field (not the **Month** hierarchy level)
-•	**Sale** table **Profit Amount** field
-•	**Sale** table **Profit YTD** field
+- **Date** table **Month** field (not the **Month** hierarchy level)
+- **Sale** table **Profit Amount** field
+- **Sale** table **Profit YTD** field
  
    ![ws name.](media/6.77.png)
 
@@ -703,9 +703,9 @@ In this task, you will design a simple report to test query performance.
  
 9.	Drag and drop the following fields into the table visual:
 
-•	**Geography** table **State-Province** field (it is second from the bottom—do not use the **State-Province** hierarchy level)
-•	**Sale** table **Profit Amount** field
-•	**Sale** table **Profit %** **Total Geography** field
+- **Geography** table **State-Province** field (it is second from the bottom—do not use the **State-Province** hierarchy level)
+- **Sale** table **Profit Amount** field
+- **Sale** table **Profit %** **Total Geography** field
 
    ![ws name.](media/6.79.png)
 
