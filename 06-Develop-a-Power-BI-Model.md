@@ -695,7 +695,7 @@ In this task, you will design a simple report to test query performance.
  
    ![ws name.](media/6.77.png)
 
-   *Performance is likely to be slow, as the model hasn’t yet been optimized. You’ll be optimizing the model with aggregations in **Lab 02B**.*
+   *Performance is likely to be slow, as the model hasn’t yet been optimized. You’ll be optimizing the model with aggregations in **Exercise 7**.*
  
 8.	In the **Visualizations** pane, in the **Values** well, to remove the fields, click **X** next to each field.
 
