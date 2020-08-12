@@ -1,0 +1,21 @@
+[
+  {
+    "Name": "azure-synapse-analytics-day",
+    "Language": "English",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/Eddevinc/azure-synapse-analytics-day/master/06-Develop-a-Power-BI-Model.md",
+        "Order": 1
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/Eddevinc/azure-synapse-analytics-day/master/07-Optimize-a-Power-BI-Model.md",
+        "Order": 2
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/Eddevinc/azure-synapse-analytics-day/master/08-Publish-a-Power-BI-Report.md",
+        "Order": 3
+      }
+      
+    ]
+  }
+]
