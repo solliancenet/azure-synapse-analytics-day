@@ -203,7 +203,7 @@ In this task, you will create six Power Query queries that will each load as a t
     ![ws name.](media/6.26.png)
 
 
-    ***Important: If the query design does not match, review the lab steps to make any corrections.***
+    **Important: If the query design does not match, review the lab steps to make any corrections.**
 
     *The design of the **Geography** query is now complete.*
 
@@ -382,11 +382,11 @@ In this task, you will create six Power Query queries that will each load as a t
  
     *Each query is applied to create a model table. Because the data connection is using DirectQuery storage mode, only the model structure is created. No data is imported. The model now consists of one table for each query.*
 
- 60. In Power BI Desktop, at the left, switch to Model view.
+60. In Power BI Desktop, at the left, switch to Model view.
  
-![ws name.](media/6.46.png)
+    ![ws name.](media/6.46.png)
  
- *Model view allows you to see all tables in the model diagram. It also allows you to configure many model properties. You’ll configure model properties in the next exercise.*
+     *Model view allows you to see all tables in the model diagram. It also allows you to configure many model properties. You’ll configure model properties in the next exercise.*
    
 61. In the model diagram, notice that there are six tables (some may be out of view—scroll horizontally to see them all).
 62. To save the Power BI Desktop solution, on the File tab (backstage view), select Save.
@@ -436,7 +436,6 @@ In this task, you will create relationships between all model tables. Each relat
 5. In the diagram, notice the relationship is a connector between tables..
 
    ![ws name.](media/6.51.png)
-
 
    *Model relationships propagate filters between tables. So, for example, if a report filters by **State-Province** column by **California**, a filter propagates to the **Sale** table to ensure rows for that state are queried.*
 
@@ -550,8 +549,8 @@ In this task, you will configure the **Sale** table columns.
 
 3. To multi-select columns, first press the **Ctrl** key, and then select the following three columns:
 
--Profit Amount
--Sale Amount
+- Profit Amount
+- Sale Amount
 - Unit Price
 
 4. In the **Properties** pane, in the **Formatting** section, in the **Format** dropdown list, select **Currency**.
