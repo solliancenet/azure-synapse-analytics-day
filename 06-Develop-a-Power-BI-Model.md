@@ -6,7 +6,7 @@
 
 
 
-## Exercise 6 - Develop a Power BI Model
+# Exercise 6 - Develop a Power BI Model
 
 
 In this lab, you are working in the role of a **BI developer**.
