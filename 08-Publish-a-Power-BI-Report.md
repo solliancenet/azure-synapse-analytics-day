@@ -102,9 +102,9 @@ The completed report page will look like the following:
 
    ![ws name.](media/8.12.png)
  
-10.	Ensure that the slicer is selected, and then open the **Format** pane.
+10. Ensure that the slicer is selected, and then open the **Format** pane.
 
-11.	Turn the **Shadow** property on.
+11. Turn the **Shadow** property on.
 
     ![ws name.](media/8.13.png)
  
@@ -114,33 +114,33 @@ The completed report page will look like the following:
 
     ![ws name.](media/8.14.png)
  
-13.	To create a new visual, first select an empty area of the report canvas.
+13. To create a new visual, first select an empty area of the report canvas.
 
-14.	To add a table visual to the report canvas, in the **Visualizations** pane, click the table visual icon.
+14. To add a table visual to the report canvas, in the **Visualizations** pane, click the table visual icon.
 
     ![ws name.](media/8.15.png)
  
-15.	Position the table visual at the right of the slicer, and resize it to fill the remaining page space.
+15. Position the table visual at the right of the slicer, and resize it to fill the remaining page space.
 
     ![ws name.](media/8.16.png)
  
-16.	Add the following fields to the table visual:
+16. Add the following fields to the table visual:
 
 -	**Geography** table **State-Province** field
 -	**Sale** table **Profit Amount** field
 -	**Product** table **Profit % All Geography**
 
-17.	Apply the following table visual formats:
+17. Apply the following table visual formats:
 
 -	In the **Style** section, set the **Style** to **Bold Header**.
 -	In the **Grid** section, increase the **Text Size** property to **16** pt.
 -	Turn **Shadow** on.
 
-18.	To sort the table visual rows, click the **Profit % All Geography** column header to sort by descending profitability.
+18. To sort the table visual rows, click the **Profit % All Geography** column header to sort by descending profitability.
 
     ![ws name.](media/8.17.png)
  
-19.	Save the Power BI Desktop solution.
+19. Save the Power BI Desktop solution.
  
 ## **Subtask 2: Develop Page 2**
 
@@ -186,23 +186,23 @@ The completed report page will look like the following:
 
    ![ws name.](media/8.25.png)
  
-10.	When the **Chord** search result appears, click **Add**.
+10. When the **Chord** search result appears, click **Add**.
 
     ![ws name.](media/8.26.png)
  
-11.	When the custom visual imports, click **OK**.
+11. When the custom visual imports, click **OK**.
 
-12.	In the **Visualizations** pane, notice that the chord custom visual sits in an area beneath the core Power BI visuals.
+12. In the **Visualizations** pane, notice that the chord custom visual sits in an area beneath the core Power BI visuals.
 
     ![ws name.](media/8.27.png)
  
-13.	Add a chord visual to the report page.
+13. Add a chord visual to the report page.
  
-14.	Position the chord visual at the right of the slicer, and resize it to fill the remaining page space.
+14. Position the chord visual at the right of the slicer, and resize it to fill the remaining page space.
 
     ![ws name.](media/8.28.png)
  
-15.	Configure the following visual field wells:
+15. Configure the following visual field wells:
 
 -	**From: Geography** table **Sales Territory** field
 -	**To: Customer** table **Buying Group** field
@@ -210,15 +210,15 @@ The completed report page will look like the following:
 
    ![ws name.](media/8.29.png)
  
-16.	Format the chord visual to add shadow.
+16. Format the chord visual to add shadow.
 
-17.	Change the **Year** slicer values, and notice how the chord visual animates.
+17. Change the **Year** slicer values, and notice how the chord visual animates.
 
-18.	Hover the cursor over the outer segments and the internal chords to reveal tooltips describing inter-relationships between sales territories and buying groups.
+18. Hover the cursor over the outer segments and the internal chords to reveal tooltips describing inter-relationships between sales territories and buying groups.
 
-19.	Set the **Year** slicer back to **CY2012**.
+19. Set the **Year** slicer back to **CY2012**.
 
-20.	Save the Power BI Desktop solution.
+20. Save the Power BI Desktop solution.
 
 
 ## **Task 3: Develop a Drill Through Page**
@@ -267,7 +267,7 @@ The completed report page will look like the following:
 
    ![ws name.](media/8.36.png)
  
-10.	Add the following five fields to the multi-row card visual:
+10. Add the following five fields to the multi-row card visual:
 
 -	**Geography** table **State-Province** field
 -	**Sale** table **Quantity** field
@@ -275,7 +275,7 @@ The completed report page will look like the following:
 -	**Sale** table **Profit Amount** field
 -	**Product** table **Profit % All Geography** field
 
-11.	Apply the following formats:
+11. Apply the following formats:
 
 -	In the **Data Labels** section, set the **Text Size** to **16** pt.
 -	In the **Card Title** section, set the **Text Size** property to **20** pt.
@@ -283,46 +283,46 @@ The completed report page will look like the following:
 
    ![ws name.](media/8.37.png)
  
-12.	Add a line and clustered column chart visual to the report page.
+12. Add a line and clustered column chart visual to the report page.
 
     ![ws name.](media/8.38.png)
  
-13.	Position the line and clustered column visual at the right of the slicer, and resize it to fill the remaining page space.
+13. Position the line and clustered column visual at the right of the slicer, and resize it to fill the remaining page space.
 
     ![ws name.](media/8.39.png)
  
-14.	Configure the following field mappings:
+14. Configure the following field mappings:
 
 -	**Shared Axis: Date** table **Month** field
 -	**Column Values: Sale** table **Sale Amount** field
 
     ![ws name.](media/8.40.png)
  
-15.	To add a report-level measure, in the **Fields** pane, right-click the **Sale** table, and then select **New Measure**.
+15. To add a report-level measure, in the **Fields** pane, right-click the **Sale** table, and then select **New Measure**.
 
     ![ws name.](media/8.41.png)
  
     *A report-level measure can be added by the report author. It allows them to define complex summarization logic that’s not already defined in the model.*
     
-16.	In the formula bar, enter the following measure definition:
+16. In the formula bar, enter the following measure definition:
 
     ![ws name.](media/8.42.png)
 
     *The formula divides the sum of the **Profit Amount** column by the sum of the **Sale Amount** column.*
  
-17.	On the **Measure Tools** contextual ribbon tab, set the format to percentage.
+17. On the **Measure Tools** contextual ribbon tab, set the format to percentage.
 
     ![ws name.](media/8.43.png)
  
-18.	Add the **Profitability** measure to the **Line Values** well of the line and clustered column visual.
+18. Add the **Profitability** measure to the **Line Values** well of the line and clustered column visual.
 
     ![ws name.](media/8.44.png)
  
-19.	Format the line and clustered column visual to add shadow.
+19. Format the line and clustered column visual to add shadow.
 
     *The design of the drill through page is now complete.*
 
-20.	Right-click the **State-Province Details** page tab, and then select **Hide Page**.
+20. Right-click the **State-Province Details** page tab, and then select **Hide Page**.
 
     ![ws name.](media/8.45.png)
  
@@ -414,31 +414,31 @@ In this task, you will create two bookmarks to show or hide the superimposed vis
 
 9.	Rename the bookmark as By **Month**, and then press **Enter**.
 
-10.	Click the ellipsis at the right of the bookmark, and then select **Data**.
+10. Click the ellipsis at the right of the bookmark, and then select **Data**.
 
     ![ws name.](media/8.55.png)
  
     *By selecting Data, you’re disabling the bookmark from capturing any applied filters. It means that when the bookmark is applied, it’ll use the filters applied by the report user.*
     
-11.	Click the ellipsis again, and then select **Update**.
+11. Click the ellipsis again, and then select **Update**.
 
     ![ws name.](media/8.56.png)
  
-12.	In the **Selection** pane, unhide the visual, and then hide the visual that groups by month.
+12. In the **Selection** pane, unhide the visual, and then hide the visual that groups by month.
 
-13.	Create a second bookmark, and then name it **By Salesperson**.
+13. Create a second bookmark, and then name it **By Salesperson**.
 
-14.	Configure the bookmark to not override filters (turn off **Data**), and then update the bookmark.
+14. Configure the bookmark to not override filters (turn off **Data**), and then update the bookmark.
 
-15.	Verify there are two bookmarks.
+15. Verify there are two bookmarks.
 
     ![ws name.](media/8.57.png)
  
-16.	Close the **Selection** pane.
+16. Close the **Selection** pane.
 
     ![ws name.](media/8.58.png)
  
-17.	Close the **Bookmarks** pane.
+17. Close the **Bookmarks** pane.
 
     ![ws name.](media/8.59.png)
  
@@ -556,7 +556,7 @@ In this task, you will explore the report to determine root cause for low-profit
 
 9.	Review the monthly sales.
 
-10.	Click the **By Salesperson** button, and then review the result by salespeople.
+10. Click the **By Salesperson** button, and then review the result by salespeople.
 
 
 
