@@ -76,11 +76,12 @@ In this task, you will create an aggregation table to accelerate Power BI report
 
    ![ws name.](media/7.6.png)
  
-   *You’ll apply a transformation to group by the **CityKey** and **InvoiceDateKey** columns, and aggregate the sum of **Profit Amount** column.
+   *You’ll apply a transformation to group by the **CityKey** and **InvoiceDateKey** columns, and aggregate the sum of **Profit Amount** column*.
    
 4.	Rename the query as **Sale Agg**.
 
    ![ws name.](media/7.7.png)
+   
  
 5.	On the **Transform** ribbon tab, from inside the **Table** group, click **Group By**.
 
@@ -232,6 +233,7 @@ In this task, you will complete some post-publication tasks.
 6.	To apply data source credentials, in the **Navigation** pane, hover the cursor over the **Sale Analysis** dataset, click the vertical ellipsis, and then select **Settings**.
  
    ![ws name.](media/7.26.png)
+   
  
 7.	Expand the **Data Source Credentials** section.
 
