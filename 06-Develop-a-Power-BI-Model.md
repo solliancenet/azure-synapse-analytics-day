@@ -173,7 +173,6 @@ In this task, you will create six Power Query queries that will each load as a t
 
    ![ws name.](media/6.21.png)
 
-
    *This selection of columns determine what will be available in your model.*
 
 13. Click **OK**.
@@ -202,11 +201,9 @@ In this task, you will create six Power Query queries that will each load as a t
 
     ![ws name.](media/6.26.png)
 
+    *Important: If the query design does not match, review the lab steps to make any corrections.*
 
-**Important: If the query design does not match, review the lab steps to make any corrections.**
-
-
-*The design of the **Geography** query is now complete.*
+    *The design of the **Geography** query is now complete.*
 
 
 20. In the **Applied Steps** pane, right-click the last step, and then select **View Native Query**.
