@@ -1,8 +1,6 @@
 # Azure Synapse + Power BI Extension Module
-+
-+
-+
-+
+{empty} +
+
 
 ## Exercise 6 - Develop a Power BI Model
 
