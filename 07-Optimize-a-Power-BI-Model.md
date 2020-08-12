@@ -241,6 +241,7 @@ In this task, you will complete some post-publication tasks.
 3.	Notice there is also the **Sale Analysis** report.
 
    *It wasn’t our intention to publish a report, it was published alongside the model. You’ll develop a report in **Exercise 8**. So, we’ll delete this report*.
+   
  
 4.	In the **Navigation** pane, hover the cursor over the **Sale Analysis** report, click the vertical ellipsis (…), and then select **Remove**.
 
