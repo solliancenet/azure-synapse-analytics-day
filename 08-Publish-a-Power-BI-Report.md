@@ -384,7 +384,7 @@ In this task, you will add a new visual to the drill through page.
 
    ![ws name.](media/8.50.png)
  
-## **Subtask 2: Create Bookmarks**
+### **Subtask 2: Create Bookmarks**
 
 In this task, you will create two bookmarks to show or hide the superimposed visuals.
 
@@ -443,7 +443,7 @@ In this task, you will create two bookmarks to show or hide the superimposed vis
     ![ws name.](media/8.59.png)
  
  
-## **Subtask 3: Add Buttons**
+### **Subtask 3: Add Buttons**
 
 In this task, you will add two buttons to the report page, and then configure each to select a bookmark.
 
@@ -508,7 +508,7 @@ In this task, you will prepare the report for publication.
 4.	Save the Power BI Desktop solution.
 
 
-##**Subtask 2: Publish the Report**
+### **Subtask 2: Publish the Report**
 
 In this task, you will publish the report to Power BI.
 
