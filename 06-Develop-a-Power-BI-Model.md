@@ -408,7 +408,7 @@ In this exercise, you will develop the model by creating relationships, setting 
 
 In this task, you will create relationships between all model tables. Each relationship with relate the **Sale** fact table to a dimension table.
 
-1.	In Power BI Desktop, in the model diagram, organize the tables as follows:
+1. In Power BI Desktop, in the model diagram, organize the tables as follows:
 
 -	Position the **Sale** table at the center of the diagram, and then surround it with the five dimension tables
 -	Ensure that the **Date** and **Geography** tables are next to each other
@@ -416,47 +416,47 @@ In this task, you will create relationships between all model tables. Each relat
    ![ws name.](media/6.47.png)
 
 
-2.	To create the first relationship, from the **Sale** table, drag the **CityKey** column, and then drop it on the **Geography** table **CityKey** column.
+2. To create the first relationship, from the **Sale** table, drag the **CityKey** column, and then drop it on the **Geography** table **CityKey** column.
 
    *Sometimes this technique doesn’t work properly. In this case, deselect the column you want to drag by selecting a different column, and then start the drag operation again.*
 
    ![ws name.](media/6.48.png)
 
-3.	In the **Create Relationship** window, at the bottom-left, check the **Assume Referential Integrity** checkbox.
+3. In the **Create Relationship** window, at the bottom-left, check the **Assume Referential Integrity** checkbox.
 
    ![ws name.](media/6.49.png)
 
    *When referential integrity is assumed, Power BI will join tables by using a more efficient INNER join (instead of an OUTER join). However, it’s important that there are matching values on both sides of the join, because an INNER join will eliminate rows from the query result when values don’t match. At design time, sometimes Power BI Desktop will attempt to validate that data integrity is in place. If the validation takes too long, when prompted, you can skip validation process.*
 
-4.	Click **OK**.
+4. Click **OK**.
 
    ![ws name.](media/6.50.png)
 
 
-5.	In the diagram, notice the relationship is a connector between tables..
+5. In the diagram, notice the relationship is a connector between tables..
 
    ![ws name.](media/6.51.png)
 
 
    *Model relationships propagate filters between tables. So, for example, if a report filters by **State-Province** column by **California**, a filter propagates to the **Sale** table to ensure rows for that state are queried.*
 
-6.	Notice there is a one-side (1) and many-side (*) to the relationship.
+6. Notice there is a one-side (1) and many-side (*) to the relationship.
 
    *Dimension tables, like **Geography**, are always the one-side of the relationship. These tables include a unique column (dimension key column). Filters always propagate from the one-side to the many-side. In more advanced scenarios, filters can propagate in both directions. In this lab, you won’t configure bi-directional relationships. For more information about relationships*, [***see Model relationships in Power BI Desktop.***](https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand)
 
-7.	Create four additional relationships and configure each to assume referential integrity:
+7. Create four additional relationships and configure each to assume referential integrity:
 
 - Relate the **Sale** table **CustomerKey** column to the **Customer** table **CustomerKey** column
 - Relate the **Sale** table **InvoiceDateKey** column to the **Date** table **Date** column
 - Relate the **Sale** table **SalespersonKey** column to the **Salesperson** table **EmployeeKey** column
 - Relate the **Sale** table **StockItemKey** column to the **Product** table **StockItemKey** column
  
-8.	Verify that all tables are now related.
+8. Verify that all tables are now related.
 
    ![ws name.](media/6.52.png)
 
 
-9.	Verify that the one-side of each relationship is on the dimension table side.
+9. Verify that the one-side of each relationship is on the dimension table side.
 
    *If a relationship is configured to filter in the wrong direction, double-click the relationship, and then modify the ***Cardinality** property.*
 
@@ -467,32 +467,32 @@ In this task, you will create relationships between all model tables. Each relat
 
 In this task, you will add two hierarchies to the **Geography** table and configure data categorization for three columns.
 
-1.	In the model diagram, in the **Geography** table, right-click the **Region** column, and then select **Create Hierarchy**.
+1. In the model diagram, in the **Geography** table, right-click the **Region** column, and then select **Create Hierarchy**.
 
    ![ws name.](media/6.53.png)
 
    *Hierarchies provide ease of navigation across the model data, allowing drill down and drill up operations. Always create a hierarchy using the column that’s to become the first (top) level of the hierarchy.*
 
-2.	In the Properties pane (located at the right of the model diagram), in the **Name** box, replace the text with **Sales Organization**.
+2. In the Properties pane (located at the right of the model diagram), in the **Name** box, replace the text with **Sales Organization**.
 
    ![ws name.](media/6.54.png)
 
-3.	In the **Properties** pane, in the Hierarchy dropdown list (select a column to add a level), select the **Subregion** column.
+3. In the **Properties** pane, in the Hierarchy dropdown list (select a column to add a level), select the **Subregion** column.
 
-4.	Notice that the column was added as the next level in the hierarchy.
+4. Notice that the column was added as the next level in the hierarchy.
 
    ![ws name.](media/6.55.png)
 
-5.	Add the following three additional columns to the hierarchy, in this order:
+5. Add the following three additional columns to the hierarchy, in this order:
 - Sales Territory
 - State-Province
 - City
 
-6.	To complete the hierarchy configuration, click **Apply Level Changes**.
+6. To complete the hierarchy configuration, click **Apply Level Changes**.
 
    ![ws name.](media/6.56.png)
 
-7.	Create a second hierarchy in the **Geography** table named **Geography**, with the following levels:
+7. Create a second hierarchy in the **Geography** table named **Geography**, with the following levels:
 
 - Country
 - State-Province
@@ -500,9 +500,9 @@ In this task, you will add two hierarchies to the **Geography** table and config
 
    ![ws name.](media/6.57.png)
 
-8.	In the **Geography** table, select the **Country** column.
+8. In the **Geography** table, select the **Country** column.
  
-9.	In the **Properties** pane, expand the **Advanced** section, and then in the **Data Category** dropdown, select **Country/Region**.
+9. In the **Properties** pane, expand the **Advanced** section, and then in the **Data Category** dropdown, select **Country/Region**.
 
    ![ws name.](media/6.58.png)
 
@@ -520,14 +520,14 @@ In this task, you will add two hierarchies to the **Geography** table and config
 
 In this task, you will add a hierarchy to the Date table and configure the Month column sort order.
 
-1.	In the **Date** table, create a hierarchy named **Calendar**, with the following levels:
+1. In the **Date** table, create a hierarchy named **Calendar**, with the following levels:
 
 - Year
 - Month
 
-2.	In the **Date** table, select the **Month** column.
+2. In the **Date** table, select the **Month** column.
 
-3.	In the **Properties** pane, in the **Advanced** section, in the **Sort by Column** dropdown list, select **MonthKey**.
+3. In the **Properties** pane, in the **Advanced** section, in the **Sort by Column** dropdown list, select **MonthKey**.
 
    ![ws name.](media/6.59.png)
  
@@ -540,27 +540,27 @@ In this task, you will add a hierarchy to the Date table and configure the Month
 
 In this task, you will configure the **Sale** table columns.
 
-1.	In the **Sale** table, select the **Quantity** column.
+1. In the **Sale** table, select the **Quantity** column.
 
-2.	In the **Properties** pane, in the **Formatting** section, set the **Thousands Separator** property to **Yes**.
+2. In the **Properties** pane, in the **Formatting** section, set the **Thousands Separator** property to **Yes**.
 
    ![ws name.](media/6.60.png)
 
    *Formatting columns ensures appropriate and consistent formatted values in report visuals.*
 
-3.	To multi-select columns, first press the **Ctrl** key, and then select the following three columns:
+3. To multi-select columns, first press the **Ctrl** key, and then select the following three columns:
 
 -Profit Amount
 -Sale Amount
 - Unit Price
 
-4.	In the **Properties** pane, in the **Formatting** section, in the **Format** dropdown list, select **Currency**.
+4. In the **Properties** pane, in the **Formatting** section, in the **Format** dropdown list, select **Currency**.
 
    ![ws name.](media/6.61.png)
 
-5.	Select the **Unit Price** column (you might need to first de-select the multi-selection of columns, and then select this single column).
+5. Select the **Unit Price** column (you might need to first de-select the multi-selection of columns, and then select this single column).
 
-6.	In the **Properties** pane, in the **Advanced** section, in the **Summarize by** dropdown list, select **Average**.
+6. In the **Properties** pane, in the **Advanced** section, in the **Summarize by** dropdown list, select **Average**.
 
    *By default, numeric column will be aggregated by using the sum function. In this case, it doesn’t make sense to sum unit price values together. The default summarization for this column now averages unit prices.*
  
@@ -574,7 +574,7 @@ In this task, you will hide columns that are not appropriate for reporting.
 
 *Typically, you hide key columns that are used to relate tables or sort columns.*
 
-1.	Multi-select the following 10 columns:
+1. Multi-select the following 10 columns:
 
 - **Geography** table **CityKey** column
 - **Date** table **MonthKey** column
@@ -583,7 +583,7 @@ In this task, you will hide columns that are not appropriate for reporting.
 - **Product** table **StockItemKey** column
 - **Sale** table **CityKey**, **CustomerKey**, **InvoiceDateKey**, **SalespersonKey**, and **StockItemKey** columns
  
-2.	In the **Properties** pane, set the **Is Hidden** property to **Yes**.
+2. In the **Properties** pane, set the **Is Hidden** property to **Yes**.
 
    ![ws name.](media/6.63.png)
 
@@ -594,23 +594,23 @@ In this task, you will mark the **Date** table.
 
 *Marking a date table is required to ensure the Data Analysis Expressions (DAX) time intelligence functions work correctly. You’ll create a measure and define a time intelligence calculation in the next task.*
 
-1.	Switch to Report view.
+1. Switch to Report view.
 
    ![ws name.](media/6.64.png)
 
    *Marking a date table cannot be done in Model view.*
 
-2.	In the **Fields** pane (located at the right), select the **Date** table.
+2. In the **Fields** pane (located at the right), select the **Date** table.
 
-3.	On the **Table Tools** contextual ribbon tab, from inside the **Calendars** group, click **Mark as Date Table**, and then select **Mark as Date Table**.
+3. On the **Table Tools** contextual ribbon tab, from inside the **Calendars** group, click **Mark as Date Table**, and then select **Mark as Date Table**.
  
    ![ws name.](media/6.65.png)
  
-4.	In the **Mark as Date Table** window, in the **Date Column** dropdown list, select **Date**.
+4. In the **Mark as Date Table** window, in the **Date Column** dropdown list, select **Date**.
 
    ![ws name.](media/6.66.png)
  
-5.	When validation has succeeded, click **OK**.
+5. When validation has succeeded, click **OK**.
 
    ![ws name.](media/6.67.png)
  
@@ -620,11 +620,11 @@ In this task, you will mark the **Date** table.
 
 In this task, you will create two measures. Measures are expressions that summarize model data.
 
-1.	In the **Fields** pane, right-click the **Sale** table, and then select **New Measure**.
+1. In the **Fields** pane, right-click the **Sale** table, and then select **New Measure**.
  
  ![ws name.](media/6.68.png)
  
-2.	In the formula bar (located directly beneath the ribbon), replace the text with the following measure definition, and then press **Enter**.
+2. In the formula bar (located directly beneath the ribbon), replace the text with the following measure definition, and then press **Enter**.
 
    *Tip: When entering the formula, to enter a carriage return, press **Shift+Enter**.*
    
@@ -632,29 +632,29 @@ In this task, you will create two measures. Measures are expressions that summar
 
    *This formula uses a built-in DAX time intelligence function to accumulate the sum of the **Sale** table **Profit Amount** column values within the year to produce a year-to-date (YTD) result.*
 
-3.	In the **Fields** pane, notice the addition of the measure.
+3. In the **Fields** pane, notice the addition of the measure.
 
    ![ws name.](media/6.70.png)
 
    *Measures are identified by the calculator icon.*
 
-4.	To configure formatting, in the **Fields** pane, ensure the measure is selected (not checked).
+4. To configure formatting, in the **Fields** pane, ensure the measure is selected (not checked).
 
-5.	On the **Measure Tools** contextual ribbon, from inside the **Formatting** group, in the dropdown list, select **Currency**, and set the decimal places to **2**.
+5. On the **Measure Tools** contextual ribbon, from inside the **Formatting** group, in the dropdown list, select **Currency**, and set the decimal places to **2**.
  
    ![ws name.](media/6.71.png)
  
-6.	Add a second measure to the Sale table using the following formula:
+6. Add a second measure to the Sale table using the following formula:
 
    ![ws name.](media/6.72.png)
 
    *This formula divides the sum of the **Sale** table **Profit Amount** column by the same expression, but by using a different filter context. The denominator removes any filters applied to the **Geography** table.*
 
-7.	Format the **Profit % All Geography** measure as a percentage.
+7. Format the **Profit % All Geography** measure as a percentage.
 
    ![ws name.](media/6.73.png)
  
-8.	Save the Power BI Desktop solution.
+8. Save the Power BI Desktop solution.
 
    *All model configurations have now been made. In the next exercise, you’ll create a test report and measure query performance.*
 
@@ -667,27 +667,27 @@ In this exercise, you will create a test report. You will then use Performance A
 
 In this task, you will design a simple report to test query performance.
 
-1.	In Power BI Desktop, in Report view, to add a slicer to the report canvas, in the **Visualizations** pane, click the slicer icon.
+1. In Power BI Desktop, in Report view, to add a slicer to the report canvas, in the **Visualizations** pane, click the slicer icon.
  
    ![ws name.](media/6.74.png)
 
-2.	In the **Fields** pane, from the **Date** table, drag the **Year** field (not the year level of the **Calendar** hierarchy) to the slicer.
+2. In the **Fields** pane, from the **Date** table, drag the **Year** field (not the year level of the **Calendar** hierarchy) to the slicer.
 
-3.	Filter the slicer by **CY2012**.
+3. Filter the slicer by **CY2012**.
 
    ![ws name.](media/6.75.png)
  
-4.	To create a new visual, first select an empty area of the report canvas.
+4. To create a new visual, first select an empty area of the report canvas.
 
    *Selecting the report canvas de-selects the slicer visual*.
  
-5.	To add a table visual to the report canvas, in the **Visualizations** pane, click the table visual icon.
+5. To add a table visual to the report canvas, in the **Visualizations** pane, click the table visual icon.
 
    ![ws name.](media/6.76.png)
  
-6.	Position the table visual to the right of the slicer, and then resize it as large as possible.
+6. Position the table visual to the right of the slicer, and then resize it as large as possible.
 
-7.	Drag and drop the following visuals into the table visual:
+7. Drag and drop the following visuals into the table visual:
 
 - **Date** table **Month** field (not the **Month** hierarchy level)
 - **Sale** table **Profit Amount** field
@@ -697,11 +697,11 @@ In this task, you will design a simple report to test query performance.
 
    *Performance is likely to be slow, as the model hasn’t yet been optimized. You’ll be optimizing the model with aggregations in **Exercise 7**.*
  
-8.	In the **Visualizations** pane, in the **Values** well, to remove the fields, click **X** next to each field.
+8. In the **Visualizations** pane, in the **Values** well, to remove the fields, click **X** next to each field.
 
    ![ws name.](media/6.78.png)
  
-9.	Drag and drop the following fields into the table visual:
+9. Drag and drop the following fields into the table visual:
 
 - **Geography** table **State-Province** field (it is second from the bottom—do not use the **State-Province** hierarchy level)
 - **Sale** table **Profit Amount** field
@@ -714,11 +714,11 @@ In this task, you will design a simple report to test query performance.
 
 In this task, you will use Performance Analyzer to measure query performance.
 
-1.	On the **View** ribbon tab, from inside **Show Panes** group, select **Performance Analyzer**.
+1. On the **View** ribbon tab, from inside **Show Panes** group, select **Performance Analyzer**.
 
    ![ws name.](media/6.80.png)
  
-2.	In the **Performance Analyzer** pane, click **Start Recording.
+2. In the **Performance Analyzer** pane, click **Start Recording.
 
    ![ws name.](media/6.81.png)
  
@@ -728,24 +728,24 @@ In this task, you will use Performance Analyzer to measure query performance.
 
    ![ws name.](media/6.82.png)
  
-4.	In the list, notice the duration statistics, which are recorded in milliseconds.
+4. In the list, notice the duration statistics, which are recorded in milliseconds.
 
-5.	Expand the **Table** visual.
+5. Expand the **Table** visual.
 
-6.	Notice that it is possible to determine the duration of the DirectQuery process, and that presently it is several seconds.
+6. Notice that it is possible to determine the duration of the DirectQuery process, and that presently it is several seconds.
 
-   *Report users demand fast responses. Usually, they’re very happy when visuals refresh in less than one second, but are still happy when it takes no more than about five seconds.*
+    *Report users demand fast responses. Usually, they’re very happy when visuals refresh in less than one second, but are still happy when it takes no more than about five seconds.*
 
 
-7.	To copy the SQL query to the clipboard, click the **Copy Query.
+7. To copy the SQL query to the clipboard, click the **Copy Query.
 
    ![ws name.](media/6.83.png)
  
-8.	Open a text editor, like Notepad, and paste in the query.
+8. Open a text editor, like Notepad, and paste in the query.
 
-9.	Review the query.
+9. Review the query.
 
-*The query statement provides you with insight into how Power BI queries Azure Synapse Analytics. It can lead to you to apply specific optimizations in the data source, like indexes or materialized views, to improve query performance.*
+   *The query statement provides you with insight into how Power BI queries Azure Synapse Analytics. It can lead to you to apply specific optimizations in the data source, like indexes or materialized views, to improve query performance.*
 
 10. Close the text editor, without saving changes.
 
