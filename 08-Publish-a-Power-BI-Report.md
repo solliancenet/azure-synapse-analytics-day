@@ -514,7 +514,7 @@ In this task, you will publish the report to Power BI.
 
 1.	On the **Home** ribbon tab, from inside the **Share** group, click **Publish**.
 
-   ![ws name.](media/8.62.png)
+   ![ws name.](media/8.64.png)
 
  
 2.	If prompted to save changes, click **Yes**.
@@ -523,7 +523,7 @@ In this task, you will publish the report to Power BI.
 
 4.	Click **Select**.
 
-   ![ws name.](media/8.63.png)
+   ![ws name.](media/8.65.png)
  
 5.	When publication has completed, click **Got It**.
 
@@ -542,7 +542,7 @@ In this task, you will explore the report to determine root cause for low-profit
 
 4.	At the left, notice there are only two pages.
 
-   ![ws name.](media/8.64.png)
+   ![ws name.](media/8.66.png)
  
    *The drill through page was hidden.*
    
