@@ -735,7 +735,8 @@ In this task, you will use Performance Analyzer to measure query performance.
 6.	Notice that it is possible to determine the duration of the DirectQuery process, and that presently it is several seconds.
 
    *Report users demand fast responses. Usually, they’re very happy when visuals refresh in less than one second, but are still happy when it takes no more than about five seconds.*
- 
+
+
 7.	To copy the SQL query to the clipboard, click the **Copy Query.
 
    ![ws name.](media/6.83.png)
