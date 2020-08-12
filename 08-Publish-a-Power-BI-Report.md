@@ -1,4 +1,4 @@
-# Exercise 8: Publish a Power BI Report
+# Exercise 7: Publish a Power BI Report
 
 In this lab, you are working in the role of a **business analyst**.
 
