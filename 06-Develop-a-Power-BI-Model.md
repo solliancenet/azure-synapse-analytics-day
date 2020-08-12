@@ -458,7 +458,7 @@ In this task, you will create relationships between all model tables. Each relat
 
 9. Verify that the one-side of each relationship is on the dimension table side.
 
-   *If a relationship is configured to filter in the wrong direction, double-click the relationship, and then modify the ***Cardinality** property.*
+   *If a relationship is configured to filter in the wrong direction, double-click the relationship, and then modify the **Cardinality** property.*
 
 10. Save the Power BI Desktop solution.
 
