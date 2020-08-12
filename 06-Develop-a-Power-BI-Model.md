@@ -1,5 +1,7 @@
 # Azure Synapse + Power BI Extension Module
-{empty} +
+:bl: pass:[ +]
+
+{bl}
 
 
 ## Exercise 6 - Develop a Power BI Model
