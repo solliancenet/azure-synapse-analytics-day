@@ -384,7 +384,7 @@ In this task, you will create six Power Query queries that will each load as a t
 
  60. In Power BI Desktop, at the left, switch to Model view.
  
-     ![ws name.](media/6.46.png)
+![ws name.](media/6.46.png)
  
  *Model view allows you to see all tables in the model diagram. It also allows you to configure many model properties. You’ll configure model properties in the next exercise.*
    
