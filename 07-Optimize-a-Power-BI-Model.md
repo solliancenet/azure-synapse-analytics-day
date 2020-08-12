@@ -32,7 +32,7 @@ In this task, you will configure dual storage for all dimension tables.
 -	Product
 -	Salesperson
 
-4.	In the **Properties** pane, from within the **Advanced** section, in the **Storage Mode** dropdown list, select **Dual**.
+4. In the **Properties** pane, from within the **Advanced** section, in the **Storage Mode** dropdown list, select **Dual**.
 
    ![ws name.](media/7.1.png)
  
@@ -74,7 +74,6 @@ In this task, you will create an aggregation table to accelerate Power BI report
 2. In the Power Query Editor window, from inside the **Queries** pane, right-click the **Sale** query, and then select **Duplicate**.
 
    ![ws name.](media/7.5.png)
-   
  
 3. In the **Queries** pane, notice the addition of a new query.
 
@@ -95,8 +94,7 @@ In this task, you will create an aggregation table to accelerate Power BI report
 6.	In the **Group By** window, select the **Advanced** option.
 
    ![ws name.](media/7.9.png)
-   
- 
+    
    *The advanced option allows grouping by more than one column.*
    
 7.	In the grouping dropdown list, ensure that **CityKey** is selected.
@@ -125,11 +123,11 @@ In this task, you will create an aggregation table to accelerate Power BI report
 14. On the **Home** ribbon tab, from inside the **Close** group, click the **Close & Apply** icon.
 
     ![ws name.](media/7.13.png)
-    
- 
+
     *A new table is added to the model*.
     
 15. Save the Power BI Desktop solution.
+
 
 
 ### **Subtask 3: Configure Aggregations**
@@ -281,8 +279,7 @@ In this task, you will complete some post-publication tasks.
 13. Expand the **Scheduled Refresh** section.
 
     ![ws name.](media/7.29.png)
-    
- 
+
     *In this lab, you won’t schedule data refresh. Because your dataset contains import data (for the dimension tables and the aggregation table), you can schedule data refresh to keep the aggregation and dimension table import data current. It’s possible, too, that your Azure Data Factory pipelines could send refresh commands using the Power BI REST API, once the data warehouse load has completed*.
     
 14. Expand the **Endorsement** section.
