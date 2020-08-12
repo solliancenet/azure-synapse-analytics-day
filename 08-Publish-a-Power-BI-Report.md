@@ -407,6 +407,8 @@ In this task, you will create two bookmarks to show or hide the superimposed vis
 6.	Verify that the “by Month” visual is now visible.
 
 7.	In the **Bookmarks** pane, click **Add**.
+
+   ![ws name.](media/8.54.png)
  
 8.	To rename the bookmark, double-click **Bookmark 1**.
 
@@ -414,13 +416,13 @@ In this task, you will create two bookmarks to show or hide the superimposed vis
 
 10.	Click the ellipsis at the right of the bookmark, and then select **Data**.
 
-    ![ws name.](media/8.54.png)
+    ![ws name.](media/8.55.png)
  
     *By selecting Data, you’re disabling the bookmark from capturing any applied filters. It means that when the bookmark is applied, it’ll use the filters applied by the report user.*
     
 11.	Click the ellipsis again, and then select **Update**.
 
-    ![ws name.](media/8.55.png)
+    ![ws name.](media/8.56.png)
  
 12.	In the **Selection** pane, unhide the visual, and then hide the visual that groups by month.
 
@@ -430,15 +432,15 @@ In this task, you will create two bookmarks to show or hide the superimposed vis
 
 15.	Verify there are two bookmarks.
 
-    ![ws name.](media/8.56.png)
+    ![ws name.](media/8.57.png)
  
 16.	Close the **Selection** pane.
 
-    ![ws name.](media/8.57.png)
+    ![ws name.](media/8.58.png)
  
 17.	Close the **Bookmarks** pane.
 
-    ![ws name.](media/8.58.png)
+    ![ws name.](media/8.59.png)
  
  
 ## **Subtask 3: Add Buttons**
@@ -447,13 +449,13 @@ In this task, you will add two buttons to the report page, and then configure ea
 
 1.	On the **Insert** ribbon tab, from inside the **Elements** group, click **Buttons**, and then select **Blank**.
 
-   ![ws name.](media/8.59.png)
+   ![ws name.](media/8.60.png)
  
 2.	Position and size the button as follows:
 
 3.	Position and size the button so that it is directly beneath the multi-row card visual and it is the same width.
 
-   ![ws name.](media/8.60.png)
+   ![ws name.](media/8.61.png)
  
 4.	In the **Visualizations** pane, apply the following button formats:
 
@@ -470,7 +472,7 @@ In this task, you will add two buttons to the report page, and then configure ea
 
 5.	Clone the button, and then position it directly beneath the first button.
 
-   ![ws name.](media/8.61.png)
+   ![ws name.](media/8.62.png)
  
 6.	Modify the button formats, as follows:
 
@@ -480,9 +482,12 @@ In this task, you will add two buttons to the report page, and then configure ea
  
 7.	Verify that the buttons looks like the following:
  
+   ![ws name.](media/8.63.png)
+ 
 8.	Test each button by pressing the **Ctrl** key and clicking a button.
 
-
+ 
+   
 ## **Task 5: Publish the Report**
 
 In this exercise, you will prepare the report for publication, and then publish it to Power BI.
