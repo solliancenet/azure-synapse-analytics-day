@@ -624,6 +624,7 @@ In this task, you will create two measures. Measures are expressions that summar
  
  ![ws name.](media/6.68.png)
  
+ 
 2. In the formula bar (located directly beneath the ribbon), replace the text with the following measure definition, and then press **Enter**.
 
    *Tip: When entering the formula, to enter a carriage return, press **Shift+Enter**.*
