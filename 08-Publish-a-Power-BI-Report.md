@@ -128,7 +128,7 @@ The completed report page will look like the following:
 
 -	**Geography** table **State-Province** field
 -	**Sale** table **Profit Amount** field
--	**Sale** table **Profit % All Geography**
+-	**Product** table **Profit % All Geography**
 
 17.	Apply the following table visual formats:
 
@@ -273,7 +273,7 @@ The completed report page will look like the following:
 -	**Sale** table **Quantity** field
 -	**Sale** table **Sale Amount** field
 -	**Sale** table **Profit Amount** field
--	**Sale** table **Profit % All Geography** field
+-	**Product** table **Profit % All Geography** field
 
 11.	Apply the following formats:
 
