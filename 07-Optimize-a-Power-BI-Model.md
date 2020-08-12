@@ -38,15 +38,16 @@ In this task, you will configure dual storage for all dimension tables.
  
    *It’s common to set dimension tables to use dual storage mode. This way, when used by report slicers, they deliver fast performance*.
    
-5.	When prompted to set the storage mode, click **OK**.
+5. When prompted to set the storage mode, click **OK**.
 
    ![ws name.](media/7.2.png)
+   
   
-6.	When the refresh completes, save the Power BI Desktop solution.
+6. When the refresh completes, save the Power BI Desktop solution.
 
    *The data model is now in mixed mode. It’s a composite model consisting of DirectQuery storage mode tables and import storage mode tables*.
    
-7.	In File Explorer, notice the file size has grown as a result of the imported data for the dimension tables.
+7. In File Explorer, notice the file size has grown as a result of the imported data for the dimension tables.
 
    *When the model stores data, you need to ensure the cached data current. The model must be refreshed on a frequent basis to ensure import data is in sync with the source data*.
    
@@ -67,11 +68,11 @@ In this task, you will create an aggregation table to accelerate Power BI report
  
    ![ws name.](media/7.4.png)
  
-2.	In the Power Query Editor window, from inside the **Queries** pane, right-click the **Sale** query, and then select **Duplicate**.
+2. In the Power Query Editor window, from inside the **Queries** pane, right-click the **Sale** query, and then select **Duplicate**.
 
    ![ws name.](media/7.5.png)
  
-3.	In the **Queries** pane, notice the addition of a new query.
+3. In the **Queries** pane, notice the addition of a new query.
 
    ![ws name.](media/7.6.png)
  
