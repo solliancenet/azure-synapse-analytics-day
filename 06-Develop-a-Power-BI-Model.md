@@ -3,9 +3,6 @@
 <br/>
 <br/>
 
-
-
-
 # Exercise 6 - Develop a Power BI Model
 
 
