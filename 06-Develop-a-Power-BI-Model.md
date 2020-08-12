@@ -1,7 +1,8 @@
 # Azure Synapse + Power BI Extension Module
-{nbsp} +
-{nbsp} +
-
+{sp} +
+{sp} +
+{sp} +
+{sp} +
 
 
 
