@@ -8,7 +8,7 @@ You will use Power BI Desktop to configure dimension table storage as dual. You 
 
 **Important**
 
-It’s a prerequisite that you successfully complete Lab 02A before commencing this lab.
+It’s a prerequisite that you successfully complete Exercise 7 before commencing this lab.
 
 ---
 
