@@ -2,13 +2,13 @@
 
 In this Exercise, you are continuing to work in the role of a BI developer.
 
-You will use Power BI Desktop to configure dimension table storage as dual. You will then add an aggregation table to accelerate query performance. The model storage will be switched to mixed mode: Some tables will cache data to further boost query performance. You will finalize the lab by deploying the model to the Power BI service, so it is ready for reporting in Exercise 8.
+You will use Power BI Desktop to configure dimension table storage as dual. You will then add an aggregation table to accelerate query performance. The model storage will be switched to mixed mode: Some tables will cache data to further boost query performance. You will finalize the lab by deploying the model to the Power BI service, so it is ready for reporting in Exercise 7.
 
 ---
 
 **Important**
 
-It’s a prerequisite that you successfully complete Exercise 7 before commencing this lab.
+It’s a prerequisite that you successfully complete Exercise 6 before commencing this lab.
 
 ---
 
@@ -20,7 +20,7 @@ In this exercise, you will configure dimension tables as dual storage mode table
 
 In this task, you will configure dual storage for all dimension tables.
 
-1.	Switch to the Power BI Desktop solution you developed in **Exercise 6**.
+1.	Switch to the Power BI Desktop solution you developed in **Exercise 5**.
 
 2.	Switch to Model view.
 
@@ -167,7 +167,7 @@ In this task, you will switch the aggregation table to import data. You will the
  
 7.	Notice the warning that describes the table will be hidden.
 
-   *The table will be hidden in a different way to other hidden model objects (like the key columns you hid in **Exercise 7**). Aggregation tables are always hidden, and they can’t even be referenced in model calculations*.
+   *The table will be hidden in a different way to other hidden model objects (like the key columns you hid in **Exercise 5**). Aggregation tables are always hidden, and they can’t even be referenced in model calculations*.
    
 8.	Click **Apply All**.
 
@@ -218,7 +218,7 @@ In this task, you will publish the model.
 
 6.	Close Power BI Desktop.
 
-   *You will open a new instance of Power BI Desktop in **Exercise 8** when you create a report*.
+   *You will open a new instance of Power BI Desktop in **Exercise 7** when you create a report*.
    
  
 ## **Subtask 2: Complete Post-Publication Tasks**
@@ -238,7 +238,7 @@ In this task, you will complete some post-publication tasks.
  
 3.	Notice there is also the **Sale Analysis** report.
 
-   *It wasn’t our intention to publish a report, it was published alongside the model. You’ll develop a report in **Exercise 8**. So, we’ll delete this report*.
+   *It wasn’t our intention to publish a report, it was published alongside the model. You’ll develop a report in **Exercise 7**. So, we’ll delete this report*.
    
  
 4.	In the **Navigation** pane, hover the cursor over the **Sale Analysis** report, click the vertical ellipsis (…), and then select **Remove**.
@@ -306,4 +306,4 @@ In this task, you will complete some post-publication tasks.
 
     ![ws name.](media/7.32.png)
  
-    *The dataset is published and is configured ready for use. In **Exercise 8**, you’ll perform a live connection to the dataset and create a report*.
+    *The dataset is published and is configured ready for use. In **Exercise 7**, you’ll perform a live connection to the dataset and create a report*.

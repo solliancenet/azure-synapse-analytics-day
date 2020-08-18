@@ -58,10 +58,3 @@ SQL data warehouses have been for a long time the centers of gravity in data pla
 
 The Azure Synapse SQL Pools in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
 
-## Exercise 5 - Data Science with Azure Synapse Spark
-
-In this exercise, you will play the role of a data scientist. You will create a model to predict customer purchase volumes based on the WWI sales dataset, using Azure Synapse Spark.
-
-Modern era data environments must handle in a performant and seamless way any data an organization might have. In almost all cases, this means a combination of relational SQL-style capabilities and big data ones. In the world of massively distributed big data processing platforms, Spark is almost an implicit choice.
-
-Azure Synapse Analytics provides Apache Spark to support data science workloads. They enable data scientists to perform all their specific tasks while benefiting from the integration with the other Synapse services.

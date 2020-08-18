@@ -7,7 +7,7 @@
 # Exercise 5 - Develop a Power BI Model
 
 
-In this lab, you are working in the role of a **BI developer**.
+In this exercise, you are working in the role of a **BI developer**.
 You will use Power BI Desktop to develop a data model over your Azure Synapse Wide World Importers (WWI) data warehouse. It will comprise six tables.
 
 ---
@@ -69,7 +69,7 @@ In this task, you will prepare your environment.
 
 In this task, you will download a Power BI data source file from Synapse Studio.
 
-1. In the Azure Synapse web browser session (opened in your previous lab), navigate to **Synapse Studio**.
+1. In the Azure Synapse web browser session (opened in your previous exercise), navigate to **Synapse Studio**.
 
 2. At the left, select the **Develop** hub.
 
@@ -701,7 +701,7 @@ In this task, you will design a simple report to test query performance.
  
    ![ws name.](media/6.77.png)
 
-   *Performance is likely to be slow, as the model hasn’t yet been optimized. You’ll be optimizing the model with aggregations in **Exercise 7**.*
+   *Performance is likely to be slow, as the model hasn’t yet been optimized. You’ll be optimizing the model with aggregations in **Exercise 6**.*
  
 8. In the **Visualizations** pane, in the **Values** well, to remove the fields, click **X** next to each field.
 
