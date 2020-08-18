@@ -308,7 +308,7 @@ In this task, you will complete some post-publication tasks.
  
     *The dataset is published and is configured ready for use. In **Exercise 7**, you’ll perform a live connection to the dataset and create a report*.
     
-   ###Summary
+   ### Summary
    
 In this exercise, you used Power BI Desktop to configure dimension table storage as dual. You then added an aggregation table to accelerate query performance. The model storage was switched to mixed mode: Some tables now cache data to further boost query performance. You finalized the exercise by deploying the model to the Power BI service, so it is ready for reporting in Exercise 07
 
