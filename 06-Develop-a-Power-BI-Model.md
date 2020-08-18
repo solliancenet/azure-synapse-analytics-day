@@ -763,7 +763,7 @@ In this task, you will use Performance Analyzer to measure query performance.
 
 In Exercise 06, you’ll improve query performance by creating an aggregation table.
 
-Summary
+###Summary
 
 In this exercise, you used Power BI Desktop to develop a data model over your Azure Synapse Wide World Importers (WWI) data warehouse. It comprises six tables.
 
