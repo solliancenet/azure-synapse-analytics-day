@@ -34,7 +34,7 @@ In this task, you will create a Power BI Desktop solution.
 
 ### **Subtask 2: Create a Live Connection**
 
-In this task, you will create a live connection to the **Sale Analysi** dataset.
+In this task, you will create a live connection to the **Sale Analysis** dataset.
 
 1. On the **Home** ribbon, from inside the **Data** group, click **Get Data**, and then select Power **BI Datasets**.
 
