@@ -97,9 +97,10 @@ In this task, you will download a Power BI data source file from Synapse Studio.
 
    *A .pbids file contains a connection to your SQL pool. It’s a convenient way to start your project. When opened, it’ll create a new Power BI Desktop solution that already stores the connection details to your SQL pool*.
 
-8. When the .pbids file has downloaded, open it.
+8. When the .pbids file has downloaded, open it. Use **Microsoft credentials** to connect.
 
    *When the file opens, it’ll prompt you to create queries using the connection. You’ll define those queries in the next task.*
+   
    
    
 
