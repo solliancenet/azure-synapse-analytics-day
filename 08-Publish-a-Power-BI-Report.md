@@ -311,7 +311,8 @@ The completed report page will look like the following:
           DIVIDE(
 	     SUM(Sale[Profit Amount]),
 	   SUM(Sale[Sale Amount])
-       )```
+       )
+       ```
 
 
     *The formula divides the sum of the **Profit Amount** column by the sum of the **Sale Amount** column.*
