@@ -305,8 +305,14 @@ The completed report page will look like the following:
     *A report-level measure can be added by the report author. It allows them to define complex summarization logic that’s not already defined in the model.*
     
 16. In the formula bar, enter the following measure definition:
+    ```
+      DAX
+        Profitability =
+          DIVIDE(
+	     SUM(Sale[Profit Amount]),
+	   SUM(Sale[Sale Amount])
+       )```
 
-    ![ws name.](media/8.42.png)
 
     *The formula divides the sum of the **Profit Amount** column by the sum of the **Sale Amount** column.*
  
