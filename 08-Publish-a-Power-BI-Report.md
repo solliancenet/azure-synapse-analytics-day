@@ -565,7 +565,7 @@ In this task, you will explore the report to determine root cause for low-profit
 
 10. Click the **By Salesperson** button, and then review the result by salespeople.
 
-###Summary
+### Summary
 
 In this exercise, you used Power BI Desktop to connect to the Sale Analysis dataset published in Exercise 05. You then developed a multi-page report, which included synced slicers, a custom visual, page drill through, a report-level measure, bookmarks, and buttons. You then finalized the exercise by publishing the report to the Power BI service, and exploring it in the service.
 
