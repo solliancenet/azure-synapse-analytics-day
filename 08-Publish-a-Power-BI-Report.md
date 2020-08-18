@@ -2,13 +2,13 @@
 
 In this lab, you are working in the role of a **business analyst**.
 
-You will use Power BI Desktop to connect to the **Sale Analysis** dataset published in **Exercise 6** . You will then develop a multi-page report, which will include synced slicers, a custom visual, page drill through, a report-level measure, bookmarks, and buttons. You will finalize the lab by publishing the report to the Power BI service, and then exploring it in the service.
+You will use Power BI Desktop to connect to the **Sale Analysis** dataset published in **Exercise 5** . You will then develop a multi-page report, which will include synced slicers, a custom visual, page drill through, a report-level measure, bookmarks, and buttons. You will finalize the lab by publishing the report to the Power BI service, and then exploring it in the service.
 
 ---
 
 **Important**
 
-Important: You must successfully complete Exercise 7 before commencing this lab.
+Important: You must successfully complete Exercise 6 before commencing this lab.
 
 ---
 
