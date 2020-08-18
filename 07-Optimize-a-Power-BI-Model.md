@@ -192,11 +192,11 @@ In this task, you will switch the aggregation table to import data. You will the
 14. In the **Performance Analyzer** pane, stop recording.
 
 
-## **Task 2: Publish the Model**
+## **Section 2: Publish the Model**
 
 In this task, you will publish the model and complete some post-publication tasks.
 
-### **Subtask 1: Publish the Model**
+### **Task 1: Publish the Model**
 
 In this task, you will publish the model.
 
@@ -307,3 +307,8 @@ In this task, you will complete some post-publication tasks.
     ![ws name.](media/7.32.png)
  
     *The dataset is published and is configured ready for use. In **Exercise 7**, you’ll perform a live connection to the dataset and create a report*.
+    
+   ###Summary
+   
+In this exercise, you used Power BI Desktop to configure dimension table storage as dual. You then added an aggregation table to accelerate query performance. The model storage was switched to mixed mode: Some tables now cache data to further boost query performance. You finalized the exercise by deploying the model to the Power BI service, so it is ready for reporting in Exercise 07
+
