@@ -192,11 +192,11 @@ In this task, you will switch the aggregation table to import data. You will the
 14. In the **Performance Analyzer** pane, stop recording.
 
 
-## **Section 2: Publish the Model**
+## **Task 2: Publish the Model**
 
 In this task, you will publish the model and complete some post-publication tasks.
 
-### **Task 1: Publish the Model**
+### **Subtask 1: Publish the Model**
 
 In this task, you will publish the model.
 
