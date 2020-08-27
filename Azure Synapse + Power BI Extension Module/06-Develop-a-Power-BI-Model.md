@@ -42,7 +42,7 @@ In this task, you will prepare your environment.
 
 6. Check the **Store Datasets Using Enhanced Metadata Format** checkbox.
 
-   ![ws name.]/(/media/6.3.png)
+   ![ws name.](/media/6.3.png)
    
    *This preview feature is required to complete your model design.*
 
