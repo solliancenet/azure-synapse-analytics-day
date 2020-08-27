@@ -34,7 +34,7 @@ In this task, you will prepare your environment.
 
 4. On the **File** tab (backstage view), select **Option and Settings**, and then select **Options**.
 
-   ![ws name.](media/6.1.png)
+   ![ws name.](/media/6.1.png)
 
 5. In the **Options** window, at the left, select the **Preview Features** page.
 
