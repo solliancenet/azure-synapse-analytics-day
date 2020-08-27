@@ -34,21 +34,21 @@ In this task, you will prepare your environment.
 
 4. On the **File** tab (backstage view), select **Option and Settings**, and then select **Options**.
 
-   ![ws name.](/media/6.1.png)
+   ![ws name.](media/6.1.png)
 
 5. In the **Options** window, at the left, select the **Preview Features** page.
 
-   ![ws name.](/media/6.2.png)
+   ![ws name.](media/6.2.png)
 
 6. Check the **Store Datasets Using Enhanced Metadata Format** checkbox.
 
-   ![ws name.](/media/6.3.png)
+   ![ws name.](media/6.3.png)
    
    *This preview feature is required to complete your model design.*
 
 7. Click **OK**.
 
-   ![ws name.](/media/6.4.png)
+   ![ws name.](media/6.4.png)
 
 
 8. When notified that the feature requires a restart, click **OK**.
