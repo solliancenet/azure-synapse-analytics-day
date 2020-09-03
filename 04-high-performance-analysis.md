@@ -50,25 +50,25 @@ First, let us set the stage by performing the following steps:
 
    ![Run a count on FactSale_Slow](./media/ex04-query-selection-01.png "Run script")
 
-   Notice the quick response time (usually under 1 second) and the result - 83.4 million records.
+   Notice the quick response time (usually under 3 seconds) and the result - 83.4 million records. If SQLPool was configured with DW500c, then it would be under 1 second.
 
 4. Select line 3 and then select `Run`.
 
    ![Run a count on FactSale_Fast](./media/ex04-query-selection-02.png "Run script")
 
-   Notice the quick response time (usually under 1 second) and the result - 83.4 million records.
+  Notice the quick response time (usually under 3 seconds) and the result - 83.4 million records. If SQLPool was configured with DW500c, then it would be under 1 second.
 
 5. Select lines 5 to 20 and then select `Run`.
 
    ![Run a complex query on FactSale_Slow](./media/ex04-query-selection-03.png "Run script")
 
-   Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones who benefit from the initialization of various internal data and communications buffers). Make a note on the amount of time needed to run the query (typically 5 to 15 seconds).
+   Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones who benefit from the initialization of various internal data and communications buffers). Make a note on the amount of time needed to run the query (typically 15 to 30 seconds).
 
 6. Select lines 22 to 37 and then select `Run`.
 
    ![Run a complex query on FactSale_Fast](./media/ex04-query-selection-04.png "Run script")
 
-   Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones who benefit from the initialization of various internal data and communications buffers). Make a note on the amount of time needed to run the query (typically 1 to 3 seconds).
+   Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones who benefit from the initialization of various internal data and communications buffers). Make a note on the amount of time needed to run the query (typically 15 to 20 seconds).
 
 ## Bonus Challenge
 
