@@ -535,13 +535,13 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
    ![The current Spark application is highlighted in the applications list.](media/ex02-monitor-activities-spark-application-list.png "Synapse Analytics Monitor")
 
-5. On the **Log query** screen, you will see a detailed view of the job, broken into three different sections.
+5. On the **Dataflow** screen, you will see a detailed view of the job, broken into three different sections.
 
    - The first section is a graphical representation of the stages that make up the Spark application.
    - The second section is a summary of the Spark application.
    - The third section displays the logs associated with the Spark application.
 
-   ![A screenshot of the Log query screen is displayed.](media/ex02-monitor-activities-spark-application-log-query.png "Synapse Analytics Monitor")
+   ![A screenshot of the Log query screen is displayed.](media/ex02-monitor-activities-spark-application-dataflow.png "Synapse Analytics Monitor")
 
 6. In the graph section, the initial graph displayed is that of the overall job progress. Here, you can see the progress of each stage.
 
