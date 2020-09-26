@@ -26,43 +26,13 @@ In this exercise, you will create a DirectQuery model to support Power BI analys
 
 In this task, you will prepare your environment.
 
-1. Open Power BI Desktop.
+1. Open a new InPrivate web browser session (for Chrome, use incognito), and then navigate to https://powerbi.com.
 
-2. At the top-right corner, verify that you are signed in using the lab Azure credentials.
+2. If you are not signed in to the Power BI service using the lab Azure credentials, then sign out, and then sign in using the lab Azure credentials.
 
-3. If you are not signed in using the lab Azure credentials, you must switch user accounts.
-
-4. On the **File** tab (backstage view), select **Option and Settings**, and then select **Options**.
-
-   ![ws name.](media/6.1.png)
-
-5. In the **Options** window, at the left, select the **Preview Features** page.
-
-   ![ws name.](media/6.2.png)
-
-6. Check the **Store Datasets Using Enhanced Metadata Format** checkbox.
-
-   ![ws name.](media/6.3.png)
-   
-   *This preview feature is required to complete your model design.*
-
-7. Click **OK**.
-
-   ![ws name.](media/6.4.png)
-
-
-8. When notified that the feature requires a restart, click **OK**.
-
-9. Close Power BI Desktop.
-
-10. Open a new InPrivate web browser session (for Chrome, use incognito), and then navigate to https://powerbi.com.
-
-11. If you are not signed in to the Power BI service using the lab Azure credentials, then sign out, and then sign in using the lab Azure credentials.
-
-12. At the top-right corner, ensure the new look is **On**.
+3. At the top-right corner, ensure the new look is **On**.
 
     ![ws name.](media/6.5.png)
-
 
 
 ### **Subtask 2: Download a Dataset File**
@@ -97,12 +67,13 @@ In this task, you will download a Power BI data source file from Synapse Studio.
 
    *A .pbids file contains a connection to your SQL pool. It’s a convenient way to start your project. When opened, it’ll create a new Power BI Desktop solution that already stores the connection details to your SQL pool*.
 
-8. When the .pbids file has downloaded, open it. If prompted login using the credentials assigned to you for the lab.
+8. When the .pbids file has downloaded, open it in the **PowerBI Desktop**.If prompted login using the credentials assigned to you for the lab.
 
    *When the file opens, it’ll prompt you to create queries using the connection. You’ll define those queries in the next task.*
    
-   
-   
+9. At the top-right corner, verify that you are signed in using the lab Azure credentials.
+
+10. If you are not signed in using the lab Azure credentials, you must switch user accounts.
 
 ### **Subtask 3: Create Model Queries**
 
