@@ -40,7 +40,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
    ![Open Data hub in Synapse Analytics Studio](./media/ex01-open-data-hub.png)
 
-7. Switch to the `Linked` tab. Under `Storage accounts`, expand the **Storage account** node, expand the data lake storage account, and then select the `wwi` file system.
+7. Switch to the `Linked` tab. Under `Storage accounts`, expand the **Azure Data Lake Storage Gen2** node, expand the data lake storage account, and then select the `wwi` file system.
 
 8. Inside the selected file system, navigate to `factsale-parquet` -> `2012` -> `Q1` -> `InvoiceDateKey=2012-01-01`.
 
