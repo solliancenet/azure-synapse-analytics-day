@@ -76,17 +76,17 @@ In this task, you will browse your data lake using SQL On-demand.
 
 ## Task 2 - Explore the data lake with Azure Synapse Spark
 
-1. Navigate to the `Data` hub, browse to the data lake storage account folder `wwi/factsale-parquet/2012/Q1/InvoiceDateKey=2012-01-01`, then right-click the Parquet file and select `New notebook`.
+1. Navigate to the `Data` hub, browse to the data lake storage account folder `wwi/factsale-parquet/2012/Q1/InvoiceDateKey=2012-01-01`, then right-click the Parquet file and select `New notebook->Load Data frame`
 
-   ![Start new Spark notebook from data lake file](./media/ex01-spark-notebook-01.png "Create a new Spark notebook")
+   ![Start new Spark notebook from data lake file](./media/ex01-spark-notebook-001.png "Create a new Spark notebook")
 
-2. This will generate a notebook with PySpark code to load the data in a dataframe and display 100 rows with the header.
+2. This will generate a notebook with PySpark code to load the data in a dataframe and display 10 rows with the header.
 
-   ![New Spark notebook from data lake file](./media/ex01-spark-notebook-02.png "Review the notebook")
+   ![New Spark notebook from data lake file](./media/ex01-spark-notebook-002.png "Review the notebook")
 
 3. Attach the notebook to a Spark pool.
 
-   ![Run Spark notebook on data lake file](./media/ex01-attachsparkpool.png "Attach notebook to Spark pool")
+   ![Run Spark notebook on data lake file](./media/ex01-attachsparkpool01.png "Attach notebook to Spark pool")
 
 4. Before running the notebook, select **Configure session**, which you will find at the bottom left-hand side of the notebook.
 
@@ -103,15 +103,15 @@ In this task, you will browse your data lake using SQL On-demand.
 
    > **Note**: The first time you run a notebook in a Spark pool, Synapse creates a new session. This can take approximately 3 minutes.
 
-8. As you can see, the output is not formatted very well. To change this, replace the last line of code with the following:
+8. As you can see, the output of the dataframe is displayed with 10 rows. To  display 100 rows with the header replace the last line of code with the following:
 
    ```python
-   display(data_path.limit(100))
+   display(df.limit(100))
    ```
 
-9. Rerun the notebook again to see the improved display.
+9. Rerun the notebook again to see the result.
 
-   ![Improve dataset formatting in Spark notebook](./media/ex01-spark-notebook-04.png "Execute notebook")
+   ![Improve dataset formatting in Spark notebook](./media/ex01-spark-notebookrun-004.png "Execute notebook")
 
 10. Notice the included charting capabilities that enable visual exploration of your data. Switch to **Chart** view. Select **View Options** and change the **Key** to `CustomerKey` and **Values** to `CityKey`.
 
