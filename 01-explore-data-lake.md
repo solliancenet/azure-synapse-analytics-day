@@ -111,7 +111,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
 9. Rerun the notebook again to see the result.
 
-   ![Improve dataset formatting in Spark notebook](./media/ex01-spark-notebookrun-004.png "Execute notebook")
+   ![Improve dataset formatting in Spark notebook](./media/ex01-spark-notebookrun-04.png "Execute notebook")
 
 10. Notice the included charting capabilities that enable visual exploration of your data. Switch to **Chart** view. Select **View Options** and change the **Key** to `CustomerKey` and **Values** to `CityKey`.
 
