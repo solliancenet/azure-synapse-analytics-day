@@ -1,6 +1,6 @@
 # Exercise 7: Publish a Power BI Report
 
-In this lab, you are working in the role of a **business analyst**.
+In this lab, you are working in the role of a **data analyst**.
 
 You will use Power BI Desktop to connect to the **Sale Analysis** dataset published in **Exercise 5** . You will then develop a multi-page report, which will include synced slicers, a custom visual, page drill through, a report-level measure, bookmarks, and buttons. You will finalize the lab by publishing the report to the Power BI service, and then exploring it in the service.
 
@@ -59,7 +59,7 @@ In this task, you will create a live connection to the **Sale Analysis** dataset
 
 ## **Task 2: Develop the Report Layout**
 
-In this exercise, you will develop the report layout develop two report pages.
+In this task, you will develop a two-page report.
 
 ### **Subtask 1: Develop Page 1**
 
@@ -172,7 +172,7 @@ The completed report page will look like the following:
 
    ![ws name.](media/8.22.png)
  
-   *When a report user changes either Year slicer, the filter will propagate between these pages. Both slicers will remain in sync.*
+   *When a report user changes either **Year** slicer, the filter will propagate between these pages. Both slicers will remain in sync.*
    
 7.	In the **Sync Slicers** pane, at the top-left, click **X**.
 
@@ -333,7 +333,7 @@ The completed report page will look like the following:
 
     ![ws name.](media/8.45.png)
  
-    **Report users won’t see the page tab, but they’ll be able to drill through to the page. You’ll now test the drill through experience.**
+    *Report users won’t see the page tab, but they’ll be able to drill through to the page. You’ll now test the drill through experience.*
  
 ### **Subtask 2: Explore Drill Through**
 
@@ -363,7 +363,7 @@ In this task, you will explore the drill through experience.
 
 7.	To return back to where you drilled from, at the top-left corner, while pressing the **Ctrl** key, click the back button.
 
-   *When editing a report, you must press the Ctrl key when clicking buttons. If you don’t press the Ctrl key, the designer understands you’re selecting it so it can be configured.*
+   *When editing a report, you must press the **Ctrl** key when clicking buttons. If you don’t press the **Ctrl** key, the designer understands you’re selecting it so it can be configured.*
    
 8.	Save the Power BI Desktop solution.
 
@@ -419,7 +419,7 @@ In this task, you will create two bookmarks to show or hide the superimposed vis
  
 8.	To rename the bookmark, double-click **Bookmark 1**.
 
-9.	Rename the bookmark as By **Month**, and then press **Enter**.
+9.	Rename the bookmark as **By Month**, and then press **Enter**.
 
 10. Click the ellipsis at the right of the bookmark, and then select **Data**.
 
@@ -512,7 +512,7 @@ In this task, you will prepare the report for publication.
 
    *It’s important to select the initial page and reset filters just before publishing the report. It will become the report state when report users first open the report.*
 
-4.	Save the Power BI Desktop solution.
+4.	Save the Power BI Desktop solution as **Sale Report**.
 
 
 ### **Subtask 2: Publish the Report**
@@ -567,4 +567,4 @@ In this task, you will explore the report to determine root cause for low-profit
 
 ### Summary
 
-In this exercise, you used Power BI Desktop to connect to the Sale Analysis dataset published in Exercise 05. You then developed a multi-page report, which included synced slicers, a custom visual, page drill through, a report-level measure, bookmarks, and buttons. You then finalized the exercise by publishing the report to the Power BI service, and exploring it in the service.
+In this exercise, you used Power BI Desktop to connect to the **Sale Analysis** dataset published in **Exercise 05**. You then developed a multi-page report, which included synced slicers, a custom visual, page drill through, a report-level measure, bookmarks, and buttons. You then finalized the exercise by publishing the report to the Power BI service, and exploring it in the service.
