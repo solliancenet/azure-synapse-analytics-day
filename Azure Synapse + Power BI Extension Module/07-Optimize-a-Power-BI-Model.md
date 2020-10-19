@@ -61,6 +61,8 @@ In this task, you will configure dual storage for all dimension tables.
 
 10. Notice that the query result for the slicer is now sub-second.
 
+11. In the **Performance Analyzer** pane, stop recording.
+
 
 ### **Subtask 2: Create an Aggregation Table**
 
@@ -136,7 +138,7 @@ In this task, you will switch the aggregation table to import data. You will the
 
 1.	Switch to Model view.
 
-2.	Position the Sale Agg table so that it is near the Geography and **Date** tables.
+2.	Position the **Sale Agg** table so that it is near the Geography and **Date** tables.
 
 3.	Set the storage mode for the **Sale Agg** table as **Import**.
 
@@ -180,14 +182,14 @@ In this task, you will switch the aggregation table to import data. You will the
  
  
 10. In the model diagram, select the **Sale Agg** table.
-
-    *Because the **Geography** and **Date** tables use dual storage mode, when a report visual queries them at the same time as the aggregation table, Power BI will query the model cache. There’s no need to use DirectQuery to query the data*.
     
 11. Switch to Report view.
 
 12. In the **Performance Analyzer** pane, start recording, and then refresh visuals.
 
 13. Notice that the query results for the table visual is now sub-second.
+
+   *Because the **Geography** and **Date** tables use dual storage mode, when a report visual queries them at the same time as the aggregation table, Power BI will query the model cache. There’s no need to use DirectQuery to query the data*.
 
 14. In the **Performance Analyzer** pane, stop recording.
 
@@ -226,6 +228,8 @@ In this task, you will publish the model.
 
 In this task, you will complete some post-publication tasks.
 
+*You’ll complete the post-publication tasks using the Power BI service because it’s not possible to do them in Synapse Studio.*
+
 1.	In Power BI web browser session, open your lab workspace.
 
    ![ws name.](media/7.22.png)
@@ -233,7 +237,7 @@ In this task, you will complete some post-publication tasks.
  
 2.	In the **Navigation** pane, open the workspace, and then verify that the **Sale Analysis** dataset exists.
 
-   ![ws name.](media/7.23.png)
+   ![ws name.](media/aiad2.png)
    
  
 3.	Notice there is also the **Sale Analysis** report.
@@ -257,7 +261,7 @@ In this task, you will complete some post-publication tasks.
    
  
 7.	Expand the **Data Source Credentials** section.
-
+   You’ll see an error, and it’s expected. You will address the error in the next step.
    ![ws name.](media/7.27.png)
  
  
@@ -310,5 +314,5 @@ In this task, you will complete some post-publication tasks.
     
    ### Summary
    
-In this exercise, you used Power BI Desktop to configure dimension table storage as dual. You then added an aggregation table to accelerate query performance. The model storage was switched to mixed mode: Some tables now cache data to further boost query performance. You finalized the exercise by deploying the model to the Power BI service, so it is ready for reporting in Exercise 07
+In this exercise, you used Power BI Desktop to configure dimension table storage as dual. You then added an aggregation table to accelerate query performance. The model storage was switched to mixed mode: Some tables now cache data to further boost query performance. You finalized the exercise by deploying the model to the Power BI service, so it is ready for reporting in **Exercise 07**.
 

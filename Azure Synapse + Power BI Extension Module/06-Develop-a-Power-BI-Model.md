@@ -26,11 +26,20 @@ In this exercise, you will create a DirectQuery model to support Power BI analys
 
 In this task, you will prepare your environment.
 
-1. Open a new InPrivate web browser session (for Chrome, use incognito), and then navigate to https://powerbi.com.
+1.	Open Power BI Desktop.
 
-2. If you are not signed in to the Power BI service using the lab Azure credentials, then sign out, and then sign in using the lab Azure credentials.
+2.	At the top-right corner, verify that you are signed in using the lab Azure credentials.
 
-3. At the top-right corner, ensure the new look is **On**.
+3.	If you are not signed in using the lab Azure credentials, you must now sign in with those credentials.
+
+4.	Close Power BI Desktop.
+
+5.	Open a new web browser session, and then navigate to *https://powerbi.com*.
+
+6.	If you are not signed in automatically, click **Sign In**, and then sign in using the lab Azure credentials.
+
+7.	At the top-right corner, ensure the new look is **On**.
+
 
     ![ws name.](media/6.5.png)
 
@@ -53,27 +62,17 @@ In this task, you will download a Power BI data source file from Synapse Studio.
 
    ![ws name.](media/6.8.png)
 
-5. In the right pane, at the bottom-left on the pane, click **Start**.
+5.	Click **Start**.
 
-   ![ws name.](media/6.9.png)
+6.	Select your SQL pool, and then click Continue.
 
-6. Select your SQL pool, and then click **Continue**.
+7.	Click the link to download the .pbids file.
 
-   ![ws name.](media/6.10.png)
+    *A .pbids file contains a connection to your SQL pool. It’s a convenient way to start your project. When opened, it’ll create a new Power BI Desktop solution that already stores the connection details to your SQL pool*.
 
-7. To download a *.pbids* file, click **Download**.
+8.	When the .pbids file has downloaded, open it.
 
-   ![ws name.](media/6.11.png)
-
-   *A .pbids file contains a connection to your SQL pool. It’s a convenient way to start your project. When opened, it’ll create a new Power BI Desktop solution that already stores the connection details to your SQL pool*.
-
-8. When the .pbids file has downloaded, open it in the **PowerBI Desktop**.If prompted login using the credentials assigned to you for the lab.
-
-   *When the file opens, it’ll prompt you to create queries using the connection. You’ll define those queries in the next task.*
-   
-9. At the top-right corner, verify that you are signed in using the lab Azure credentials.
-
-10. If you are not signed in using the lab Azure credentials, you must switch user accounts.
+    *When the file opens, it’ll prompt you to create queries using the connection. You’ll define those queries in the next task*.
 
 ### **Subtask 3: Create Model Queries**
 
@@ -366,9 +365,9 @@ In this task, you will create six Power Query queries that will each load as a t
      *Model view allows you to see all tables in the model diagram. It also allows you to configure many model properties. You’ll configure model properties in the next exercise.*
    
 61. In the model diagram, notice that there are six tables (some may be out of view—scroll horizontally to see them all).
-62. To save the Power BI Desktop solution, on the File tab (backstage view), select Save.
+62. To save the Power BI Desktop solution, on the **File** tab (backstage view), select **Save**.
 
-63. Save the file as Sale Analysis to an easy-to-remember location in your file system.
+63. Save the file as **Sale Analysis** to an easy-to-remember location in your file system.
 
 64. Open File Explorer, and navigate to the file system location.
 
@@ -445,7 +444,7 @@ In this task, you will add two hierarchies to the **Geography** table and config
 
 1. In the model diagram, in the **Geography** table, right-click the **Region** column, and then select **Create Hierarchy**.
 
-   ![ws name.](media/6.53.png)
+   ![ws name.](media/aiad1.png)
 
    *Hierarchies provide ease of navigation across the model data, allowing drill down and drill up operations. Always create a hierarchy using the column that’s to become the first (top) level of the hierarchy.*
 
@@ -500,6 +499,7 @@ In this task, you will add a hierarchy to the Date table and configure the Month
 
 - Year
 - Month
+- Date
 
 2. In the **Date** table, select the **Month** column.
 
@@ -507,9 +507,9 @@ In this task, you will add a hierarchy to the Date table and configure the Month
 
    ![ws name.](media/6.59.png)
  
-   *The alphabetic Month column values will now sort by the chronologic MonthKey column values.*
+   *The alphabetic **Month** column values will now sort by the chronologic **MonthKey** column values.*
    
-   *Configuration of the Date table is now complete.*
+   *Configuration of the **Date** table is now complete.*
    
 
 ### **Subtask 4: Configure the Sale Table**
@@ -707,7 +707,7 @@ In this task, you will use Performance Analyzer to measure query performance.
  
 4. In the list, notice the duration statistics, which are recorded in milliseconds.
 
-5. Expand the **Table** visual.
+5. Expand the **Table** node.
 
 6. Notice that it is possible to determine the duration of the DirectQuery process, and that presently it is several seconds.
 
@@ -732,7 +732,9 @@ In this task, you will use Performance Analyzer to measure query performance.
  
 12. Save the Power BI Desktop solution.
 
-In Exercise 06, you’ll improve query performance by creating an aggregation table.
+    *The lab is now complete. Leave your Power BI Desktop solution open ready to start the next lab (when instructed to do so)*.
+
+    *In **Exercise 06**, you’ll improve query performance by creating an aggregation table*.
 
 ### Summary
 
