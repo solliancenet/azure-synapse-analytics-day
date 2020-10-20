@@ -34,7 +34,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
 5. On the Synapse workspace blade, open Synapse Analytics Studio by navigating to the **Workspace URL** from the overview page.
 
-  > You can also Open synapse studio by clicking on **Open** under **Open synapse studio**
+   > You can also Open synapse studio by clicking on **Open** under **Getting started->Open synapse studio**
 
    ![The Launch Synapse Studio button is highlighted on the Synapse workspace toolbar.](media/ex01-open-synapse-studio.png "Launch Synapse Studio")
 
