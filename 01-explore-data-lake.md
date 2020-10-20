@@ -32,9 +32,11 @@ In this task, you will browse your data lake using SQL On-demand.
 
    ![Open Azure Synapse Analytics workspace](./media/00-open-workspace.png "Azure Synapse workspace")
 
-5. On the Synapse workspace blade, open Synapse Analytics Studio by selecting **Launch Synapse Studio** from the toolbar.
+5. On the Synapse workspace blade, open Synapse Analytics Studio by navigating to the **Workspace URL** from the overview page.
 
-   ![The Launch Synapse Studio button is highlighted on the Synapse workspace toolbar.](media/ex01-launch-synapse-studio.png "Launch Synapse Studio")
+  > You can also Open synapse studio by clicking on **Open** under **Open synapse studio**
+
+   ![The Launch Synapse Studio button is highlighted on the Synapse workspace toolbar.](media/ex01-open-synapse-studio.png "Launch Synapse Studio")
 
 6. In Synapse Analytics Studio, navigate to the `Data` hub.
 
