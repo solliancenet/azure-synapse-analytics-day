@@ -1,7 +1,5 @@
 # Azure Synapse Analytics Lab
 
-Lab time: 90 minutes
-
 ## Wide World Importers
 
 Wide World Importers (WWI) is a wholesale novelty goods importer and distributor operating from the San Francisco bay area.
@@ -24,7 +22,7 @@ By the end of this lab, you will have performed a non-exhaustive list of operati
 
 The diagram below provides a unified view of the exercises in the lab and their estimated times for completion.
 
-![Azure Synapse Analytics Lab Exercises](./media/exercises.png "Solution architecture")
+![Azure Synapse Analytics Lab Exercises](./media/exercises1.png "Solution architecture")
 
 ## Exercise 1 - Explore the data lake with Azure Synapse SQL On-demand and Azure Synapse Spark
 
