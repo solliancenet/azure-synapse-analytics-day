@@ -20,6 +20,18 @@ In this lab, you will play the role of various persona: a data engineer, a busin
 
 By the end of this lab, you will have performed a non-exhaustive list of operations that combine the strength of Big Data and SQL analytics into a single platform.
 
+### How to get started with a provided lab environment
+
+If you are using a hosted lab environment, please follow the steps below to get started:
+
+1. Select the **Lab Environment** tab above the lab guide to copy the Azure credentials used for the lab. Make note of the `UniqueId` value. This value may be referenced at different points during the lab.
+
+    ![The lab environment details are displayed.](media/lab-environment.png "Lab Environment")
+
+2. Select **Lab Resources** under Lab Environment to start the Virtual Machine (VM) provided for this lab. However, you do not need to use the VM to complete the lab. It is there for your convenience to make it easier to sign into Azure if you have an existing account and do not want to log out of it.
+
+    ![The Virtual Machines are displayed and the Play button is highlighted.](media/lab-resources.png "Lab Resources")
+
 ## Solution architecture
 
 The diagram below provides a unified view of the exercises in the lab and their estimated times for completion.
@@ -54,7 +66,7 @@ Azure Synapse Analytics integrates natively with Power BI, a proven and highly s
 
 In this exercise, you will try to understand customer details using a query and chart visualizations. You will also explore the performance of various queries.
 
-SQL data warehouses have been for a long time the centers of gravity in data platforms. Modern data warehouses are capable of providing high performance, distributed, and governed workloads, regardless of the data volumes at hand.
+SQL data warehouses have been for a long time the center of gravity in data platforms. Modern data warehouses are capable of providing high performance, distributed, and governed workloads, regardless of the data volumes at hand.
 
 The Azure Synapse SQL Pools in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
 
