@@ -25,110 +25,125 @@ Please locate this value and note it for the steps below.
 
 In this task, you see how easy it is to write into a SQL Pool table with Spark thanks to the SQL Analytics Connector. Notebooks are used to write the code required to write to SQL Pool tables using Spark.
 
-1. In Synapse Analytics Studio, select **Develop** from the left-hand menu.
+1. **Note:** If you still have your notebook open from the end of Exercise 1, **skip ahead** to step 3 below. Otherwise, in Synapse Analytics Studio, select **Develop** from the left-hand menu.
 
-   ![Develop is selected and highlighted in the Synapse Analytics menu.](media/ex02-menu-develop.png "Select Develop")
+   ![Develop is selected and highlighted in the Synapse Analytics menu.](media/develop-hub.png "Develop hub")
 
-2. In the Develop menu, expand **Notebooks** and select the notebook named `Exercise 2 - Ingest Sales Data`.
+2. Select **+**, then **Notebook** to add a new notebook.
 
-   ![The Exercise 2 - Ingest Sales Data notebook is selected and highlighted in the list of notebooks.](media/ex02-notebooks-ingest.png "Select Exercise 2 notebook")
+   ![The new notebook menu item is highlighted.](media/new-notebook.png "New notebook")
 
-3. If not already attached, attach your Spark Compute by selecting it from the **Attach to** drop-down list.
+3. If not already attached, attach your Spark Compute by selecting it from the **Attach to** drop-down list, then select **{} Add code** to create a new cell.
 
-   ![The Spark pool is selected in the Attach to drop-down.](media/ex02-notebooks-toolbar-attach-to.png "Attach Spark Compute")
+   ![The Spark pool is selected in the Attach to drop-down.](media/new-notebook-add-code.png "Add code")
 
-4. Ensure **Spark (Scala)** is selected in the Language drop-down list.
+   **Note:** If you are using your notebook from the end of Exercise 1, hover over the area just below the cell in the notebook, then select **{} Add code** to add a new cell.
 
-   ![Spark (Scala) is selected in the Language drop-down.](media/ex02-notebooks-toolbar-language.png "Select Language")
+   ![The add code button is highlighted.](media/add-cell.png "Add code")
 
-5. Next, in the first cell of the notebook, **Cell 1**, locate the variable named `uniqueId` on line 8.
+4. Paste the following into the new cell and **replace** `YOUR_DATALAKE_NAME` with the name of your **Storage Account Name** provided in the environment details section on Lab Environment tab on the right. You can also copy it from the first cell of the notebook if you are using the same one from Exercise 1.
 
-   ![The uniqueId variable on line 8 of Cell 1 is highlighted.](media/ex02-notebooks-configure-unique-id.png "Update UniqueId variable")
+    ```scala
+    %%spark
 
-6. Update the value of the `uniqueId` variable, setting it to the unique identifier you were assigned for this workshop. This will be the _UNIQUEID_ component of your username, as mentioned above. For example:
+    // Set the path to read the WWI Sales files
+    import org.apache.spark.sql.SparkSession
 
-   ```scala
-   val uniqueId = "A03"
-   ```
+    // Set the path to the ADLS Gen2 account
+    val adlsPath = "abfss://wwi@YOUR_DATALAKE_NAME.dfs.core.windows.net"
+    ```
 
-   > **Important**: Every workshop attendee needs to set this variable to their assigned unique identifier to ensure the table name this notebook targets is unique. Failure to set this value will prevent the notebook from running.
+    Select the **Run cell** button to execute the new cell:
 
-   ![The uniqueId variable is highlighted and its value is set to an example value of "A03".](media/ex02-notebooks-configure-set-unique-id.png "Updated UniqueId variable")
+    ![The new cell is displayed.](media/ex02-notebook-cell1.png "Run cell")
 
-   > **Note**: You may notice the **Publish all** button is highlighted after making changes. Please **do not publish** your changes, as this will impact the notebook used by all workshop attendees. You do not need to publish the changes to run the notebook in the steps below.
+    > This cell imports required libraries and sets the `adlsPath` variable, which defines the path used to connect to an Azure Data Lake Storage (ADLS) Gen2 account. Connecting to ADLS Gen2 from a notebook in Azure Synapse Analytics uses the power of Azure Active Directory (AAD) pass-through between compute and storage. The `%%spark` "magic" sets the cell language to Scala, which is required to use the `SparkSession` library.
 
-7. Before running the notebook, select **Configure session**, which you will find at the bottom left-hand side of the notebook.
+5. Hover over the area just below the cell in the notebook, then select **{} Add code** to add a new cell.
 
-   ![The Configure session link is highlighted at the bottom of the notebook.](media/ex-shared-configure-session.png "Configure session")
+    ![The add code button is highlighted.](media/add-cell.png "Add code")
 
-8. In the Configure session dialog, enter the following configuration:
+6. Paste the following and run the new cell:
 
-   - **Executors**: Set to `1`.
-   - **Executor size**: Ensure `Small (4 vCPU, 28GB memory)` is selected.
+    ```scala
+    %%spark
 
-9. Select **Apply** to save the session configuration.
+    // Read the sales into a dataframe
+    val sales = spark.read.format("csv").option("header", "true").option("inferSchema", "true").option("sep", "|").load(s"$adlsPath/factsale-csv/2012/Q4")
+    sales.show(5)
+    sales.printSchema()
+    ```
 
-10. Select **Run all** from the notebook toolbar to execute each cell within the notebook. It can take several minutes for the Spark session to start. You can continue with the steps below to review the notebook contents.
+    This code loads data from CSV files in the data lake into a DataSet. Note the `option` parameters in the `read` command. These options specify the settings to use when reading the CSV files. The options tell Spark that the first row of each file containers the column headers, the separator in the files in the `|` character, and that we want Spark to infer the schema of the files based on an analysis of the contents of each column. Finally, we display the first five records of the data retrieved and print the inferred schema to the screen.
 
-    ![The Run all button on the notebook toolbar is highlighted.](media/ex02-notebooks-toolbar-run-all.png "Select Run all")
+7. When the cell finishes running, take a moment to review the associated output.
 
-    > **Note**: If you see the output from the cells containing the message, `Error : java.lang.Exception: You must enter the unique identifier you were assigned for this workshop into the uniqueId variable before proceeding`, return to step 9 above, and enter your assigned unique identifier.
+    > The output of this cell provides some insight into the structure of the data and the data types that have been inferred. The `show(5)` command results in the first five rows of the data read being output, allowing you to see the columns and a sample of data contained within each. The `printSchema()` command outputs a list of columns and their inferred types.
 
-11. While the notebook is running, let's take a look at what each cell is doing.
+    ![The output from the execution the cell is displayed, with the result of the show(5) command shown first, followed by the output from the printSchema() command.](media/ex02-notebook-ingest-cell-2-output.png "Cell output")
 
-    - **Cell 1** imports required libraries and sets a few variables. The `adlsPath` variable defines the path used to connect to an Azure Data Lake Storage (ADLS) Gen2 account. Connecting to ADLS Gen2 from a notebook in Azure Synapse Analytics uses the power of Azure Active Directory (AAD) pass-through between compute and storage. The `uniqueId` provides a unique value to use for creating a new table in Azure Synapse Analytics.
+8. Hover over the area just below the cell in the notebook, then select **{} Add code** to add a new cell.
 
-    ![Cell 1 of the notebook is displayed.](media/ex02-notebooks-ingest-cell-1.png "Notebook Cell 1")
+    ![The add code button is highlighted.](media/add-cell.png "Add code")
 
-    - **Cell 2** loads data from CSV files in the data lake into a DataSet. Note the `option` parameters in the `read` command on line 7. These options specify the settings to use when reading the CSV files. The options tell Spark that the first row of each file containers the column headers, the separator in the files in the `|` character, and that we want Spark to infer the schema of the files based on an analysis of the contents of each column. Finally, we display the first five records of the data retrieved and print the inferred schema to the screen.
+9. Paste the following and run the new cell:
 
-    ![Cell 2 of the notebook is displayed.](media/ex02-notebooks-ingest-cell-2.png "Notebook Cell 2")
+    ```scala
+    %%spark
 
-    - **Cell 3** writes the data retrieve from Blob Storage into a staging table in Azure Synapse Analytics using the SQL Analytics connector. Using the connector simplifies connecting to Azure Synapse Analytics because it uses AAD pass-through. There is no need to create a password, identity, external table, or format sources, as it is all managed by the connector.
+    // Import libraries for the SQL Analytics connector
+    import com.microsoft.spark.sqlanalytics.utils.Constants
+    import org.apache.spark.sql.SqlAnalyticsConnector._
+    import org.apache.spark.sql.SaveMode
 
-    ![Cell 3 of the notebook is displayed.](media/ex02-notebooks-ingest-cell-3.png "Notebook Cell 3")
+    // Set target table name
+    var tableName = s"SQLPool01.wwi_staging.Sale"
 
-12. When Cell 2 finishes running, take a moment to review the associated output.
+    // Write the retrieved sales data into a staging table in Azure Synapse Analytics.
+    sales.limit(10000).write.mode(SaveMode.Append).sqlanalytics(tableName, Constants.INTERNAL)
+    ```
 
-    > The output of Cell 2 provides some insight into the structure of the data and the data types that have been inferred. The `show(5)` command results in the first five rows of the data read being output, allowing you to see the columns and a sample of data contained within each. The `printSchema()` command outputs a list of columns and their inferred types.
+    This code writes the data retrieved from Blob Storage into a staging table in Azure Synapse Analytics using the SQL Analytics connector. Using the connector simplifies connecting to Azure Synapse Analytics because it uses AAD pass-through. There is no need to create a password, identity, external table, or format sources, as it is all managed by the connector.
 
-    ![The output from the execution of Cell 2 is displayed, with the result of the show(5) command shown first, followed by the output from the printSchema() command.](media/ex02-notebooks-ingest-cell-2-output.png "Cell 2 output")
+10. As the cell runs, select the arrow icon below the cell to expand the details for the Spark job.
 
-13. Next, scroll down to Cell 3 and select the arrow icon below the cell to expand the details for the Spark job.
+    > This pane allows you to monitor the underlying Spark jobs, and observe the status of each. As you can see, the cell is split into two Spark jobs, and the progress of each can be observed. We will take a more in-depth look at monitoring Spark applications in Task 4 below.
 
-    > This pane allows you to monitor the underlying Spark jobs, and observe the status of each. As you can see, Cell 3 is split into two Spark jobs, and the progress of each can be observed. We will take a more in-depth look at monitoring Spark applications in Task 4 below.
+    ![The Spark job status pane is displayed below the cell, with the progress of each Spark job visible.](media/ex02-notebook-ingest-cell-3-spark-job.png "Spark Job status")
 
-    ![The Spark job status pane is displayed below Cell 3, with the progress of each Spark job visible.](media/ex02-notebooks-ingest-cell-3-spark-job.png "Cell 3 Spark Job status")
+11. After approximately 1-2 minutes, the execution of Cell 3 will complete. Once it has completed, select **Data** from the left-hand menu.
 
-14. After approximately 1-2 minutes, the execution of Cell 3 will complete. Once it has completed, select **Data** from the left-hand menu.
+    ![Data is selected and highlighted in the Synapse Analytics menu.](media/data-hub.png "Data hub")
 
-    ![Data is selected and highlighted in the Synapse Analytics menu.](media/ex02-menu-data.png "Synapse Analytics menu")
+12. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Close + discard changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool.
 
-15. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. By not saving, you will ensure that the next user in the shared environment gets the original copy of the notebook.
+    ![The Close + discard changes button is highlighted.](media/notebook-close-discard-changes.png "Discard changes?")
 
-16. Under **Workspace** tab expand **Databases** and then expand the **SQLPool01** database.
+13. Under **Workspace** tab expand **Databases** and then expand the **SQLPool01** database.
 
     ![The Databases folder is expanded, showing a list of databases within the Azure Synapse Analytics workspace. SQLPool01 is expanded and highlighted.](media/ex02-databasesqlpool.png "Synapse Analytics Databases")
-    
-17. Expand **Tables** and locate the table named `wwi_staging.Sale_UNIQUEID`, where `UNIQUEID` is the unique identifier assigned to you for this workshop. Which you retrieved from your username above (e.g., `A03`).
+
+14. Expand **Tables** and locate the table named `wwi_staging.Sale`.
 
     > If you do not see the table, select the Actions ellipsis next to Tables and then select **Refresh** from the fly-out menu.
 
-    ![The list of tables in the SQLPool01 database is expanded and the wwi_staging.Sale_UNIQUEID table is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data.png "Synapse Analytics Database Tables")
+    ![The new wwi_staging.Sale table is displayed.](media/data-staging-sales.png "New Sale table")
 
-18. To the right of the `wwi_staging.Sale_UNIQUEID` table, select the Actions ellipsis.
+15. To the right of the `wwi_staging.Sale` table, select the Actions ellipsis.
 
     ![The Actions ellipsis button is highlighted next to the wwi_staging.Sale_UNIQUEID table.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions.png "Synapse Analytics Databases")
 
-19. In the Actions menu, select **New SQL script > Select TOP 100 rows**.
+16. In the Actions menu, select **New SQL script > Select TOP 100 rows**.
 
-    ![In the Actions menu for the wwi_staging.Sale_UNIQUEID table, New SQL script > Select TOP 100 rows is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions-select.png "Synapse Analytics Databases")
+    ![In the Actions menu for the wwi_staging.Sale table, New SQL script > Select TOP 100 rows is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions-select.png "Synapse Analytics Databases")
 
-20. Observe the results in the output pane, and see how easy it was to use Spark notebooks to write data from Blob Storage into Azure Synapse Analytics.
+17. Observe the results in the output pane, and see how easy it was to use Spark notebooks to write data from Blob Storage into Azure Synapse Analytics.
 
-21. Close the SQL script generated by `wwi_staging.Sale_UNIQUEID` 
+    ![The output of the SQL statement is displayed.](media/staging-sale-output.png "Sale script output")
 
-### Bonus Challenge
+18. Close the SQL script generated by `wwi_staging.Sale`.
+
+### Bonus exercise
 
 Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** notebook.
 
@@ -140,46 +155,31 @@ Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** no
 
    ![CSharp for Spark](./media/ex02-csharp-for-spark.png)
 
-This notebook demonstrates how easy it is to create and run notebooks using C# for Spark. The notebook shows the code for retrieving data from Azure Blob Storage and writing that into a staging table in Azure Synapse Analytics using a JDBC connection.
+    This notebook demonstrates how easy it is to create and run notebooks using C# for Spark. The notebook shows the code for retrieving data from Azure Blob Storage and writing that into a staging table in Azure Synapse Analytics using a JDBC connection.
 
-You can run each cell in this notebook and observe the output. Be aware, however, that writing data into a staging table in Azure Synapse Analytics with this notebook takes several minutes, so you don't need to wait on the notebook to finish before attempting to query the `wwi_staging.Sale_CSharp_UNIQUEID` table to observe the data being written or to move on to the next task.
+    You can run each cell in this notebook and observe the output. Be aware, however, that writing data into a staging table in Azure Synapse Analytics with this notebook takes several minutes, so you don't need to wait on the notebook to finish before attempting to query the `wwi_staging.Sale_CSharp` table to observe the data being written or to move on to the next task.
 
-Before running the notebook:
-
-1. **Important**: Do not forget to set the `uniqueId` variable with the unique identifier assigned to you for this workshop.
-
-2. Select **Configure session**, which you will find at the bottom left-hand side of the notebook.
-
-   ![The Configure session link is highlighted at the bottom of the notebook.](media/ex-shared-configure-session.png "Configure session")
-
-3. In the Configure session dialog, enter the following configuration:
-
-   - **Executors**: Set to `1`.
-   - **Executor size**: Ensure `Small (4 vCPU, 28GB memory)` is selected.
-
-4. Select **Apply** to save the session configuration.
-
-5. **Run** the notebook after applying the above configurations.
+3. **Run** the notebook.
 
 To observe the data being written into the table:
 
-1. Select **Data** from the left-hand menu, expand Databases, SQLPool01, and Tables.
+1. Select **Data** from the left-hand menu, select the Workspace tab, then expand Databases, SQLPool01, and Tables.
 
-2. Right-click the table named `wwi_staging.Sale_CSharp_UNIQUEID`, where `UNIQUEID` is the unique identifier assigned to you for this workshop, and choose **New SQL Script** then **SELECT TOP 100 rows**.
+2. Right-click the table named `wwi_staging.Sale_CSharp`, and choose **New SQL Script** then **SELECT TOP 100 rows**.
 
    > If you do not see the table, select the Actions ellipsis next to Tables, and then select **Refresh** from the fly-out menu.
 
-3. Replace the `SELECT` query in the editor with the query below, replacing `UNIQUEID` with the unique identifier assigned to you for this workshop.
+3. Replace the `SELECT` query in the editor with the query below:
 
    ```sql
-   SELECT COUNT(*) FROM [wwi_staging].[Sale_CSharp_UNIQUEID]
+   SELECT COUNT(*) FROM [wwi_staging].[Sale_CSharp]
    ```
 
 4. Select **Run** on the toolbar.
 
-   > Re-run the query every 5-10 seconds to watch the count of records in the table, and how it changes as new records are being added by the notebook. The notebook limits the number of rows to 1500, so if you see a count of 1500, the notebook has completed processing.
+   > Re-run the query every 5-10 seconds to watch the count of records in the table, and how it changes as new records are being added by the notebook. The script in the notebook limits the number of rows to 1500, so if you see a count of 1500, the notebook has completed processing.
 
-5. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. By not saving, you will ensure that the next user in the shared environment gets the original copy of the notebook.
+5. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool.
 
 ## Task 2 - Explore, modify, and run a Pipeline containing a Data Flow
 

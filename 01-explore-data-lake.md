@@ -103,54 +103,44 @@ In this task, you will browse your data lake using SQL On-demand.
 
    ![Run Spark notebook on data lake file](./media/ex01-attachsparkpool01.png "Attach notebook to Spark pool")
 
-4. Before running the notebook, select **Configure session**, which you will find at the bottom left-hand side of the notebook.
-
-   ![The Configure session link is highlighted at the bottom of the notebook.](media/ex-shared-configure-session.png "Configure session")
-
-5. In the Configure session dialog, enter the following configuration:
-
-   - **Executors**: Set to `1`.
-   - **Executor size**: Ensure `Small (4 vCPU, 28GB memory)` is selected.
-
-6. Select **Apply** to save the session configuration.
-
-7. Select **Run all** on the notebook toolbar to execute the notebook.
+4. Select **Run all** on the notebook toolbar to execute the notebook.
 
    > **Note**: The first time you run a notebook in a Spark pool, Synapse creates a new session. This can take approximately 3 minutes.
 
-8. As you can see, the output of the dataframe is displayed with 10 rows. To  display 100 rows with the header replace the last line of code with the following:
+5. As you can see, the output of the dataframe is displayed with 10 rows. To  display 100 rows with the header replace the last line of code with the following:
 
    ```python
    display(df.limit(100))
    ```
 
-9. Rerun the notebook again to see the result.
+6. Rerun the notebook again to see the result.
 
    ![Improve dataset formatting in Spark notebook](./media/ex01-spark-notebookrun-04.png "Execute notebook")
 
-10. Notice the included charting capabilities that enable visual exploration of your data. Switch to **Chart** view. Select **View Options** and change the **Key** to `CustomerKey` and **Values** to `CityKey`.
+7. Notice the included charting capabilities that enable visual exploration of your data. Switch to **Chart** view. Select **View Options** and change the **Key** to `CustomerKey` and **Values** to `CityKey`.
 
     ![View charts on data in Spark notebook](./media/ex01-spark-notebook-05.png "Review charted data")
 
-11. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool. By not saving, you will ensure that the next user in the shared environment gets the original copy of the notebook.
+8. Hover over the area just below the cell in the notebook, then select **{} Add code** to add a new cell.
 
-12. In Azure Synapse Analytics Studio, navigate to the `Develop` hub, select the `Exercise 1 - Read with Spark` notebook
+   ![The add code button is highlighted.](media/add-cell.png "Add code")
 
-13. As you did above, before running the notebook, select **Configure session**, which you will find at the bottom left-hand side of the notebook.
+9. Paste the following into the cell and **replace** `YOUR_DATALAKE_NAME` with the name of your **Storage Account Name** provided in the environment details section on Lab Environment tab on the right. You can also copy it from the first cell of the notebook above.
 
-    ![The Configure session link is highlighted at the bottom of the notebook.](media/ex-shared-configure-session.png "Configure session")
+   ```python
+   data_path = spark.read.load(
+      'abfss://wwi@YOUR_DATALAKE_NAME.dfs.core.windows.net/factsale-csv/2012/Q1/*/*',
+      format='csv',
+      sep="|",
+      header=True)
 
-14. In the Configure session dialog, enter the following configuration:
+   display(data_path.limit(100))
+   ```
 
-    - **Executors**: Set to `1`.
-    - **Executor size**: Ensure `Small (4 vCPU, 28GB memory)` is selected.
+10. Select the **Run cell** button to execute the new cell.
 
-15. Select **Apply** to save the session configuration.
-
-16. Select `Run all` on the toolbar to execute the notebook.
+    ![The new cell is displayed and the run cell button is highlighted.](media/notebook-new-csv-cell.png "New cell to explore CSV files")
 
     > This notebook demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
 
-    ![Run Spark notebook loading multiple CSV data lake files](./media/ex01-spark-notebook-06.png "Run the Spark notebook")
-
-17. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool.
+11. **Important**: If you are continuing on to Exercise 2 now, _leave this notebook open for the first task_ of the next exercise. This way, you can continue to use this notebook and the running Spark session, saving you time.
