@@ -52,9 +52,11 @@ In this task, you will browse your data lake using SQL On-demand.
 
    ![Start new SQL script from data lake file](./media/ex01-sql-on-demand-01.png "Create a new SQL script")
 
-10. Ensure the newly created script is connected to the `SQL on-demand` pool and select `Run`. Data is loaded by the on-demand SQL pool and processed as if it was coming from any regular relational database.
+10. Ensure the newly created script is connected to the `Built-in` pool and select `Run`. Data is loaded by the on-demand SQL pool and processed as if it was coming from any regular relational database.
 
     ![Run SQL script on data lake file](./media/ex01-sql-on-demand-02.png "Execute SQL script")
+    
+  > SQL on demand is now named as **Built-in**
 
 11. Let us change the initial script to load multiple Parquet files at once.
 
