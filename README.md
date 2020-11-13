@@ -1,7 +1,5 @@
 # Azure Synapse Analytics Lab
 
-Lab time: 90 minutes
-
 ## Wide World Importers
 
 Wide World Importers (WWI) is a wholesale novelty goods importer and distributor operating from the San Francisco bay area.
@@ -36,7 +34,7 @@ If you are using a hosted lab environment, please follow the steps below to get 
 
 The diagram below provides a unified view of the exercises in the lab and their estimated times for completion.
 
-![Azure Synapse Analytics Lab Exercises](./media/exercises.png "Solution architecture")
+![Azure Synapse Analytics Lab Exercises](./media/exercises1.png "Solution architecture")
 
 ## Exercise 1 - Explore the data lake with Azure Synapse SQL On-demand and Azure Synapse Spark
 
@@ -70,10 +68,3 @@ SQL data warehouses have been for a long time the center of gravity in data plat
 
 The Azure Synapse SQL Pools in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
 
-## Exercise 5 - Data Science with Azure Synapse Spark
-
-In this exercise, you will play the role of a data scientist. You will create a model to predict customer purchase volumes based on the WWI sales dataset, using Azure Synapse Spark.
-
-Modern era data environments must handle in a performant and seamless way any data an organization might have. In almost all cases, this means a combination of relational SQL-style capabilities and big data ones. In the world of massively distributed big data processing platforms, Spark is almost an implicit choice.
-
-Azure Synapse Analytics provides Apache Spark to support data science workloads. They enable data scientists to perform all their specific tasks while benefiting from the integration with the other Synapse services.

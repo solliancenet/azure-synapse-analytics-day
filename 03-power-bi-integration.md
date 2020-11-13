@@ -14,7 +14,7 @@ The tasks you will perform in this exercise are:
 
 **Important**:
 
-In the tasks below, you will be asked to enter a unique identifier in several places. You can find your unique identifier by looking at the username you were provided for logging into the Azure portal. Your username is in the format `user-UNIQUEID@msazurelabs.onmicrosoft.com`, where the _UNIQUEID_ component looks like `A01`, `B22`, or `C04`, as examples.
+In the tasks below, you will be asked to enter a unique identifier in several places. You can find your unique identifier by looking at the username you were provided for logging into the Azure portal. Your username is in the format `odl_user_UNIQUEID@msazurelabs.onmicrosoft.com`, where the _UNIQUEID_ component looks like `206184`, `206137`, or `205349`, as examples.
 
 Please locate this value and note it for the steps below.
 
@@ -23,6 +23,8 @@ Please locate this value and note it for the steps below.
 ## Task 1 - Create a Power BI dataset in Synapse
 
 In this task, you will use Power BI Desktop to create the dataset used by the report.
+
+> Note: Power BI desktop will already be installed in the virtual machine provided with the lab.
 
 1. Open Synapse Analytics Studio, and then navigate to the `Develop hub`.
 
@@ -126,8 +128,9 @@ If you do not see a list of data fields under Fields, follow the steps below for
 
    ![Selecting Save As from the File menu](media/ex03-file-save-as.png "Save As")
 
-7. In the dialog that appears, provide a unique name for your report that included your _UNIQUEID_ from your username (e.g., `keysalesA03`) and then select **Save**.
-
-   ![The Save your report dialog](media/ex03-save-your-report.png "Save report")
+7. In the dialog that appears, provide a unique name for your report that included your _UNIQUEID_ from your username (e.g.,`keysales206184`) and then select **Save**.
+   > Note: Replace the `uniqueId` with the **UniqueId** provided in the environment details section on Lab Environment tab on the right.
+   
+   ![The Save your report dialog](media/ex03-pbireport.png "Save report")
 
 8. This report is now available to all authorized users within Synapse Analytics Studio and the Power BI workspace.
