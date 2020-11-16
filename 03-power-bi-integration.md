@@ -28,9 +28,13 @@ In this task, you will use Power BI Desktop to create the dataset used by the re
 
 1. Open Synapse Analytics Studio, and then navigate to the `Develop hub`.
 
+   ![Develop hub.](media/develop-hub.png "Develop hub")
+
 2. Expand **Power BI**, expand the first node under it, and then select **Power BI datasets**.
 
    ![Selecting Power BI datasets in the Develop panel](media/ex03-pbi-menu.png "Select Power BI datasets")
+
+   > The second node, named `PowerBIWorkspace<UniqueId>`, is the Power BI workspace added to your Synapse workspace as a linked service.
 
 3. Select **New Power BI dataset** within the panel that appears.
 
@@ -40,13 +44,15 @@ In this task, you will use Power BI Desktop to create the dataset used by the re
 
    ![Select Start in the first screen of wizard](media/ex03-pbids-install-pbidesktop.png "Select Start")
 
-5. In the step by step dialog that appears, select your SQL Pool and then select **Continue**.
+5. In the step by step dialog that appears, select `SQLPool01` and then select **Continue**.
 
-6. Select **Download** to download the suggested `pbids` file.
+   ![The SQLPool01 data source is selected.](media/ex03-pbid-select-data-source.png "Select a data source")
+
+6. Select **Download** to download and save the suggested `pbids` file.
 
    ![Selecting Download](media/ex03-download-pbid.png "Download file")
 
-7. Open the downloaded .pbid file that was downloaded. This will launch Power BI desktop.
+7. Open the downloaded .pbids file. This will launch Power BI desktop.
 
 8. When Power BI Desktop loads, select **Microsoft account**, then select **Sign in**. Follow the login prompts to login with the credential provided to you. When you return to the SQL Server database dialog, select **Connect**.
 
@@ -68,11 +74,15 @@ In this task, you will use Power BI Desktop to create the dataset used by the re
 
     ![Selecting the correct Power BI workspace](media/ex03-select-workspace.png "Select workspace")
 
-13. Return to your browser where you have Azure Synapse Studio open. Select **Close and refresh** in the New Power BI dataset dialog that should still be open.
+13. Wait until the publishing dialog shows a status of **Success**, then click **Got it** to close the dialog.
+
+    ![The publishing succeeded.](media/ex03-publishing-succeeded.png "Publishing to Power BI")
+
+14. Return to your browser where you have Azure Synapse Studio open. Select **Close and refresh** in the New Power BI dataset dialog that should still be open.
 
     ![Closing the wizard dialog](media/ex03-close-and-refresh-pbids.png "Close the wizard")
 
-14. You should see your new Power BI dataset appear in the listing on the Power BI datasets panel. If not, select **Refresh**.
+15. You should see your new Power BI dataset appear in the listing on the Power BI datasets panel. If not, select **Refresh**.
 
     ![Viewing the dataset listing](media/ex03-view-new-dataset.png "Browse datasets")
 
