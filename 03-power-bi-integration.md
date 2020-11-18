@@ -109,38 +109,63 @@ If you do not see a list of data fields under Fields, follow the steps below for
 2. Select `Workspaces` from the left menu and select the `PowerBIWorkspace` as shown in the screenshot.
 
    ![Selecting the right workspace to work on](media/ex03-selecting-workspace.png "Selecting the right workspace to work on")
-   
-3. Navigate to **Settings** and select **Datasets** tab. From the list of datasets select `wwifactsales` to enter new **Data Source credentials**.
+
+3. Navigate to **Settings**, then select **Settings** from the menu.
+
+   ![The Settings menu is displayed.](media/pbi-settings.png "Settings")
+
+4. Select the **Datasets** tab. From the list of datasets select `wwifactsales`, then select **Edit credentials** underneath the **Data Source credentials** section.
 
    ![Changing settings for the wwifactsales dataset](media/ex03-setting-dataset-credentials.png "Changing settings for the wwifactsales dataset")
-   
-4. Under **Authentication Method** select `OAuth2` and select **Sign In**.
+
+5. Under **Authentication Method** select `OAuth2` and select **Sign In**.
 
    ![Selecting the right workspace to work on](media/ex03-enter-dataset-credentials.png "Selecting the right workspace to work on")
-   
-5. Navigate back to your Synapse workspace in the previous tab and **refresh** the browser window to continue with the lab.
 
----
+6. Navigate back to your Synapse workspace in the previous tab and select the **refresh** button above the Fields list in the Power BI report. After a few seconds, you should see the list of fields below. Alternatively, you may refresh your browser window.
 
-3. Within the Power BI designer, under Fields, select the fields **SalespersonKey** and **TotalExcludingTax**.
+   ![The refresh button above the fields list is highlighted.](media/ex03-pbi-refresh.png "Refresh")
 
-   ![Selecting the fields from the Fields list](media/ex03-pbi-choose-fields.png "Select fields")
+7. Within the Power BI designer, select **Line and clustered column chart** under Visualizations.
 
-4. Under the Visualizations, drag the **SalespersonKey** field and drop it into the **Legend** field.
+   ![The visualization is highlighted.](media/ex03-pbi-line-clustered-column-chart-vis.png "Line and clustered column chart")
 
-   ![Setting the Legend field](media/ex03-pbi-set-legend.png "Set legend field")
+8. Drag the **SalespersonKey** field into **Shared axis** for the visualization. Then drag the **TotalExcludingTax** field into **Column values**. Finally, drag the **Profit** field into **Line values**.
 
-5. Under Visualizations, select the `100% Stacked column chart` visualization. You should now have a chart that lets you quickly assess each sales person's contribution to the total.
+   ![The field values are displayed as described above.](media/ex03-visualization-fields.png "Visualization fields")
 
-   ![Selecting the 100% Stacked column chart](media/ex03-pbi-stacked-col-viz.png "Select chart type")
+9. Resize the line and clustered column chart visualization to fit the report area. Your visualization should look like the following:
 
-6. From the file menu within the designer, select **Save As**.
+   ![The visualization is highlighted on the report canvas.](media/ex03-pbi-visualization-no-filter.png "Completed visualization")
 
-   ![Selecting Save As from the File menu](media/ex03-file-save-as.png "Save As")
+10. Under the **Filters** pane, expand the **Profit** filter. Select **is greater than** under `Show items when the value:`, then enter **50000000** for the value. Select **Apply filter**.
 
-7. In the dialog that appears, provide a unique name for your report that included your _UNIQUEID_ from your username (e.g.,`keysales206184`) and then select **Save**.
-   > Note: Replace the `uniqueId` with the **UniqueId** provided in the environment details section on Lab Environment tab on the right.
-   
-   ![The Save your report dialog](media/ex03-pbireport.png "Save report")
+    ![The filter is configured as described above.](media/ex03-pbi-apply-filter.png "Profit filter")
 
-8. This report is now available to all authorized users within Synapse Analytics Studio and the Power BI workspace.
+11. After a few seconds, you should see the visualization change, based on the filter. In this case, we narrow down the results to only those where the total profit amount is greater than $50 million. Since we are using Direct Query, Power BI pushed down the filter to the dedicated SQL pool (SQLPool01) to execute a new query based on the filter parameters. The pool sent back the results to Power BI to re-render the chart. Since we are dealing with a very large number of records (over 12 million), harnessing the power of the dedicated SQL pool to aggregate and filter the data rather than importing them and using the Power BI engine to do the work is much more efficient.
+
+    ![The filtered visualization is displayed.](media/ex03-pbi-filtered-visualization.png "Filtered visualization")
+
+12. From the file menu within the designer, select **Save As**.
+
+    ![Selecting Save As from the File menu](media/ex03-file-save-as.png "Save As")
+
+13. In the dialog that appears, enter **Key Sales by Person** for the name, then select **Save**.
+
+    ![The save dialog is displayed.](media/ex03-pbi-save-report.png "Save your report")
+
+14. This report is now available to all authorized users within Synapse Analytics Studio and the Power BI workspace.
+
+## Task 3 - View the SQL query
+
+1. Navigate to the **Monitor** hub.
+
+   ![Monitor hub.](media/monitor-hub.png "Monitor hub")
+
+2. Select **SQL requests** in the left-hand menu **(1)**, then select **SQLPool01** under the Pool filter **(2)**. Look at the list of recent queries executed by your lab username as the Submitter. Hover over one of these queries to see the **Request content** button next to the `SQL request ID` value **(3)** to view the executed query.
+
+   ![The list of SQL requests is displayed.](media/ex03-sql-requests.png "SQL requests")
+
+3. View the request content of the queries until you find one that contains the SQL SELECT statement executed by your filter in the Power BI report. Here you can see the `Profit` and `TotalExcludingTax` fields contain the SUM aggregate, and the `wwi.FactSale` table is grouped by `SalespersonKey`. There is a WHERE clause that filters the rows by `Profit` (aliased as `a0`) where the value is greater than or equal to `50000000` ($50 million). Power BI generated the SQL script, then used the dedicated SQL pool to execute the query and send back the results.
+
+   ![The SQL query is displayed as described above.](media/ex03-pbi-sql-statement.png "Request content")
