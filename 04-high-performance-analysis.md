@@ -13,7 +13,7 @@ The tasks you will perform in this exercise are:
   - Task 2 - Investigate query performance and table design
     - Bonus Challenge
 
-> **Note**: The tasks in this exercise must be run against a SQL pool (as opposed to the ones from exercise 1, which were run against the SQL on-demand pool). Make sure you have a SQL pool selected before running each query:
+> **Note**: The tasks in this exercise must be run against the dedicated SQL pool (as opposed to the ones from exercise 1, which were run against the built-in pool). Make sure you have `SQLPool01` selected before running each query:
 
 ![Run queries against a SQL pool](./media/ex04-run-on-sql-pool.png)
 
@@ -29,7 +29,7 @@ Solution:
 
 1. Open Synapse Analytics Studio, and then navigate to the `Develop` hub.
 2. Under `SQL scripts`, select the script called `Exercise 4 - Analyze Transactions`.
-3. Change the **Connect to** drop-down to the **SQLPoolXX** database.
+3. Change the **Connect to** drop-down to the **SQLPool01** database.
 4. Select **Run** to execute the script against the SQL Pool database.
 5. When the results appear, for the **View** toggle, select **Chart**.
 6. For the Chart type, select `Column`.
@@ -45,7 +45,7 @@ In this task, you will try to understand at a general level the implications of 
 First, let us set the stage by performing the following steps:
 
 1. Under **SQL Scripts** in the `Develop` hub within Synapse Analytics Studio, select the script called `Exercise 4 - Investigate query performance`.
-2. Change the **Connect to** drop-down to the **SQLPoolXX** database.
+2. Change the **Connect to** drop-down to the **SQLPool01** database.
 3. Select line 1 and then select `Run`.
 
    ![Run a count on FactSale_Slow](./media/ex04-query-selection-01.png "Run script")
@@ -88,8 +88,13 @@ Solution:
 
 This is the key difference that has such a significant impact on the performance of the last two queries. Because `wwi_perf.FactSale_Slow` is distributed in a round-robin fashion; each customer's data will end up living in multiple (if not all) distributions. When our query needs to consolidate each customer's data, a lot of data movement will occur between the distributions. This is what slows down the query significantly.
 
-On the other hand, `wwi_perf.FactSale_Perf` is distributed using the hash of the customer identifier. This means that each customer's data will end up living in a single distribution. When the query needs to consolidate each customer's data, there is virtually no data movement occurring between distributions, which makes the query very fast.
+On the other hand, `wwi_perf.FactSale_Fast` is distributed using the hash of the customer identifier. This means that each customer's data will end up living in a single distribution. When the query needs to consolidate each customer's data, there is virtually no data movement occurring between distributions, which makes the query very fast.
 
-Finally, the reason why the first two queries (the counts) where not that far apart performance-wise is because none of them incurred any data movement (each distribution just reported it's local counts and then the results were aggregated).
+> By default, tables are Round Robin-distributed, enabling users to create new tables without deciding on the distribution. In some workloads, Round Robin tables have acceptable performance. However, in many cases, selecting a distribution column will perform much better.
+>
+> A round-robin distributed table distributes table rows evenly across all distributions. The assignment of rows to distributions is random. Unlike hash-distributed tables, rows with equal values are not guaranteed to be assigned to the same distribution. As a result, the system sometimes needs to invoke a data movement operation to better organize your data before it can resolve a query. This extra step can slow down your queries. For example, joining a round-robin table usually requires reshuffling the rows, which is a performance hit.
 
-This simple example demonstrates one of the core challenges of modern, massively distributed data platforms - solid design. You witnessed first-hand how one decision taken at table design time can have a significant influence on the performance of queries. You also got a glimpse of Azure Synapse Analytics's raw power: the more efficient table design enabled a non-trivial query involving more than 80 million records to execute in just a few seconds.
+
+Finally, the reason why the first two queries (the counts) were not that far apart performance-wise is because none of them incurred any data movement (each distribution just reported its local counts and then the results were aggregated).
+
+This simple example demonstrates one of the core challenges of modern, massively distributed data platforms - solid design. You witnessed first-hand how one decision taken at table design time can have a significant influence on the performance of queries. You also got a glimpse of Azure Synapse Analytics' raw power: the more efficient table design enabled a non-trivial query involving more than 80 million records to execute in just a few seconds.
