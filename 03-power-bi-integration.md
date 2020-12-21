@@ -126,7 +126,7 @@ If you do not see a list of data fields under Fields, follow the steps below for
 
    ![The refresh button above the fields list is highlighted.](media/ex03-pbi-refresh.png "Refresh")
 
-7. Within the Power BI designer, select **Line and clustered column chart** under Visualizations.
+7. Within the Power BI Designer, select **Line and clustered column chart** under Visualizations.
 
    ![The visualization is highlighted.](media/ex03-pbi-line-clustered-column-chart-vis.png "Line and clustered column chart")
 
@@ -142,7 +142,7 @@ If you do not see a list of data fields under Fields, follow the steps below for
 
     ![The filter is configured as described above.](media/ex03-pbi-apply-filter.png "Profit filter")
 
-11. After a few seconds, you should see the visualization change, based on the filter. In this case, we narrow down the results to only those where the total profit amount is greater than $50 million. Since we are using Direct Query, Power BI pushed down the filter to the dedicated SQL pool (SQLPool01) to execute a new query based on the filter parameters. The pool sent back the results to Power BI to re-render the chart. Since we are dealing with a very large number of records (over 12 million), harnessing the power of the dedicated SQL pool to aggregate and filter the data rather than importing them and using the Power BI engine to do the work is much more efficient.
+11. After a few seconds, you should see the visualization change based on the filter. In this case, we narrow down the results to only those where the total profit amount is greater than $50 million. Since we are using Direct Query, Power BI pushed down the filter to the dedicated SQL pool (SQLPool01) to execute a new query based on the filter parameters. The pool sent back the results to Power BI to re-render the chart. Since we are dealing with a vast number of records (over 12 million), harnessing the dedicated SQL pool's power to aggregate and filter the data rather than importing them and using the Power BI engine to do the work is much more efficient.
 
     ![The filtered visualization is displayed.](media/ex03-pbi-filtered-visualization.png "Filtered visualization")
 
@@ -166,6 +166,6 @@ If you do not see a list of data fields under Fields, follow the steps below for
 
    ![The list of SQL requests is displayed.](media/ex03-sql-requests.png "SQL requests")
 
-3. View the request content of the queries until you find one that contains the SQL SELECT statement executed by your filter in the Power BI report. Here you can see the `Profit` and `TotalExcludingTax` fields contain the SUM aggregate, and the `wwi.FactSale` table is grouped by `SalespersonKey`. There is a WHERE clause that filters the rows by `Profit` (aliased as `a0`) where the value is greater than or equal to `50000000` ($50 million). Power BI generated the SQL script, then used the dedicated SQL pool to execute the query and send back the results.
+3. View the queries' request content until you find one that contains the SQL SELECT statement executed by your filter in the Power BI report. Here you can see the `Profit` and `TotalExcludingTax` fields have the SUM aggregate, and the `wwi.FactSale` table is grouped by `SalespersonKey`. A WHERE clause filters the rows by `Profit` (aliased as `a0`) where the value is greater than or equal to `50000000` ($50 million). Power BI generated the SQL script, then used the dedicated SQL pool to execute the query and send back the results.
 
    ![The SQL query is displayed as described above.](media/ex03-pbi-sql-statement.png "Request content")
