@@ -1,4 +1,4 @@
-# Exercise 1 - Explore the data lake with Azure Synapse SQL On-demand and Azure Synapse Spark
+# Exercise 1 - Explore the Data Lake with Azure Synapse serverless SQL pool and Azure Synapse Spark
 
 In this exercise, you will explore data using the engine of your choice (SQL or Spark).
 
@@ -69,7 +69,7 @@ In this task, you will browse your data lake using serverless SQL pool.
     https://<yourdatalake storage account name>.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*
     ```
 
-    > Note: Replace '<yourdatalake storage account name>' with the **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right.
+    > Note: Replace '< yourdatalake storage account name >' with the **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right.
 
 12. Select `Run` to re-run the script. You should see a result of `2991716`, which is the number of records contained in all the Parquet files within the `factsale-parquet/2012/Q1` directory.
 
