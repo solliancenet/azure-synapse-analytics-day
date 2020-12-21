@@ -23,7 +23,7 @@ Please locate this value and note it for the steps below.
 
 ## Task 1 - Explore and modify a notebook
 
-In this task, you see how easy it is to write into a SQL Pool table with Spark thanks to the SQL Analytics Connector. Notebooks are used to write the code required to write to SQL Pool tables using Spark.
+In this task, you see how easy it is to write into a dedicated SQL pool table with Spark thanks to the SQL Analytics Connector. Notebooks are used to write the code required to write to dedicated SQL pool tables using Spark.
 
 1. **Note:** If you still have your notebook open from the end of Exercise 1, **skip ahead** to step 3 below. Otherwise, in Synapse Analytics Studio, select **Develop** from the left-hand menu.
 
@@ -33,7 +33,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
    ![The new notebook menu item is highlighted.](media/new-notebook.png "New notebook")
 
-3. If not already attached, attach your Spark Compute by selecting it from the **Attach to** drop-down list, then select **{} Add code** to create a new cell.
+3. If not already attached, attach your Apache Spark pool by selecting it from the **Attach to** drop-down list **(1)**, then select **{} Add code** to create a new cell **(2)**.
 
    ![The Spark pool is selected in the Attach to drop-down.](media/new-notebook-add-code.png "Add code")
 
@@ -119,7 +119,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
     ![The Close + discard changes button is highlighted.](media/notebook-close-discard-changes.png "Discard changes?")
 
-13. Under **Workspace** tab, expand **Databases** and then expand the **SQLPool01** database.
+13. Under **Workspace** tab **(1)**, expand **Databases** **(2)** and then expand the **SQLPool01** database **(3)**.
 
     ![The Databases folder is expanded, showing a list of databases within the Azure Synapse Analytics workspace. SQLPool01 is expanded and highlighted.](media/ex02-databasesqlpool.png "Synapse Analytics Databases")
 
@@ -137,7 +137,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
     ![In the Actions menu for the wwi_staging.Sale table, New SQL script > Select TOP 100 rows is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions-select.png "Synapse Analytics Databases")
 
-17. Observe the results in the output pane, and see how easy it was to use Spark notebooks to write data from Blob Storage into Azure Synapse Analytics.
+17. Select **Run** to execute the query. Observe the results in the output pane, and see how easy it was to use Spark notebooks to write data from Blob Storage into Azure Synapse Analytics.
 
     ![The output of the SQL statement is displayed.](media/staging-sale-output.png "Sale script output")
 
@@ -151,7 +151,7 @@ Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** no
 
    ![Open bonus notebook with CSharp from Develop hub](./media/ex02-csharp-for-spark-notebook.png "Open bonus notebook with CSharp from Develop hub")
 
-2. Notice the language of choice being C# for Spark:
+2. Notice the language of choice being .NET Spark C# **(1)**:
 
    ![CSharp for Spark](./media/ex02-csharp-for-spark.png)
 
@@ -159,7 +159,7 @@ Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** no
 
     You can run each cell in this notebook and observe the output. Be aware, however, that writing data into a staging table in Azure Synapse Analytics with this notebook takes several minutes, so you don't need to wait on the notebook to finish before attempting to query the `wwi_staging.Sale_CSharp` table to observe the data being written or to move on to the next task.
 
-3. **Run** the notebook.
+3. Select **Run all (2)** and start the notebook.
 
 To observe the data being written into the table:
 
@@ -273,7 +273,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
     ![The Data preview tab is highlighted and selected. The Zip column is highlighted on the Data preview tab.](media/ex02-orchestrate-data-flow-sources-postal-codes-data-preview.png "Data flow canvas")
 
-16. Before looking at the `PostalCodeFilter`, quickly select the `+` button to the right of the `PostalCodes` data source to display a list of available transformations.
+16. Before looking at the `PostalCodeFilter`, quickly select the `+` **(1)** button to the right of the `PostalCodes` data source to display a list of available transformations **(2)**.
 
     > Take a moment to browse the list of transformations available in Mapping Data Flows. From this list, you get an idea of the types of transformations possible using data flows. Transformations are broken down into three categories, **multiple inputs/outputs**, **schema modifiers**, and **row modifiers**. You can learn about each transformation in the docs by reading the [Mapping data flow transformation overview](https://docs.microsoft.com/azure/data-factory/data-flow-transformation-overview) article.
 
@@ -297,13 +297,13 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
 21. Select **Cancel** to close the visual expression builder.
 
-22. Select the `DimCustomer` data source on the data flow canvas graph.
+22. Select the `DimCustomer` **(1)** data source on the data flow canvas graph.
 
     > Take a few minutes to review the various tabs in the configuration panel for this data source to better understand how it is configured, as you did above. Note that this data source relies on the `wwi_staging.DimCustomer_UniqueId` table from Azure Synapse Analytics for its data. `UniqueId` is supplied by a parameter to the data flow, which contains a substring of the Pipeline Run Id. Before running the pipeline, you will add a dependency to the Mapping Data Flow activity to ensure the Copy activity has populated the `wwi_staging.DimCustomer_UniqueId` in Azure Synapse Analytics before allowing the data flow to execute.
 
     ![The DimCustomer data source is highlighted on the data flow canvas graph.](media/ex02-orchestrate-data-flow-sources-dim-customer.png "Data flow canvas")
 
-23. Next, select the `JoinOnPostalCode` transformation and ensure the **Join settings** tab is selected to see how you can join datasets using a simple and intuitive graphical interface.
+23. Next, select the `JoinOnPostalCode` **(1)** transformation and ensure the **Join settings** tab **(2)** is selected to see how you can join datasets using a simple and intuitive graphical interface.
 
     > The **Join settings** tab allows you to specify the data sources being joined and the join types and conditions. Notice the **Right stream** points to the `PostalCodeFilter` and not the `PostalCodes` data source directly. By referencing the filtered dataset, the join works with a smaller set of postal codes. For extensive datasets, this can provide performance benefits.
 
@@ -315,7 +315,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
     ![The SelectDesiredColumns transformation is highlighted in the data flow graph.](media/ex02-orchestrate-data-flow-transformations-select.png "Data flow canvas")
 
-25. The last two items in the data flow are the defined sinks. These provide the connection settings necessary to write the transformed data into the desired data sink. Select the `EnrichCustomerData` sink and inspect the settings on the **Sink** tab.
+25. The last two items in the data flow are the defined sinks. These provide the connection settings necessary to write the transformed data into the desired data sink. Select the `EnrichCustomerData` **(1)** sink and inspect the settings on the **Sink** tab **(2)**.
 
     ![The Sink tab is displayed for the EnrichCustomerData sink, which is highlighted in the graph.](media/ex02-orchestrate-data-flow-sink-sink.png "Data flow canvas")
 
@@ -351,7 +351,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
     ![The publishing completed notification is displayed.](media/ex02-publishing-completed.png "Publishing completed")
 
-34. Your pipeline is now ready to run. Select **Add trigger** then **Trigger now** on the toolbar for the pipeline.
+34. Your pipeline is now ready to run. Select **Add trigger (1)** then **Trigger now (2)** on the toolbar for the pipeline.
 
     ![Add trigger is highlighted on the pipeline toolbar, and Trigger now is highlighted in the fly-out menu.](media/ex02-orchestrate-pipelines-trigger-now.png "Trigger pipeline")
 
