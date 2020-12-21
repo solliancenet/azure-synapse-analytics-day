@@ -25,7 +25,7 @@ Please locate this value and note it for the steps below.
 
 In this task, you see how easy it is to write into a dedicated SQL pool table with Spark thanks to the SQL Analytics Connector. Notebooks are used to write the code required to write to dedicated SQL pool tables using Spark.
 
-1. **Note:** If you still have your notebook open from the end of Exercise 1, **skip ahead** to step 3 below. Otherwise, in Synapse Analytics Studio, select **Develop** from the left-hand menu.
+1. **Note:** If you still have your notebook open from the end of Exercise 1, **skip ahead** to step 3 below. Otherwise, in Synapse Studio, select **Develop** from the left-hand menu.
 
    ![Develop is selected and highlighted in the Synapse Analytics menu.](media/develop-hub.png "Develop hub")
 
@@ -147,7 +147,7 @@ In this task, you see how easy it is to write into a dedicated SQL pool table wi
 
 Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** notebook.
 
-1. In Synapse Analytics Studio, select **Develop** from the left-hand menu. Expand **Notebooks** and select the notebook named `Exercise 2 - Bonus Notebook with CSharp`.
+1. In Synapse Studio, select **Develop** from the left-hand menu. Expand **Notebooks** and select the notebook named `Exercise 2 - Bonus Notebook with CSharp`.
 
    ![Open bonus notebook with CSharp from Develop hub](./media/ex02-csharp-for-spark-notebook.png "Open bonus notebook with CSharp from Develop hub")
 
@@ -341,7 +341,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
 31. The last step before running the pipeline is to publish the changes you have made. Select **Publish all** on the toolbar.
 
-    ![The Publish all button is highlighted on the Synapse Analytics Studio toolbar.](media/ex02-orchestrate-pipelines-publish-all.png "Publish")
+    ![The Publish all button is highlighted on the Synapse Studio toolbar.](media/ex02-orchestrate-pipelines-publish-all.png "Publish")
 
 32. On the **Publish all** dialog, select **Publish**.
 
@@ -365,11 +365,11 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
 After you finish building and debugging your data flow and its associated pipeline, you will want to monitor the execution of the pipeline and all of the activities contained within it, including the Data Flow activity. In this task, you review the [pipeline monitoring functionality in Azure Synapse Analytics](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-monitoring) using the pipeline run you initiated at the end of the previous task.
 
-1. In Synapse Analytics Studio, select **Monitor** from the left-hand menu.
+1. In Synapse Studio, select **Monitor** from the left-hand menu.
 
    ![Monitor is selected and highlighted in the Synapse Analytics menu.](media/monitor-hub.png "Synapse Analytics menu")
 
-2. Under Orchestration, select **Pipeline runs**.
+2. Under Integration, select **Pipeline runs**.
 
    ![Pipeline runs is selected and highlighted under the Orchestration section of the monitor resource list.](media/ex02-monitor-pipeline-runs.png "Synapse Analytics Monitor")
 
