@@ -9,12 +9,12 @@ In Azure Synapse Analytics, you can use either the SQL Serverless engine, the bi
 The tasks you will perform in this exercise are:
 
 - Explore the Data Lake with SQL On-demand and Spark
-  - Task 1 - Explore the Data Lake with Synapse SQL On-demand
-  - Task 2 - Explore the Data Lake with Synapse Spark
+  - Task 1 - Explore the Data Lake with Azure Synapse serverless SQL pool 
+  - Task 2 - Explore the Data Lake with Azure Synapse Spark
 
-## Task 1 - Explore the data lake with Azure Synapse SQL On-demand
+## Task 1 - Explore the Data Lake with Azure Synapse serverless SQL pool 
 
-In this task, you will browse your data lake using SQL On-demand.
+In this task, you will browse your data lake using serverless SQL pool.
 
 1. In a Microsoft Edge web browser, navigate to the Azure portal (`https://portal.azure.com`) and login with your credentials. Then select **Resource groups**.
 
@@ -56,11 +56,9 @@ In this task, you will browse your data lake using SQL On-demand.
 
    ![Start new SQL script from data lake file](./media/ex01-sql-on-demand-01.png "Create a new SQL script")
 
-10. Ensure the newly created script is connected to the `Built-in` pool and select `Run`. Data is loaded by the built-in SQL pool and processed as if it came from any regular relational database.
+10. Ensure the newly created script is connected to the `Built-in` pool representing serverless SQL pool and select `Run`. Data is loaded by the built-in SQL pool and processed as if it came from any regular relational database.
 
     ![Run SQL script on data lake file](./media/ex01-sql-on-demand-02.png "Execute SQL script")
-
-    > SQL on demand is now named as **Built-in**
 
 11. Let us change the initial script to load multiple Parquet files at once.
 
@@ -71,7 +69,7 @@ In this task, you will browse your data lake using SQL On-demand.
     https://<yourdatalake storage account name>.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*
     ```
 
-    > Note: Replace 'yourdatalakestorageaccountname' with the **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right.
+    > Note: Replace '<yourdatalake storage account name>' with the **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right.
 
 12. Select `Run` to re-run the script. You should see a result of `2991716`, which is the number of records contained in all the Parquet files within the `factsale-parquet/2012/Q1` directory.
 
@@ -89,7 +87,7 @@ In this task, you will browse your data lake using SQL On-demand.
     >
     > Here, we use WITH to define the columns in the files. You must use WITH when using a bulk rowset (OPENROWSET) in the FROM clause. Also, defining the columns enables you to select and filter the values within.
 
-## Task 2 - Explore the data lake with Azure Synapse Spark
+## Task 2 - Explore the Data Lake with Azure Synapse Spark
 
 1. Navigate to the `Data` hub, browse to the data lake storage account folder `wwi/factsale-parquet/2012/Q1/InvoiceDateKey=2012-01-01`, then right-click the Parquet file and select `New notebook->Load Data frame`
 
@@ -99,13 +97,15 @@ In this task, you will browse your data lake using SQL On-demand.
 
    ![New Spark notebook from data lake file](./media/ex01-spark-notebook-002.png "Review the notebook")
 
-3. Attach the notebook to a Spark pool.
+3. Attach the notebook to a Spark pool **(1)**.
 
    ![Run Spark notebook on data lake file](./media/ex01-attachsparkpool01.png "Attach notebook to Spark pool")
 
-4. Select **Run all** on the notebook toolbar to execute the notebook.
+4. Select **Run all** on the notebook toolbar **(2)** to execute the notebook.
 
    > **Note**: The first time you run a notebook in a Spark pool, Synapse creates a new session. This can take approximately 3 minutes.
+   
+    ![Waiting for the Spark pool to start.](./media/ex01-attachsparkpool01waiting.png "Waiting for the Spark pool to start.")
 
 5. As you can see, the output of the dataframe is displayed with 10 rows. To  display 100 rows with the header, replace the last line of code with the following:
 
@@ -117,7 +117,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
    ![Improve dataset formatting in Spark notebook](./media/ex01-spark-notebookrun-04.png "Execute notebook")
 
-7. Notice the included charting capabilities that enable visual exploration of your data. Switch to **Chart** view. Select **View Options** and change the **Key** to `CustomerKey` and **Values** to `CityKey`.
+7. Notice the included charting capabilities that enable visual exploration of your data. Switch to **Chart** view **(1)**. Select **View Options (2)** and change the **Key** to `CustomerKey` **(3)** and **Values** to `CityKey` **(4)**. Finally, select **Apply** to apply changes **(5)**.
 
     ![View charts on data in Spark notebook](./media/ex01-spark-notebook-05.png "Review charted data")
 
@@ -125,7 +125,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
    ![The add code button is highlighted.](media/add-cell.png "Add code")
 
-9. Paste the following into the cell, and **replace** `YOUR_DATALAKE_NAME` with the name of your **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right. You can also copy it from the first cell of the notebook above.
+9. Paste the following into the cell, and **replace** `YOUR_DATALAKE_NAME` **(1)** with the name of your **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right. You can also copy it from the first cell of the notebook above.
 
    ```python
    data_path = spark.read.load(
@@ -137,7 +137,7 @@ In this task, you will browse your data lake using SQL On-demand.
    display(data_path.limit(100))
    ```
 
-10. Select the **Run cell** button to execute the new cell.
+10. Select the **Run cell** button **(2)** to execute the new cell.
 
     ![The new cell is displayed, and the run cell button is highlighted.](media/notebook-new-csv-cell.png "New cell to explore CSV files")
 
