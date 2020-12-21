@@ -1,19 +1,20 @@
-# Exercise 4 - High Performance Analysis with Azure Synapse SQL Pools
+# Exercise 4 - High-Performance Analysis with Azure Synapse Dedicated SQL Pools
 
-In this exercise, you will use several of the capabilities associated with SQL Pools to analyze the data.
+In this exercise, you will use several of the capabilities associated with dedicated SQL Pools to analyze the data.
 
-SQL data warehouses have been for a long time the centers of gravity in data platforms. Modern data warehouses are capable of providing high performance, distributed, and governed workloads, regardless of the data volumes at hand.
+SQL data warehouses have been for a long time the centers of gravity in data platforms. Modern data warehouses can provide high performance, distributed, and governed workloads, regardless of the data volumes at hand.
 
 The SQL Analytics pool in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
 
 The tasks you will perform in this exercise are:
 
-- Exercise 4 - High Performance Analysis with SQL Analytics pool
+- Exercise 4 - High-Performance Analysis with SQL Analytics pool
   - Task 1 - Use a SQL Analytics pool query to understand a dataset
   - Task 2 - Investigate query performance and table design
     - Bonus Challenge
 
-> **Note**: The tasks in this exercise must be run against the dedicated SQL pool (as opposed to the ones from exercise 1, which were run against the built-in pool). Make sure you have `SQLPool01` selected before running each query:
+> **Note**: The tasks in this exercise must be run against the dedicated SQL pool (as opposed to the ones from exercise 1, which were run against the serverless SQL pool
+named "built-in" pool). Make sure you have `SQLPool01` selected before running each query:
 
 ![Run queries against a SQL pool](./media/ex04-run-on-sql-pool.png)
 
@@ -40,7 +41,7 @@ Solution:
 
 ## Task 2 - Investigate query performance and table design
 
-In this task, you will try to understand at a general level the implications of the table design. You will run the same set of queries against two fact tables (`FactSale_Fast` and `FactSale_Slow`). The two fact tables have (with one notable exception) the same structure and contain identical data.
+In this task, you will try to understand the implications of the table design at a general level. You will run the same set of queries against two fact tables (`FactSale_Fast` and `FactSale_Slow`). The two fact tables have (with one notable exception) the same structure and contain identical data.
 
 First, let us set the stage by performing the following steps:
 
@@ -62,7 +63,7 @@ First, let us set the stage by performing the following steps:
 
    ![Run a complex query on FactSale_Slow](./media/ex04-query-selection-03.png "Run script")
 
-   Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones who benefit from the initialization of various internal data and communications buffers). Make a note on the amount of time needed to run the query (typically 15 to 30 seconds).
+   Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones who benefit from the initialization of various internal data and communications buffers). Make a note of the amount of time needed to run the query (typically 15 to 30 seconds).
 
 6. Select lines 22 to 37 and then select `Run`.
 
@@ -77,7 +78,7 @@ Can you explain the significant difference in performance between the two seemin
 Solution:
 
 1. In Synapse Analytics Studio, navigate to the `Data` hub.
-2. Under Databases, expand the SQL pool node (the one that has its name ending in `(SQL pool)`), expand `Tables`, and locate the `wwi_perf.FactSale_Slow` table.
+2. Under Databases, expand the SQL pool node (the one with its name ending in `(SQL pool)`), expand `Tables`, and locate the `wwi_perf. ' FactSale_Slow` table.
 3. Right-click the table and then select `New SQL script`, `CREATE`.
 
    ![View table structure](./media/ex04-view-table-definition.png "Table structure")
@@ -86,15 +87,14 @@ Solution:
 
 5. Repeat the same actions for the `wwi_perf.FactSale_Fast` table and note the `DISTRIBUTION = HASH ( [CustomerKey] )` option used to distribute the table.
 
-This is the key difference that has such a significant impact on the performance of the last two queries. Because `wwi_perf.FactSale_Slow` is distributed in a round-robin fashion; each customer's data will end up living in multiple (if not all) distributions. When our query needs to consolidate each customer's data, a lot of data movement will occur between the distributions. This is what slows down the query significantly.
+This is the critical difference that has such a significant impact on the last two queries' performance. Because `wwi_perf.FactSale_Slow` is distributed in a round-robin fashion, each customer's data will end up living in multiple (if not all) distributions. When our query needs to consolidate each customer's data, a lot of data movement will occur between the distributions. This is what slows down the query significantly.
 
-On the other hand, `wwi_perf.FactSale_Fast` is distributed using the hash of the customer identifier. This means that each customer's data will end up living in a single distribution. When the query needs to consolidate each customer's data, there is virtually no data movement occurring between distributions, which makes the query very fast.
+On the other hand, `wwi_perf.FactSale_Fast` is distributed using the hash of the customer identifier. This means that each customer's data will end up living in a single distribution. When the query needs to consolidate each customer's data, virtually no data movement occurs between distributions, which makes the query very fast.
 
 > By default, tables are Round Robin-distributed, enabling users to create new tables without deciding on the distribution. In some workloads, Round Robin tables have acceptable performance. However, in many cases, selecting a distribution column will perform much better.
 >
-> A round-robin distributed table distributes table rows evenly across all distributions. The assignment of rows to distributions is random. Unlike hash-distributed tables, rows with equal values are not guaranteed to be assigned to the same distribution. As a result, the system sometimes needs to invoke a data movement operation to better organize your data before it can resolve a query. This extra step can slow down your queries. For example, joining a round-robin table usually requires reshuffling the rows, which is a performance hit.
+> A round-robin distributed table distributes table rows evenly across all distributions. The assignment of rows to distributions is random. Unlike hash-distributed tables, rows with equal values are not guaranteed to be assigned to the same distribution. As a result, the system sometimes needs to invoke a data movement operation to better organize your data before resolving a query. This extra step can slow down your queries. For example, joining a round-robin table usually requires reshuffling the rows, which is a performance hit.
 
+Finally, the first two queries (the counts) were not that far apart performance-wise because none of them incurred any data movement (each distribution just reported its local counts, and then the results were aggregated).
 
-Finally, the reason why the first two queries (the counts) were not that far apart performance-wise is because none of them incurred any data movement (each distribution just reported its local counts and then the results were aggregated).
-
-This simple example demonstrates one of the core challenges of modern, massively distributed data platforms - solid design. You witnessed first-hand how one decision taken at table design time can have a significant influence on the performance of queries. You also got a glimpse of Azure Synapse Analytics' raw power: the more efficient table design enabled a non-trivial query involving more than 80 million records to execute in just a few seconds.
+This simple example demonstrates one of the core challenges of modern, massively distributed data platforms - solid design. You witnessed first-hand how one decision taken at table design time can significantly influence the performance of queries. You also got a glimpse of Azure Synapse Analytics' raw power: the more efficient table design enabled a non-trivial query involving more than 80 million records to execute in just a few seconds.
