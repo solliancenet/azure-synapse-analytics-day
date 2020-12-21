@@ -2,7 +2,7 @@
 
 In this exercise, you will explore data using the engine of your choice (SQL or Spark).
 
-Understanding data through data exploration is one of the core challenges faced today by data engineers and data scientists as well. Depending on the underlying structure of the data as well as the specific requirements of the exploration process, different data processing engines will offer varying degrees of performance, complexity, and flexibility.
+Understanding data through data exploration is one of the core challenges faced today by data engineers and data scientists. Depending on the data's underlying structure and the specific requirements of the exploration process, different data processing engines will offer varying degrees of performance, complexity, and flexibility.
 
 In Azure Synapse Analytics, you can use either the SQL Serverless engine, the big-data Spark engine, or both.
 
@@ -52,11 +52,11 @@ In this task, you will browse your data lake using SQL On-demand.
 
 9. Once you are in `InvoiceDateKey=2012-01-01` right-click the Parquet file and select `New SQL script - Select TOP 100 rows`.
 
-   > A script is automatically generated. Run this script to see how SQL on demand queries the file and returns the first 100 rows of that file with the header, allowing you to easily explore data in the file
+   > A script is automatically generated. Run this script to see how SQL on demand queries the file and returns the first 100 rows of that file with the header, allowing you to explore data in the file easily.
 
    ![Start new SQL script from data lake file](./media/ex01-sql-on-demand-01.png "Create a new SQL script")
 
-10. Ensure the newly created script is connected to the `Built-in` pool and select `Run`. Data is loaded by the built-in SQL pool and processed as if it was coming from any regular relational database.
+10. Ensure the newly created script is connected to the `Built-in` pool and select `Run`. Data is loaded by the built-in SQL pool and processed as if it came from any regular relational database.
 
     ![Run SQL script on data lake file](./media/ex01-sql-on-demand-02.png "Execute SQL script")
 
@@ -71,7 +71,7 @@ In this task, you will browse your data lake using SQL On-demand.
     https://<yourdatalake storage account name>.dfs.core.windows.net/wwi/factsale-parquet/2012/Q1/*/*
     ```
 
-    > Note: Replace 'yourdatalakestorageaccountname' with the **Storage Account Name** provided in the environment details section on Lab Environment tab on the right.
+    > Note: Replace 'yourdatalakestorageaccountname' with the **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right.
 
 12. Select `Run` to re-run the script. You should see a result of `2991716`, which is the number of records contained in all the Parquet files within the `factsale-parquet/2012/Q1` directory.
 
@@ -81,13 +81,13 @@ In this task, you will browse your data lake using SQL On-demand.
 
     ![Develop hub.](media/develop-hub.png "Develop hub")
 
-14. Select the `Exercise 1 - Read with SQL on-demand` SQL script. Connect to **Built-in** and select **SQLOnDemand01** as the database. Select **Run** to execute the script..
+14. Select the `Exercise 1 - Read with SQL on-demand` SQL script. Connect to **Built-in** and select **SQLOnDemand01** as the database. Select **Run** to execute the script.
 
     ![Run SQL on-demand script loading multiple CSV data lake files](./media/ex01-sql-on-demand-04.png)
 
-    > This query demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path). Parquet files are compressed and store data in columnar format for efficient querying, as compared to CSV files which are raw representations of data, but easily processed by a large number of systems. Oftentimes, you can encounter many file types stored in a data lake and must know how to access and explore those files. When you access CSV files, for instance, you need to specify the format, field terminator, and other properties to let the query engine understand how to parse the data. In this case, we specify a value of `2` for FIRSTROW. This indicates that the first row of the file must be skipped because it contains the column header, for instance.
+    > This query demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path). Parquet files are compressed and store data in columnar format for efficient querying, compared to CSV files that are raw representations of data but easily processed by many systems. You can often encounter many file types stored in a data lake and must know how to access and explore those files. For instance, when you access CSV files, you need to specify the format, field terminator, and other properties to let the query engine understand how to parse the data. In this case, we determine the value of `2` for FIRSTROW. This indicates that the first row of the file must be skipped because it contains the column header.
     >
-    > Here we use WITH to define the columns in the files. You must use WITH when using a bulk rowset (OPENROWSET) in the FROM clause. Also, defining the columns enables you to select and filter the values within.
+    > Here, we use WITH to define the columns in the files. You must use WITH when using a bulk rowset (OPENROWSET) in the FROM clause. Also, defining the columns enables you to select and filter the values within.
 
 ## Task 2 - Explore the data lake with Azure Synapse Spark
 
@@ -107,13 +107,13 @@ In this task, you will browse your data lake using SQL On-demand.
 
    > **Note**: The first time you run a notebook in a Spark pool, Synapse creates a new session. This can take approximately 3 minutes.
 
-5. As you can see, the output of the dataframe is displayed with 10 rows. To  display 100 rows with the header replace the last line of code with the following:
+5. As you can see, the output of the dataframe is displayed with 10 rows. To  display 100 rows with the header, replace the last line of code with the following:
 
    ```python
    display(df.limit(100))
    ```
 
-6. Rerun the notebook again to see the result.
+6. Re-run the notebook again to see the result.
 
    ![Improve dataset formatting in Spark notebook](./media/ex01-spark-notebookrun-04.png "Execute notebook")
 
@@ -125,7 +125,7 @@ In this task, you will browse your data lake using SQL On-demand.
 
    ![The add code button is highlighted.](media/add-cell.png "Add code")
 
-9. Paste the following into the cell and **replace** `YOUR_DATALAKE_NAME` with the name of your **Storage Account Name** provided in the environment details section on Lab Environment tab on the right. You can also copy it from the first cell of the notebook above.
+9. Paste the following into the cell, and **replace** `YOUR_DATALAKE_NAME` with the name of your **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right. You can also copy it from the first cell of the notebook above.
 
    ```python
    data_path = spark.read.load(
@@ -139,8 +139,8 @@ In this task, you will browse your data lake using SQL On-demand.
 
 10. Select the **Run cell** button to execute the new cell.
 
-    ![The new cell is displayed and the run cell button is highlighted.](media/notebook-new-csv-cell.png "New cell to explore CSV files")
+    ![The new cell is displayed, and the run cell button is highlighted.](media/notebook-new-csv-cell.png "New cell to explore CSV files")
 
     > This notebook demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
 
-11. **Important**: If you are continuing on to Exercise 2 now, _leave this notebook open for the first task_ of the next exercise. This way, you can continue to use this notebook and the running Spark session, saving you time.
+11. **Important**: If you are continuing to Exercise 2 now, _leave this notebook open for the first task_ of the next exercise. This way, you can continue to use this notebook and the running Spark session, saving you time.
