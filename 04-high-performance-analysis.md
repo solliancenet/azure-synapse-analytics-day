@@ -26,7 +26,7 @@ In this task, you will try to understand who your best customers are.
 
 ![Example Chart](media/ex05-chart-sample.png "Example chart")
 
-Solution:
+**Solution:**
 
 1. Open Synapse Analytics Studio, and then navigate to the `Develop` hub.
 2. Under `SQL scripts`, select the script called `Exercise 4 - Analyze Transactions`.
@@ -69,24 +69,28 @@ First, let us set the stage by performing the following steps:
 
    ![Run a complex query on FactSale_Fast](./media/ex04-query-selection-04.png "Run script")
 
-   Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones who benefit from the initialization of various internal data and communications buffers). Make a note on the amount of time needed to run the query (typically 15 to 20 seconds).
+   Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones who benefit from the initialization of various internal data and communications buffers). Make a note on the amount of time needed to run the query (typically 3 to 5 seconds).
 
 ## Bonus Challenge
 
 Can you explain the significant difference in performance between the two seemingly identical tables? Furthermore, can you explain why the first set of queries (the simple counts) were not that further apart in execution times?
 
-Solution:
+**Solution:**
 
 1. In Synapse Analytics Studio, navigate to the `Data` hub.
-2. Under Databases, expand the SQL pool node (the one with its name ending in `(SQL pool)`), expand `Tables`, and locate the `wwi_perf. ' FactSale_Slow` table.
-3. Right-click the table and then select `New SQL script`, `CREATE`.
+2. Under Databases, expand the `SQLPool01` node, expand `Tables`, and locate the `wwi_perf.FactSale_Slow` table.
+3. Right-click the table **(1)** and then select `New SQL script` **(2)**, `CREATE` **(3)**.
 
    ![View table structure](./media/ex04-view-table-definition.png "Table structure")
 
 4. In the CREATE script, note the `DISTRIBUTION = ROUND_ROBIN` option used to distribute the table.
 
+   ![View Round-Robin Distribution](./media/ex04-view-round-robin.png "Round-Robin Distribution")
+
 5. Repeat the same actions for the `wwi_perf.FactSale_Fast` table and note the `DISTRIBUTION = HASH ( [CustomerKey] )` option used to distribute the table.
 
+   ![View Hash Distribution](./media/ex04-view-hash-distribution.png "Hash Distribution")
+ 
 This is the critical difference that has such a significant impact on the last two queries' performance. Because `wwi_perf.FactSale_Slow` is distributed in a round-robin fashion, each customer's data will end up living in multiple (if not all) distributions. When our query needs to consolidate each customer's data, a lot of data movement will occur between the distributions. This is what slows down the query significantly.
 
 On the other hand, `wwi_perf.FactSale_Fast` is distributed using the hash of the customer identifier. This means that each customer's data will end up living in a single distribution. When the query needs to consolidate each customer's data, virtually no data movement occurs between distributions, which makes the query very fast.
