@@ -4,19 +4,19 @@ In this exercise, you will use several of the capabilities associated with dedic
 
 SQL data warehouses have been for a long time the centers of gravity in data platforms. Modern data warehouses can provide high performance, distributed, and governed workloads, regardless of the data volumes at hand.
 
-The SQL Analytics pool in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
+The dedicated SQL pool in Azure Synapse is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
 
 The tasks you will perform in this exercise are:
 
-- Exercise 4 - High-Performance Analysis with SQL Analytics pool
-  - Task 1 - Use a SQL Analytics pool query to understand a dataset
+- Exercise 4 - High-Performance Analysis with Azure Synapse Dedicated SQL Pools
+  - Task 1 - Use a dedicated SQL pool query to understand a dataset
   - Task 2 - Investigate query performance and table design
     - Bonus Challenge
 
 > **Note**: The tasks in this exercise must be run against the dedicated SQL pool (as opposed to the ones from exercise 1, which were run against the serverless SQL pool
 named "built-in" pool). Make sure you have `SQLPool01` selected before running each query:
 
-![Run queries against a SQL pool](./media/ex04-run-on-sql-pool.png)
+![Run queries against a dedicated SQL pool](./media/ex04-run-on-sql-pool.png)
 
 ## Task 1 - Use a SQL Synapse Pool query to understand a dataset
 

@@ -104,7 +104,7 @@ In this task, you will learn how to use a collaborative approach to create a new
 
 If you do not see a list of data fields under Fields, follow the steps below for a fix.
 
-1. Navigate to [www.powerbi.com](www.powerbi.com) on a new browser tab. Select **Sign In** and use the credential provided to you.
+1. Navigate to [www.powerbi.com](https://www.powerbi.com) on a new browser tab. Select **Sign In** and use the credential provided to you.
 
 2. Select `Workspaces` from the left menu and select the `PowerBIWorkspace` as shown in the screenshot.
 
@@ -138,7 +138,7 @@ If you do not see a list of data fields under Fields, follow the steps below for
 
    ![The visualization is highlighted on the report canvas.](media/ex03-pbi-visualization-no-filter.png "Completed visualization")
 
-10. Under the **Filters** pane, expand the **Profit** filter. Select **is greater than** under `Show items when the value:`, then enter **50000000** for the value. Select **Apply filter**.
+10. Under the **Filters** pane, expand the **Profit** filter **(1)**. Select **is greater than** under `Show items when the value:` **(2)**, then enter **50000000** for the value. Select **Apply filter (3)**.
 
     ![The filter is configured as described above.](media/ex03-pbi-apply-filter.png "Profit filter")
 
