@@ -41,7 +41,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
    ![The add code button is highlighted.](media/add-cell.png "Add code")
 
-4. Paste the following into the new cell and **replace** `YOUR_DATALAKE_NAME` with the name of your **Storage Account Name** provided in the environment details section on Lab Environment tab on the right. You can also copy it from the first cell of the notebook if you are using the same one from Exercise 1.
+4. Paste the following into the new cell, and **replace** `YOUR_DATALAKE_NAME` with the name of your **Storage Account Name** provided in the environment details section on Lab Environment tab on the right. You can also copy it from the first cell of the notebook if you are using the same one from Exercise 1.
 
     ```scala
     %%spark
@@ -80,7 +80,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
     > The output of this cell provides some insight into the structure of the data and the data types that have been inferred. The `show(5)` command results in the first five rows of the data read being output, allowing you to see the columns and a sample of data contained within each. The `printSchema()` command outputs a list of columns and their inferred types.
 
-    ![The output from the execution the cell is displayed, with the result of the show(5) command shown first, followed by the output from the printSchema() command.](media/ex02-notebook-ingest-cell-2-output.png "Cell output")
+    ![The output from the execution of the cell is displayed, with the result of the show(5) command shown first, followed by the output from the printSchema() command.](media/ex02-notebook-ingest-cell-2-output.png "Cell output")
 
 8. Hover over the area just below the cell in the notebook, then select **{} Add code** to add a new cell.
 
@@ -107,11 +107,11 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
 10. As the cell runs, select the arrow icon below the cell to expand the details for the Spark job.
 
-    > This pane allows you to monitor the underlying Spark jobs, and observe the status of each. As you can see, the cell is split into two Spark jobs, and the progress of each can be observed. We will take a more in-depth look at monitoring Spark applications in Task 4 below.
+    > This pane allows you to monitor the underlying Spark jobs and observe the status of each. As you can see, the cell is split into two Spark jobs, and the progress of each can be observed. We will take a more in-depth look at monitoring Spark applications in Task 4 below.
 
     ![The Spark job status pane is displayed below the cell, with the progress of each Spark job visible.](media/ex02-notebook-ingest-cell-3-spark-job.png "Spark Job status")
 
-11. After approximately 1-2 minutes, the execution of Cell 3 will complete. Once it has completed, select **Data** from the left-hand menu.
+11. After approximately 1-2 minutes, the execution of Cell 3 will complete. Once it has finished, select **Data** from the left-hand menu.
 
     ![Data is selected and highlighted in the Synapse Analytics menu.](media/data-hub.png "Data hub")
 
@@ -119,7 +119,7 @@ In this task, you see how easy it is to write into a SQL Pool table with Spark t
 
     ![The Close + discard changes button is highlighted.](media/notebook-close-discard-changes.png "Discard changes?")
 
-13. Under **Workspace** tab expand **Databases** and then expand the **SQLPool01** database.
+13. Under **Workspace** tab, expand **Databases** and then expand the **SQLPool01** database.
 
     ![The Databases folder is expanded, showing a list of databases within the Azure Synapse Analytics workspace. SQLPool01 is expanded and highlighted.](media/ex02-databasesqlpool.png "Synapse Analytics Databases")
 
@@ -155,7 +155,7 @@ Now, take some time to review the **Exercise 2 - Bonus Notebook with CSharp** no
 
    ![CSharp for Spark](./media/ex02-csharp-for-spark.png)
 
-    This notebook demonstrates how easy it is to create and run notebooks using C# for Spark. The notebook shows the code for retrieving data from Azure Blob Storage and writing that into a staging table in Azure Synapse Analytics using a JDBC connection.
+    This notebook demonstrates how easy it is to create and run notebooks using C# for Spark. The notebook shows the code for retrieving Azure Blob Storage data and writing that into a staging table in Azure Synapse Analytics using a JDBC connection.
 
     You can run each cell in this notebook and observe the output. Be aware, however, that writing data into a staging table in Azure Synapse Analytics with this notebook takes several minutes, so you don't need to wait on the notebook to finish before attempting to query the `wwi_staging.Sale_CSharp` table to observe the data being written or to move on to the next task.
 
@@ -177,13 +177,13 @@ To observe the data being written into the table:
 
 4. Select **Run** on the toolbar.
 
-   > Re-run the query every 5-10 seconds to watch the count of records in the table, and how it changes as new records are being added by the notebook. The script in the notebook limits the number of rows to 1500, so if you see a count of 1500, the notebook has completed processing.
+   > Re-run the query every 5-10 seconds to watch the record count in the table and how it changes as the notebook is adding new records. The script in the notebook limits the number of rows to 1500, so if you see a count of 1500, the notebook has completed processing.
 
 5. **Important**: Close the notebook by selecting the **X** in the top right of the tab and then select **Discard Changes**. Closing the notebook will ensure you free up the allocated resources on the Spark Pool.
 
 ## Task 2 - Explore, modify, and run a Pipeline containing a Data Flow
 
-In this task, you use a Pipeline containing a Data Flow to explore, transform, and load data into an Azure Synapse Analytics table. Using pipelines and data flows allows you to perform data ingestion and transformations, similar to what you did in Task 1, but without having to write any code.
+In this task, you use a Pipeline containing a Data Flow to explore, transform, and load data into an Azure Synapse Analytics table. Using pipelines and data flows allows you to perform data ingestion and transformations, similar to what you did in Task 1, but without writing any code.
 
 1. In Synapse Studio and select **Integrate** from the left-hand menu.
 
@@ -197,11 +197,11 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
 3. Now, take a closer look at each of the activities within the pipeline. On the canvas graph, select the **Copy data** activity named `Import Customer dimension`.
 
-    > Below the graph is a series of tabs, each of which provides additional details about selected the activity. The **General** tab displays the name and description assigned to the activity, along with a few other properties.
+    > Below the graph is a series of tabs, each providing additional details about the selected activity. The **General** tab displays the name and description assigned to the activity and a few other properties.
 
     ![A screenshot of Exercise 2 - Enrich Data pipeline canvas and properties pane is displayed.](media/ex02-orchestrate-copy-data-general.png "Pipeline canvas")
 
-4. Select the **Source** tab. The source defines the location from which data will be copied by the activity. The **Source dataset** field is a pointer to the location of the source data.
+4. Select the **Source** tab. The source defines the location from which the activity will copy data. The **Source dataset** field is a pointer to the location of the source data.
 
     > Take a moment to review the various properties available on the Source tab. Data is being retrieved from files stored in a data lake.
 
@@ -213,7 +213,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
     > Reviewing the fields on this tab, you will notice that it is possible to define the copy method, table options, and to provide pre-copy scripts to execute. Also, take special note of the sink dataset, `wwi_staging_dimcustomer_asa`. The dataset requires a parameter named `UniqueId`, which is populated using a substring of the Pipeline Run Id. This dataset points to the `wwi_staging.DimCustomer_UniqueId` table in Synapse Analytics, which is one of the data sources for the Mapping Data Flow. We will need to ensure that the copy activity successfully populates this table before running the data flow.
 
-6. Select the **Mapping** tab. On this tab, you can review and set the column mappings. As you can see on this tab, the spaces are being removed from the column names in the sink.
+6. Select the **Mapping** tab. On this tab, you can review and set the column mappings. As you can see on this tab, the spaces are being removed from the sink's column names.
 
     ![The Mappings tab for the Copy data activity is highlighted and displayed.](media/ex02-orchestrate-copy-data-mapping.png "Pipeline canvas property tabs")
 
@@ -243,13 +243,13 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
 10. Take a minute to look at the options available on the various tabs in the configuration panel. You will notice the properties here define how the data flow operates within the pipeline.
 
-11. Now, let us take a look at the definition of the data flow the Mapping Data Flow activity references. Double-click the **Mapping Data Flow** activity on the pipeline canvas to open the underlying Data Flow in a new tab.
+11. Now, let us look at the data flow definition the Mapping Data Flow activity references. Double-click the **Mapping Data Flow** activity on the pipeline canvas to open the underlying Data Flow in a new tab.
 
-    > **Important**: Typically, when working with Data Flows, you would want to enable **Data flow debug**. [Debug mode](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-debug-mode) creates a Spark cluster to use for interactively testing each step of the data flow and allows you to validate the output prior to saving and running the data flow. Enabling a debugging session can take up to 10 minutes, so you will not enable this for the purposes of this workshop. Screenshots will be used to provide details that would otherwise require a debug session to view.
+    > **Important**: Typically, when working with Data Flows, you would want to enable **Data flow debug**. [Debug mode](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-debug-mode) creates a Spark cluster to use for interactively testing each step of the data flow and allows you to validate the output before saving and running the data flow. Enabling a debugging session can take up to 10 minutes, so you will not enable this for this workshop. Screenshots will be used to provide details that would otherwise require a debug session to view.
 
     ![The EnrichCustomerData Data Flow canvas is displayed.](media/ex02-orchestrate-data-flow.png "Data Flow canvas")
 
-12. The [Data Flow canvas](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-overview#data-flow-canvas) allows you to see the construction of the data flow, and each component contained within it in greater detail.
+12. The [Data Flow canvas](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-overview#data-flow-canvas) allows you to see the construction of the data flow and each component contained within it in greater detail.
 
     > From a high level, the `EnrichCustomerData` data flow is composed of two data sources, multiple transformations, and two sinks. The data source components, `PostalCodes` and `DimCustomer`, ingest data into the data flow. The `EnrichedCustomerData` and `EnrichedCustomerDataAdls` components on the right are sinks, used to write data to data stores. The remaining components between the sources and sinks are transformation steps, which can perform filtering, joins, select, and other transformational actions on the ingested data.
 
@@ -263,7 +263,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
 14. Select the **Projection** tab.
 
-    > The **Projections** tab allows you to define the schema of the data being ingested from a data source. A schema is required for each data source in a data flow to allow downstream transformations to perform actions against the fields in the data source. Note that selecting **Import schema** requires an active debug session to retrieve the schema data from the underlying data source, as it uses the Spark cluster to read the schema. In the screenshot above, notice the `Zip` column is highlighted. The schema inferred by the import process set the column type to `integer`. For US zip code data, the data type was changed to `string` so leading zeros are not discarded from the five-digit zip codes. It is important to review the schema to ensure the correct types are set, both for working with the data and to ensure it is displayed and stored correctly in the data sink.
+    > The **Projections** tab allows you to define the schema of the data being ingested from a data source. A schema is required for each data source in a data flow to enable downstream transformations to perform actions against the data source fields. Note that selecting **Import schema** requires an active debug session to retrieve the schema data from the underlying data source, as it uses the Spark cluster to read the schema. In the screenshot above, notice the `Zip` column is highlighted. The schema inferred by the import process set the column type to `integer`. For US zip code data, the data type was changed to `string` so leading zeros are not discarded from the five-digit zip codes. It is essential to review the schema to ensure the correct types are set, both for working with the data and to ensure it is displayed and stored correctly in the data sink.
 
     ![The Projections tab for the PostalCodes data source is selected, and the Zip column of the imported schema is highlighted.](media/ex02-orchestrate-data-flow-sources-postal-codes-projection.png "Data flow canvas")
 
@@ -275,7 +275,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
 16. Before looking at the `PostalCodeFilter`, quickly select the `+` button to the right of the `PostalCodes` data source to display a list of available transformations.
 
-    > Take a moment to browse the list of transformations available in Mapping Data Flows. From this list, you get an idea of the types of transformations that are possible using data flows. Transformations are broken down into three categories, **multiple inputs/outputs**, **schema modifiers**, and **row modifiers**. You can learn about each transformation in the docs by reading the [Mapping data flow transformation overview](https://docs.microsoft.com/azure/data-factory/data-flow-transformation-overview) article.
+    > Take a moment to browse the list of transformations available in Mapping Data Flows. From this list, you get an idea of the types of transformations possible using data flows. Transformations are broken down into three categories, **multiple inputs/outputs**, **schema modifiers**, and **row modifiers**. You can learn about each transformation in the docs by reading the [Mapping data flow transformation overview](https://docs.microsoft.com/azure/data-factory/data-flow-transformation-overview) article.
 
     ![The + button next to PostalCodes is highlighted, and the menu of available transformations is displayed.](media/ex02-orchestrate-data-flow-available-transformations.png "Data flow canvas")
 
@@ -299,7 +299,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
 22. Select the `DimCustomer` data source on the data flow canvas graph.
 
-    > Take a few minutes to review the various tabs in the configuration panel for this data source to get a better understanding of how it is configured, as you did above. Note that this data source relies on the `wwi_staging.DimCustomer_UniqueId` table from Azure Synapse Analytics for its data. `UniqueId` is supplied by a parameter to the data flow, which contains a substring of the Pipeline Run Id. Before running the pipeline, you will add a dependency to the Mapping Data Flow activity to ensure the Copy activity has populated the `wwi_staging.DimCustomer_UniqueId` in Azure Synapse Analytics before allowing the data flow to execute.
+    > Take a few minutes to review the various tabs in the configuration panel for this data source to better understand how it is configured, as you did above. Note that this data source relies on the `wwi_staging.DimCustomer_UniqueId` table from Azure Synapse Analytics for its data. `UniqueId` is supplied by a parameter to the data flow, which contains a substring of the Pipeline Run Id. Before running the pipeline, you will add a dependency to the Mapping Data Flow activity to ensure the Copy activity has populated the `wwi_staging.DimCustomer_UniqueId` in Azure Synapse Analytics before allowing the data flow to execute.
 
     ![The DimCustomer data source is highlighted on the data flow canvas graph.](media/ex02-orchestrate-data-flow-sources-dim-customer.png "Data flow canvas")
 
@@ -335,7 +335,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
     ![The green box on the right-hand side of the Copy data activity is highlighted, and the arrow has been dragged onto the Mapping Data Flow.](media/ex02-orchestrate-pipelines-create-dependency.png "Data pipeline canvas")
 
-30. This creates a requirement that the **Copy data** activity completes successfully before the **Mapping Data Flow** can execute, and enforces our requirement of the Synapse Analytics table being populated before running the data flow.
+30. This creates a requirement that the **Copy data** activity completes successfully before the **Mapping Data Flow** can execute and enforces our condition of the Synapse Analytics table being populated before running the data flow.
 
     ![The dependency arrow going from the Copy data activity to the Mapping Data Flow is displayed.](media/ex02-orchestrate-pipelines-create-dependency-complete.png "Data pipeline canvas")
 
@@ -347,7 +347,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
     > This Publish all dialog allows you to review the changes that will be saved.
 
-33. Within a few seconds, you _may_ receive a notification that the publish completed. If so, select **Dismiss** in the notification.
+33. Within a few seconds, you _may_ receive a notification that the publish is completed. If so, select **Dismiss** in the notification.
 
     ![The publishing completed notification is displayed.](media/ex02-publishing-completed.png "Publishing completed")
 
@@ -363,7 +363,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
 ## Task 3 - Monitor pipelines
 
-After you finish building and debugging your data flow and its associated pipeline, you will want to be able to monitor the execution of the pipeline and all of the activities contained within it, including the Data Flow activity. In this task, you review the [pipeline monitoring functionality in Azure Synapse Analytics](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-monitoring) using the pipeline run you initiated at the end of the previous task.
+After you finish building and debugging your data flow and its associated pipeline, you will want to monitor the execution of the pipeline and all of the activities contained within it, including the Data Flow activity. In this task, you review the [pipeline monitoring functionality in Azure Synapse Analytics](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-monitoring) using the pipeline run you initiated at the end of the previous task.
 
 1. In Synapse Analytics Studio, select **Monitor** from the left-hand menu.
 
@@ -379,11 +379,11 @@ After you finish building and debugging your data flow and its associated pipeli
 
 4. On the pipeline run details screen, you will see a graphical representation of the activities within the pipeline, as well as a list of the individual activity runs. Both provide status indicators for each activity.
 
-   > This view allows you to monitor the overall status of the pipeline run, and observe the status of each activity contained within the pipeline. The screen will auto-refresh for five minutes. If auto-refresh does not occur or your pipeline run takes longer than five minutes, you can get updates by selecting the Refresh button on the canvas toolbar.
+   > This view allows you to monitor the overall status of the pipeline run, and observe each activity's status within the pipeline. The screen will auto-refresh for five minutes. If auto-refresh does not occur or your pipeline run takes longer than five minutes, you can get updates by selecting the Refresh button on the canvas toolbar.
 
    ![The pipeline run canvas is displayed, with activities list in the graph and in a list for in the Activity runs panel.](media/ex02-monitoring-pipeline-runs-details.png "Pipeline run details")
 
-5. To get a better understanding of the types of information you can get from the monitoring capabilities, let us explore what information is available for each of the activities in the Activity runs list. Start by hovering your mouse cursor over the **Import Customer dimension** activity and select the **Output** icon that appears.
+5. To get a better understanding of the types of information you can get from the monitoring capabilities, let us explore what information is available for each activity in the Activity runs list. Start by hovering your mouse cursor over the **Import Customer dimension** activity and select the **Output** icon that appears.
 
    ![The output icon is highlighted on the Import Customer dimension activity row.](media/ex02-monitoring-copy-activity-output.png "Copy activity output")
 
@@ -397,7 +397,7 @@ After you finish building and debugging your data flow and its associated pipeli
 
    ![The Details icon is highlighted on the Import Customer dimension activity row.](media/ex02-monitoring-copy-activity.png "Copy activity run")
 
-9. The **Details** dialog provides the data found on the Output dialog examine above, but expands on that to include graphics for the source, staging storage, and sink, and a more detailed look at the activity run.
+9. The **Details** dialog provides the data found on the Output dialog examine above but expands on that to include graphics for the source, staging storage, and sink, and a more detailed look at the activity run.
 
    ![The Details dialog for the copy activity is displayed.](media/ex02-monitoring-copy-activity-details.png "Copy activity details")
 
@@ -421,7 +421,7 @@ After you finish building and debugging your data flow and its associated pipeli
 
 14. Select the **SelectDesiredColumns** transformation step of the data flow.
 
-    > Selecting any component of the data flow opens a new panel with details related to the processing that occurred for that component.
+    > Selecting any component of the data flow opens a new panel with details about the processing that occurred for that component.
 
     ![The SelectDesiredColumns transformation step is highlighted in the graph on the details dialog.](media/ex02-monitoring-data-flow-select.png "Data Flow activity details")
 
@@ -467,7 +467,7 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
    ![A screenshot of the Log query screen is displayed.](media/ex02-monitor-activities-spark-application-dataflow.png "Synapse Analytics Monitor")
 
-6. Select the **Logs** tab to view the log output. You may switch between log sources and types, using the dropdown lists below.
+6. Select the **Logs** tab to view the log output. You may switch between log sources and types using the dropdown lists below.
 
     ![The Spark application logs are displayed.](media/ex02-monitor-activities-spark-application-logs.png "Logs")
 
@@ -503,10 +503,10 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
     ![A screenshot of an in-progress playback is displayed. The playback is at 1m 49s into the Spark application run, and Stage 6 is showing a Stage progress of 6.25%.](media/ex02-monitor-activities-spark-applications-playback-progress.png "Synapse Analytics Monitor")
 
-15. You can also perform a playback on an individual stage. Returning to a view of only Stage 3, the **Playback** button shows the rows written at this stage, and the progress of reads and writes.
+15. You can also perform playback on an individual stage. Returning to a view of only Stage 3, the **Playback** button shows the rows written at this stage, and the progress of reads and writes.
 
     ![A screenshot of an in-progress playback for Stage 3 is displayed.](media/ex02-monitor-activities-spark-applications-playback-stage-3.png "Synapse Analytics Monitor")
 
-16. You can also change the view to see which stages were involved in read and write activities. Select **All job IDs** in the job dropdown, and in the **View** drop-down, select **Read**. You can see which stages performed reads, with each color-coded by how much data was read.
+16. You can also change the view to see which stages involved read and write activities. Select **All job IDs** in the job dropdown, and in the **View** drop-down, select **Read**. You can see which stages performed reads, with each color-coded by how much data was read.
 
     ![Read is selected and highlighted in the Display drop-down list.](media/ex02-monitor-activities-spark-applications-display-drop-down-read-graph.png "Synapse Analytics Monitor")
