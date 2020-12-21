@@ -38,7 +38,7 @@
 
 1. Create a folder named `bronze` in the `dev` file system of `PrimaryStorage`.
 
-2. Upload the following data files to the `dev` folder created above:
+2. Upload the following data files to the `bronze` folder created above:
 
     File name | Size | Download from
     --- | --- | ---
