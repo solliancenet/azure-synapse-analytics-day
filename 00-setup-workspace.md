@@ -10,11 +10,11 @@
 
 4. Create the following file systems in the primary storage account of the workspace: `dev`, `staging`, and `wwi`.
 
-5. Create a linked service to the first pool of the workspace. Configure it to connect with username and password, and use the credentials of the workspace's SQL admin account. It is recommended to name the linked service `sqlpool01` to simplify the import of datasets, data flows, and pipelines later.
+5. Create a linked service to the first pool of the workspace. Configure it to connect with username and password and use the workspace's SQL admin account credentials. It is recommended to name the linked service `sqlpool01` to simplify importing datasets, data flows, and pipelines later.
 
-6. Create a linked service to the primary storage account. Configure it to connect with the account key. It is recommended to name the linked service `asadatalake01` to simplify the import of datasets, data flows, and pipelines later.
+6. Create a linked service to the primary storage account. Configure it to connect with the account key. It is recommended to name the linked service `asadatalake01` to simplify importing datasets, data flows, and pipelines later.
 
-7. Create a linked service to the blob storage account. Configure it to connect with the account key. It is recommended to name the linked service `asastore01` to simplify the import of datasets, data flows, and pipelines later.
+7. Create a linked service to the blob storage account. Configure it to connect with the account key. It is recommended to name the linked service `asastore01` to simplify importing datasets, data flows, and pipelines later.
 
 8. For the remainder of this guide, the following terms will be used for various ASA-related resources (make sure you replace them with actual names and values):
 
@@ -172,15 +172,15 @@ Pipeline | Source code
 `Import WWI Perf Data - Fact Sale Fast` | [Import WWI Perf Data - Fact Sale Fast.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Fast.json)
 `Import WWI Perf Data - Fact Sale Slow` | [Import WWI Perf Data - Fact Sale Slow.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Slow.json)
 
-## Task 3 - Populate `PrimaryStorage` with data
+## Task 4 - Populate `PrimaryStorage` with data
 
 1. Import the [Setup - Export Sales to Data Lake](./artifacts/00/notebooks/Setup%20-%20Export%20Sales%20to%20Data%20Lake.ipynb) notebook.
 
-2. Replace `<primary_storage>` with actual the data lake account name of `PrimaryStorage` in cells 1, 4, and 6.
+2. Replace `<primary_storage>` with the actual data lake account name of `PrimaryStorage` in cells 1, 4, and 6.
 
 3. Run the notebook to populate `PrimaryStorage` with data.
 
-## Task 4 - Configure the SQL on-demand pool
+## Task 5 - Configure the SQL on-demand pool
 
 1. Create a SQL on-demand database running the following script on the `master` database of the SQL on-demand pool:
 
@@ -197,7 +197,7 @@ Pipeline | Source code
 
     In the script above, replace `<primary_storage>` with the name of `PrimaryStorage`.
 
-## Task 4 - Configure `SQLPool01`
+## Task 6 - Configure `SQLPool01`
 
 1. Connect with either the SQL Active Directory admin or the `asa.sql.admin` account to `SQLPool01` using the tool of your choice.
 
@@ -251,9 +251,9 @@ Pipeline | Source code
 
 8. Run the `Import WWI Perf Data - Fact Sale Fast` and `Import WWI Perf Data - Fact Sale Slow` pipelines to import the large-sized sale facts into `SQLPool01`.
 
-## Task 5 - Configure Power BI
+## Task 7 - Configure Power BI
 
-1. Ensure the `MasterUser` has a Power BI Pro susbcription assigned.
+1. Ensure the `MasterUser` has a Power BI Pro subscription assigned.
 
 2. Sign in to the [Power BI portal](https://powerbi.com) using the credentials of `MasterUser` and create a new Power BI workspace. In the remainder of this guide, this workspace will be referred to as `PowerBIWorkspace`.
 
@@ -261,7 +261,7 @@ Pipeline | Source code
 
 4. In the Power BI portal, edit the security settings of the `wwifactsales` dataset and configure it to authenticate to `SQLPool01` using the credentials of the `asa.sql.admin` account. This allows the `Direct Query` option to work correctly for all participants in the lab.
 
-## Task 6 - Import all SQL scripts and Spark notebooks
+## Task 8 - Import all SQL scripts and Spark notebooks
 
 Import the following SQL scripts into `Workspace`:
 
@@ -283,7 +283,7 @@ Spark notebook name | Source code | Replacements
 `Exercise 2 - Bonus Notebook with CSharp` | [Exercise 2 - Bonus Notebook with CSharp.ipynb](./artifacts/02/Exercise%202%20-%20Bonus%20Notebook%20with%20CSharp.ipynb) | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`; In cell 3 - `<sql_staging_password>` with the password of `asa.sql.staging` created above in Task 4, step 3; In cell 3 - `<workspace>` with the name of the `Workspace`; In cell 3 - `<sql_pool>` with the name of `SQLPool1`
 `Exercise 5 - Model Training` | [Exercise 5 - Model Training.ipynb](./artefacts/../artifacts/05/Exercise%205%20-%20Model%20Training.ipynb) | In cell 3 - `<primary_storage>` with the actual name of `PrimaryStorage`; In cell 21 - `<blob_storage>` with the storage account name of `BlobStorage`; In cell 21 - `<blob_storage_account_key>` with the storage account key of `BlobStorage`
 
-## Task 7 - Prepare a machine learning model
+## Task 9 - Prepare a machine learning model
 
 Prepare the `models` container in `BlobStorage` by creating two folders: `onnx` and `hex`.
 
@@ -308,7 +308,7 @@ To prepare the machine learning model for Exercise 5, you have two options:
    
 3. Perform steps 1, 2, and 3 described in the previous section.
 
-## Task 8 - Configure additional users to access the workspace
+## Task 10 - Configure additional users to access the workspace
 
 For each additional user that needs to have access to `Workspace` and run exercises 1 through 5, the following steps must be performed:
 
