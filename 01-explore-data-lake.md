@@ -79,7 +79,7 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     ![Develop hub.](media/develop-hub.png "Develop hub")
 
-14. Select the `Exercise 1 - Read with SQL on-demand` SQL script. Connect to **Built-in** and select **SQLOnDemand01** as the database. Select **Run** to execute the script.
+14. Select the `Exercise 1 - Read with SQL on-demand` **(1)** SQL script. Connect to **Built-in (2)**. Select **Run (3)** to execute the script.
 
     ![Run SQL on-demand script loading multiple CSV data lake files](./media/ex01-sql-on-demand-04.png)
 
