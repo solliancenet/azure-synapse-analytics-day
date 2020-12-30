@@ -281,7 +281,6 @@ Spark notebook name | Source code | Replacements
 `Exercise 1 - Read with Spark` | [Exercise 1 - Read with Spark.ipynb](./artifacts/01/Exercise%201%20-%20Read%20with%20Spark.ipynb) | `<primary_storage>` with the actual name of `PrimaryStorage`
 `Exercise 2 - Ingest Sales Data` | [Exercise 2 - Ingest Sales Data.ipynb](./artifacts/02/Exercise%202%20-%20Ingest%20Sales%20Data.ipynb) | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`
 `Exercise 2 - Bonus Notebook with CSharp` | [Exercise 2 - Bonus Notebook with CSharp.ipynb](./artifacts/02/Exercise%202%20-%20Bonus%20Notebook%20with%20CSharp.ipynb) | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`; In cell 3 - `<sql_staging_password>` with the password of `asa.sql.staging` created above in Task 4, step 3; In cell 3 - `<workspace>` with the name of the `Workspace`; In cell 3 - `<sql_pool>` with the name of `SQLPool1`
-`Exercise 5 - Model Training` | [Exercise 5 - Model Training.ipynb](./artefacts/../artifacts/05/Exercise%205%20-%20Model%20Training.ipynb) | In cell 3 - `<primary_storage>` with the actual name of `PrimaryStorage`; In cell 21 - `<blob_storage>` with the storage account name of `BlobStorage`; In cell 21 - `<blob_storage_account_key>` with the storage account key of `BlobStorage`
 
 ## Task 9 - Prepare a machine learning model
 
@@ -305,7 +304,7 @@ To prepare the machine learning model for Exercise 5, you have two options:
 1. Run the `Exercise 5 - Model training` Spark notebook to train the machine learning model and save it in ONNX format. The model will be saved as `model.onnx` in the `onnx` folder in the `models` container of `BlobStorage`.
 
 2. Use the [convertion PowerShell script](./artifacts/00/ml/convert-to-hex.ps1) to transform `model.onnx` into `model.onnx.hex`.
-   
+
 3. Perform steps 1, 2, and 3 described in the previous section.
 
 ## Task 10 - Configure additional users to access the workspace
@@ -328,3 +327,21 @@ For each additional user that needs to have access to `Workspace` and run exerci
     In the script above, replace `<user_principal_name>` with Azure Active Directory user principal name of the user.
 
 5. Assign the `Contributor` role on the Power BI workspace of the `MasterUser` created in Task 5, step 2.
+
+## Task 11 - Create and configure an Azure Databricks workspace
+
+1. In the resource group, create a new Azure Databricks workspace.
+
+2. In the Azure Databricks workspace, create a new cluster with the following configuration:
+
+![Create new Databricks cluster](./media/00-create-databricks-cluster.png)
+
+3. On the newly created cluster, install the `onnxmltools` PyPi library:
+
+![Install Databricks cluster libraries](./media/00-install-databricks-cluster-libraries.png)
+
+4. Import the following Databricks notebooks into the `Shared` section of the Databricks workspace:
+
+Spark notebook name | Source code | Replacements
+--- | --- | ---
+`Exercise 5 - Model Training` | [Exercise 5 - Model Training.dbc](./artefacts/../artifacts/05/Exercise%205%20-%20Model%20Training.dbc) |
