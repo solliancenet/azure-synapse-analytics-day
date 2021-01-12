@@ -34,7 +34,7 @@ If you are using a hosted lab environment, please follow the steps below to get 
 
 The diagram below provides a unified view of the exercises in the lab and their estimated times for completion.
 
-![Azure Synapse Analytics Lab Exercises](./media/exercises1.png "Solution architecture")
+![Azure Synapse Analytics Lab Exercises](./media/exercises.png "Solution architecture")
 
 ## Exercise 1 - Explore the data lake with Azure Synapse SQL On-demand and Azure Synapse Spark
 
@@ -68,3 +68,10 @@ SQL data warehouses have been for a long time the center of gravity in data plat
 
 The Azure Synapse SQL Pools in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
 
+## Exercise 5 - Data Science with Spark
+
+In this exercise, you will leverage a model trained in Azure Databricks to make predictions using the T-SQL PREDICT statement in an Azure Synapse Analytics dedicated SQL pool.
+
+Azure Synapse Analytics provides support for using trained models (in ONNX format) directly from dedicated SQL pools. What this means in practice, is that your data engineers can write T-SQL queries that use those models to make predictions against tabular data stored in a SQL Pool database table.
+
+The models can be trained in Azure Databricks using Spark ML - the machine learning library included with Apache Spark. Models can also be trained using other approaches, including by using Azure Machine Learning automated ML. The main requirement is that the model format must be supported by ONNX.
