@@ -68,7 +68,7 @@ SQL data warehouses have been for a long time the center of gravity in data plat
 
 The Azure Synapse SQL Pools in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
 
-## Exercise 5 - Data Science with Spark
+## Exercise 5 - Data Science with Spark (optional)
 
 In this exercise, you will leverage a model trained in Azure Databricks to make predictions using the T-SQL PREDICT statement in an Azure Synapse Analytics dedicated SQL pool.
 
