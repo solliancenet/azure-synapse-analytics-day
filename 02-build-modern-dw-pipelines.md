@@ -459,8 +459,8 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
 5. On the **Dataflow** screen, you will see a detailed view of the job, broken into three different sections.
 
-   - The first section is a graphical representation of the jobs that make up the Spark application.
-   - The second section is a summary of the Spark application.
+   - The first section is a summary of the Spark application.
+   - The second section is a graphical representation of the jobs that make up the Spark application.
    - The third section displays the diagnostics and logs associated with the Spark application.
 
    ![A screenshot of the Log query screen is displayed.](media/ex02-monitor-activities-spark-application-dataflow.png "Synapse Analytics Monitor")
@@ -469,15 +469,15 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
     ![The Spark application logs are displayed.](media/ex02-monitor-activities-spark-application-logs.png "Logs")
 
-7. To look closer at any individual stage, you can use the **Job IDs** drop-down to select the stage number.
+7. To look closer at any individual job, you can use the **Job IDs** drop-down to select the job number.
 
     ![Job 2 is highlighted in the Job IDs drop-down list.](media/ex02-monitor-activities-spark-applications-all-job-ids-2.png "Synapse Analytics Monitor")
 
-8. This view isolates the specific stage within the graphical view.
+8. This view isolates the specific job within the graphical view.
 
     ![Job 2 is displayed.](media/ex02-monitor-activities-spark-applications-job-2.png "Synapse Analytics Monitor")
 
-9. Return the view to all stages by selecting **All job IDs** in the job ID drop-down list.
+9. Return the view to all jobs by selecting **All job IDs** in the job ID drop-down list.
 
     ![All job IDs is highlighted in the Job IDs drop-down list.](media/ex02-monitor-activities-spark-applications-all-job-ids.png "Synapse Analytics Monitor")
 
@@ -487,14 +487,14 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
     > **Note**: Playback functionality is not available until the job status changes out of the `In progress` status. The job's status will remain listed as `In progress` until the underlying Spark resources are cleaned up by Azure Synapse Analytics, which can take some time.
 
-11. Running a Playback allows you to observe the time required to complete each stage, as well as review the rows read or written as the job progresses.
+11. Running a Playback allows you to observe the time required to complete each job, as well as review the rows read or written as the job progresses.
 
     ![A screenshot of an in-progress playback is displayed. The playback is at 8s into the Spark application run, and Job 2 is showing progress.](media/ex02-monitor-activities-spark-applications-playback-progress.png "Synapse Analytics Monitor")
 
-12. You can also perform playback on an individual stage. Returning to a view of only Job 2, the **Playback** button shows the rows written at this stage, and the progress of reads and writes.
+12. You can also perform playback on an individual job. Returning to a view of only Job 2, the **Playback** button shows the rows written at this job, and the progress of reads and writes.
 
     ![A screenshot of an in-progress playback for Job 2 is displayed.](media/ex02-monitor-activities-spark-applications-playback-job-2.png "Synapse Analytics Monitor")
 
-13. You can also change the view to see which jobs involved read and write activities. Select **All job IDs** in the job dropdown, and in the **View** drop-down, select **Read**. You can see which stages performed reads, with each color-coded by how much data was read.
+13. You can also change the view to see which jobs involved read and write activities. Select **All job IDs** in the job dropdown, and in the **View** drop-down, select **Read**. You can see which jobs performed reads, with each color-coded by how much data was read.
 
     ![Read is selected and highlighted in the Display drop-down list.](media/ex02-monitor-activities-spark-applications-display-drop-down-read-graph.png "Synapse Analytics Monitor")
