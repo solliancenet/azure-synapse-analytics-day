@@ -293,7 +293,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
     ![The Visual expression builder is displayed.](media/ex02-orchestrate-data-flow-expression-builder.png "Visual expression builder")
 
-20. The filter currently applied ensures all zip codes are between 00001 and 98000. Observe the different expression elements and values in the area below the expression box that help you create and modify filters and other expressions.
+20. The filter currently applied ensures all zip codes are between 90000 and 98000. Observe the different expression elements and values in the area below the expression box that help you create and modify filters and other expressions.
 
 21. Select **Cancel** to close the visual expression builder.
 
@@ -455,13 +455,11 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
 4. From the list of Spark applications, select the first job, which should have a status of `In progress` or `Succeeded`.
 
-   > **Note**: You may see a status of `Cancelled`, and this does not prevent you from completing the following steps. Azure Synapse Analytics is still in preview, and the status gets set to `Cancelled` when the Spark pool used to run the Spark application times out.
-
    ![The current Spark application is highlighted in the applications list.](media/ex02-monitor-activities-spark-application-list.png "Synapse Analytics Monitor")
 
 5. On the **Dataflow** screen, you will see a detailed view of the job, broken into three different sections.
 
-   - The first section is a graphical representation of the stages that make up the Spark application.
+   - The first section is a graphical representation of the jobs that make up the Spark application.
    - The second section is a summary of the Spark application.
    - The third section displays the diagnostics and logs associated with the Spark application.
 
@@ -471,13 +469,14 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
     ![The Spark application logs are displayed.](media/ex02-monitor-activities-spark-application-logs.png "Logs")
 
-7. Selecting any individual stage from the graph opens a new browser window showing the selected stage in the Spark UI, where you can dive deeper into the tasks that make up each stage. Select **View details** underneath one of the stages.
+7. Select the **Spark history server** link to open a new browser window showing completed applications in the Spark UI. You can select your application and dive deeper into the stages and tasks that make up the application.
 
-    ![The view details link is highlighted.](media/ex02-monitor-activities-spark-application-logs-view-details.png "View details")
+    ![The Spark history server link is highlighted.](media/ex02-monitor-activities-spark-application-history.png "View history server")
 
-8. Observe the information displayed in Spark UI.
+8. Select the application to view more detailed information in the Spark history server UI.
+    ![List of applications are displayed in the Spark history server UI.](media/ex02-monitor-activities-spark-application-history-select.png "Spark history applications")
 
-    ![Details for Stage 3 are displayed in the Spark UI.](media/ex02-monitor-activities-spark-application-stage-3-spark-ui.png "Spark UI")
+    ![Details for Stage 3 are displayed in the Spark UI.](media/ex02-monitor-activities-spark-application-stage-3-spark-ui.png "Spark history stages")
 
 9. Return to the Synapse Analytics Monitoring page for your Spark application.
 
@@ -503,9 +502,9 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
     ![A screenshot of an in-progress playback is displayed. The playback is at 1m 49s into the Spark application run, and Stage 6 is showing a Stage progress of 6.25%.](media/ex02-monitor-activities-spark-applications-playback-progress.png "Synapse Analytics Monitor")
 
-15. You can also perform playback on an individual stage. Returning to a view of only Stage 3, the **Playback** button shows the rows written at this stage, and the progress of reads and writes.
+15. You can also perform playback on an individual stage. Returning to a view of only Job 2, the **Playback** button shows the rows written at this stage, and the progress of reads and writes.
 
-    ![A screenshot of an in-progress playback for Stage 3 is displayed.](media/ex02-monitor-activities-spark-applications-playback-stage-3.png "Synapse Analytics Monitor")
+    ![A screenshot of an in-progress playback for Stage 2 is displayed.](media/ex02-monitor-activities-spark-applications-playback-stage-2.png "Synapse Analytics Monitor")
 
 16. You can also change the view to see which stages involved read and write activities. Select **All job IDs** in the job dropdown, and in the **View** drop-down, select **Read**. You can see which stages performed reads, with each color-coded by how much data was read.
 
