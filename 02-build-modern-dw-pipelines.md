@@ -469,43 +469,32 @@ In this task, you examine the Apache Spark application monitoring capabilities b
 
     ![The Spark application logs are displayed.](media/ex02-monitor-activities-spark-application-logs.png "Logs")
 
-7. Select the **Spark history server** link to open a new browser window showing completed applications in the Spark UI. You can select your application and dive deeper into the stages and tasks that make up the application.
+7. To look closer at any individual stage, you can use the **Job IDs** drop-down to select the stage number.
 
-    ![The Spark history server link is highlighted.](media/ex02-monitor-activities-spark-application-history.png "View history server")
+    ![Job 2 is highlighted in the Job IDs drop-down list.](media/ex02-monitor-activities-spark-applications-all-job-ids-2.png "Synapse Analytics Monitor")
 
-8. Select the application to view more detailed information in the Spark history server UI.
-    ![List of applications are displayed in the Spark history server UI.](media/ex02-monitor-activities-spark-application-history-select.png "Spark history applications")
+8. This view isolates the specific stage within the graphical view.
 
-    ![Details for Stage 3 are displayed in the Spark UI.](media/ex02-monitor-activities-spark-application-stage-3-spark-ui.png "Spark history stages")
+    ![Job 2 is displayed.](media/ex02-monitor-activities-spark-applications-job-2.png "Synapse Analytics Monitor")
 
-9. Return to the Synapse Analytics Monitoring page for your Spark application.
-
-10. To look closer at any individual stage, you can use the **Job IDs** drop-down to select the stage number.
-
-    ![Stage 3 is highlighted in the Job IDs drop-down list.](media/ex02-monitor-activities-spark-applications-all-job-ids-3.png "Synapse Analytics Monitor")
-
-11. This view isolates the specific stage within the graphical view.
-
-    ![Stage 3 is displayed.](media/ex05-monitor-activities-spark-applications-stage-3.png "Synapse Analytics Monitor")
-
-12. Return the view to all stages by selecting **All job IDs** in the job ID drop-down list.
+9. Return the view to all stages by selecting **All job IDs** in the job ID drop-down list.
 
     ![All job IDs is highlighted in the Job IDs drop-down list.](media/ex02-monitor-activities-spark-applications-all-job-ids.png "Synapse Analytics Monitor")
 
-13. Within the graph section, you also have the ability to **Playback** the Spark application.
+10. Within the graph section, you also have the ability to **Playback** the Spark application.
 
     ![The Playback button is highlighted.](media/ex02-monitor-activities-spark-applications-playback.png "Synapse Analytics Monitor")
 
     > **Note**: Playback functionality is not available until the job status changes out of the `In progress` status. The job's status will remain listed as `In progress` until the underlying Spark resources are cleaned up by Azure Synapse Analytics, which can take some time.
 
-14. Running a Playback allows you to observe the time required to complete each stage, as well as review the rows read or written as the job progresses.
+11. Running a Playback allows you to observe the time required to complete each stage, as well as review the rows read or written as the job progresses.
 
-    ![A screenshot of an in-progress playback is displayed. The playback is at 1m 49s into the Spark application run, and Stage 6 is showing a Stage progress of 6.25%.](media/ex02-monitor-activities-spark-applications-playback-progress.png "Synapse Analytics Monitor")
+    ![A screenshot of an in-progress playback is displayed. The playback is at 8s into the Spark application run, and Job 2 is showing progress.](media/ex02-monitor-activities-spark-applications-playback-progress.png "Synapse Analytics Monitor")
 
-15. You can also perform playback on an individual stage. Returning to a view of only Job 2, the **Playback** button shows the rows written at this stage, and the progress of reads and writes.
+12. You can also perform playback on an individual stage. Returning to a view of only Job 2, the **Playback** button shows the rows written at this stage, and the progress of reads and writes.
 
-    ![A screenshot of an in-progress playback for Stage 2 is displayed.](media/ex02-monitor-activities-spark-applications-playback-stage-2.png "Synapse Analytics Monitor")
+    ![A screenshot of an in-progress playback for Job 2 is displayed.](media/ex02-monitor-activities-spark-applications-playback-job-2.png "Synapse Analytics Monitor")
 
-16. You can also change the view to see which stages involved read and write activities. Select **All job IDs** in the job dropdown, and in the **View** drop-down, select **Read**. You can see which stages performed reads, with each color-coded by how much data was read.
+13. You can also change the view to see which jobs involved read and write activities. Select **All job IDs** in the job dropdown, and in the **View** drop-down, select **Read**. You can see which stages performed reads, with each color-coded by how much data was read.
 
     ![Read is selected and highlighted in the Display drop-down list.](media/ex02-monitor-activities-spark-applications-display-drop-down-read-graph.png "Synapse Analytics Monitor")
