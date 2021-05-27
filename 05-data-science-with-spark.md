@@ -50,7 +50,7 @@ In this task, you will author a T-SQL query that uses a pre-trained model to mak
 
    -- Run a prediction query
    SELECT d.*, p.*
-   FROM PREDICT(MODEL = @model, DATA = [wwi_ml].[SampleData] AS d) WITH (prediction real) AS p;
+   FROM PREDICT(MODEL = @model, DATA = [wwi].[SampleData] AS d, RUNTIME = ONNX) WITH (prediction real) AS p;
    ```
 
 4. Select **Run** from the menubar.
