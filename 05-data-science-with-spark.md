@@ -38,7 +38,7 @@ In this task, you will author a T-SQL query that uses a pre-trained model to mak
 
 1. Open Synapse Analytics Studio, and then navigate to the `Data` hub.
 
-2. Expand the Databases listing, right-click your SQL Pool and then select `New SQL Script`, and then `Empty script`.
+2. Expand the Databases listing, right-click your dedicated SQL Pool and then select `New SQL Script`, and then `Empty script`.
 
    ![Showing the context menu, selecting New SQL Script, Empty Script](media/ex05-new-sql-script.png "Create new script")
 
