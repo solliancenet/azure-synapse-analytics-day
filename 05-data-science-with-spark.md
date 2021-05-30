@@ -38,7 +38,7 @@ In this task, you will author a T-SQL query that uses a pre-trained model to mak
 
 1. Open Synapse Analytics Studio, and then navigate to the `Data` hub.
 
-2. Expand the Databases listing, right-click your SQL Pool and then select `New SQL Script`, and then `Empty script`.
+2. Expand the Databases listing, right-click your SQL Pool **(1)** and then select `New SQL Script` **(2)**, and then `Empty script` **(3)**.
 
    ![Showing the context menu, selecting New SQL Script, Empty Script](media/ex05-new-sql-script.png "Create new script")
 
@@ -50,7 +50,7 @@ In this task, you will author a T-SQL query that uses a pre-trained model to mak
 
    -- Run a prediction query
    SELECT d.*, p.*
-   FROM PREDICT(MODEL = @model, DATA = [wwi_ml].[SampleData] AS d) WITH (prediction real) AS p;
+   FROM PREDICT(MODEL = @model, DATA = [wwi].[SampleData] AS d, RUNTIME = ONNX) WITH (prediction real) AS p;
    ```
 
 4. Select **Run** from the menubar.
@@ -65,13 +65,23 @@ In this task, you will author a T-SQL query that uses a pre-trained model to mak
 
 You can see the notebook and SQL scripts that were used to train and register this model if you are curious. To do so, follow these steps:
 
-1. Open the Azure Databricks workspace, and then navigate to the `Workspace` section.
+1. Go back to your resource group and select the Azure Databricks service. 
 
-2. Under **Shared**, select the notebook called `Exercise 5 - Model Training`.
+   ![Resource group is shown. The Databricks service is highlighted.](media/databricks-service-select.png "Select Databricks Service")
+   
+2. Once in the Databricks Service's Overview section select **Launch Workspace** to navigate to your  Databricks workspace.
 
-3. This notebook handles training the model, converting the model to ONNX, and uploading the ONNX model to Azure Storage.
+   ![Databricks service is shown on the Azure Portal. Launch workspace button is highlighted.](media/databricks-launch-workspace.png "Databricks Workspace Navigation")
 
-4. Execute the notebook to get the trained Machine Learning model in ONNX format.
+3. Open the **Workspace (1)** section from the left menu. Under **Shared (2)**, select the notebook called `Exercise 5 - Model Training` **(3)**.
+
+   ![Shared workspace is open and Exercise 5 notebook is highlighted.](media/databricks-notebook-selection.png "Databricks Notebook Selection")
+
+   This notebook handles training the model, converting the model to ONNX, and uploading the ONNX model to Azure Storage.
+
+4. In order to execute the notebook follow the instruction in the notebook **(1)** to mount your Azure Storage accounts to Azure Databricks. Finally, pick a cluster **(2)** and select **Run all (3)**. This will train a Machine Learning model in ONNX format.  
+
+   ![](media/databricks-run-notebook-ex5.png "Running Exercise 5 Notebook")
 
 5. One step that is not shown by the notebook is an offline step that converts the ONNX model to hexadecimal. The resulting hex-encoded model is also uploaded to Azure Storage. This conversion is currently performed with [this PowerShell script](./artifacts/00/ml/convert-to-hex.ps1), but could be automated using any scripting platform.
 
