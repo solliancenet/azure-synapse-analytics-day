@@ -121,7 +121,7 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     ![View charts on data in Spark notebook](./media/ex01-spark-notebook-05.png "Review charted data")
 
-8. Hover over the area just to the bottom right of the cell in the notebook, then select **+ Add code (2)** to add a new cell.
+8. Hover over the area just to the bottom of the cell in the notebook, then select **{} Add code (2)** to add a new cell.
 
    ![The add code button is highlighted.](media/add-cell.png "Add code")
 
