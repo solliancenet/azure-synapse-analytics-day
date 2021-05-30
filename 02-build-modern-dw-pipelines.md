@@ -33,7 +33,7 @@ In this task, you see how easy it is to write into a dedicated SQL pool table wi
 
    ![The new notebook menu item is highlighted.](media/new-notebook.png "New notebook")
 
-3. If not already attached, attach your Apache Spark pool by selecting it from the **Attach to** drop-down list **(1)**, then select **{} Add code** to create a new cell **(2)**.
+3. If not already attached, attach your Apache Spark pool by selecting it from the **Attach to (1)** drop-down list, then select **{} Add code (3)** to create a new cell.
 
    ![The Spark pool is selected in the Attach to drop-down.](media/new-notebook-add-code.png "Add code")
 
@@ -165,8 +165,9 @@ To observe the data being written into the table:
 
 1. Select **Data** from the left-hand menu, select the Workspace tab, then expand Databases, SQLPool01, and Tables.
 
-2. Right-click the table named `wwi_staging.Sale_CSharp`, and choose **New SQL Script** then **SELECT TOP 100 rows**.
+2. Right-click the table named `wwi_staging.Sale_CSharp` **(1)**, and choose **New SQL Script (2)** then **SELECT TOP 100 rows (3)**.
 
+   ![A new Select Top 100 rows window command is selected for wwi_staging.Sale_CSharp.](media/sale-csharp-new-script.png "New Script Window")
    > If you do not see the table, select the Actions ellipsis next to Tables, and then select **Refresh** from the fly-out menu.
 
 3. Replace the `SELECT` query in the editor with the query below:
@@ -207,7 +208,7 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
     ![The Source tab for the Copy data activity is selected and highlighted.](media/ex02-orchestrate-copy-data-source.png "Pipeline canvas property tabs")
 
-5. Next, select the **Sink** tab. The sink specifies where the copied data will be written. Like the Source, the sink uses a dataset to define a pointer to the target data store. Select **PolyBase** for the `Copy method`. This improves the data loading speed as compared to the default setting of bulk insert.
+5. Next, select the **Sink (1)** tab. The sink specifies where the copied data will be written. Like the Source, the sink uses a dataset to define a pointer to the target data store. Select **PolyBase (2)** for the `Copy method`. This improves the data loading speed as compared to the default setting of bulk insert.
 
     ![The Sink tab for the Copy data activity is selected and highlighted.](media/ex02-orchestrate-copy-data-sink.png "Pipeline canvas property tabs")
 
@@ -217,13 +218,13 @@ In this task, you use a Pipeline containing a Data Flow to explore, transform, a
 
     ![The Mappings tab for the Copy data activity is highlighted and displayed.](media/ex02-orchestrate-copy-data-mapping.png "Pipeline canvas property tabs")
 
-7. Finally, select the **Settings** tab. Check **Enable staging** and expand `Staging settings`. Select **asadatalake01** under `Staging account linked service`, then type **staging** into `Storage Path`. Finally, check **Enable Compression**.
+7. Finally, select the **Settings (1)** tab. Check **Enable staging (2)** and expand `Staging settings`. Select **asadatalake01** under `Staging account linked service` **(3)**, then type **staging** into `Storage Path`. Finally, check **Enable Compression**.
 
     ![The staging settings are configured as described.](media/copy-data-settings.png "Settings")
 
     > Since we are using PolyBase with dynamic file properties, owing to the UniqueId values, we need to [enable staging](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#staged-copy-by-using-polybase). In cases of large file movement activities, configuring a staging path for the copy activity can improve performance.
 
-8. Switch to the **Mapping Data Flow** activity by selecting the `Enrich Customer Data` Mapping Data Flow activity on the pipeline design canvas, then select the **Settings** tab.
+8. Switch to the **Mapping Data Flow (1)** activity by selecting the `Enrich Customer Data` Mapping Data Flow activity on the pipeline design canvas, then select the **Settings (2)** tab.
 
     ![The data flow activity settings are displayed.](media/pipeline-data-flow-settings.png "Settings")
 
