@@ -4,9 +4,9 @@
 
 1. Create a new resource group
 
-2. In the resource group, create a regular blob storage account. Create in it two private containers named `staging` and `models`.
+2. In the resource group, create a regular blob storage account. In the storage account, create two private containers named `staging` and `models`.
 
-3. In the resource group, create an empty ASA workspace.
+3. In the resource group, create an empty Azure Synapse Analytics workspace.
 
 4. Create the following file systems in the primary storage account of the workspace: `dev`, `staging`, and `wwi`.
 
@@ -18,19 +18,19 @@
 
 8. For the remainder of this guide, the following terms will be used for various ASA-related resources (make sure you replace them with actual names and values):
 
-    ASA resource | To be referred to as
-    --- | ---
-    Workspace resource group | `WorkspaceResourceGroup`
-    Workspace | `Workspace`
-    Identity used to create `Workspace` | `MasterUser`
-    Primary storage account | `PrimaryStorage`
-    Blob storage account | `BlobStorage`
-    First Spark pool | `SparkPool01`
-    First SQL pool | `SQLPool01`
-    SQL admin account | `asa.sql.admin`
-    Linked service to first SQL pool | `sqlpool01`
-    Linked service to primary storage account | `asadatalake01`
-    Linked service to blob storage account | `asastore01`
+    | ASA resource                              | To be referred to as     |
+    |-------------------------------------------|--------------------------|
+    | Workspace resource group                  | `WorkspaceResourceGroup` |
+    | Workspace                                 | `Workspace`              |
+    | Identity used to create `Workspace`       | `MasterUser`             |
+    | Primary storage account                   | `PrimaryStorage`         |
+    | Blob storage account                      | `BlobStorage`            |
+    | First Spark pool                          | `SparkPool01`            |
+    | First SQL pool                            | `SQLPool01`              |
+    | SQL admin account                         | `asa.sql.admin`          |
+    | Linked service to first SQL pool          | `sqlpool01`              |
+    | Linked service to primary storage account | `asadatalake01`          |
+    | Linked service to blob storage account    | `asastore01`             |
 
 9. Ensure the `Workspace` security principal (which has the same name as the `Workspace`) and the `MasterUser` (the one used to create the `Workspace`) are added with the `Storage Blob Data Owner` role to the `PrimaryStorage`.
 
@@ -40,27 +40,27 @@
 
 2. Upload the following data files to the `bronze` folder created above:
 
-    File name | Size | Download from
-    --- | --- | ---
-    `postalcodes.csv` | 1.8 MB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/postalcodes.csv>
-    `wwi-dimcity.csv` | 17.5 MB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimcity.csv>
-    `wwi-dimcustomer.csv` | 67.3 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimcustomer.csv>
-    `wwi-dimdate.csv` | 146.3 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimdate.csv>
-    `wwi-dimemployee.csv` | 18.7 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimemployee.csv>
-    `wwi-dimpaymentmethod.csv` | 514 B | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimpaymentmethod.csv>
-    `wwi-dimstockitem.csv` | 114.6 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimstockitem.csv>
-    `wwi-dimsupplier.csv` | 3.8 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimsupplier.csv>
-    `wwi-dimtransactiontype.csv` | 1.3 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimtransactiontype.csv>
-    `wwi-factmovement.csv` | 11.1 MB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factmovement.csv>
-    `wwi-factorder.csv` | 31.3 MB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factorder.csv>
-    `wwi-factpurchase.csv` | 461.1. KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factpurchase.csv>
-    `wwi-factsale-big-1.csv` | 3.0 GB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-1.csv>
-    `wwi-factsale-big-2.csv` | 3.0 GB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-2.csv>
-    `wwi-factsale-big-3.csv` | 3.0 GB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-3.csv>
-    `wwi-factsale-big-4.csv` | 3.0 GB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-4.csv>
-    `wwi-factsale.csv` | 1.8 GB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale.csv>
-    `wwi-factstockholding.csv` | 8.9 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factstockholding.csv>
-    `wwi-facttransaction.csv` | 7.2 MB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-facttransaction.csv>
+    | File name                    | Size      | Download from                                                                         |
+    |------------------------------|-----------|---------------------------------------------------------------------------------------|
+    | `postalcodes.csv`            | 1.8 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/postalcodes.csv>            |
+    | `wwi-dimcity.csv`            | 17.5 MB   | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimcity.csv>            |
+    | `wwi-dimcustomer.csv`        | 67.3 KB   | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimcustomer.csv>        |
+    | `wwi-dimdate.csv`            | 146.3 KB  | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimdate.csv>            |
+    | `wwi-dimemployee.csv`        | 18.7 KB   | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimemployee.csv>        |
+    | `wwi-dimpaymentmethod.csv`   | 514 B     | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimpaymentmethod.csv>   |
+    | `wwi-dimstockitem.csv`       | 114.6 KB  | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimstockitem.csv>       |
+    | `wwi-dimsupplier.csv`        | 3.8 KB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimsupplier.csv>        |
+    | `wwi-dimtransactiontype.csv` | 1.3 KB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimtransactiontype.csv> |
+    | `wwi-factmovement.csv`       | 11.1 MB   | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factmovement.csv>       |
+    | `wwi-factorder.csv`          | 31.3 MB   | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factorder.csv>          |
+    | `wwi-factpurchase.csv`       | 461.1. KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factpurchase.csv>       |
+    | `wwi-factsale-big-1.csv`     | 3.0 GB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-1.csv>     |
+    | `wwi-factsale-big-2.csv`     | 3.0 GB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-2.csv>     |
+    | `wwi-factsale-big-3.csv`     | 3.0 GB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-3.csv>     |
+    | `wwi-factsale-big-4.csv`     | 3.0 GB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-4.csv>     |
+    | `wwi-factsale.csv`           | 1.8 GB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale.csv>           |
+    | `wwi-factstockholding.csv`   | 8.9 KB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factstockholding.csv>   |
+    | `wwi-facttransaction.csv`    | 7.2 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-facttransaction.csv>    |
 
 ## Task 3 - Import datasets, data flows, and pipelines
 
@@ -74,32 +74,32 @@ Perform the following steps for each dataset to be imported:
 
 3. If the name used for the linked service to `PrimaryStorage` is not `asadatalake01`, replace the `properties.linkedServiceName.referenceName` value in JSON with the actual name of the linked service.
 
-4. Save and publish the dataset. Optionally, you can publish all datasets at once, at the end of the import procedure.
+4. Save and publish the dataset. Optionally, you can publish all datasets at once at the end of the import procedure.
 
 The following datasets pointing to `PrimaryStorage` must be imported:
 
-Dataset | Source code
---- | ---
-`external_postalcode_adls` | [external_postalcode_adls.json](artifacts/00/datasets/adls/external_postalcode_adls.json)
-`staging_enrichedcustomer_adls` | [staging_enrichedcustomer_adls.json](artifacts/00/datasets/adls/staging_enrichedcustomer_adls.json)
-`wwi_dimcity_adls` | [wwi_dimcity_adls.json](artifacts/00/datasets/adls/wwi_dimcity_adls.json)
-`wwi_dimcustomer_adls` | [wwi_dimcustomer_adls.json](artifacts/00/datasets/adls/wwi_dimcustomer_adls.json)
-`wwi_dimdate_adls` | [wwi_dimdate_adls.json](artifacts/00/datasets/adls/wwi_dimdate_adls.json)
-`wwi_dimemployee_adls` | [wwi_dimemployee_adls.json](artifacts/00/datasets/adls/wwi_dimemployee_adls.json)
-`wwi_dimpaymentmethod_adls` | [wwi_dimpaymentmethod_adls.json](artifacts/00/datasets/adls/wwi_dimpaymentmethod_adls.json)
-`wwi_dimstockitem_adls` | [wwi_dimstockitem_adls.json](artifacts/00/datasets/adls/wwi_dimstockitem_adls.json)
-`wwi_dimsupplier_adls` | [wwi_dimsupplier_adls.json](artifacts/00/datasets/adls/wwi_dimsupplier_adls.json)
-`wwi_dimtransactiontype_adls` | [wwi_dimtransactiontype_adls.json](artifacts/00/datasets/adls/wwi_dimtransactiontype_adls.json)
-`wwi_factmovement_adls` | [wwi_factmovement_adls.json](artifacts/00/datasets/adls/wwi_factmovement_adls.json)
-`wwi_factorder_adls` | [wwi_factorder_adls.json](artifacts/00/datasets/adls/wwi_factorder_adls.json)
-`wwi_factpurchase_adls` | [wwi_factpurchase_adls.json](artifacts/00/datasets/adls/wwi_factpurchase_adls.json)
-`wwi_factsale_adls` | [wwi_factsale_adls.json](artifacts/00/datasets/adls/wwi_factsale_adls.json)
-`wwi_factsale_big_1_adls` | [wwi_factsale_big_1_adls.json](artifacts/00/datasets/adls/wwi_factsale_big_1_adls.json)
-`wwi_factsale_big_2_adls` | [wwi_factsale_big_2_adls.json](artifacts/00/datasets/adls/wwi_factsale_big_2_adls.json)
-`wwi_factsale_big_3_adls` | [wwi_factsale_big_3_adls.json](artifacts/00/datasets/adls/wwi_factsale_big_3_adls.json)
-`wwi_factsale_big_4_adls` | [wwi_factsale_big_4_adls.json](artifacts/00/datasets/adls/wwi_factsale_big_4_adls.json)
-`wwi_factstockholding_adls` | [wwi_factstockholding_adls.json](artifacts/00/datasets/adls/wwi_factstockholding_adls.json)
-`wwi_facttransaction_adls` | [wwi_facttransaction_adls.json](artifacts/00/datasets/adls/wwi_facttransaction_adls.json)
+| Dataset                         | Source code                                                                                         |
+|---------------------------------|-----------------------------------------------------------------------------------------------------|
+| `external_postalcode_adls`      | [external_postalcode_adls.json](artifacts/00/datasets/adls/external_postalcode_adls.json)           |
+| `staging_enrichedcustomer_adls` | [staging_enrichedcustomer_adls.json](artifacts/00/datasets/adls/staging_enrichedcustomer_adls.json) |
+| `wwi_dimcity_adls`              | [wwi_dimcity_adls.json](artifacts/00/datasets/adls/wwi_dimcity_adls.json)                           |
+| `wwi_dimcustomer_adls`          | [wwi_dimcustomer_adls.json](artifacts/00/datasets/adls/wwi_dimcustomer_adls.json)                   |
+| `wwi_dimdate_adls`              | [wwi_dimdate_adls.json](artifacts/00/datasets/adls/wwi_dimdate_adls.json)                           |
+| `wwi_dimemployee_adls`          | [wwi_dimemployee_adls.json](artifacts/00/datasets/adls/wwi_dimemployee_adls.json)                   |
+| `wwi_dimpaymentmethod_adls`     | [wwi_dimpaymentmethod_adls.json](artifacts/00/datasets/adls/wwi_dimpaymentmethod_adls.json)         |
+| `wwi_dimstockitem_adls`         | [wwi_dimstockitem_adls.json](artifacts/00/datasets/adls/wwi_dimstockitem_adls.json)                 |
+| `wwi_dimsupplier_adls`          | [wwi_dimsupplier_adls.json](artifacts/00/datasets/adls/wwi_dimsupplier_adls.json)                   |
+| `wwi_dimtransactiontype_adls`   | [wwi_dimtransactiontype_adls.json](artifacts/00/datasets/adls/wwi_dimtransactiontype_adls.json)     |
+| `wwi_factmovement_adls`         | [wwi_factmovement_adls.json](artifacts/00/datasets/adls/wwi_factmovement_adls.json)                 |
+| `wwi_factorder_adls`            | [wwi_factorder_adls.json](artifacts/00/datasets/adls/wwi_factorder_adls.json)                       |
+| `wwi_factpurchase_adls`         | [wwi_factpurchase_adls.json](artifacts/00/datasets/adls/wwi_factpurchase_adls.json)                 |
+| `wwi_factsale_adls`             | [wwi_factsale_adls.json](artifacts/00/datasets/adls/wwi_factsale_adls.json)                         |
+| `wwi_factsale_big_1_adls`       | [wwi_factsale_big_1_adls.json](artifacts/00/datasets/adls/wwi_factsale_big_1_adls.json)             |
+| `wwi_factsale_big_2_adls`       | [wwi_factsale_big_2_adls.json](artifacts/00/datasets/adls/wwi_factsale_big_2_adls.json)             |
+| `wwi_factsale_big_3_adls`       | [wwi_factsale_big_3_adls.json](artifacts/00/datasets/adls/wwi_factsale_big_3_adls.json)             |
+| `wwi_factsale_big_4_adls`       | [wwi_factsale_big_4_adls.json](artifacts/00/datasets/adls/wwi_factsale_big_4_adls.json)             |
+| `wwi_factstockholding_adls`     | [wwi_factstockholding_adls.json](artifacts/00/datasets/adls/wwi_factstockholding_adls.json)         |
+| `wwi_facttransaction_adls`      | [wwi_facttransaction_adls.json](artifacts/00/datasets/adls/wwi_facttransaction_adls.json)           |
 
 ### Import datasets pointing to `SQLPool1`
 
@@ -111,30 +111,30 @@ Perform the following steps for each dataset to be imported:
 
 3. If the name used for the linked service to `SQLPool01` is not `sqlpool01`, replace the `properties.linkedServiceName.referenceName` value in JSON with the actual name of the linked service.
 
-4. Save and publish the dataset. Optionally, you can publish all datasets at once, at the end of the import procedure.
+4. Save and publish the dataset. Optionally, you can publish all datasets at once at the end of the import procedure.
 
 The following datasets pointing to `SQLPool01` must be imported:
 
-Dataset | Source code
---- | ---
-`wwi_dimcity_asa` | [wwi_dimcity_asa.json](artifacts/00/datasets/asa/wwi_dimcity_asa.json)
-`wwi_dimcustomer_asa` | [wwi_dimcustomer_asa.json](artifacts/00/datasets/asa/wwi_dimcustomer_asa.json)
-`wwi_dimdate_asa` | [wwi_dimdate_asa.json](artifacts/00/datasets/asa/wwi_dimdate_asa.json)
-`wwi_dimemployee_asa` | [wwi_dimemployee_asa.json](artifacts/00/datasets/asa/wwi_dimemployee_asa.json)
-`wwi_dimpaymentmethod_asa` | [wwi_dimpaymentmethod_asa.json](artifacts/00/datasets/asa/wwi_dimpaymentmethod_asa.json)
-`wwi_dimstockitem_asa` | [wwi_dimstockitem_asa.json](artifacts/00/datasets/asa/wwi_dimstockitem_asa.json)
-`wwi_dimsupplier_asa` | [wwi_dimsupplier_asa.json](artifacts/00/datasets/asa/wwi_dimsupplier_asa.json)
-`wwi_dimtransactiontype_asa` | [wwi_dimtransactiontype_asa.json](artifacts/00/datasets/asa/wwi_dimtransactiontype_asa.json)
-`wwi_factmovement_asa` | [wwi_factmovement_asa.json](artifacts/00/datasets/asa/wwi_factmovement_asa.json)
-`wwi_factorder_asa` | [wwi_factorder_asa.json](artifacts/00/datasets/asa/wwi_factorder_asa.json)
-`wwi_factpurchase_asa` | [wwi_factpurchase_asa.json](artifacts/00/datasets/asa/wwi_factpurchase_asa.json)
-`wwi_factsale_asa` | [wwi_factsale_asa.json](artifacts/00/datasets/asa/wwi_factsale_asa.json)
-`wwi_factstockholding_asa` | [wwi_factstockholding_asa.json](artifacts/00/datasets/asa/wwi_factstockholding_asa.json)
-`wwi_facttransaction_asa` | [wwi_facttransaction_asa.json](artifacts/00/datasets/asa/wwi_facttransaction_asa.json)
-`wwi_perf_factsale_fast_asa` | [wwi_perf_factsale_fast_asa.json](artifacts/00/datasets/asa/wwi_perf_factsale_fast_asa.json)
-`wwi_perf_factsale_slow_asa` | [wwi_perf_factsale_slow_asa.json](artifacts/00/datasets/asa/wwi_perf_factsale_slow_asa.json)
-`wwi_staging_dimcustomer_asa` | [wwi_staging_dimcustomer_asa.json](artifacts/00/datasets/asa/wwi_staging_dimcustomer_asa.json)
-`wwi_staging_enrichedcustomer_asa` | [wwi_staging_enrichedcustomer_asa.json](artifacts/00/datasets/asa/wwi_staging_enrichedcustomer_asa.json)
+| Dataset                            | Source code                                                                                              |
+|------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `wwi_dimcity_asa`                  | [wwi_dimcity_asa.json](artifacts/00/datasets/asa/wwi_dimcity_asa.json)                                   |
+| `wwi_dimcustomer_asa`              | [wwi_dimcustomer_asa.json](artifacts/00/datasets/asa/wwi_dimcustomer_asa.json)                           |
+| `wwi_dimdate_asa`                  | [wwi_dimdate_asa.json](artifacts/00/datasets/asa/wwi_dimdate_asa.json)                                   |
+| `wwi_dimemployee_asa`              | [wwi_dimemployee_asa.json](artifacts/00/datasets/asa/wwi_dimemployee_asa.json)                           |
+| `wwi_dimpaymentmethod_asa`         | [wwi_dimpaymentmethod_asa.json](artifacts/00/datasets/asa/wwi_dimpaymentmethod_asa.json)                 |
+| `wwi_dimstockitem_asa`             | [wwi_dimstockitem_asa.json](artifacts/00/datasets/asa/wwi_dimstockitem_asa.json)                         |
+| `wwi_dimsupplier_asa`              | [wwi_dimsupplier_asa.json](artifacts/00/datasets/asa/wwi_dimsupplier_asa.json)                           |
+| `wwi_dimtransactiontype_asa`       | [wwi_dimtransactiontype_asa.json](artifacts/00/datasets/asa/wwi_dimtransactiontype_asa.json)             |
+| `wwi_factmovement_asa`             | [wwi_factmovement_asa.json](artifacts/00/datasets/asa/wwi_factmovement_asa.json)                         |
+| `wwi_factorder_asa`                | [wwi_factorder_asa.json](artifacts/00/datasets/asa/wwi_factorder_asa.json)                               |
+| `wwi_factpurchase_asa`             | [wwi_factpurchase_asa.json](artifacts/00/datasets/asa/wwi_factpurchase_asa.json)                         |
+| `wwi_factsale_asa`                 | [wwi_factsale_asa.json](artifacts/00/datasets/asa/wwi_factsale_asa.json)                                 |
+| `wwi_factstockholding_asa`         | [wwi_factstockholding_asa.json](artifacts/00/datasets/asa/wwi_factstockholding_asa.json)                 |
+| `wwi_facttransaction_asa`          | [wwi_facttransaction_asa.json](artifacts/00/datasets/asa/wwi_facttransaction_asa.json)                   |
+| `wwi_perf_factsale_fast_asa`       | [wwi_perf_factsale_fast_asa.json](artifacts/00/datasets/asa/wwi_perf_factsale_fast_asa.json)             |
+| `wwi_perf_factsale_slow_asa`       | [wwi_perf_factsale_slow_asa.json](artifacts/00/datasets/asa/wwi_perf_factsale_slow_asa.json)             |
+| `wwi_staging_dimcustomer_asa`      | [wwi_staging_dimcustomer_asa.json](artifacts/00/datasets/asa/wwi_staging_dimcustomer_asa.json)           |
+| `wwi_staging_enrichedcustomer_asa` | [wwi_staging_enrichedcustomer_asa.json](artifacts/00/datasets/asa/wwi_staging_enrichedcustomer_asa.json) |
 
 ### Import data flows
 
@@ -144,13 +144,13 @@ Perform the following steps for each data flow to be imported:
 
 2. Switch to code view and replace the code with the content of the associated JSON file.
 
-3. Save and publish the data flow. Optionally, you can publish all data flows at once, at the end of the import procedure.
+3. Save and publish the data flow. Optionally, you can publish all data flows at once at the end of the import procedure.
 
-The following data flows must be imported:
+The following data-flows must be imported:
 
-Data flow | Source code
---- | ---
-`EnrichCustomerData` | [EnrichCustomerData.json](./artifacts/00/dataflows/EnrichCustomerData.json)
+| Data flow            | Source code                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| `EnrichCustomerData` | [EnrichCustomerData.json](./artifacts/00/dataflows/EnrichCustomerData.json) |
 
 ### Import pipelines
 
@@ -160,17 +160,17 @@ Perform the following steps for each pipeline to be imported:
 
 2. Switch to code view and replace the code with the content of the associated JSON file.
 
-3. Save and publish the pipeline. Optionally, you can publish all pipelines at once, at the end of the import procedure.
+3. Save and publish the pipeline. Optionally, you can publish all pipelines at once at the end of the import procedure.
 
 The following pipelines must be imported:
 
-Pipeline | Source code
---- | ---
-`Exercise 2 - Enrich Data` | [Exercise 2 - Enrich Data.json](./artifacts/00/pipelines/Exercise%202%20-%20Enrich%20Data.json)
-`Import WWI Data` | [Import WWI Data.json](./artifacts/00/pipelines/Import%20WWI%20Data.json)
-`Import WWI Data - Fact Sale Full` | [Import WWI Data - Fact Sale Full.json](./artifacts/00/pipelines/Import%20WWI%20Data%20-%20Fact%20Sale%20Full.json)
-`Import WWI Perf Data - Fact Sale Fast` | [Import WWI Perf Data - Fact Sale Fast.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Fast.json)
-`Import WWI Perf Data - Fact Sale Slow` | [Import WWI Perf Data - Fact Sale Slow.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Slow.json)
+| Pipeline                                | Source code                                                                                                                     |
+|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| `Exercise 2 - Enrich Data`              | [Exercise 2 - Enrich Data.json](./artifacts/00/pipelines/Exercise%202%20-%20Enrich%20Data.json)                                 |
+| `Import WWI Data`                       | [Import WWI Data.json](./artifacts/00/pipelines/Import%20WWI%20Data.json)                                                       |
+| `Import WWI Data - Fact Sale Full`      | [Import WWI Data - Fact Sale Full.json](./artifacts/00/pipelines/Import%20WWI%20Data%20-%20Fact%20Sale%20Full.json)             |
+| `Import WWI Perf Data - Fact Sale Fast` | [Import WWI Perf Data - Fact Sale Fast.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Fast.json) |
+| `Import WWI Perf Data - Fact Sale Slow` | [Import WWI Perf Data - Fact Sale Slow.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Slow.json) |
 
 ## Task 4 - Populate `PrimaryStorage` with data
 
@@ -265,22 +265,22 @@ Pipeline | Source code
 
 Import the following SQL scripts into `Workspace`:
 
-SQL script name | Source code | Replacements
---- | --- | ---
-`Exercise 1 - Read with serverless SQL Pool` | [Exercise 1 - Read with serverless SQL Pool.sql](./artifacts/01/Exercise%201%20-%20Read%20with%20serverless%20SQL%20Pool.sql) | `<primary_storage>` with the actual name of `PrimaryStorage`
-`Exercise 4 - Analyze Transactions` | [Exercise 4 - Analyze Transactions.sql](./artifacts/04/Exercise%204%20-%20Analyze%20Transactions.sql) | None
-`Exercise 4 - Investigate query performance` | [Exercise 4 - Investigate query performance.sql](./artifacts/04/Exercise%204%20-%20Investigate%20query%20performance.sql) | None
-`Exercise 5 - Create Sample Data for Predict` | [Exercise 5 - Create Sample Data for Predict.sql](./artifacts/05/Exercise%205%20-%20Create%20Sample%20Data%20for%20Predict.sql) | None
-`Exercise 5 - Predict with model` | [Exercise 5 - Predict with model.sql](./artifacts/05/Exercise%205%20-%20Predict%20with%20model.sql) | None
-`Exercise 5 - Register model` | [Exercise 5 - Register model.sql](./artifacts/05/Exercise%205%20-%20Register%20model.sql) | `<blob_storage_account_key>` with the storage account key of `BlobStorage`; `<blob_storage>` with the storage account name of `BlobStorage`
+| SQL script name                               | Source code                                                                                                                     | Replacements                                                                                                                                |
+|-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| `Exercise 1 - Read with serverless SQL Pool`  | [Exercise 1 - Read with serverless SQL Pool.sql](./artifacts/01/Exercise%201%20-%20Read%20with%20serverless%20SQL%20Pool.sql)   | `<primary_storage>` with the actual name of `PrimaryStorage`                                                                                |
+| `Exercise 4 - Analyze Transactions`           | [Exercise 4 - Analyze Transactions.sql](./artifacts/04/Exercise%204%20-%20Analyze%20Transactions.sql)                           | None                                                                                                                                        |
+| `Exercise 4 - Investigate query performance`  | [Exercise 4 - Investigate query performance.sql](./artifacts/04/Exercise%204%20-%20Investigate%20query%20performance.sql)       | None                                                                                                                                        |
+| `Exercise 5 - Create Sample Data for Predict` | [Exercise 5 - Create Sample Data for Predict.sql](./artifacts/05/Exercise%205%20-%20Create%20Sample%20Data%20for%20Predict.sql) | None                                                                                                                                        |
+| `Exercise 5 - Predict with model`             | [Exercise 5 - Predict with model.sql](./artifacts/05/Exercise%205%20-%20Predict%20with%20model.sql)                             | None                                                                                                                                        |
+| `Exercise 5 - Register model`                 | [Exercise 5 - Register model.sql](./artifacts/05/Exercise%205%20-%20Register%20model.sql)                                       | `<blob_storage_account_key>` with the storage account key of `BlobStorage`; `<blob_storage>` with the storage account name of `BlobStorage` |
 
 Import the following Spark notebooks into `Workspace`:
 
-Spark notebook name | Source code | Replacements
---- | --- | ---
-`Exercise 1 - Read with Spark` | [Exercise 1 - Read with Spark.ipynb](./artifacts/01/Exercise%201%20-%20Read%20with%20Spark.ipynb) | `<primary_storage>` with the actual name of `PrimaryStorage`
-`Exercise 2 - Ingest Sales Data` | [Exercise 2 - Ingest Sales Data.ipynb](./artifacts/02/Exercise%202%20-%20Ingest%20Sales%20Data.ipynb) | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`
-`Exercise 2 - Bonus Notebook with CSharp` | [Exercise 2 - Bonus Notebook with CSharp.ipynb](./artifacts/02/Exercise%202%20-%20Bonus%20Notebook%20with%20CSharp.ipynb) | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`; In cell 3 - `<sql_staging_password>` with the password of `asa.sql.staging` created above in Task 4, step 3; In cell 3 - `<workspace>` with the name of the `Workspace`; In cell 3 - `<sql_pool>` with the name of `SQLPool1`
+| Spark notebook name                       | Source code                                                                                                               | Replacements                                                                                                                                                                                                                                                                                            |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Exercise 1 - Read with Spark`            | [Exercise 1 - Read with Spark.ipynb](./artifacts/01/Exercise%201%20-%20Read%20with%20Spark.ipynb)                         | `<primary_storage>` with the actual name of `PrimaryStorage`                                                                                                                                                                                                                                            |
+| `Exercise 2 - Ingest Sales Data`          | [Exercise 2 - Ingest Sales Data.ipynb](./artifacts/02/Exercise%202%20-%20Ingest%20Sales%20Data.ipynb)                     | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`                                                                                                                                                                                                                                |
+| `Exercise 2 - Bonus Notebook with CSharp` | [Exercise 2 - Bonus Notebook with CSharp.ipynb](./artifacts/02/Exercise%202%20-%20Bonus%20Notebook%20with%20CSharp.ipynb) | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`; In cell 3 - `<sql_staging_password>` with the password of `asa.sql.staging` created above in Task 4, step 3; In cell 3 - `<workspace>` with the name of the `Workspace`; In cell 3 - `<sql_pool>` with the name of `SQLPool1` |
 
 ## Task 9 - Prepare a machine learning model
 
@@ -342,6 +342,6 @@ For each additional user that needs to have access to `Workspace` and run exerci
 
 4. Import the following Databricks notebooks into the `Shared` section of the Databricks workspace:
 
-    Spark notebook name | Source code | Replacements
-    --- | --- | ---
-    `Exercise 5 - Model Training` | [Exercise 5 - Model Training.dbc](./artefacts/../artifacts/05/Exercise%205%20-%20Model%20Training.dbc) |
+    | Spark notebook name           | Source code                                                                                            | Replacements |
+    |-------------------------------|--------------------------------------------------------------------------------------------------------|--------------|
+    | `Exercise 5 - Model Training` | [Exercise 5 - Model Training.dbc](./artefacts/../artifacts/05/Exercise%205%20-%20Model%20Training.dbc) |
