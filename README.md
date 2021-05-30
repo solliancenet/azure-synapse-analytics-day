@@ -44,7 +44,7 @@ Understanding data through data exploration is one of the core challenges faced 
 
 In Azure Synapse Analytics, you have the possibility of using either the SQL Serverless engine, the big-data Spark engine, or both.
 
-## Exercise 2 - Build a Modern Data Warehouse with Azure Synapse Pipelines
+## Exercise 2 - Working with Azure Synapse Pipelines
 
 In this exercise, you will use a pipeline with parallel activities to bring data into the Data Lake, transform it, and load it into the Azure Synapse SQL Pool. You will also monitor the progress of the associated tasks.
 
@@ -64,9 +64,9 @@ Azure Synapse Analytics integrates natively with Power BI, a proven and highly s
 
 In this exercise, you will try to understand customer details using a query and chart visualizations. You will also explore the performance of various queries.
 
-SQL data warehouses have been for a long time the center of gravity in data platforms. Modern data warehouses are capable of providing high performance, distributed, and governed workloads, regardless of the data volumes at hand.
+SQL data warehouses have been for a long time the center of gravity in data platforms. Current data warehouses are capable of providing high performance, distributed, and governed workloads, regardless of the data volumes at hand.
 
-The Azure Synapse SQL Pools in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
+The Azure Synapse SQL Pools in Azure Synapse Analytics is the new incarnation of the former Azure SQL Data Warehouse. It provides all the state-of-the-art SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
 
 ## Exercise 5 - Data Science with Spark (optional)
 

@@ -1,10 +1,10 @@
-# Exercise 2 - Build a Modern Data Warehouse with Azure Synapse Pipelines
+# Exercise 2 - Working with Azure Synapse Pipelines
 
 In this exercise, you examine various methods for ingesting data into Azure Synapse Analytics and Azure Data Lake Storage Gen2. You use notebooks and Data Flows to ingest, transform, and load data.
 
 The tasks you will perform in this exercise are:
 
-- Build Modern Data Warehouse pipelines
+- Working with Azure Synapse Pipelines
   - Task 1 - Explore and modify a notebook
     - Bonus Challenge
   - Task 2 - Explore, modify, and run a Pipeline containing a Data Flow
