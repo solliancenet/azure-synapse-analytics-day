@@ -110,7 +110,7 @@ If you do not see a list of data fields under Fields, follow the steps below for
 
    ![Selecting the right workspace to work on](media/ex03-selecting-workspace.png "Selecting the right workspace to work on")
 
-3. Navigate to **Settings**, then select **Settings** from the menu.
+3. Navigate to **Settings (2)**, then select **Settings (3)** from the menu.
 
    ![The Settings menu is displayed.](media/pbi-settings.png "Settings")
 
