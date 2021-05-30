@@ -32,7 +32,7 @@
     Linked service to primary storage account | `asadatalake01`
     Linked service to blob storage account | `asastore01`
 
-9.  Ensure the `Workspace` security principal (which has the same name as the `Workspace`) and the `MasterUser` (the one used to create the `Workspace`) are added with the `Storage Blob Data Owner` role to the `PrimaryStorage`.
+9. Ensure the `Workspace` security principal (which has the same name as the `Workspace`) and the `MasterUser` (the one used to create the `Workspace`) are added with the `Storage Blob Data Owner` role to the `PrimaryStorage`.
 
 ## Task 2 - Upload the data used in the lab
 
@@ -42,25 +42,25 @@
 
     File name | Size | Download from
     --- | --- | ---
-    `postalcodes.csv` | 1.8 MB | https://solliancepublicdata.blob.core.windows.net/wwi-01/postalcodes.csv
-    `wwi-dimcity.csv` | 17.5 MB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimcity.csv
-    `wwi-dimcustomer.csv` | 67.3 KB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimcustomer.csv
-    `wwi-dimdate.csv` | 146.3 KB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimdate.csv
-    `wwi-dimemployee.csv` | 18.7 KB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimemployee.csv
-    `wwi-dimpaymentmethod.csv` | 514 B | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimpaymentmethod.csv
-    `wwi-dimstockitem.csv` | 114.6 KB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimstockitem.csv
-    `wwi-dimsupplier.csv` | 3.8 KB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimsupplier.csv
-    `wwi-dimtransactiontype.csv` | 1.3 KB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimtransactiontype.csv
-    `wwi-factmovement.csv` | 11.1 MB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factmovement.csv
-    `wwi-factorder.csv` | 31.3 MB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factorder.csv
-    `wwi-factpurchase.csv` | 461.1. KB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factpurchase.csv
-    `wwi-factsale-big-1.csv` | 3.0 GB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-1.csv
-    `wwi-factsale-big-2.csv` | 3.0 GB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-2.csv
-    `wwi-factsale-big-3.csv` | 3.0 GB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-3.csv
-    `wwi-factsale-big-4.csv` | 3.0 GB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-4.csv
-    `wwi-factsale.csv` | 1.8 GB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale.csv
-    `wwi-factstockholding.csv` | 8.9 KB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factstockholding.csv
-    `wwi-facttransaction.csv` | 7.2 MB | https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-facttransaction.csv
+    `postalcodes.csv` | 1.8 MB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/postalcodes.csv>
+    `wwi-dimcity.csv` | 17.5 MB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimcity.csv>
+    `wwi-dimcustomer.csv` | 67.3 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimcustomer.csv>
+    `wwi-dimdate.csv` | 146.3 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimdate.csv>
+    `wwi-dimemployee.csv` | 18.7 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimemployee.csv>
+    `wwi-dimpaymentmethod.csv` | 514 B | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimpaymentmethod.csv>
+    `wwi-dimstockitem.csv` | 114.6 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimstockitem.csv>
+    `wwi-dimsupplier.csv` | 3.8 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimsupplier.csv>
+    `wwi-dimtransactiontype.csv` | 1.3 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-dimtransactiontype.csv>
+    `wwi-factmovement.csv` | 11.1 MB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factmovement.csv>
+    `wwi-factorder.csv` | 31.3 MB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factorder.csv>
+    `wwi-factpurchase.csv` | 461.1. KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factpurchase.csv>
+    `wwi-factsale-big-1.csv` | 3.0 GB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-1.csv>
+    `wwi-factsale-big-2.csv` | 3.0 GB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-2.csv>
+    `wwi-factsale-big-3.csv` | 3.0 GB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-3.csv>
+    `wwi-factsale-big-4.csv` | 3.0 GB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale-big-4.csv>
+    `wwi-factsale.csv` | 1.8 GB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale.csv>
+    `wwi-factstockholding.csv` | 8.9 KB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factstockholding.csv>
+    `wwi-facttransaction.csv` | 7.2 MB | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-facttransaction.csv>
 
 ## Task 3 - Import datasets, data flows, and pipelines
 
@@ -207,7 +207,7 @@ Pipeline | Source code
 
     ```sql
     CREATE LOGIN [asa.sql.staging]
-	WITH PASSWORD = '<password>'
+    WITH PASSWORD = '<password>'
     GO
     ```
 
@@ -334,14 +334,14 @@ For each additional user that needs to have access to `Workspace` and run exerci
 
 2. In the Azure Databricks workspace, create a new cluster with the following configuration:
 
-![Create new Databricks cluster](./media/00-create-databricks-cluster.png)
+    ![Create new Databricks cluster](./media/00-create-databricks-cluster.png)
 
 3. On the newly created cluster, install the `onnxmltools` PyPi library:
 
-![Install Databricks cluster libraries](./media/00-install-databricks-cluster-libraries.png)
+    ![Install Databricks cluster libraries](./media/00-install-databricks-cluster-libraries.png)
 
 4. Import the following Databricks notebooks into the `Shared` section of the Databricks workspace:
 
-Spark notebook name | Source code | Replacements
---- | --- | ---
-`Exercise 5 - Model Training` | [Exercise 5 - Model Training.dbc](./artefacts/../artifacts/05/Exercise%205%20-%20Model%20Training.dbc) |
+    Spark notebook name | Source code | Replacements
+    --- | --- | ---
+    `Exercise 5 - Model Training` | [Exercise 5 - Model Training.dbc](./artefacts/../artifacts/05/Exercise%205%20-%20Model%20Training.dbc) |
