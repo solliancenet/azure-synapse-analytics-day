@@ -8,15 +8,15 @@ In Azure Synapse Analytics, you can use either the SQL Serverless engine, the bi
 
 The tasks you will perform in this exercise are:
 
-- Explore the Data Lake with SQL On-demand and Spark
-  - Task 1 - Explore the Data Lake with Azure Synapse serverless SQL pool 
+- Explore the Data Lake with serverless SQL Pool and Spark
+  - Task 1 - Explore the Data Lake with Azure Synapse serverless SQL pool
   - Task 2 - Explore the Data Lake with Azure Synapse Spark
 
-## Task 1 - Explore the Data Lake with Azure Synapse serverless SQL pool 
+## Task 1 - Explore the Data Lake with Azure Synapse serverless SQL pool
 
 In this task, you will browse your data lake using serverless SQL pool.
 
-1. In a Microsoft Edge web browser, navigate to the Azure portal (`https://portal.azure.com`) and login with your credentials. Then select **Resource groups**.
+1. In a Microsoft Edge web browser, navigate to the [Azure portal](https://portal.azure.com) (`https://portal.azure.com`) and login with your credentials. Then select **Resource groups**.
 
    ![Open Azure resource group](./media/00-open-resource-groups.png "Azure resource groups")
 
@@ -44,21 +44,21 @@ In this task, you will browse your data lake using serverless SQL pool.
 
    ![Open Data hub in Synapse Analytics Studio](./media/data-hub.png)
 
-7. Switch to the `Linked` tab **(1)**. Under `Azure Data Lake Storage Gen2` **(2)**, expand the primary data lake storage account, and then select the `wwi` file system **(3)**.
+7. Switch to the **Linked** tab **(1)**. Under **Azure Data Lake Storage Gen2** **(2)**, expand the primary data lake storage account, and then select the **wwi** file system **(3)**.
 
    ![The ADLS Gen2 storage account is selected.](media/storage-factsale-parquet.png "ADLS Gen2 storage account")
 
-8. Inside the selected file system, double-click to navigate to `factsale-parquet` -> `2012` -> `Q1` -> `InvoiceDateKey=2012-01-01` **(4)**.
+8. Inside the selected file system, double-click to navigate to **factsale-parquet -> 2012 -> Q1 -> InvoiceDateKey=2012-01-01 (4)**.
 
-9. Once you are in `InvoiceDateKey=2012-01-01` right-click the Parquet file and select `New SQL script - Select TOP 100 rows`.
+9. Once you are in `InvoiceDateKey=2012-01-01` right-click the Parquet file **(1)** and select **New SQL script (2)** and **Select TOP 100 rows (3)**`.
 
-   > A script is automatically generated. Run this script to see how SQL on demand queries the file and returns the first 100 rows of that file with the header, allowing you to explore data in the file easily.
+   > A script is automatically generated. Run this script to see how serverless queries the file and returns the first 100 rows of that file with the header, allowing you to explore data in the file easily.
 
-   ![Start new SQL script from data lake file](./media/ex01-sql-on-demand-01.png "Create a new SQL script")
+   ![Start new SQL script from data lake file](./media/ex01-serverless-01.png "Create a new SQL script")
 
-10. Ensure the newly created script is connected to the `Built-in` pool representing serverless SQL pool and select `Run`. Data is loaded by the built-in SQL pool and processed as if it came from any regular relational database.
+10. Ensure the newly created script is connected to the **Built-in (1)** pool representing serverless SQL pool and select **Run (2)**. Data is loaded by the built-in SQL pool and processed as if it came from any regular relational database.
 
-    ![Run SQL script on data lake file](./media/ex01-sql-on-demand-02.png "Execute SQL script")
+    ![Run SQL script on data lake file](./media/ex01-serverless-02.png "Execute SQL script")
 
 11. Let us change the initial script to load multiple Parquet files at once.
 
@@ -71,17 +71,17 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     > Note: Replace '< yourdatalake storage account name >' with the **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right.
 
-12. Select `Run` to re-run the script. You should see a result of `2991716`, which is the number of records contained in all the Parquet files within the `factsale-parquet/2012/Q1` directory.
+12. Select **Run** to re-run the script. You should see a result of `2991716`, which is the number of records contained in all the Parquet files within the `factsale-parquet/2012/Q1` directory.
 
-    ![Run SQL on-demand script loading multiple Parquet data lake files](./media/ex01-sql-on-demand-03.png)
+    ![Run serverless script loading multiple Parquet data lake files](./media/ex01-serverless-03.png)
 
-13. In Azure Synapse Analytics Studio, navigate to the `Develop` hub.
+13. In Azure Synapse Analytics Studio, navigate to the **Develop** hub.
 
     ![Develop hub.](media/develop-hub.png "Develop hub")
 
-14. Select the `Exercise 1 - Read with SQL on-demand` **(1)** SQL script. Connect to **Built-in (2)**. Select **Run (3)** to execute the script.
+14. Select the **Exercise 1 - Read with SQL on-demand** **(1)** SQL script. Connect to **Built-in (2)**. Select **Run (3)** to execute the script.
 
-    ![Run SQL on-demand script loading multiple CSV data lake files](./media/ex01-sql-on-demand-04.png)
+    ![Run serverless script loading multiple CSV data lake files](./media/ex01-serverless-04.png)
 
     > This query demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path). Parquet files are compressed and store data in columnar format for efficient querying, compared to CSV files that are raw representations of data but easily processed by many systems. You can often encounter many file types stored in a data lake and must know how to access and explore those files. For instance, when you access CSV files, you need to specify the format, field terminator, and other properties to let the query engine understand how to parse the data. In this case, we determine the value of `2` for FIRSTROW. This indicates that the first row of the file must be skipped because it contains the column header.
     >
@@ -89,7 +89,7 @@ In this task, you will browse your data lake using serverless SQL pool.
 
 ## Task 2 - Explore the Data Lake with Azure Synapse Spark
 
-1. Navigate to the `Data` hub, browse to the data lake storage account folder `wwi/factsale-parquet/2012/Q1/InvoiceDateKey=2012-01-01`, then right-click the Parquet file and select `New notebook->Load Data frame`
+1. Navigate to the **Data** hub, browse to the data lake storage account folder `wwi/factsale-parquet/2012/Q1/InvoiceDateKey=2012-01-01`, then right-click the Parquet file and select **New notebook (1)** and **Load Data frame (2)**
 
    ![Start new Spark notebook from data lake file](./media/ex01-spark-notebook-001.png "Create a new Spark notebook")
 
@@ -97,14 +97,14 @@ In this task, you will browse your data lake using serverless SQL pool.
 
    ![New Spark notebook from data lake file](./media/ex01-spark-notebook-002.png "Review the notebook")
 
-3. Attach the notebook to a Spark pool **(1)**.
+3. Attach the notebook to a **Spark pool (1)**.
 
    ![Run Spark notebook on data lake file](./media/ex01-attachsparkpool01.png "Attach notebook to Spark pool")
 
 4. Select **Run all** on the notebook toolbar **(2)** to execute the notebook.
 
    > **Note**: The first time you run a notebook in a Spark pool, Synapse creates a new session. This can take approximately 3 minutes.
-   
+
     ![Waiting for the Spark pool to start.](./media/ex01-attachsparkpool01waiting.png "Waiting for the Spark pool to start.")
 
 5. As you can see, the output of the dataframe is displayed with 10 rows. To  display 100 rows with the header, replace the last line of code with the following:
@@ -121,7 +121,7 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     ![View charts on data in Spark notebook](./media/ex01-spark-notebook-05.png "Review charted data")
 
-8. Hover over the area just below the cell in the notebook, then select **{} Add code** to add a new cell.
+8. Hover over the area just to the bottom right of the cell in the notebook, then select **+ Add code (2)** to add a new cell.
 
    ![The add code button is highlighted.](media/add-cell.png "Add code")
 

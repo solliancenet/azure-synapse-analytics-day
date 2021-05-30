@@ -267,7 +267,7 @@ Import the following SQL scripts into `Workspace`:
 
 SQL script name | Source code | Replacements
 --- | --- | ---
-`Exercise 1 - Read with SQL on-demand` | [Exercise 1 - Read with SQL on-demand.sql](./artifacts/01/Exercise%201%20-%20Read%20with%20SQL%20on-demand.sql) | `<primary_storage>` with the actual name of `PrimaryStorage`
+`Exercise 1 - Read with serverless SQL Pool` | [Exercise 1 - Read with serverless SQL Pool.sql](./artifacts/01/Exercise%201%20-%20Read%20with%20serverless%20SQL%20Pool.sql) | `<primary_storage>` with the actual name of `PrimaryStorage`
 `Exercise 4 - Analyze Transactions` | [Exercise 4 - Analyze Transactions.sql](./artifacts/04/Exercise%204%20-%20Analyze%20Transactions.sql) | None
 `Exercise 4 - Investigate query performance` | [Exercise 4 - Investigate query performance.sql](./artifacts/04/Exercise%204%20-%20Investigate%20query%20performance.sql) | None
 `Exercise 5 - Create Sample Data for Predict` | [Exercise 5 - Create Sample Data for Predict.sql](./artifacts/05/Exercise%205%20-%20Create%20Sample%20Data%20for%20Predict.sql) | None
