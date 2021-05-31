@@ -121,9 +121,9 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     ![View charts on data in Spark notebook](./media/ex01-spark-notebook-05.png "Review charted data")
 
-8. Hover over the area just to the bottom of the cell in the notebook, then select **{} Add code (2)** to add a new cell.
+8. Hover over the area just to the bottom of the cell in the notebook, then select **{} Add code** to add a new cell.
 
-   ![The add code button is highlighted.](media/add-cell.png "Add code")
+    ![The add code button is highlighted.](media/add-cell.png "Add code")
 
 9. Paste the following into the cell, and **replace** `YOUR_DATALAKE_NAME` **(1)** with the name of your **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right. You can also copy it from the first cell of the notebook above.
 
@@ -143,4 +143,38 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     > This notebook demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
 
-11. **Important**: If you are continuing to Exercise 2 now, _leave this notebook open for the first task_ of the next exercise. This way, you can continue to use this notebook and the running Spark session, saving you time.
+11. Add another cell by hovering over the area just to the bottom of the current notebook cell, then select **{} Add code** to add a new cell.
+    
+    ![The add code button is highlighted.](media/add-cell.png "Add code")
+
+12. Paste the following into the cell and select the **Run cell** button to execute the new cell. This will calculate a distinct count of stock items by city and display the 10 cities with the most unique items sold in the dataset.
+
+    ```python
+    from pyspark.sql.functions import col, countDistinct, desc
+    
+    spark.conf.set("spark.sql.adaptive.enabled", "true")
+    spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "true")
+    
+    items_by_city = (
+      data_path
+        .groupBy("CityKey")
+        .agg(countDistinct("StockItemKey"))
+        .orderBy(desc("count(StockItemKey)")) 
+    )
+    
+    items_by_city.limit(10).show()
+    ```
+
+13. Expand the job execution summary by selecting the arrow next to **Job execution**.
+
+    ![The output is displayed and the job execution arrow is highlighted.](media/notebook-expand-spark-job-execution.png "Expand job execution")
+
+    > The job execution shows the jobs, stages, and tasks that Spark ran when the cell was executed. This view is important to understand the duration and other performance characteristics that are important if the notebook will be used repeatedly.
+
+14. Notice the **Tasks** column shows about 10 tasks per job which is suitable for this small cluster and dataset. When running the same code with a larger dataset, the Adaptive Query Execution feature of Spark 3.0 can modify the query plan to be more efficient. In addition, you can enable autoscaling on your Apache Spark pool so it can automatically grow when the workload on the Spark pool increases.
+
+    ![The job execution is displayed and the Tasks column is highlighted.](media/notebook-spark-job-execution-expanded.png "Job execution tasks")
+
+    > The Apache Spark pool for the lab is using Spark 3.0, which provides several performance benefits over previous versions. Prior to Spark 3.0 the group by and order by in this cell would result in over 400 tasks. Other Spark 3.0 performance benefits may be noticed when joining datasets and working with skewed data.
+
+15. **Important**: If you are continuing to Exercise 2 now, _leave this notebook open for the first task_ of the next exercise. This way, you can continue to use this notebook and the running Spark session, saving you time.
