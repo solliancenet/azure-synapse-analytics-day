@@ -143,27 +143,34 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     > This notebook demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
 
-11. Add another cell by hovering over the area just to the bottom of the current notebook cell, then select **{} Add code** to add a new cell.
-    
-    ![The add code button is highlighted.](media/add-cell.png "Add code")
-
-12. Paste the following into the cell and select the **Run cell** button to execute the new cell. This will calculate a distinct count of stock items by city and display the 10 cities with the most unique items sold in the dataset.
+11. Add another cell and paste the following into the cell. Select the **Run cell** button to execute. The first line of this statement registers the dataset as a temporary table. The rest of the statement is setting configurations used by Apache Spark 3.0.
 
     ```python
-    from pyspark.sql.functions import col, countDistinct, desc
-    
+    data_path.createOrReplaceTempView("factsale_tmp")
+
     spark.conf.set("spark.sql.adaptive.enabled", "true")
     spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "true")
-    
-    items_by_city = (
-      data_path
-        .groupBy("CityKey")
-        .agg(countDistinct("StockItemKey"))
-        .orderBy(desc("count(StockItemKey)")) 
-    )
-    
-    items_by_city.limit(10).show()
+    spark.conf.set("spark.sql.adaptive.coalescePartitions.minPartitionNum", 4)
+    spark.conf.set("spark.sql.ansi.enabled", "true")
     ```
+
+    > The Apache Spark pool for the lab is using Spark 3.0, which provides performance benefits over previous versions. These configurations enable Adaptive Query Execution and set how Spark should optimize partitioning during job execution. ANSI SQL is also enabled to check for data type errors and overflow errors.
+
+12. Add another cell and paste the following statement. Select the **Run cell** button to execute. This uses the magic command `%%sql` to change language of the cell to Spark SQL. The SQL statement returns the top 10 cities based on total quantity.
+
+    ```sql
+    %%sql
+    SELECT 
+        CityKey,
+        SUM(Quantity) FILTER (WHERE CustomerKey != 0) as TotalQuantity,
+        COUNT(DISTINCT StockItemKey) as UniqueItems
+    FROM factsale_tmp
+    GROUP BY CityKey
+    ORDER BY TotalQuantity desc
+    LIMIT 10
+    ```
+
+    > Since ANSI SQL is enabled, if Quantity values are not numeric this query would return an error instead of treating the value as `NULL`.
 
 13. Expand the job execution summary by selecting the arrow next to **Job execution**.
 
@@ -171,10 +178,10 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     > The job execution shows the jobs, stages, and tasks that Spark ran when the cell was executed. This view is important to understand the duration and other performance characteristics that are important if the notebook will be used repeatedly.
 
-14. Notice the **Tasks** column shows about 10 tasks per job which is suitable for this small cluster and dataset. When running the same code with a larger dataset, the Adaptive Query Execution feature of Spark 3.0 can modify the query plan to be more efficient. In addition, you can enable autoscaling on your Apache Spark pool so it can automatically grow when the workload on the Spark pool increases.
+14. Notice the **Tasks** column shows the first job with 8 tasks then adjusts to 5 for tasks per job which is suitable for this small cluster and dataset. When running the same code with a larger dataset, the Adaptive Query Execution feature of Spark 3.0 can modify the query plan to be more efficient. In addition, you can enable autoscaling on your Apache Spark pool so it can automatically grow when the workload on the Spark pool increases.
 
     ![The job execution is displayed and the Tasks column is highlighted.](media/notebook-spark-job-execution-expanded.png "Job execution tasks")
 
-    > The Apache Spark pool for the lab is using Spark 3.0, which provides several performance benefits over previous versions. Prior to Spark 3.0 the group by and order by in this cell would result in over 400 tasks. Other Spark 3.0 performance benefits may be noticed when joining datasets and working with skewed data.
+    > Without Adaptive Query Execution enabled, the group by and order by in this cell would result in over 400 tasks. Spark 3.0 has improved on these tuning options and introduced additional performance benefits which may be noticed when joining datasets and working with skewed data.
 
 15. **Important**: If you are continuing to Exercise 2 now, _leave this notebook open for the first task_ of the next exercise. This way, you can continue to use this notebook and the running Spark session, saving you time.
