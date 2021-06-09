@@ -60,6 +60,8 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     ![Run SQL script on data lake file](./media/ex01-serverless-02.png "Execute SQL script")
 
+    > For Parquet and Delta formats, serverless SQL uses automatic schema inference to determine the data types. This makes exploration of these datasets easy because you do not need to know the schema in advance.
+
 11. Let us change the initial script to load multiple Parquet files at once.
 
     - In line 2, replace `TOP 100 *` with `COUNT(*)`.
@@ -85,9 +87,9 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     > This query demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path). Parquet files are compressed and store data in columnar format for efficient querying, compared to CSV files that are raw representations of data but easily processed by many systems. You can often encounter many file types stored in a data lake and must know how to access and explore those files. For instance, when you access CSV files, you need to specify the format, field terminator, and other properties to let the query engine understand how to parse the data. In this case, we determine the value of `2` for FIRSTROW. This indicates that the first row of the file must be skipped because it contains the column header.
     >
-    > Here, we use WITH to define the columns in the files. You must use WITH when using a bulk rowset (OPENROWSET) in the FROM clause. Also, defining the columns enables you to select and filter the values within.
+    > Here, we use WITH to define the columns in the files. You must use WITH on CSV data when using a bulk rowset (OPENROWSET) in the FROM clause. Also, defining the columns enables you to select and filter the values within.
 
-15. Replace the contents of the SQL script with this query, and **replace** `YOUR_DATALAKE_NAME` with the name of your **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right. Select **Run** to execute the script. This query reads from Delta Lake format to calculate the 2012 quarterly sales quantity.
+15. Replace the contents of the SQL script with this query, and **replace** `YOUR_DATALAKE_NAME` with your **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right. Select **Run** to execute the script. This query reads from Delta Lake format to calculate the 2012 quarterly sales quantity.
 
     ```sql
     SELECT 
@@ -105,7 +107,45 @@ In this task, you will browse your data lake using serverless SQL pool.
          InvoiceQuarter
     ```
     
-    > Delta Lake is a popular format when using Apache Spark for analytics. The ability to read this data from your serverless SQL pool means you do not need to switch to Spark to query data that was loaded and saved to Delta Lake by Apache Spark jobs.
+    > Delta Lake is a popular format when using Apache Spark for analytics. The schema and partitions are automatically inferred when you reference a folder containing the Delta Lake structure. The ability to read this data from your serverless SQL pool means you do not need to switch to Spark to query data that was loaded and saved to Delta Lake by Apache Spark jobs.
+
+16. Update the cell with the following statements to create an external table for the quarterly results. **Replace** `YOUR_DATALAKE_NAME` with your **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right. Select **Run** to execute the script.
+
+    ```sql
+    CREATE EXTERNAL DATA SOURCE WwiDataADLS
+    WITH (LOCATION = 'abfss://wwi@YOUR_DATALAKE_NAME.dfs.core.windows.net') ;
+    GO
+    
+    CREATE EXTERNAL FILE FORMAT CsvFormat
+    WITH ( 
+        FORMAT_TYPE = DELIMITEDTEXT, 
+        FORMAT_OPTIONS ( FIELD_TERMINATOR = ',', STRING_DELIMITER = '"')
+    );
+    GO
+    
+    CREATE EXTERNAL TABLE QuarterlySales
+    WITH (
+        LOCATION = 'quarterly-sales',
+        DATA_SOURCE = WwiDataADLS,
+        FILE_FORMAT = CsvFormat
+    )
+    AS
+    SELECT 
+         InvoiceYear,
+         InvoiceQuarter,
+         Sum(cast([Quantity] as int)) as SalesQuantity
+    FROM
+        OPENROWSET(
+            BULK 'https://YOUR_DATALAKE_NAME.dfs.core.windows.net/wwi/factsale-deltalake',
+            FORMAT = 'DELTA'
+        ) AS [result]
+    WHERE InvoiceYear=2012
+    GROUP BY
+         InvoiceYear,
+         InvoiceQuarter
+    ```
+
+    > This exports the results to CSV files in your data lake and defines a table schema that can be referenced directly in serverless SQL. You can test this by running `SELECT * FROM QuarterlySales`. The results are now easy to query from an analytics tools such as Power BI or you can download the files from the Data Lake..
 
 ## Task 2 - Explore the Data Lake with Azure Synapse Spark
 
@@ -145,7 +185,7 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     ![The add code button is highlighted.](media/add-cell.png "Add code")
 
-9. Paste the following into the cell, and **replace** `YOUR_DATALAKE_NAME` **(1)** with the name of your **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right. You can also copy it from the first cell of the notebook above.
+9. Paste the following into the cell, and **replace** `YOUR_DATALAKE_NAME` **(1)** with your **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right. You can also copy it from the first cell of the notebook above.
 
    ```python
    data_path = spark.read.load(
@@ -196,7 +236,7 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     ![The output is displayed and the job execution arrow is highlighted.](media/notebook-expand-spark-job-execution.png "Expand job execution")
 
-    > The job execution shows the jobs, stages, and tasks that Spark ran when the cell was executed. This view is important to understand the duration and other performance characteristics that are important if the notebook will be used repeatedly.
+    > The job execution shows the jobs, stages, and tasks that Spark ran when the cell was executed. This view shows duration and other performance characteristics that are important to consider if the notebook will be used repeatedly.
 
 14. Notice the **Tasks** column shows the first job with 8 tasks then adjusts to 5 for tasks per job which is suitable for this small cluster and dataset. When running the same code with a larger dataset, the Adaptive Query Execution feature of Spark 3.0 can modify the query plan to be more efficient. In addition, you can enable autoscaling on your Apache Spark pool so it can automatically grow when the workload on the Spark pool increases.
 
