@@ -87,6 +87,26 @@ In this task, you will browse your data lake using serverless SQL pool.
     >
     > Here, we use WITH to define the columns in the files. You must use WITH when using a bulk rowset (OPENROWSET) in the FROM clause. Also, defining the columns enables you to select and filter the values within.
 
+15. Replace the contents of the SQL script with this query, and **replace** `YOUR_DATALAKE_NAME` with the name of your **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right. Select **Run** to execute the script. This query reads from Delta Lake format to calculate the 2012 quarterly sales quantity.
+
+    ```sql
+    SELECT 
+     InvoiceYear,
+     InvoiceQuarter,
+     Sum(cast([Quantity] as int)) as SalesQuantity
+    FROM
+        OPENROWSET(
+            BULK 'https://YOUR_DATALAKE_NAME.dfs.core.windows.net/wwi/factsale-deltalake',
+     		FORMAT = 'DELTA'
+        ) AS [result]
+    WHERE InvoiceYear=2012
+    GROUP BY
+         InvoiceYear,
+         InvoiceQuarter
+    ```
+    
+    > Delta Lake is a popular format when using Apache Spark for analytics. The ability to read this data from your serverless SQL pool means you do not need to switch to Spark to query data that was loaded and saved to Delta Lake by Apache Spark jobs.
+
 ## Task 2 - Explore the Data Lake with Azure Synapse Spark
 
 1. Navigate to the **Data** hub, browse to the data lake storage account folder `wwi/factsale-parquet/2012/Q1/InvoiceDateKey=2012-01-01`, then right-click the Parquet file and select **New notebook (1)** and **Load Data frame (2)**
