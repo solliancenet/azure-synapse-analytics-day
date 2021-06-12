@@ -203,11 +203,9 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     > This notebook demonstrates the same functionality, except this time, it loads CSV files instead of Parquet ones (notice the `factsale-csv` folder in the path).
 
-11. Add another cell and paste the following into the cell. Select the **Run cell** button to execute. The first line of this statement registers the dataset as a temporary table. The rest of the statement is setting configurations used by Apache Spark 3.0.
+11. Add another cell and paste the following into the cell. Select the **Run cell** button to execute.This statement is setting configurations used by Apache Spark 3.0.
 
     ```python
-    data_path.createOrReplaceTempView("factsale_tmp")
-
     spark.conf.set("spark.sql.adaptive.enabled", "true")
     spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "true")
     spark.conf.set("spark.sql.adaptive.coalescePartitions.minPartitionNum", 4)
@@ -216,7 +214,7 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     > The Apache Spark pool for the lab is using Spark 3.0, which provides performance benefits over previous versions. These configurations enable Adaptive Query Execution and set how Spark should optimize partitioning during job execution. ANSI SQL is also enabled to check for data type errors and overflow errors.
 
-12. Add another cell and paste the following statement. Select the **Run cell** button to execute. This uses the magic command `%%sql` to change language of the cell to Spark SQL. The SQL statement returns the top 10 cities based on total quantity.
+12. Add another cell and paste in the SQL statement to read from a Delta Lake path. Replace `YOUR_DATALAKE_NAME` with your **Storage Account Name**. Select the **Run cell** button to execute. This uses the magic command `%%sql` to change language of the cell to Spark SQL. The SQL statement returns the top 10 cities based on total quantity.
 
     ```sql
     %%sql
@@ -224,13 +222,15 @@ In this task, you will browse your data lake using serverless SQL pool.
         CityKey,
         SUM(Quantity) FILTER (WHERE CustomerKey != 0) as TotalQuantity,
         COUNT(DISTINCT StockItemKey) as UniqueItems
-    FROM factsale_tmp
+    FROM delta.`abfss://wwi@asadatalake412099.dfs.core.windows.net/factsale-deltalake`
+    WHERE InvoiceYear=2012
+        and InvoiceQuarter=1
     GROUP BY CityKey
     ORDER BY TotalQuantity desc
     LIMIT 10
     ```
 
-    > Since ANSI SQL is enabled, if Quantity values are not numeric this query would return an error instead of treating the value as `NULL`.
+    > Delta Lake is a popular format for storing data in a data lake since it supports upserts, deletes, and data versioning. You can access it using Spark SQL as shown here or by reading in as a DataFrame using `format(delta)`.
 
 13. Expand the job execution summary by selecting the arrow next to **Job execution**.
 
@@ -238,7 +238,7 @@ In this task, you will browse your data lake using serverless SQL pool.
 
     > The job execution shows the jobs, stages, and tasks that Spark ran when the cell was executed. This view shows duration and other performance characteristics that are important to consider if the notebook will be used repeatedly.
 
-14. Notice the **Tasks** column shows the first job with 8 tasks then adjusts to 5 for tasks per job which is suitable for this small cluster and dataset. When running the same code with a larger dataset, the Adaptive Query Execution feature of Spark 3.0 can modify the query plan to be more efficient. In addition, you can enable autoscaling on your Apache Spark pool so it can automatically grow when the workload on the Spark pool increases.
+14. Notice the **Tasks** column shows the first job with 50 tasks as it reads in from files, then adjusts to 8 and then 5 tasks per job which is suitable for this small cluster and dataset. When running the same code with a larger dataset, Spark 3.0 can modify the query plan to be more efficient. In addition, you can enable autoscaling on your Apache Spark pool so it can automatically grow when the workload on the Spark pool increases.
 
     ![The job execution is displayed and the Tasks column is highlighted.](media/notebook-spark-job-execution-expanded.png "Job execution tasks")
 
