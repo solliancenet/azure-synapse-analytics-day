@@ -371,3 +371,9 @@ For each additional user that needs to have access to `Workspace` and run exerci
 6. Set the name of the secret to **CognitiveKey**, and then paste the key from the previous step into the Value field. Finally, select Create.
 
     ![Create a secret dialog is open. Name is set to CognitiveKey. Value is set to the Cognitive Service Key. Create button is highlighted.](media/key-vault-create-secret.png "Key Vault Secrets")
+
+7. In the Synapse Workspace, create an **Azure Key Vault** linked service by pointing to the key vault that you just created. It is recommended to name the linked service `KeyVault`.  Verify the connection by selecting the **Test connection** button. If the connection is green, select **Create** and then select **Publish all** to save your change.
+
+8. In the Synapse Workspace, create an **Azure Cognitive Service** linked service by pointing to the cognitive service and key vault that you just created. Make sure **Secret name** is set to **CognitiveKey**. It is recommended to name the linked service `CognitiveService`. Select **Create (2)** and then select **Publish all** to save your change.
+
+    ![New Linked Service window is open. Secret Name is highlighted and set to CognitiveKey. Create button is highlighted.](media/linked-service-cognitive-service.png "Cognitive Service Linked Service")
