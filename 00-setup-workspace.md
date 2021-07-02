@@ -345,3 +345,29 @@ For each additional user that needs to have access to `Workspace` and run exerci
     | Spark notebook name           | Source code                                                                                            | Replacements |
     |-------------------------------|--------------------------------------------------------------------------------------------------------|--------------|
     | `Exercise 5 - Model Training` | [Exercise 5 - Model Training.dbc](./artefacts/../artifacts/05/Exercise%205%20-%20Model%20Training.dbc) |
+
+## Task 12 - Setting Up Azure Cognitive Services
+
+1. Navigate to [Create Cognitive Services](https://portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) page and fill in the appropriate values examplified below to create an All-In-One Cognitive Services account.
+
+    ![Cognitive Service creation page is open. Name and Pricing fields are highlighted. Pricing is set to Standard S0. Review+Create button is highlighted.](media/create-cognitive-service.png "Create Cognitive Services")
+
+2. Go to **Cognitive Service > Keys and Endpoint (1)** and copy **Key 1 (2)** to a text editor of your choice to be used in the following steps.
+
+    ![Cognitive Services is open. Keys and Endpoints panel is shown. Key 1 Copy button is highlighted.](media/get-cognitive-services-key.png "Cognitive Service Key")
+
+3. Navigate to [Create Key Vault](https://portal.azure.com/#create/Microsoft.KeyVault) page and fill in the appropriate values examplified below to create a Key Vault account.
+
+    ![Key Vault creation page is open. Pricing field is highlighted. Pricing is set to Standard. Review+Create button is highlighted.](media/create-key-vault.png "Create Key Vault")
+
+4. Go to **Key Vault > Access policies (1)**, and grant **(2)** the Azure Synapse workspace Managed Service Identity permissions **(3)** to read secrets from Azure Key Vault.
+
+    ![Key Vault creation page is open. Pricing field is highlighted. Pricing is set to Standard. Review+Create button is highlighted.](media/key-vault-access-policies.png "Create Key Vault")
+
+5. Go to **Key Vault > Secret** to create a new secret. Select **+Generate/Import** to continue.
+
+    ![Key Vault is open. Secrets collection is shown. +Generate/Import button is highlighted.](media/key-vault-add-secret.png "Key Vault Secrets")
+
+6. Set the name of the secret to **CognitiveKey**, and then paste the key from the previous step into the Value field. Finally, select Create.
+
+    ![Create a secret dialog is open. Name is set to CognitiveKey. Value is set to the Cognitive Service Key. Create button is highlighted.](media/key-vault-create-secret.png "Key Vault Secrets")
