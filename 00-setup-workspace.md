@@ -38,7 +38,9 @@
 
 1. Create a folder named `bronze` in the `dev` file system of `PrimaryStorage`.
 
-2. Upload the following data files to the `bronze` folder created above:
+2. Create a folder named `sentiment` in the `bronze` folder in the `dev` file system of `PrimaryStorage`.
+
+3. Upload the following data files to the `bronze` folder created above:
 
     | File name                    | Size      | Download from                                                                         |
     |------------------------------|-----------|---------------------------------------------------------------------------------------|
@@ -61,8 +63,53 @@
     | `wwi-factsale.csv`           | 1.8 GB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factsale.csv>           |
     | `wwi-factstockholding.csv`   | 8.9 KB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factstockholding.csv>   |
     | `wwi-facttransaction.csv`    | 7.2 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-facttransaction.csv>    |
+    | `wwi-comments.csv`           | 7.7 KB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-comments.csv>           |
 
-## Task 3 - Import datasets, data flows, and pipelines
+## Task 3 - Setting Up Azure Cognitive Services
+
+1. Navigate to [Create Cognitive Services](https://portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) page and fill in the appropriate values exemplified below to create an All-In-One Cognitive Services account.
+
+    ![Cognitive Service creation page is open. Name and Pricing fields are highlighted. Pricing is set to Standard S0. Review+Create button is highlighted.](media/create-cognitive-service.png "Create Cognitive Services")
+
+2. Go to **Cognitive Service > Keys and Endpoint (1)**. Copy **Key 1 (2)** and **Endpoint (3)** to a text editor of your choice to be used in the following steps.
+
+    ![Cognitive Services is open. The keys and Endpoints panel is shown. Key 1 Copy button is highlighted.](media/get-cognitive-services-key.png "Cognitive Service Key")
+
+3. Navigate to [Create Key Vault](https://portal.azure.com/#create/Microsoft.KeyVault) page and fill in the appropriate values exemplified below to create a Key Vault account.
+
+    ![Key Vault creation page is open. The pricing field is highlighted. Pricing is set to Standard. Review+Create button is highlighted.](media/create-key-vault.png "Create Key Vault")
+
+4. Go to **Key Vault > Access policies (1)**, and grant **(2)** the Azure Synapse workspace Managed Service Identity permissions **(3)** to read secrets from Azure Key Vault.
+
+    ![Key Vault creation page is open. The pricing field is highlighted. Pricing is set to Standard. Review+Create button is highlighted.](media/key-vault-access-policies.png "Create Key Vault")
+
+5. Go to **Key Vault > Secret** to create a new secret. Select **+Generate/Import** to continue.
+
+    ![Key Vault is open. Secrets collection is shown. +Generate/Import button is highlighted.](media/key-vault-add-secret.png "Key Vault Secrets")
+
+6. Set the secret's name to **CognitiveKey**, and then paste the key from the previous step into the Value field. Finally, select Create.
+
+    ![Create a secret dialog is open. The name is set to CognitiveKey. Value is set to the Cognitive Service Key. Create button is highlighted.](media/key-vault-create-secret.png "Key Vault Secrets")
+
+7. In the Synapse Workspace, create an **Azure Key Vault** linked service by pointing to the key vault you just created. It is recommended to name the linked service `KeyVault`.  Verify the connection by selecting the **Test connection** button. If the connection is green, select **Create** and then select **Publish all** to save your change.
+
+8. In the Synapse Workspace, create an **Azure Cognitive Service** linked service by pointing to the cognitive service and key vault you just created. Make sure **Secret name** is set to **CognitiveKey**. It is recommended to name the linked service `CognitiveService`. Select **Create (2)** and then select **Publish all** to save your change.
+
+    ![New Linked Service window is open. Secret Name is highlighted and set to CognitiveKey. Create button is highlighted.](media/linked-service-cognitive-service.png "Cognitive Service Linked Service")
+
+9. In the Synapse Workspace, create a **REST** linked service. Set **Base URL** to the previously copied Cognitive Service Endpoint value. Set Authentication Type to **Anonymous (3)**. It is recommended to name the linked service `CognitiveRESTEndpoint`. Select **Create (2)** and then select **Publish all** to save your change.
+
+    ![New Linked Service window is open. Secret Name is highlighted and set to CognitiveKey. Create button is highlighted.](media/cognitive-rest-endpoint-linked-service.png "Cognitive Service Linked Service")
+
+10. Create a new, empty dataset with the `cognitive_rest_dataset` name.
+
+11. Switch to code view and replace the code with the content of the [cognitive_rest_dataset.json](artifacts/00/datasets/cognitive/cognitive_rest_dataset.json) JSON file.
+
+12. If the name used for the linked service to the REST Linked Service is not `CognitiveRESTEndpoint`, replace the `properties.linkedServiceName.referenceName` value in JSON with the actual name of the linked service.
+
+13. Save and publish the dataset.
+
+## Task 4 - Import datasets, data flows, and pipelines
 
 ### Import datasets pointing to `PrimaryStorage`
 
@@ -82,6 +129,7 @@ The following datasets pointing to `PrimaryStorage` must be imported:
 |---------------------------------|-----------------------------------------------------------------------------------------------------|
 | `external_postalcode_adls`      | [external_postalcode_adls.json](artifacts/00/datasets/adls/external_postalcode_adls.json)           |
 | `staging_enrichedcustomer_adls` | [staging_enrichedcustomer_adls.json](artifacts/00/datasets/adls/staging_enrichedcustomer_adls.json) |
+| `wwi_comments_adls`             | [wwi_comments_adls.json](artifacts/00/datasets/adls/wwi_comments_adls.json) |
 | `wwi_dimcity_adls`              | [wwi_dimcity_adls.json](artifacts/00/datasets/adls/wwi_dimcity_adls.json)                           |
 | `wwi_dimcustomer_adls`          | [wwi_dimcustomer_adls.json](artifacts/00/datasets/adls/wwi_dimcustomer_adls.json)                   |
 | `wwi_dimdate_adls`              | [wwi_dimdate_adls.json](artifacts/00/datasets/adls/wwi_dimdate_adls.json)                           |
@@ -100,6 +148,7 @@ The following datasets pointing to `PrimaryStorage` must be imported:
 | `wwi_factsale_big_4_adls`       | [wwi_factsale_big_4_adls.json](artifacts/00/datasets/adls/wwi_factsale_big_4_adls.json)             |
 | `wwi_factstockholding_adls`     | [wwi_factstockholding_adls.json](artifacts/00/datasets/adls/wwi_factstockholding_adls.json)         |
 | `wwi_facttransaction_adls`      | [wwi_facttransaction_adls.json](artifacts/00/datasets/adls/wwi_facttransaction_adls.json)           |
+| `wwi_sentiments_adls`           | [wwi_sentiments_adls.json](artifacts/00/datasets/adls/wwi_sentiments_adls.json)                     |
 
 ### Import datasets pointing to `SQLPool1`
 
@@ -172,7 +221,7 @@ The following pipelines must be imported:
 | `Import WWI Perf Data - Fact Sale Fast` | [Import WWI Perf Data - Fact Sale Fast.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Fast.json) |
 | `Import WWI Perf Data - Fact Sale Slow` | [Import WWI Perf Data - Fact Sale Slow.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Slow.json) |
 
-## Task 4 - Populate `PrimaryStorage` with data
+## Task 5 - Populate `PrimaryStorage` with data
 
 1. Import the [Setup - Export Sales to Data Lake](./artifacts/00/notebooks/Setup%20-%20Export%20Sales%20to%20Data%20Lake.ipynb) notebook.
 
@@ -180,7 +229,7 @@ The following pipelines must be imported:
 
 3. Run the notebook to populate `PrimaryStorage` with data.
 
-## Task 5 - Configure the SQL on-demand pool
+## Task 6 - Configure the SQL on-demand pool
 
 1. Create a SQL on-demand database running the following script on the `master` database of the SQL on-demand pool:
 
@@ -197,7 +246,7 @@ The following pipelines must be imported:
 
     In the script above, replace `<primary_storage>` with the name of `PrimaryStorage`.
 
-## Task 6 - Configure `SQLPool01`
+## Task 7 - Configure `SQLPool01`
 
 1. Connect with either the SQL Active Directory admin or the `asa.sql.admin` account to `SQLPool01` using the tool of your choice.
 
@@ -251,7 +300,7 @@ The following pipelines must be imported:
 
 8. Run the `Import WWI Perf Data - Fact Sale Fast` and `Import WWI Perf Data - Fact Sale Slow` pipelines to import the large-sized sale facts into `SQLPool01`.
 
-## Task 7 - Configure Power BI
+## Task 8 - Configure Power BI
 
 1. Ensure the `MasterUser` has a Power BI Pro subscription assigned.
 
@@ -261,7 +310,7 @@ The following pipelines must be imported:
 
 4. In the Power BI portal, edit the security settings of the `wwifactsales` dataset and configure it to authenticate to `SQLPool01` using the credentials of the `asa.sql.admin` account. This allows the `Direct Query` option to work correctly for all participants in the lab.
 
-## Task 8 - Import all SQL scripts and Spark notebooks
+## Task 9 - Import all SQL scripts and Spark notebooks
 
 Import the following SQL scripts into `Workspace`:
 
@@ -282,7 +331,7 @@ Import the following Spark notebooks into `Workspace`:
 | `Exercise 2 - Ingest Sales Data`          | [Exercise 2 - Ingest Sales Data.ipynb](./artifacts/02/Exercise%202%20-%20Ingest%20Sales%20Data.ipynb)                     | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`                                                                                                                                                                                                                                |
 | `Exercise 2 - Bonus Notebook with CSharp` | [Exercise 2 - Bonus Notebook with CSharp.ipynb](./artifacts/02/Exercise%202%20-%20Bonus%20Notebook%20with%20CSharp.ipynb) | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`; In cell 3 - `<sql_staging_password>` with the password of `asa.sql.staging` created above in Task 4, step 3; In cell 3 - `<workspace>` with the name of the `Workspace`; In cell 3 - `<sql_pool>` with the name of `SQLPool1` |
 
-## Task 9 - Prepare a machine learning model
+## Task 10 - Prepare a machine learning model
 
 Prepare the `models` container in `BlobStorage` by creating two folders: `onnx` and `hex`.
 
@@ -307,7 +356,7 @@ To prepare the machine learning model for Exercise 5, you have two options:
 
 3. Perform steps 1, 2, and 3 described in the previous section.
 
-## Task 10 - Configure additional users to access the workspace
+## Task 11 - Configure additional users to access the workspace
 
 For each additional user that needs to have access to `Workspace` and run exercises 1 through 5, the following steps must be performed:
 
@@ -328,7 +377,7 @@ For each additional user that needs to have access to `Workspace` and run exerci
 
 5. Assign the `Contributor` role on the Power BI workspace of the `MasterUser` created in Task 5, step 2.
 
-## Task 11 - Create and configure an Azure Databricks workspace
+## Task 12 - Create and configure an Azure Databricks workspace
 
 1. In the resource group, create a new Azure Databricks workspace.
 
@@ -346,34 +395,12 @@ For each additional user that needs to have access to `Workspace` and run exerci
     |-------------------------------|--------------------------------------------------------------------------------------------------------|--------------|
     | `Exercise 5 - Model Training` | [Exercise 5 - Model Training.dbc](./artefacts/../artifacts/05/Exercise%205%20-%20Model%20Training.dbc) |
 
-## Task 12 - Setting Up Azure Cognitive Services
+## Task 13 - Setting Cognitive Services Access Key for Pipelines
 
-1. Navigate to [Create Cognitive Services](https://portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) page and fill in the appropriate values examplified below to create an All-In-One Cognitive Services account.
+1. In Synapse Workspace, open **Exercise 2 - Enrich Data (2)** pipeline. Select the **Edit (3)** button for Activities in the **ForEachComment** ForEach activity.
 
-    ![Cognitive Service creation page is open. Name and Pricing fields are highlighted. Pricing is set to Standard S0. Review+Create button is highlighted.](media/create-cognitive-service.png "Create Cognitive Services")
+    ![Exercise 2 - Enrich Data pipeline is open. The Edit button for the ForEachComment ForEach activity is highlighted.](media/data-enrichment-pipeline-sentiment-key.png "ForEach Activity Edit")
 
-2. Go to **Cognitive Service > Keys and Endpoint (1)** and copy **Key 1 (2)** to a text editor of your choice to be used in the following steps.
+2. Select **Sentiment Analysis (1)** copy data activity. Switch to the **Source (2)** tab. Paste the Cognitive Service access key previously copied into a text editor.
 
-    ![Cognitive Services is open. Keys and Endpoints panel is shown. Key 1 Copy button is highlighted.](media/get-cognitive-services-key.png "Cognitive Service Key")
-
-3. Navigate to [Create Key Vault](https://portal.azure.com/#create/Microsoft.KeyVault) page and fill in the appropriate values examplified below to create a Key Vault account.
-
-    ![Key Vault creation page is open. Pricing field is highlighted. Pricing is set to Standard. Review+Create button is highlighted.](media/create-key-vault.png "Create Key Vault")
-
-4. Go to **Key Vault > Access policies (1)**, and grant **(2)** the Azure Synapse workspace Managed Service Identity permissions **(3)** to read secrets from Azure Key Vault.
-
-    ![Key Vault creation page is open. Pricing field is highlighted. Pricing is set to Standard. Review+Create button is highlighted.](media/key-vault-access-policies.png "Create Key Vault")
-
-5. Go to **Key Vault > Secret** to create a new secret. Select **+Generate/Import** to continue.
-
-    ![Key Vault is open. Secrets collection is shown. +Generate/Import button is highlighted.](media/key-vault-add-secret.png "Key Vault Secrets")
-
-6. Set the name of the secret to **CognitiveKey**, and then paste the key from the previous step into the Value field. Finally, select Create.
-
-    ![Create a secret dialog is open. Name is set to CognitiveKey. Value is set to the Cognitive Service Key. Create button is highlighted.](media/key-vault-create-secret.png "Key Vault Secrets")
-
-7. In the Synapse Workspace, create an **Azure Key Vault** linked service by pointing to the key vault that you just created. It is recommended to name the linked service `KeyVault`.  Verify the connection by selecting the **Test connection** button. If the connection is green, select **Create** and then select **Publish all** to save your change.
-
-8. In the Synapse Workspace, create an **Azure Cognitive Service** linked service by pointing to the cognitive service and key vault that you just created. Make sure **Secret name** is set to **CognitiveKey**. It is recommended to name the linked service `CognitiveService`. Select **Create (2)** and then select **Publish all** to save your change.
-
-    ![New Linked Service window is open. Secret Name is highlighted and set to CognitiveKey. Create button is highlighted.](media/linked-service-cognitive-service.png "Cognitive Service Linked Service")
+    ![Sentiment Analysis activity is selected. Source Tab is open. Second headers value is highlighted.](media/data-enrichment-pipeline-sentiment-key-update.png "Cognitive Service Key Update")

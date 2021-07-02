@@ -1,0 +1,16 @@
+{
+    "name": "cognitive_rest_dataset",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "CognitiveRESTEndpoint",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "RestResource",
+        "typeProperties": {
+            "relativeUrl": "text/analytics/v3.1-preview.3/sentiment?opinionMining=true"
+        },
+        "schema": []
+    },
+    "type": "Microsoft.Synapse/workspaces/datasets"
+}

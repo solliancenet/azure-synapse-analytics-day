@@ -220,6 +220,110 @@
                         }
                     }
                 ]
+            },
+            {
+                "name": "ReadComments",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "DelimitedTextSource",
+                        "storeSettings": {
+                            "type": "AzureBlobFSReadSettings",
+                            "recursive": true,
+                            "enablePartitionDiscovery": false
+                        },
+                        "formatSettings": {
+                            "type": "DelimitedTextReadSettings"
+                        }
+                    },
+                    "dataset": {
+                        "referenceName": "wwi_comments_adls",
+                        "type": "DatasetReference"
+                    },
+                    "firstRowOnly": false
+                }
+            },
+            {
+                "name": "ForEachComment",
+                "type": "ForEach",
+                "dependsOn": [
+                    {
+                        "activity": "ReadComments",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "items": {
+                        "value": "@activity('ReadComments').output.value",
+                        "type": "Expression"
+                    },
+                    "isSequential": true,
+                    "activities": [
+                        {
+                            "name": "Sentiment Analysis",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "7.00:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "source": {
+                                    "type": "RestSource",
+                                    "httpRequestTimeout": "00:01:40",
+                                    "requestInterval": "00.00:00:00.010",
+                                    "requestMethod": "POST",
+                                    "requestBody": {
+                                        "value": "{\n\t\"documents\": [\n\t\t{\n\t\t\t\"id\": \"@{item().id}\",\n\t\t\t\"language\": \"en\",\n\t\t\t\"text\": \"@{item().comment}\"\n\t\t}\n\t]\n}\n",
+                                        "type": "Expression"
+                                    },
+                                    "additionalHeaders": {
+                                        "Content-Type": "application/json",
+                                        "Ocp-Apim-Subscription-Key": "REPLACE-WITH-YOUR-KEY"
+                                    }
+                                },
+                                "sink": {
+                                    "type": "JsonSink",
+                                    "storeSettings": {
+                                        "type": "AzureBlobFSWriteSettings"
+                                    },
+                                    "formatSettings": {
+                                        "type": "JsonWriteSettings"
+                                    }
+                                },
+                                "enableStaging": false
+                            },
+                            "inputs": [
+                                {
+                                    "referenceName": "CognitiveRestResource",
+                                    "type": "DatasetReference"
+                                }
+                            ],
+                            "outputs": [
+                                {
+                                    "referenceName": "wwi_sentiments_adls",
+                                    "type": "DatasetReference"
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
         ],
         "annotations": []
