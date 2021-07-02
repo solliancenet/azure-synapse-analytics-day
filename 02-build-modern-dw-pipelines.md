@@ -9,8 +9,8 @@ The tasks you will perform in this exercise are:
     - Bonus Challenge
   - Task 2 - Explore, modify, and run a Pipeline containing a Data Flow
   - Task 3 - Monitor pipelines
-  - Task 4 - Monitor Spark applications
     - Bonus Discovery
+  - Task 4 - Monitor Spark applications
 
 ---
 
