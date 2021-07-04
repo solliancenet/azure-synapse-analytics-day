@@ -120,7 +120,7 @@ In this task, you will be implementing sentiment analysis in Synapse without wri
 
 7. Select your lab Cognitive Service account **(1)** and the Key Vault named `KeyVault` **(2)**. The access key for the Cognitive Service account is stored in the key vault. The name for the secret is `CognitiveKey`. Set **Secret name (3)** to **CognitiveKey**. Select **Continue (4)** to proceed.
 
-   ![Enrich with existing model window is open. Cognitive Service account and Key Vault account are set to the accounts available in the same resource group. The secret name is set to CognitiveKey. Continue button is highlighted.](media/enrichment-select-cognitive-service.png.png "Select Key Vault and Secret for Cognitive Services")
+   ![Enrich with existing model window is open. Cognitive Service account and Key Vault account are set to the accounts available in the same resource group. The secret name is set to CognitiveKey. Continue button is highlighted.](media/enrichment-select-cognitive-service.png "Select Key Vault and Secret for Cognitive Services")
 
 8. Our comments to be analyzed for sentiments are in English. So, we will set the language setting to **English (1)**. Next, pick the text column that has the source data. In our case, it is the **comment (2)** field. Select **Open notebook (3)** to continue.
 
@@ -128,4 +128,4 @@ In this task, you will be implementing sentiment analysis in Synapse without wri
 
 9. Attach your notebook to a Spark pool **(1)** and run all cells by selecting the **Run all (2)** button. Observe the code in the cells where the secret key is pulled from KeyVault and used to access Azure Cognitive Services to run sentiment analysis. You can see the resulting sentiment scores in the sentiment column (3) in the output.
 
-   ![A notebook is open. Run all button is selected. The sentiment column from the result set is highlighted.](media/enrich-sentiment-analysis-result.png.png "Sentiment Analysis Result")
+   ![A notebook is open. Run all button is selected. The sentiment column from the result set is highlighted.](media/enrich-sentiment-analysis-result.png "Sentiment Analysis Result")
