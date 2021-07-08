@@ -219,13 +219,13 @@ The following pipelines must be imported:
 
 | Pipeline                                | Source code                                                                                                                     |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| [`Exercise 2 - Enrich Data`][1]         | [Exercise 2 - Enrich Data.json](./artifacts/00/pipelines/Exercise%202%20-%20Enrich%20Data.json)                                 |
+| `Exercise 2 - Enrich Data`*         | [Exercise 2 - Enrich Data.json](./artifacts/00/pipelines/Exercise%202%20-%20Enrich%20Data.json)                                 |
 | `Import WWI Data`                       | [Import WWI Data.json](./artifacts/00/pipelines/Import%20WWI%20Data.json)                                                       |
 | `Import WWI Data - Fact Sale Full`      | [Import WWI Data - Fact Sale Full.json](./artifacts/00/pipelines/Import%20WWI%20Data%20-%20Fact%20Sale%20Full.json)             |
 | `Import WWI Perf Data - Fact Sale Fast` | [Import WWI Perf Data - Fact Sale Fast.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Fast.json) |
 | `Import WWI Perf Data - Fact Sale Slow` | [Import WWI Perf Data - Fact Sale Slow.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Slow.json) |
 
-[1]: Make sure you are using the updated Pipeline file where you replaced the `REPLACE-WITH-YOUR-COGNITIVE-KEY` value with the actual Cognitive Services Key 1 value.
+\* Make sure you are using the updated Pipeline file where you replaced the `REPLACE-WITH-YOUR-COGNITIVE-KEY` value with the actual Cognitive Services Key 1 value.
 
 ## Task 5 - Populate `PrimaryStorage` with data
 
