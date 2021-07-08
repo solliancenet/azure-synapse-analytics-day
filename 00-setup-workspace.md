@@ -109,6 +109,10 @@
 
 13. Save and publish the dataset.
 
+14. Open the [Exercise 2 - Enrich Data.json](./artifacts/00/pipelines/Exercise%202%20-%20Enrich%20Data.json) file in a text editor.  Find the `REPLACE-WITH-YOUR-COGNITIVE-KEY` text and replace it with the previously copied Cognitive Service **Key 1**. Save the file for future use. This is the new pipeline definition file you will when creating pipeline during the following steps.
+
+    ![Exercise 2 - Enrich Data.json file is open. REPLACE-WITH-YOUR-COGNITIVE-KEY key value is highlighted.](media/replace-cognitive-key.png "Cognitive Key Replace")
+
 ## Task 4 - Import datasets, data flows, and pipelines
 
 ### Import datasets pointing to `PrimaryStorage`
@@ -215,11 +219,13 @@ The following pipelines must be imported:
 
 | Pipeline                                | Source code                                                                                                                     |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| `Exercise 2 - Enrich Data`              | [Exercise 2 - Enrich Data.json](./artifacts/00/pipelines/Exercise%202%20-%20Enrich%20Data.json)                                 |
+| [`Exercise 2 - Enrich Data`][1]         | [Exercise 2 - Enrich Data.json](./artifacts/00/pipelines/Exercise%202%20-%20Enrich%20Data.json)                                 |
 | `Import WWI Data`                       | [Import WWI Data.json](./artifacts/00/pipelines/Import%20WWI%20Data.json)                                                       |
 | `Import WWI Data - Fact Sale Full`      | [Import WWI Data - Fact Sale Full.json](./artifacts/00/pipelines/Import%20WWI%20Data%20-%20Fact%20Sale%20Full.json)             |
 | `Import WWI Perf Data - Fact Sale Fast` | [Import WWI Perf Data - Fact Sale Fast.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Fast.json) |
 | `Import WWI Perf Data - Fact Sale Slow` | [Import WWI Perf Data - Fact Sale Slow.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Slow.json) |
+
+[1]: Make sure you are using the updated Pipeline file where you replaced the `REPLACE-WITH-YOUR-COGNITIVE-KEY` value with the actual Cognitive Services Key 1 value.
 
 ## Task 5 - Populate `PrimaryStorage` with data
 
@@ -337,8 +343,8 @@ Prepare the `models` container in `BlobStorage` by creating two folders: `onnx` 
 
 To prepare the machine learning model for Exercise 5, you have two options:
 
-- Use the already trained and converted machine learning model (available as a starter artifact)
-- Train and convert a new machine learning model
+* Use the already trained and converted machine learning model (available as a starter artifact)
+* Train and convert a new machine learning model
 
 ### Import the already trained and converted machine learning model
 
