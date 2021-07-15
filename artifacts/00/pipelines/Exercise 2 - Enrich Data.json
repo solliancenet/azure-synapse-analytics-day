@@ -311,7 +311,7 @@
                             },
                             "inputs": [
                                 {
-                                    "referenceName": "CognitiveRestResource",
+                                    "referenceName": "cognitive_rest_dataset",
                                     "type": "DatasetReference"
                                 }
                             ],
