@@ -138,7 +138,7 @@ In this task, you see how easy it is to write into a dedicated SQL pool table wi
 
     ![In the Actions menu for the wwi_staging.Sale table, New SQL script > Select TOP 100 rows is highlighted.](media/ex02-data-sqlpool01-tables-staging-wwi-sales-data-actions-select.png "Synapse Analytics Databases")
 
-17. Select **Run** to execute the query. Observe the results in the output pane, and see how easy it was to use Spark notebooks to write data from Blob Storage into Azure Synapse Analytics.
+17. Select **Run** to execute the query. Observe the results in the output pane, and notice how easy it was to use Spark notebooks to write data from Blob Storage into Azure Synapse Analytics in Steps 9 and 10.
 
     ![The output of the SQL statement is displayed.](media/staging-sale-output.png "Sale script output")
 
