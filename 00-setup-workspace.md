@@ -231,7 +231,7 @@ The following pipelines must be imported:
 
 1. Import the [Setup - Export Sales to Data Lake](./artifacts/00/notebooks/Setup%20-%20Export%20Sales%20to%20Data%20Lake.ipynb) notebook.
 
-2. Replace `<primary_storage>` with the actual data lake account name of `PrimaryStorage` in cells 1, 4, and 6.
+2. Replace `<primary_storage>` with the actual data lake account name of `PrimaryStorage` in cells 1, 3, 4 and 5.
 
 3. Run the notebook to populate `PrimaryStorage` with data.
 
