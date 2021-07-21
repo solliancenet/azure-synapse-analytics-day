@@ -110,21 +110,21 @@ In this task, you will be implementing sentiment analysis in Synapse without wri
 
    ![The refresh button for databases is presented. Default spark database is selected. wwi_comments Spark table is highlighted.](media/spark-table-wwi-comments.png "Spark Table")
 
-5. Right click the **wwi_comments** spark table and select **Machine Learning > Enrich with existing model (2)** command.
+5. Right click the **wwi_comments** spark table and select **Machine Learning > Predict with a model (2)** command.
 
-   ![wwi_comments Spark table is shown with its context menu. Machine Learning > Enrich with existing model command is highlighted.](media/spark-table-enrich-with-existing-model.png "Enrich with existing model")
+   ![wwi_comments Spark table is shown with its context menu. Machine Learning > Predict with a model command is highlighted.](media/spark-table-enrich-with-existing-model.png "Predict with a model")
 
 6. Select **Text Analytics - Sentiment Analysis (1)** from the list of enrichments based on Azure Cognitive Services. Select **Continue (2)** to proceed.
 
-   ![Enrich with existing model window is open. Text Analytics - Sentiment Analysis option is selected. Continue button is highlighted.](media/enrichment-select-text-analytics-sentiment-analysis.png "Text Analytics Sentiment Analysis")
+   ![Predict with a model window is open. Text Analytics - Sentiment Analysis option is selected. Continue button is highlighted.](media/enrichment-select-text-analytics-sentiment-analysis.png "Text Analytics Sentiment Analysis")
 
 7. Select your lab Cognitive Service account **(1)** and the Key Vault named `KeyVault` **(2)**. The access key for the Cognitive Service account is stored in the key vault. The name for the secret is `CognitiveKey`. Set **Secret name (3)** to **CognitiveKey**. Select **Continue (4)** to proceed.
 
-   ![Enrich with existing model window is open. Cognitive Service account and Key Vault account are set to the accounts available in the same resource group. The secret name is set to CognitiveKey. Continue button is highlighted.](media/enrichment-select-cognitive-service.png "Select Key Vault and Secret for Cognitive Services")
+   ![Predict with a model window is open. Cognitive Service account and Key Vault account are set to the accounts available in the same resource group. The secret name is set to CognitiveKey. Continue button is highlighted.](media/enrichment-select-cognitive-service.png "Select Key Vault and Secret for Cognitive Services")
 
 8. Our comments to be analyzed for sentiments are in English. So, we will set the language setting to **English (1)**. Next, pick the text column that has the source data. In our case, it is the **comment (2)** field. Select **Open notebook (3)** to continue.
 
-   ![Enrich with existing model window is open. Language is set to English. The text column is set to the comment field. Open notebook button is highlighted.](media/enrich-sentiment-analysis-settings.png "Sentiment Analysis Settings")
+   ![Predict with a model window is open. Language is set to English. The text column is set to the comment field. Open notebook button is highlighted.](media/enrich-sentiment-analysis-settings.png "Sentiment Analysis Settings")
 
 9. Attach your notebook to a Spark pool **(1)** and run all cells by selecting the **Run all (2)** button. Observe the code in the cells where the secret key is pulled from KeyVault and used to access Azure Cognitive Services to run sentiment analysis. You can see the resulting sentiment scores in the sentiment column (3) in the output.
 
