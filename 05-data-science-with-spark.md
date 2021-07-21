@@ -104,7 +104,7 @@ In this task, you will be implementing sentiment analysis in Synapse without wri
 
    ![A new notebook is open. The code in the notebook is loading a dataframe from the wwi-comments.csv file from the data lake and creating a spark table named wwi_comments.](media/run-spark-table-creation.png "Create Spark Table")
 
-   `saveAsTable` stores a persistent table copy of the dataframe into Hive metastore. In this case, the Spark database name is `default`, and the table name is `wwi_comments`.
+   `saveAsTable` stores a persistent table copy of the dataframe into Hive metastore. In this case, the Spark database name is `default`, and the table name is `wwi_comments` **(4)**.
 
 4. In order to see the newly created Spark database refresh the **Databases (2)** list. Select **default (3)** and find the **wwi_comments (4)** table in the tables collection.
 
