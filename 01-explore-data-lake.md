@@ -222,7 +222,7 @@ In this task, you will browse your data lake using serverless SQL pool.
         CityKey,
         SUM(Quantity) FILTER (WHERE CustomerKey != 0) as TotalQuantity,
         COUNT(DISTINCT StockItemKey) as UniqueItems
-    FROM delta.`abfss://wwi@asadatalake412099.dfs.core.windows.net/factsale-deltalake`
+    FROM delta.`abfss://wwi@YOUR_DATALAKE_NAME.dfs.core.windows.net/factsale-deltalake`
     WHERE InvoiceYear=2012
         and InvoiceQuarter=1
     GROUP BY CityKey
