@@ -16,7 +16,11 @@
 
 7. Create a linked service to the blob storage account. Configure it to connect with the account key. It is recommended to name the linked service `asastore01` to simplify importing datasets, data flows, and pipelines later.
 
-8. For the remainder of this guide, the following terms will be used for various ASA-related resources (make sure you replace them with actual names and values):
+8. Create an Apache Spark pool. Ensure Apache Spark version is set to 3.0.
+
+    ![Create Apache Spark pool page is open. Apache Spark version set to 3.0 is highlighted.](media/spark-version-selection.png "Spark Version Selection")
+
+9. For the remainder of this guide, the following terms will be used for various ASA-related resources (make sure you replace them with actual names and values):
 
     | ASA resource                              | To be referred to as     |
     |-------------------------------------------|--------------------------|
@@ -32,7 +36,7 @@
     | Linked service to primary storage account | `asadatalake01`          |
     | Linked service to blob storage account    | `asastore01`             |
 
-9. Ensure the `Workspace` security principal (which has the same name as the `Workspace`) and the `MasterUser` (the one used to create the `Workspace`) are added with the `Storage Blob Data Owner` role to the `PrimaryStorage`.
+10. Ensure the `Workspace` security principal (which has the same name as the `Workspace`) and the `MasterUser` (the one used to create the `Workspace`) are added with the `Storage Blob Data Owner` role to the `PrimaryStorage`.
 
 ## Task 2 - Upload the data used in the lab
 
