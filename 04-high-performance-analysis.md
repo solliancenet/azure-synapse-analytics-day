@@ -2,9 +2,9 @@
 
 In this exercise, you will use several of the capabilities associated with dedicated SQL Pools to analyze the data.
 
-SQL data warehouses have been for a long time the centers of gravity in data platforms. Modern data warehouses can provide high performance, distributed, and governed workloads, regardless of the data volumes at hand.
+SQL data warehouses have been for a long time the centers of gravity in data platforms. Current data warehouses can provide high performance, distributed, and governed workloads, regardless of the data volumes at hand.
 
-The dedicated SQL pool in Azure Synapse is the new incarnation of the former Azure SQL Data Warehouse. It provides all the modern SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
+The dedicated SQL pool in Azure Synapse is the new incarnation of the former Azure SQL Data Warehouse. It provides all the state-of-art SQL data warehousing features while benefiting from the advanced integration with all the other Synapse services.
 
 The tasks you will perform in this exercise are:
 
@@ -57,7 +57,7 @@ First, let us set the stage by performing the following steps:
 
    ![Run a count on FactSale_Fast](./media/ex04-query-selection-02.png "Run script")
 
-  Notice the quick response time (usually under 3 seconds) and the result - 83.4 million records. If SQLPool was configured with DW500c, then it would be under 1 second.
+   Notice the quick response time (usually under 3 seconds) and the result - 83.4 million records. If SQLPool was configured with DW500c, then it would be under 1 second.
 
 5. Select lines 5 to 20 and then select `Run`.
 
@@ -90,7 +90,7 @@ Can you explain the significant difference in performance between the two seemin
 5. Repeat the same actions for the `wwi_perf.FactSale_Fast` table and note the `DISTRIBUTION = HASH ( [CustomerKey] )` option used to distribute the table.
 
    ![View Hash Distribution](./media/ex04-view-hash-distribution.png "Hash Distribution")
- 
+
 This is the critical difference that has such a significant impact on the last two queries' performance. Because `wwi_perf.FactSale_Slow` is distributed in a round-robin fashion, each customer's data will end up living in multiple (if not all) distributions. When our query needs to consolidate each customer's data, a lot of data movement will occur between the distributions. This is what slows down the query significantly.
 
 On the other hand, `wwi_perf.FactSale_Fast` is distributed using the hash of the customer identifier. This means that each customer's data will end up living in a single distribution. When the query needs to consolidate each customer's data, virtually no data movement occurs between distributions, which makes the query very fast.
