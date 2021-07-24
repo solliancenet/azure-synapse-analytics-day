@@ -466,7 +466,7 @@ After you finish building and debugging your data flow and its associated pipeli
 
 Remember the sentiment analysis task we had in our Exercise 2 - Enrich Data pipeline? Once your pipeline's execution is complete we have some sentiment data we can look into.
 
-1. Go to the **Develop** Hub and navigate to the `dev > bronze > sentiment` **(2)** folder in the primary data lake account **(1)**. Select all the files and right click to select **New SQL script > Select TOP 100 rows**.
+1. Go to the **Data** Hub and navigate to the `dev > bronze > sentiment` **(2)** folder in the primary data lake account **(1)**. Select all the files and right click to select **New SQL script > Select TOP 100 rows**.
 
    ![dev > bronze > sentiment folder in the Workspace data lake account is shown. All files are selected. Right click context menu is open. New SQL script > Select TOP 100 rows command is highlighted.](media/query-sentiment-json-files.png "Sentiment Folder")
 
