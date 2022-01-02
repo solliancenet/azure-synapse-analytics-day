@@ -29,7 +29,7 @@ In this task, you will try to understand who your best customers are.
 **Solution:**
 
 1. Open Synapse Analytics Studio, and then navigate to the `Develop` hub.
-2. Under `SQL scripts`, select the script called `Exercise 4 - Analyze Transactions`.
+2. Under `SQL scripts`, select the script called `Exercise 3 - Analyze Transactions`.
 3. Change the **Connect to** drop-down to the **SQLPool01** database.
 4. Select **Run** to execute the script against the SQL Pool database.
 5. When the results appear, for the **View** toggle, select **Chart**.
@@ -45,7 +45,7 @@ In this task, you will try to understand the implications of the table design at
 
 First, let us set the stage by performing the following steps:
 
-1. Under **SQL Scripts** in the `Develop` hub within Synapse Analytics Studio, select the script called `Exercise 4 - Investigate query performance`.
+1. Under **SQL Scripts** in the `Develop` hub within Synapse Analytics Studio, select the script called `Exercise 3 - Investigate query performance`.
 2. Change the **Connect to** drop-down to the **SQLPool01** database.
 3. Select line 1 and then select `Run`.
 
