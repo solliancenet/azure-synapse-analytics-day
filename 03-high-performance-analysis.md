@@ -1,4 +1,4 @@
-# Exercise 4 - High-Performance Analysis with Azure Synapse Dedicated SQL Pools
+# Exercise 3 - High-Performance Analysis with Azure Synapse Dedicated SQL Pools
 
 In this exercise, you will use several of the capabilities associated with dedicated SQL Pools to analyze the data.
 
@@ -8,7 +8,7 @@ The dedicated SQL pool in Azure Synapse is the new incarnation of the former Azu
 
 The tasks you will perform in this exercise are:
 
-- Exercise 4 - High-Performance Analysis with Azure Synapse Dedicated SQL Pools
+- Exercise 3 - High-Performance Analysis with Azure Synapse Dedicated SQL Pools
   - Task 1 - Use a dedicated SQL pool query to understand a dataset
   - Task 2 - Investigate query performance and table design
     - Bonus Challenge
@@ -16,7 +16,7 @@ The tasks you will perform in this exercise are:
 > **Note**: The tasks in this exercise must be run against the dedicated SQL pool (as opposed to the ones from exercise 1, which were run against the serverless SQL pool
 named "built-in" pool). Make sure you have `SQLPool01` selected before running each query:
 
-![Run queries against a dedicated SQL pool](./media/ex04-run-on-sql-pool.png)
+![Run queries against a dedicated SQL pool](./media/ex03-run-on-sql-pool.png)
 
 ## Task 1 - Use a SQL Synapse Pool query to understand a dataset
 
@@ -24,7 +24,7 @@ In this task, you will try to understand who your best customers are.
 
 **Challenge:** Can you author and run a query that will aggregate the total quantity of items purchased by the customer and then visualize the result with a chart similar to the following?
 
-![Example Chart](media/ex05-chart-sample.png "Example chart")
+![Example Chart](media/ex03-chart-sample.png "Example chart")
 
 **Solution:**
 
@@ -37,7 +37,7 @@ In this task, you will try to understand who your best customers are.
 7. For the Category column, leave the selection at `(none)`.
 8. For the Legend (series) column, select `CustomerKey`.
 
-![Example Chart](media/ex05-chart.png "Example chart")
+![Example Chart](media/ex03-chart.png "Example chart")
 
 ## Task 2 - Investigate query performance and table design
 
@@ -49,25 +49,25 @@ First, let us set the stage by performing the following steps:
 2. Change the **Connect to** drop-down to the **SQLPool01** database.
 3. Select line 1 and then select `Run`.
 
-   ![Run a count on FactSale_Slow](./media/ex04-query-selection-01.png "Run script")
+   ![Run a count on FactSale_Slow](./media/ex03-query-selection-01.png "Run script")
 
    Notice the quick response time (usually under 3 seconds) and the result - 83.4 million records. If SQLPool was configured with DW500c, then it would be under 1 second.
 
 4. Select line 3 and then select `Run`.
 
-   ![Run a count on FactSale_Fast](./media/ex04-query-selection-02.png "Run script")
+   ![Run a count on FactSale_Fast](./media/ex03-query-selection-02.png "Run script")
 
    Notice the quick response time (usually under 3 seconds) and the result - 83.4 million records. If SQLPool was configured with DW500c, then it would be under 1 second.
 
 5. Select lines 5 to 20 and then select `Run`.
 
-   ![Run a complex query on FactSale_Slow](./media/ex04-query-selection-03.png "Run script")
+   ![Run a complex query on FactSale_Slow](./media/ex03-query-selection-03.png "Run script")
 
    Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones who benefit from the initialization of various internal data and communications buffers). Make a note of the amount of time needed to run the query (typically 15 to 30 seconds).
 
 6. Select lines 22 to 37 and then select `Run`.
 
-   ![Run a complex query on FactSale_Fast](./media/ex04-query-selection-04.png "Run script")
+   ![Run a complex query on FactSale_Fast](./media/ex03-query-selection-04.png "Run script")
 
    Re-run the query 3 to 5 times until the execution time stabilizes (usually, the first "cold" execution takes longer than subsequent ones who benefit from the initialization of various internal data and communications buffers). Make a note on the amount of time needed to run the query (typically 3 to 5 seconds).
 
@@ -81,15 +81,15 @@ Can you explain the significant difference in performance between the two seemin
 2. Under Databases, expand the `SQLPool01` node, expand `Tables`, and locate the `wwi_perf.FactSale_Slow` table.
 3. Right-click the table **(1)** and then select `New SQL script` **(2)**, `CREATE` **(3)**.
 
-   ![View table structure](./media/ex04-view-table-definition.png "Table structure")
+   ![View table structure](./media/ex03-view-table-definition.png "Table structure")
 
 4. In the CREATE script, note the `DISTRIBUTION = ROUND_ROBIN` option used to distribute the table.
 
-   ![View Round-Robin Distribution](./media/ex04-view-round-robin.png "Round-Robin Distribution")
+   ![View Round-Robin Distribution](./media/ex03-view-round-robin.png "Round-Robin Distribution")
 
 5. Repeat the same actions for the `wwi_perf.FactSale_Fast` table and note the `DISTRIBUTION = HASH ( [CustomerKey] )` option used to distribute the table.
 
-   ![View Hash Distribution](./media/ex04-view-hash-distribution.png "Hash Distribution")
+   ![View Hash Distribution](./media/ex03-view-hash-distribution.png "Hash Distribution")
 
 This is the critical difference that has such a significant impact on the last two queries' performance. Because `wwi_perf.FactSale_Slow` is distributed in a round-robin fashion, each customer's data will end up living in multiple (if not all) distributions. When our query needs to consolidate each customer's data, a lot of data movement will occur between the distributions. This is what slows down the query significantly.
 
