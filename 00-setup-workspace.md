@@ -329,9 +329,9 @@ Import the following SQL scripts into `Workspace`:
 | `Exercise 1 - Read with serverless SQL Pool`  | [Exercise 1 - Read with serverless SQL Pool.sql](./artifacts/01/Exercise%201%20-%20Read%20with%20serverless%20SQL%20Pool.sql)   | `<primary_storage>` with the actual name of `PrimaryStorage`                                                                                |
 | `Exercise 4 - Analyze Transactions`           | [Exercise 4 - Analyze Transactions.sql](./artifacts/04/Exercise%204%20-%20Analyze%20Transactions.sql)                           | None                                                                                                                                        |
 | `Exercise 4 - Investigate query performance`  | [Exercise 4 - Investigate query performance.sql](./artifacts/04/Exercise%204%20-%20Investigate%20query%20performance.sql)       | None                                                                                                                                        |
-| `Exercise 5 - Create Sample Data for Predict` | [Exercise 5 - Create Sample Data for Predict.sql](./artifacts/05/Exercise%205%20-%20Create%20Sample%20Data%20for%20Predict.sql) | None                                                                                                                                        |
-| `Exercise 5 - Predict with model`             | [Exercise 5 - Predict with model.sql](./artifacts/05/Exercise%205%20-%20Predict%20with%20model.sql)                             | None                                                                                                                                        |
-| `Exercise 5 - Register model`                 | [Exercise 5 - Register model.sql](./artifacts/05/Exercise%205%20-%20Register%20model.sql)                                       | `<blob_storage_account_key>` with the storage account key of `BlobStorage`; `<blob_storage>` with the storage account name of `BlobStorage` |
+| `Exercise 8 - Create Sample Data for Predict` | [Exercise 8 - Create Sample Data for Predict.sql](./artifacts/08/Exercise%208%20-%20Create%20Sample%20Data%20for%20Predict.sql) | None                                                                                                                                        |
+| `Exercise 8 - Predict with model`             | [Exercise 8 - Predict with model.sql](./artifacts/08/Exercise%208%20-%20Predict%20with%20model.sql)                             | None                                                                                                                                        |
+| `Exercise 8 - Register model`                 | [Exercise 8 - Register model.sql](./artifacts/08/Exercise%208%20-%20Register%20model.sql)                                       | `<blob_storage_account_key>` with the storage account key of `BlobStorage`; `<blob_storage>` with the storage account name of `BlobStorage` |
 
 Import the following Spark notebooks into `Workspace`:
 
@@ -345,7 +345,7 @@ Import the following Spark notebooks into `Workspace`:
 
 Prepare the `models` container in `BlobStorage` by creating two folders: `onnx` and `hex`.
 
-To prepare the machine learning model for Exercise 5, you have two options:
+To prepare the machine learning model for Exercise 8, you have two options:
 
 * Use the already trained and converted machine learning model (available as a starter artifact)
 * Train and convert a new machine learning model
@@ -354,13 +354,13 @@ To prepare the machine learning model for Exercise 5, you have two options:
 
 1. Upload the [model.onnx.hex](./artifacts/00/ml/model.onnx.hex) file to the `hex` folder in the `models` container of `BlobStorage`.
 
-2. Run the `Exercise 5 - Create Sample Data for Predict` SQL script to create sample data for machine learning predictions.
+2. Run the `Exercise 8 - Create Sample Data for Predict` SQL script to create sample data for machine learning predictions.
 
-3. Run the `Exercise 5 - Register model` SQL script to register the model with the `SQLPool01` SQL pool.
+3. Run the `Exercise 8 - Register model` SQL script to register the model with the `SQLPool01` SQL pool.
 
 ### Train and convert a new machine learning model
 
-1. Run the `Exercise 5 - Model training` Spark notebook to train the machine learning model and save it in ONNX format. The model will be saved as `model.onnx` in the `onnx` folder in the `models` container of `BlobStorage`.
+1. Run the `Exercise 8 - Model training` Spark notebook to train the machine learning model and save it in ONNX format. The model will be saved as `model.onnx` in the `onnx` folder in the `models` container of `BlobStorage`.
 
 2. Use the [convertion PowerShell script](./artifacts/00/ml/convert-to-hex.ps1) to transform `model.onnx` into `model.onnx.hex`.
 
@@ -368,7 +368,7 @@ To prepare the machine learning model for Exercise 5, you have two options:
 
 ## Task 11 - Configure additional users to access the workspace
 
-For each additional user that needs to have access to `Workspace` and run exercises 1 through 5, the following steps must be performed:
+For each additional user that needs to have access to `Workspace` and run exercises 1 through 8, the following steps must be performed:
 
 1. Assign the `Reader` role on the `WorkspaceResourceGroup` to the user.
 
@@ -403,7 +403,7 @@ For each additional user that needs to have access to `Workspace` and run exerci
 
     | Spark notebook name           | Source code                                                                                            | Replacements |
     |-------------------------------|--------------------------------------------------------------------------------------------------------|--------------|
-    | `Exercise 5 - Model Training` | [Exercise 5 - Model Training.dbc](./artefacts/../artifacts/05/Exercise%205%20-%20Model%20Training.dbc) |
+    | `Exercise 8 - Model Training` | [Exercise 8 - Model Training.dbc](./artefacts/../artifacts/08/Exercise%205%20-%20Model%20Training.dbc) |
 
 ## Task 13 - Setting Cognitive Services Access Key for Pipelines
 

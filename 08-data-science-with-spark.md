@@ -1,4 +1,4 @@
-# Exercise 5 - Data Science with Azure Synapse Spark (optional)
+# Exercise 8 - Data Science with Azure Synapse Spark (optional)
 
 Azure Synapse Analytics provides support for using trained models (in ONNX format) directly from dedicated SQL pools. What this means in practice, is that your data engineers can write T-SQL queries that use those models to make predictions against tabular data stored in a SQL Pool database table.
 
@@ -6,7 +6,7 @@ In this exercise, you will leverage a previously trained model to make predictio
 
 For context, the following are the high-level steps taken to create a Spark ML based model and deploy it, so it is ready for use from T-SQL.
 
-![The process for registering and using a model](media/ex05-model-registration-process.png "Review model registration process")
+![The process for registering and using a model](media/ex08-model-registration-process.png "Review model registration process")
 
 The steps are performed using a combination of Azure Databricks and Azure Synapse Analytics workspaces:
 
@@ -28,7 +28,7 @@ The steps are performed using a combination of Azure Databricks and Azure Synaps
 
 In this exercise, the tasks you will perform are:
 
-- Exercise 5 - Data Science with Spark
+- Exercise 8 - Data Science with Spark
   - Task 1 - Making predictions with a trained model
   - Task 2 - Examining the model training and registration process (Optional)
   - Task 3 - Code free artificial intelligence
@@ -41,7 +41,7 @@ In this task, you will author a T-SQL query that uses a pre-trained model to mak
 
 2. Expand the Databases listing, right-click your SQL Pool **(1)** and then select `New SQL Script` **(2)**, and then `Empty script` **(3)**.
 
-   ![Showing the context menu, selecting New SQL Script, Empty Script](media/ex05-new-sql-script.png "Create new script")
+   ![Showing the context menu, selecting New SQL Script, Empty Script](media/ex08-new-sql-script.png "Create new script")
 
 3. Replace the contents of this script with following:
 
@@ -56,11 +56,11 @@ In this task, you will author a T-SQL query that uses a pre-trained model to mak
 
 4. Select **Run** from the menubar.
 
-   ![The Run button](media/ex05-select-run.png "Select Run")
+   ![The Run button](media/ex08-select-run.png "Select Run")
 
 5. View the results, notice that the `Prediction` column is the model's prediction of how many items of the kind represented by `StockItemKey` that the customer identified by `CustomerKey` will purchase.
 
-   ![Viewing the prediction results in the query result pane](media/ex05-view-prediction-results.png "View prediction results")
+   ![Viewing the prediction results in the query result pane](media/ex08-view-prediction-results.png "View prediction results")
 
 ## Task 2 - Examining the model training and registration process (Optional)
 
@@ -74,19 +74,19 @@ You can see the notebook and SQL scripts used to train and register this model i
 
    ![Databricks service is shown on the Azure Portal. Launch workspace button is highlighted.](media/databricks-launch-workspace.png "Databricks Workspace Navigation")
 
-3. Open the **Workspace (1)** section from the left menu. Under **Shared (2)**, select the notebook called `Exercise 5 - Model Training` **(3)**.
+3. Open the **Workspace (1)** section from the left menu. Under **Shared (2)**, select the notebook called `Exercise 8 - Model Training` **(3)**.
 
-   ![Shared workspace is open, and Exercise 5 notebook is highlighted.](media/databricks-notebook-selection.png "Databricks Notebook Selection")
+   ![Shared workspace is open, and Exercise 8 notebook is highlighted.](media/databricks-notebook-selection.png "Databricks Notebook Selection")
 
    This notebook handles training the model, converting the model to ONNX, and uploading the ONNX model to Azure Storage.
 
 4. To execute the notebook, follow the instruction in the notebook **(1)** to mount your Azure Storage accounts to Azure Databricks. Finally, pick a cluster **(2)** and select **Run all (3)**. This will train a Machine Learning model in ONNX format.  
 
-   ![Databricks notebook is presented. Cluster selection and Run all commands are highlighted.](media/databricks-run-notebook-ex5.png "Running Exercise 5 Notebook")
+   ![Databricks notebook is presented. Cluster selection and Run all commands are highlighted.](media/databricks-run-notebook-ex8.png "Running Exercise 8 Notebook")
 
 5. One step not shown by the notebook is an offline step that converts the ONNX model to hexadecimal. The resulting hex-encoded model is also uploaded to Azure Storage. This conversion is currently performed with [this PowerShell script](./artifacts/00/ml/convert-to-hex.ps1), but could be automated using any scripting platform.
 
-6. Once you have read through the notebook, return to the `Develop` hub, expand **SQL scripts**, and select `Exercise 5 - Register model`. View, but **do not run this script**.
+6. Once you have read through the notebook, return to the `Develop` hub, expand **SQL scripts**, and select `Exercise 8 - Register model`. View, but **do not run this script**.
 
 7. This script uses PolyBase to load the hex-encoded model from Azure Storage into a table within the SQL Pool database. Once the model is inserted into the table in this way, it is available for use by the Predict statement as was shown in Task 1.
 
