@@ -1,17 +1,11 @@
-# Azure Synapse + Power BI Extension Module &nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
 # Exercise 7.1 - Develop a Power BI Model
-
 
 In this exercise, you are working in the role of a **data architect** or **BI developer**.
 You will use Power BI Desktop to develop a data model over your Azure Synapse Wide World Importers (WWI) data warehouse. The data model will allow you to publish a semantic layer over the data warehouse. Comprising six tables, it will define relationships, hierarchies, calculations, and friendly and consistent names. The data model will become an intuitive and high performance source for Power BI reports.
 
 ---
 
-**Important**: 
+**Important**:
 
 You must use the lab Azure credentials to connect to Azure Synapse and to publish content to Power BI.
 
@@ -33,7 +27,7 @@ In this task, you will prepare your environment.
 
 4. Close Power BI Desktop.
 
-5. Open a new web browser session, and then navigate to *https://powerbi.com*.
+5. Open a new web browser session, and then navigate to *<https://powerbi.com>*.
 
 6. If you are not signed in automatically, click **Sign In**, and then sign in using the lab Azure credentials.
 
@@ -118,13 +112,13 @@ In this task, you will create six Power Query queries that will each load as a t
 
 11. In the **Power Query Editor** window, in the **Queries** pane (located at the left), notice there is one query for each table you requested.
 
-    ![ws name.](media/07-01-015.png)
+      ![ws name.](media/07-01-015.png)
 
-   *You’ll now revise the definition of each query. Each query will become a model table when they are applied to the model. So, you’ll now rename them so they’re described in more friendly and concise ways, and apply transformations to deliver the columns required by reports.*
+      *You’ll now revise the definition of each query. Each query will become a model table when they are applied to the model. So, you’ll now rename them so they’re described in more friendly and concise ways, and apply transformations to deliver the columns required by reports.*
 
 12. Select the **wwi DimCity** query.
 
-    ![ws name.](media/07-01-016.png)   
+    ![ws name.](media/07-01-016.png)
 
 13. In the **Query Settings** pane (located at the right), to rename the query, in the **Name** box, replace the text with **Geography**, and then press **Enter**.
 
@@ -140,17 +134,17 @@ In this task, you will create six Power Query queries that will each load as a t
 
 16. Check the following seven columns.
 
-	- CityKey
-	- City
-	- StateProvince
-	- Country
-	- SalesTerritory
-	- Region
-	- Subregion
+    - CityKey
+    - City
+    - StateProvince
+    - Country
+    - SalesTerritory
+    - Region
+    - Subregion
 
-	![ws name.](media/07-01-020.png)
+    ![ws name.](media/07-01-020.png)
 
-	*This selection of columns determine what will be available in your model.*
+    *This selection of columns determine what will be available in your model.*
 
 17. Click **OK**.
 
@@ -202,57 +196,57 @@ In this task, you will create six Power Query queries that will each load as a t
 
 29. Remove all columns, except:
 
-	- CustomerKey
-	- Customer
-	- Category
-	- BuyingGroup
-   
-	![ws name.](media/07-01-029.png)
+    - CustomerKey
+    - Customer
+    - Category
+    - BuyingGroup
+
+    ![ws name.](media/07-01-029.png)
 
 30. Rename the **BuyingGroup** column as **Buying Group** (insert a space between the two words).
 
 31. Verify that the query has four columns.
 
-   *The design of the **Customer** query is now complete.*
- 
+    *The design of the **Customer** query is now complete.*
+
 32. Select the **wwi DimDate** query.
 
     ![ws name.](media/07-01-030.png)
 
 33. Rename the query as **Date**.
- 
+
 34. Remove all columns, except:
 
-	- Date
-	- CalendarMonthNumber
-	- CalendarMonthLabel
-	- CalendarYear
-	- CalendarYearLabel
+    - Date
+    - CalendarMonthNumber
+    - CalendarMonthLabel
+    - CalendarYear
+    - CalendarYearLabel
 
-	![ws name.](media/07-01-031.png)
+    ![ws name.](media/07-01-031.png)
 
 35. Rename the following columns:
 
-	- **CalendarMonthLabel** as **Month**
-	- **CalendarYearLabel** as **Year**
- 
+    - **CalendarMonthLabel** as **Month**
+    - **CalendarYearLabel** as **Year**
+
 36. To add a computed column, on the **Add Column** ribbon tab, from inside the **General** group, click **Custom Column**.
 
     ![ws name.](media/07-01-032.png)
 
 37. In the **Custom Column** window, in the **New Column Name** box, replace the text with **MonthKey**.
-    
+
     ![ws name.](media/07-01-033.png)
 
 38. In the Custom Column Formula box, enter the following formula:
 
-    ```
+    ```pbi
     ([CalendarYear] * 100) +[CalendarMonthNumber]
     
     ```
-    
+
     *Tip: To add the column references to the formula, in the **Available Columns** list, simply double-click a column.
-    
+
     *The formula produces a unique key value for each month of a calendar year. It’s required to ensure that the calendar month labels sort in chronologic order. You’ll use this column in the next exercise when you configure the **Month** column sort order.*
 
 39. Click **OK**.
@@ -261,15 +255,15 @@ In this task, you will create six Power Query queries that will each load as a t
 
 40. Remove the **CalendarMonthNumber** and **CalendarYear** columns.
 
-	*Tip: You can remove the columns using one of three techniques. First, you can open the Choose Columns window, and then uncheck those columns. Second, you can multi-select the columns and use the ribbon Remove Columns commands. Or, third, you can multi-select the columns, right-click the selection, and then select the context menu to Remove Columns options.*
+    *Tip: You can remove the columns using one of three techniques. First, you can open the Choose Columns window, and then uncheck those columns. Second, you can multi-select the columns and use the ribbon Remove Columns commands. Or, third, you can multi-select the columns, right-click the selection, and then select the context menu to Remove Columns options.*
 
 41. Review the native query, and notice the SQL expression used to compute the **MonthKey** column.
-   
-	*This design isn’t optimal. In a real world solution, query performance would be better if the **MonthKey** column values are stored in the **wwi.DimDate** table (or a materialized view).*
+
+    *This design isn’t optimal. In a real world solution, query performance would be better if the **MonthKey** column values are stored in the **wwi.DimDate** table (or a materialized view).*
 
 42. Verify that the query has four columns.
 
-	*The design of the **Date** query is now complete.*
+    *The design of the **Date** query is now complete.*
 
 43. Select the **wwi DimEmployee** query.
 
@@ -282,11 +276,11 @@ In this task, you will create six Power Query queries that will each load as a t
     ![ws name.](media/07-01-036.png)
 
 46. Click **OK**.
- 
+
 47. Remove all columns, except:
 
-	- EmployeeKey
-	- Employee
+    - EmployeeKey
+    - Employee
 
     ![ws name.](media/07-01-037.png)
 
@@ -303,13 +297,13 @@ In this task, you will create six Power Query queries that will each load as a t
     ![ws name.](media/07-01-038.png)
 
 52. Rename the query as **Product**.
- 
+
 53. Remove all columns, except:
 
-	- StockItemKey
-	- Stock Item
-	- Color
-   
+    - StockItemKey
+    - Stock Item
+    - Color
+
 54. Rename the **Stock Item** column as **Product**.
 
 55. Verify that the query has three columns.
@@ -318,56 +312,56 @@ In this task, you will create six Power Query queries that will each load as a t
 
 56. Select the **wwi FactSale** query.
 
-	![ws name.](media/07-01-039.png)
+    ![ws name.](media/07-01-039.png)
 
 57. Rename the query as **Sale**.
 
 58. Remove all columns, except:
 
-	- CityKey
-	- CustomerKey
-	- StockItemKey
-	- InvoiceDateKey
-	- SalespersonKey
-	- Quantity
-	- UnitPrice
-	- Profit
+    - CityKey
+    - CustomerKey
+    - StockItemKey
+    - InvoiceDateKey
+    - SalespersonKey
+    - Quantity
+    - UnitPrice
+    - Profit
 
-	![ws name.](media/07-01-040.png)
+    ![ws name.](media/07-01-040.png)
 
 59. Rename the following columns:
 
-	- **UnitPrice** as **Unit Price**
-	- **Profit** as **Profit Amount**
+    - **UnitPrice** as **Unit Price**
+    - **Profit** as **Profit Amount**
 
 60. Add a computed column using the following formula to create the **Sale Amount** column.
 
-	```
-	[Quantity] * [Unit Price]
-	```
+      ```sql
+         [Quantity] * [Unit Price]
+      ```
 
 61. To modify the **Sale Amount** column data type, in the column header, click the **ABC123** icon, and then select **Decimal Number**.
 
-	![ws name.](media/07-01-041.png)
+    ![ws name.](media/07-01-041.png)
 
 62. Verify that the query has nine columns.
 
-	*The design of the **Sale** query is now complete.*
+    *The design of the **Sale** query is now complete.*
 
 63. To apply the queries, on the **Home** ribbon tab, from inside the **Close** group, click the **Close & Apply** icon.
 
     ![ws name.](media/07-01-042.png)
- 
+
     *Each query is applied to create a model table. Because the data connection is using DirectQuery storage mode, only the model structure is created. No data is imported. The model now consists of one table for each query.*
-    
-64. In Power BI Desktop, when the queries have been applied, at the bottom-left corner in thes status bar, notice that the model storage mode is DirectQuery. 
+
+64. In Power BI Desktop, when the queries have been applied, at the bottom-left corner in thes status bar, notice that the model storage mode is DirectQuery.
 
     ![ws name.](media/07-01-003.png)
 
 65. In Power BI Desktop, at the left, switch to Model view.
- 
+
     ![ws name.](media/07-01-043.png)
- 
+
      *Model view allows you to see all tables in the model diagram. It also allows you to configure many model properties. You’ll configure model properties in the next exercise.*
 
 66. To upgrade to the new model view, in the banner across the top of the diagram, click Upgrade Now.
@@ -392,15 +386,14 @@ In this task, you will create six Power Query queries that will each load as a t
 
 In this exercise, you will develop the model by creating relationships, setting table and column properties, and creating measures.
 
-
 ### **Subtask 1: Create Relationships**
 
 In this task, you will create relationships between all model tables. Each relationship with relate the **Sale** fact table to a dimension table.
 
 1. In Power BI Desktop, in the model diagram, organize the tables as follows:
 
-   -	Position the **Sale** table at the center of the diagram, and then surround it with the five dimension tables
-   -	Ensure that the **Date** and **Geography** tables are next to each other
+   - Position the **Sale** table at the center of the diagram, and then surround it with the five dimension tables
+   - Ensure that the **Date** and **Geography** tables are next to each other
 
    ![ws name.](media/07-01-005.png)
 
@@ -428,7 +421,7 @@ In this task, you will create relationships between all model tables. Each relat
 
 6. Notice there is a one-side (1) and many-side (*) to the relationship.
 
-	*Dimension tables, like **Geography**, are always the one-side of the relationship. These tables include a unique column (dimension key column). Filters always propagate from the one-side to the many-side. In more advanced scenarios, filters can propagate in both directions. In this lab, you won’t configure bi-directional relationships. For more information about relationships*, [***see Model relationships in Power BI Desktop.***](https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand)
+    *Dimension tables, like **Geography**, are always the one-side of the relationship. These tables include a unique column (dimension key column). Filters always propagate from the one-side to the many-side. In more advanced scenarios, filters can propagate in both directions. In this lab, you won’t configure bi-directional relationships. For more information about relationships*, [***see Model relationships in Power BI Desktop.***](https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand)
 
 7. Create four additional relationships and configure each to assume referential integrity:
 
@@ -436,11 +429,10 @@ In this task, you will create relationships between all model tables. Each relat
    - Relate the **Sale** table **InvoiceDateKey** column to the **Date** table **Date** column
    - Relate the **Sale** table **SalespersonKey** column to the **Salesperson** table **EmployeeKey** column
    - Relate the **Sale** table **StockItemKey** column to the **Product** table **StockItemKey** column
- 
+
 8. Verify that all tables are now related.
 
    ![ws name.](media/07-01-008.png)
-
 
 9. Verify that the one-side of each relationship is on the dimension table side.
 
@@ -487,7 +479,7 @@ In this task, you will add two hierarchies to the **Geography** table and config
    ![ws name.](media/07-01-049.png)
 
 8. In the **Geography** table, select the **Country** column.
- 
+
 9. In the **Properties** pane, expand the **Advanced** section, and then in the **Data Category** dropdown, select **Country/Region**.
 
    ![ws name.](media/07-01-050.png)
@@ -496,11 +488,11 @@ In this task, you will add two hierarchies to the **Geography** table and config
 
 10. Set the following additional column data categorizations:
 
-   - Categorize the **State-Province** column as **State or Province**
-   - Categorize the **City** column as **City**
+- Categorize the **State-Province** column as **State or Province**
+- Categorize the **City** column as **City**
 
    *Configuration of the **Geography** table is now complete.*
-   
+
 ### **Subtask 3: Configure the Date Table**
 
 In this task, you will add a hierarchy to the Date table and configure the Month column sort order.
@@ -516,11 +508,11 @@ In this task, you will add a hierarchy to the Date table and configure the Month
 3. In the **Properties** pane, in the **Advanced** section, in the **Sort by Column** dropdown list, select **MonthKey**.
 
    ![ws name.](media/07-01-051.png)
- 
+
    *The alphabetic **Month** column values will now sort by the chronologic **MonthKey** column values.*
-   
+
    *Configuration of the **Date** table is now complete.*
-   
+
 ### **Subtask 4: Configure the Sale Table**
 
 In this task, you will configure the **Sale** table columns.
@@ -545,13 +537,13 @@ In this task, you will configure the **Sale** table columns.
 
 5. In the Decimal Places box, enter 2.
 
-5. Select the **Unit Price** column (you might need to first de-select the multi-selection of columns, and then select this single column).
+6. Select the **Unit Price** column (you might need to first de-select the multi-selection of columns, and then select this single column).
 
-6. In the **Properties** pane, in the **Advanced** section, in the **Summarize by** dropdown list, select **Average**.
+7. In the **Properties** pane, in the **Advanced** section, in the **Summarize by** dropdown list, select **Average**.
 
    *By default, numeric column will be aggregated by using the sum function. In this case, it doesn’t make sense to sum unit price values together. The default summarization for this column now averages unit prices.*
- 
-	![ws name.](media/07-01-055.png)
+
+ ![ws name.](media/07-01-055.png)
 
    *Configuration of the **Sale** table is now complete.*
 
@@ -569,11 +561,10 @@ In this task, you will hide columns that are not appropriate for reporting.
    - **Salesperson** table **EmployeeKey** column
    - **Product** table **StockItemKey** column
    - **Sale** table **CityKey**, **CustomerKey**, **InvoiceDateKey**, **SalespersonKey**, and **StockItemKey** columns
- 
+
 2. In the **Properties** pane, set the **Is Hidden** property to **Yes**.
 
-	![ws name.](media/07-01-056.png)
-
+ ![ws name.](media/07-01-056.png)
 
 ### **Subtask 6: Mark the Date Table**
 
@@ -590,17 +581,17 @@ In this task, you will mark the **Date** table.
 2. In the **Fields** pane (located at the right), select the **Date** table.
 
 3. On the **Table Tools** contextual ribbon tab, from inside the **Calendars** group, click **Mark as Date Table**, and then select **Mark as Date Table**.
- 
+
    ![ws name.](media/07-01-058.png)
- 
+
 4. In the **Mark as Date Table** window, in the **Date Column** dropdown list, select **Date**.
 
    ![ws name.](media/07-01-059.png)
- 
+
 5. When validation has succeeded, click **OK**.
 
    ![ws name.](media/07-01-060.png)
- 
+
    *Validation ensures the column contains unique dates, no missing dates, and no gaps between dates. These conditions are a prerequisite to ensure the DAX time intelligence filters work correctly.*
 
 ### **Subtask 7: Create Measures**
@@ -608,13 +599,13 @@ In this task, you will mark the **Date** table.
 In this task, you will create two measures. Measures are expressions that summarize model data.
 
 1. In the **Fields** pane, right-click the **Sale** table, and then select **New Measure**.
- 
+
    ![ws name.](media/07-01-061.png)
- 
+
 2. In the formula bar (located directly beneath the ribbon), replace the text with the following measure definition, and then press **Enter**.
 
    *Tip: When entering the formula, to enter a carriage return, press **Shift+Enter**.*
-   
+
    ![ws name.](media/07-01-062.png)
 
    *This formula uses a built-in DAX time intelligence function to accumulate the sum of the **Sale** table **Profit Amount** column values within the year to produce a year-to-date (YTD) result.*
@@ -628,14 +619,14 @@ In this task, you will create two measures. Measures are expressions that summar
 4. To configure formatting, in the **Fields** pane, ensure the measure is selected (not checked).
 
 5. On the **Measure Tools** contextual ribbon, from inside the **Formatting** group, in the dropdown list, select **Currency**, and set the decimal places to **2**.
- 
+
    ![ws name.](media/07-01-065.png)
- 
+
 6. Add a second measure to the Sale table using the following formula:
 
    ![ws name.](media/07-01-066.png)
-   
-   ```
+
+   ```dax
    Profit % All Geography =
    DIVIDE(
     SUM(Sale[Profit Amount]),
@@ -651,7 +642,7 @@ In this task, you will create two measures. Measures are expressions that summar
 7. Format the **Profit % All Geography** measure as a percentage.
 
    ![ws name.](media/07-01-067.png)
- 
+
 8. Save the Power BI Desktop solution.
 
    *All model configurations have now been made. In the next exercise, you’ll create a test report and measure query performance.*
@@ -665,7 +656,7 @@ In this exercise, you will create a test report. You will then use Performance A
 In this task, you will design a simple report to test query performance.
 
 1. In Power BI Desktop, in Report view, to add a slicer to the report canvas, in the **Visualizations** pane, click the slicer icon.
- 
+
    ![ws name.](media/07-01-068.png)
 
 2. In the Fields pane, from the Date table, drag the Calendar hierarchy to the slicer.
@@ -674,42 +665,41 @@ In this task, you will design a simple report to test query performance.
 
    ![ws name.](media/07-01-010.png)
 
-3. Filter the slicer by **CY2012**.
+4. Filter the slicer by **CY2012**.
 
    ![ws name.](media/07-01-069.png)
- 
-4. To create a new visual, first select an empty area of the report canvas.
+
+5. To create a new visual, first select an empty area of the report canvas.
 
    *Selecting the report canvas de-selects the slicer visual*.
- 
-5. To add a table visual to the report canvas, in the **Visualizations** pane, click the table visual icon.
+
+6. To add a table visual to the report canvas, in the **Visualizations** pane, click the table visual icon.
 
    ![ws name.](media/07-01-070.png)
- 
-6. Position the table visual to the right of the slicer, and then resize it as large as possible.
 
-7. Drag and drop the following visuals into the table visual:
+7. Position the table visual to the right of the slicer, and then resize it as large as possible.
+
+8. Drag and drop the following visuals into the table visual:
 
    - **Date** table **Month** field (not the **Month** hierarchy level)
    - **Sale** table **Profit Amount** field
    - **Sale** table **Profit YTD** field
- 
+
    ![ws name.](media/07-01-071.png)
 
    *Performance is likely to be slow, as the model hasn’t yet been optimized. You’ll be optimizing the model with aggregations in **Exercise 07**.*
- 
-8. In the **Visualizations** pane, in the **Values** well, to remove the fields, click **X** next to each field.
+
+9. In the **Visualizations** pane, in the **Values** well, to remove the fields, click **X** next to each field.
 
    ![ws name.](media/07-01-072.png)
- 
-9. Drag and drop the following fields into the table visual:
 
-   - **Geography** table **State-Province** field (it is second from the bottom—do not use the **State-Province** hierarchy level)
-   - **Sale** table **Profit Amount** field
-   - **Sale** table **Profit %** **Total Geography** field
+10. Drag and drop the following fields into the table visual:
+
+- **Geography** table **State-Province** field (it is second from the bottom—do not use the **State-Province** hierarchy level)
+- **Sale** table **Profit Amount** field
+- **Sale** table **Profit %** **Total Geography** field
 
    ![ws name.](media/07-01-073.png)
-
 
 ### **Subtask 2: Measure Query Performance**
 
@@ -718,17 +708,17 @@ In this task, you will use Performance Analyzer to measure query performance.
 1. On the **View** ribbon tab, from inside **Show Panes** group, select **Performance Analyzer**.
 
    ![ws name.](media/07-01-075.png)
- 
+
 2. In the **Performance Analyzer** pane, click **Start Recording**.
 
    ![ws name.](media/07-01-076.png)
- 
+
    *When recording, Performance Analyzer captures statistics when visual query data.*
 
 3. In the **Performance Analyzer** pane, click **Refresh Visuals**.
 
    ![ws name.](media/07-01-077.png)
- 
+
 4. In the list, notice the duration statistics, which are recorded in milliseconds.
 
 5. Expand the **Table** node.
@@ -740,7 +730,7 @@ In this task, you will use Performance Analyzer to measure query performance.
 7. To copy the SQL query to the clipboard, click the **Copy Query**.
 
    ![ws name.](media/07-01-078.png)
- 
+
 8. Open a text editor, like Notepad, and paste in the query.
 
 9. Review the query.
@@ -752,7 +742,7 @@ In this task, you will use Performance Analyzer to measure query performance.
 11. In the **Performance Analyzer** pane, click **Stop**.
 
     ![ws name.](media/07-01-079.png)
- 
+
 12. Save the Power BI Desktop solution.
 
     *The lab is now complete. Leave your Power BI Desktop solution open ready to start the next lab (when instructed to do so)*.
@@ -762,4 +752,3 @@ In this task, you will use Performance Analyzer to measure query performance.
 ### Summary
 
 In this exercise, you used Power BI Desktop to develop a data model over your Azure Synapse Wide World Importers (WWI) data warehouse. The data model allowed you to publish a semantic layer over the data warehouse. Comprising six tables, it defines relationships, hierarchies, calculations, and friendly and consistent names. The data model is an intuitive and high performance source for Power BI reports.
-
