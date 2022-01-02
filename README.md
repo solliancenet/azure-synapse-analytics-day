@@ -68,6 +68,10 @@ The visual approach in data exploration, analysis, and interpretation is one of 
 
 Azure Synapse Analytics integrates natively with Power BI, a proven and highly successful data presentation and exploration platform. The Power BI experience is available inside Synapse Studio.
 
+>**Extension module**
+>
+>The exercise is accompanied by a [Power BI extension module](./power-bi-extension-module/README.md) with four additional (optional) exercises.
+
 ## Exercise 8 - Data Science with Spark (optional)
 
 In this exercise, you will leverage a model trained in Azure Databricks to make predictions using the T-SQL PREDICT statement in an Azure Synapse Analytics dedicated SQL pool.
