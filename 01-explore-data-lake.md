@@ -99,14 +99,14 @@ In this task, you will browse your data lake using serverless SQL pool.
     FROM
         OPENROWSET(
             BULK 'https://YOUR_DATALAKE_NAME.dfs.core.windows.net/wwi/factsale-deltalake',
-     		FORMAT = 'DELTA'
+       FORMAT = 'DELTA'
         ) AS [result]
     WHERE InvoiceYear=2012
     GROUP BY
          InvoiceYear,
          InvoiceQuarter
     ```
-    
+
     > Delta Lake is a popular format when using Apache Spark for analytics. The schema and partitions are automatically inferred when you reference a folder containing the Delta Lake structure. The ability to read this data from your serverless SQL pool means you do not need to switch to Spark to query data that was loaded and saved to Delta Lake by Apache Spark jobs.
 
 16. Update the cell with the following statements to create an external table for the quarterly results. **Replace** `YOUR_DATALAKE_NAME` with your **Storage Account Name** provided in the environment details section on the Lab Environment tab on the right. Select **Run** to execute the script.
@@ -212,7 +212,7 @@ In this task, you will browse your data lake using serverless SQL pool.
     spark.conf.set("spark.sql.ansi.enabled", "true")
     ```
 
-    > The Apache Spark pool for the lab is using Spark 3.0, which provides performance benefits over previous versions. These configurations enable Adaptive Query Execution and set how Spark should optimize partitioning during job execution. ANSI SQL is also enabled to check for data type errors and overflow errors.
+    > The Apache Spark pool for the exercise is using Spark 3.0, which provides performance benefits over previous versions. These configurations enable Adaptive Query Execution and set how Spark should optimize partitioning during job execution. ANSI SQL is also enabled to check for data type errors and overflow errors.
 
 12. Add another cell and paste in the SQL statement to read from a Delta Lake path. Replace `YOUR_DATALAKE_NAME` with your **Storage Account Name**. Select the **Run cell** button to execute. This uses the magic command `%%sql` to change language of the cell to Spark SQL. The SQL statement returns the top 10 cities based on total quantity.
 

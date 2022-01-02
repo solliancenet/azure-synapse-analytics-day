@@ -1,4 +1,4 @@
-# Azure Synapse Analytics Lab
+# Azure Synapse Analytics in a Day Lab
 
 ## Wide World Importers
 

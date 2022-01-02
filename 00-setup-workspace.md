@@ -38,7 +38,7 @@
 
 10. Ensure the `Workspace` security principal (which has the same name as the `Workspace`) and the `MasterUser` (the one used to create the `Workspace`) are added with the `Storage Blob Data Owner` role to the `PrimaryStorage`.
 
-## Task 2 - Upload the data used in the lab
+## Task 2 - Upload the data used in the exercises
 
 1. Create a folder named `bronze` in the `dev` file system of `PrimaryStorage`.
 
@@ -318,7 +318,7 @@ The following pipelines must be imported:
 
 3. Perform all the steps described in [Exercise 3 - Task 1](03-power-bi-integration.md##task-1---create-a-power-bi-dataset-in-synapse). In step 11, instead of using the suggested naming convention, name your dataset `wwifactsales`.
 
-4. In the Power BI portal, edit the security settings of the `wwifactsales` dataset and configure it to authenticate to `SQLPool01` using the credentials of the `asa.sql.admin` account. This allows the `Direct Query` option to work correctly for all participants in the lab.
+4. In the Power BI portal, edit the security settings of the `wwifactsales` dataset and configure it to authenticate to `SQLPool01` using the credentials of the `asa.sql.admin` account. This allows the `Direct Query` option to work correctly for all participants in the exercise.
 
 ## Task 9 - Import all SQL scripts and Spark notebooks
 

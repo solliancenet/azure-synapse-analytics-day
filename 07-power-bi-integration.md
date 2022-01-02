@@ -24,7 +24,7 @@ Please locate this value and note it for the steps below.
 
 In this task, you will use Power BI Desktop to create the dataset used by the report.
 
-> Note: Power BI desktop will already be installed in the virtual machine provided with the lab.
+> Note: Power BI desktop will already be installed in the virtual machine provided with the lab environment.
 
 1. Open Synapse Analytics Studio, and then navigate to the `Develop hub`.
 

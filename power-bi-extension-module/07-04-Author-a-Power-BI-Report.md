@@ -1,6 +1,6 @@
 # Exercise 7.4 - Author a Power BI Report
 
-In this lab, you are working in the role of a **data analyst**.
+In this exercise, you are working in the role of a **data analyst**.
 
 You will use Power BI Desktop to continue the development of the solution created in Exercise 08. You will author a multi-page report that will include synced slicers, a custom visual, page drill through, a measure, bookmarks, and buttons. You will finalize the exercise by publishing the report to the Power BI service.
 
@@ -19,6 +19,7 @@ In this task, you will develop a two-page report.
 In this task, you will develop the first report page.
 
 The completed report page will look like the following:
+
 ![ws name.](media/07-04-051.png)
 
    *Important: You must continue the development of the Power BI Desktop solution that was created in Exercise 08.*
