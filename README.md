@@ -52,7 +52,7 @@ Once data is properly understood and interpreted, moving it to the various desti
 
 Azure Synapse Analytics provides two significant categories of features - data flows and data orchestrations (implemented as pipelines). They cover the whole range of needs, from design and development to triggering, execution, and monitoring.
 
-## Exercise 3 - High Performance Analysis with Azure Synapse SQL Pools
+## Exercise 3 - High Performance Analysis with Azure Synapse Dedicated SQL Pools
 
 In [this exercise](03-high-performance-analysis.md), you will try to understand customer details using a query and chart visualizations. You will also explore the performance of various queries.
 
