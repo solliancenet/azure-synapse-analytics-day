@@ -36,7 +36,7 @@ The diagram below provides a unified view of the exercises in the lab and their 
 
 ![Azure Synapse Analytics Lab Exercises](./media/exercises.png "Solution architecture")
 
-## Exercise 1 - Explore the data lake with Azure Synapse SQL On-demand and Azure Synapse Spark
+## Exercise 1 - Explore the data lake with Azure Synapse Serverless SQL Pool and Azure Synapse Spark
 
 In [this exercise](01-explore-data-lake.md), you will explore data using the engine of your choice (SQL or Spark).
 
