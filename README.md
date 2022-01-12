@@ -62,7 +62,9 @@ The Azure Synapse SQL Pools in Azure Synapse Analytics is the new incarnation of
 
 ## Exercise 4 - Lake Databases and Database templates
 
-In [this exercise](04-lake-databases-database-templates.md), you will ...
+In [this exercise](04-lake-databases-database-templates.md), you will explore the concept of a lake database and you will learn how to use readily available database templates for lake databases.
+
+The lake database in Azure Synapse Analytics enables you to bring together database design, meta information about the data that is stored and a possibility to describe how and where the data should be stored. Lake database addresses the challenge of today's data lakes where it is hard to understand how data is structured.
 
 ## Exercise 5 - Log and telemetry analytics
 
