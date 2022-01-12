@@ -10,7 +10,7 @@ The tasks you will perform in this exercise are:
   - Task 1 - Create and configure a lake database
   - Task 2 - Create a lake database table from data lake storage
   - Task 3 - Create a custom lake database table and map data into it
-  - Task 4 - Create complex lake database using database templates
+  - Task 4 - Create a complex lake database using database templates
 
 ## Task 1 - Create and configure a lake database
 
@@ -54,7 +54,7 @@ The tasks you will perform in this exercise are:
 
 ![Configure data mapping target](./media/ex04-configure-data-mapping-3.png)
 
-## Task 4 - Create complex lake database using database templates
+## Task 4 - Create a complex lake database using database templates
 
 ![Open Synapse knowledge center](./media/ex04-open-knowledge-center.png)
 
