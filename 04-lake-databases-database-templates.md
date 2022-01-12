@@ -9,7 +9,7 @@ The tasks you will perform in this exercise are:
 - Exercise 4 - Lake Databases and Database templates
   - Task 1 - Create and configure a lake database
   - Task 2 - Create a lake database table from data lake storage
-  - Task 3 - Manually create a lake database table and map data into it
+  - Task 3 - Create a custom lake database table and map data into it
   - Task 4 - Create complex lake database using database templates
 
 ## Task 1 - Create and configure a lake database
@@ -36,7 +36,7 @@ The tasks you will perform in this exercise are:
 
 ![Query table from data lake](./media/ex04-query-table-from-data-lake.png)
 
-## Task 3 - Manually create a lake database table and map data into it
+## Task 3 - Create a manual lake database table and map data into it
 
 ![Open the lake database editor](./media/ex04-edit-lake-database.png)
 
