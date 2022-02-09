@@ -94,8 +94,8 @@ Azure Synapse Analytics integrates natively with Power BI, a proven and highly s
 
 ## Exercise 8 - Data Science with Spark (optional)
 
-In [this exercise](08-data-science-with-spark.md), you will leverage a model trained in Azure Databricks to make predictions using the T-SQL PREDICT statement in an Azure Synapse Analytics dedicated SQL pool.
+In [this exercise](08-data-science-with-spark.md), you will leverage a model trained with Azure Machine Learning AutoML using Spark compute to make predictions using the T-SQL PREDICT statement in an Azure Synapse Analytics dedicated SQL pool.
 
 Azure Synapse Analytics provides support for using trained models (in ONNX format) directly from dedicated SQL pools. What this means in practice, is that your data engineers can write T-SQL queries that use those models to make predictions against tabular data stored in a SQL Pool database table.
 
-The models can be trained in Azure Databricks using Spark ML - the machine learning library included with Apache Spark. Models can also be trained using other approaches, including by using Azure Machine Learning automated ML. The main requirement is that the model format must be supported by ONNX.
+The model is trained and registered by Azure Machine Learning automated ML (AutoML) using the compute resources provided by a Synapse Analytics Spark pool (the main requirement is that the model format must be supported by ONNX). Using the integration of the Azure Machine Learning experience into Synapse Analytics Studio, the trained model is deployed to the dedicated SQL pool where it is used for inference via the T-SQL PREDICT statement.

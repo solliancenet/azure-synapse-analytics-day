@@ -16,11 +16,17 @@
 
 7. Create a linked service to the blob storage account. Configure it to connect with the account key. It is recommended to name the linked service `asastore01` to simplify importing datasets, data flows, and pipelines later.
 
-8. Create an Apache Spark pool. Ensure Apache Spark version is set to 3.0.
+8. Create an Apache Spark pool named `SparkPool01`. Ensure Apache Spark version is set to 3.1.
 
-    ![Create Apache Spark pool page is open. Apache Spark version set to 3.0 is highlighted.](media/spark-version-selection.png "Spark Version Selection")
+    ![Create Apache Spark pool page is open. Apache Spark version set to 3.1 is highlighted.](media/spark-version-selection.png "Spark Version Selection")
 
-9. For the remainder of this guide, the following terms will be used for various ASA-related resources (make sure you replace them with actual names and values):
+9. Create another Apache Spark pool named `SparkPool02`. Ensure Apache Spark version is set to 2.4.
+
+    >NOTE:
+    >
+    >This second Spark pool is required for Exercise 08 which runs AutoML in the Spark session. AutoML libraries are currently not supported by the Synapse Spark 3.1 runtime.
+
+10. For the remainder of this guide, the following terms will be used for various ASA-related resources (make sure you replace them with actual names and values):
 
     | ASA resource                              | To be referred to as     |
     |-------------------------------------------|--------------------------|
@@ -30,13 +36,14 @@
     | Primary storage account                   | `PrimaryStorage`         |
     | Blob storage account                      | `BlobStorage`            |
     | First Spark pool                          | `SparkPool01`            |
+    | Second Spark pool                         | `SparkPool02`            |
     | First SQL pool                            | `SQLPool01`              |
     | SQL admin account                         | `asa.sql.admin`          |
     | Linked service to first SQL pool          | `sqlpool01`              |
     | Linked service to primary storage account | `asadatalake01`          |
     | Linked service to blob storage account    | `asastore01`             |
 
-10. Ensure the `Workspace` security principal (which has the same name as the `Workspace`) and the `MasterUser` (the one used to create the `Workspace`) are added with the `Storage Blob Data Owner` role to the `PrimaryStorage`.
+11. Ensure the `Workspace` security principal (which has the same name as the `Workspace`) and the `MasterUser` (the one used to create the `Workspace`) are added with the `Storage Blob Data Owner` role to the `PrimaryStorage`.
 
 ## Task 2 - Upload the data used in the exercises
 
@@ -68,6 +75,29 @@
     | `wwi-factstockholding.csv`   | 8.9 KB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-factstockholding.csv>   |
     | `wwi-facttransaction.csv`    | 7.2 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-facttransaction.csv>    |
     | `wwi-comments.csv`           | 7.7 KB    | <https://solliancepublicdata.blob.core.windows.net/wwi-01/wwi-comments.csv>           |
+
+4. Create a file system named `database1` in `PrimaryStorage`.
+5. Create a folder named `fact-sale` in the `database1` file system.
+6. Create a folder named `Day=20191201` in the `fact-sale` folder.
+7. Upload the file `sale-small-20191201-snappy.parquet` (<https://solliancepublicdata.blob.core.windows.net/wwi-02/sale-small/Year%3D2019/Quarter%3DQ4/Month%3D12/Day%3D20191201/sale-small-20191201-snappy.parquet>) to the `Day=20191201` folder.
+
+8. Create a file system named `database1-staging` in `PrimaryStorage`.
+9. Upload the file `customer.csv` (<https://solliancepublicdata.blob.core.windows.net/wwi-02/data-generators/customer.csv>) to the root of the `database1-staging` file system.
+
+10. Create a folder named `sale-small-telemetry` in the `wwi` file system in `PrimaryStorage`.
+11. Upload the following data files to the `sale-small-telemetry` folder:
+
+    | File name | Size | Download from |
+    |---|---|---|
+    | `sale-small-telemetry-20191201.csv`            | 24.7 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-02/sale-small-telemetry/sale-small-telemetry-20191201.csv>            |
+    | `sale-small-telemetry-20191202.csv`            | 98.5 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-02/sale-small-telemetry/sale-small-telemetry-20191202.csv>            |
+    | `sale-small-telemetry-20191203.csv`            | 98.4 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-02/sale-small-telemetry/sale-small-telemetry-20191203.csv>            |
+    | `sale-small-telemetry-20191204.csv`            | 98.8 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-02/sale-small-telemetry/sale-small-telemetry-20191204.csv>            |
+    | `sale-small-telemetry-20191205.csv`            | 98.7 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-02/sale-small-telemetry/sale-small-telemetry-20191205.csv>            |
+    | `sale-small-telemetry-20191206.csv`            | 98.9 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-02/sale-small-telemetry/sale-small-telemetry-20191206.csv>            |
+    | `sale-small-telemetry-20191207.csv`            | 24.4 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-02/sale-small-telemetry/sale-small-telemetry-20191207.csv>            |
+    | `sale-small-telemetry-20191208.csv`            | 24.4 MB    | <https://solliancepublicdata.blob.core.windows.net/wwi-02/sale-small-telemetry/sale-small-telemetry-20191208.csv>            |
+
 
 ## Task 3 - Setting Up Azure Cognitive Services
 
@@ -117,7 +147,69 @@
 
     ![Exercise 2 - Enrich Data.json file is open. REPLACE-WITH-YOUR-COGNITIVE-KEY key value is highlighted.](media/replace-cognitive-key.png "Cognitive Key Replace")
 
-## Task 4 - Import datasets, data flows, and pipelines
+## Task 4 - Setting up a Synapse Analytics Data Explorer pool
+
+1. In Synapse Studio, go to the `Manage` hub and create a new Data Explorer pool. Use the `Compute optimized` workload and the `Extra Small (2 cores)` size. Leave all other options with defaults.
+
+2. Add the Synapse workspace managed identiy as `Contributor` to the Data Explorer workspace.
+
+    ![Contributor on the Data Explorer workspace](./media/00-data-explorer-contributor.png)
+
+3. Once the Data Explorer pool is created, create a linked service pointing to it. Make sure you use the options highlighed below. Once the linked service is created, make sure you publish it to the Synapse workspace.
+
+    ![Create Data Explorer linked service](./media/00-create-data-explorer-linked-service.png)
+
+## Task 5 - Setting up an Azure Purview workspace
+
+1. In the resource group, create an Azure Purview workspace.
+
+2. In Synapse Studio, navigate to the `Manage` hub and select the `Azure Purview` section. Connect the Azure Purview workspace to the Synapse Analytics workspace.
+
+3. Add the Purview managed identity to the `Reader` role of the Synapse workspace object.
+
+    ![Set Purview managed identity permissions on Synapse workspace](./media/00/../00-purview-reader-on-synapse-workspace.png)
+
+    Add the Purview managed identity to the `Storage Blob Data Reader` role of the primary data lake storage account assigned to the Synapse workspace.
+
+    ![Set Purview managed identity permission on data lake](./media/00/../00-purview-storage-blob-data-reader-data-lake.png)
+
+    Create a login for the Purview managed identity in the Synapse serverless SQL pool by running the following script on the `Built-in`, `master` database (make sure you replace `<purview_workspace_name>` with the name of your Purview workspace):
+
+    ```sql
+    CREATE LOGIN [<purview_workspace_name>] FROM EXTERNAL PROVIDER;
+    ```
+
+    Provide read permissions for the Purview managed identity in the `SQLPool01` Synapse dedicated SQL pool by running the following script on the `SQLPool01` SQL pool:
+
+    ```sql
+    CREATE USER [asapurview529607] FROM EXTERNAL PROVIDER
+    GO
+
+    EXEC sp_addrolemember 'db_datareader', [asapurview529607]
+    GO
+    ```
+
+4. In Purview Studio, navigate to the `Data map` hub and select the root collection. Add the Synapse workspace managed identity to the `Data curators` role.
+
+    ![Azure Purview Data curators](./media/00-purview-data-curator-role.png)
+
+5. In Purview Studio, register your Synapse workspace as a source into the root collection.
+
+    ![Azure Purview data source](./media/00-purview-register-synapse-source.png)
+
+6. Initiate a new scan using the newly registered source. Make sure the scan completes successfully.
+
+    ![Initiate new scan in Azure Purview](./media/00/../00-purview-initiate-new-scan.png)
+
+7. Configure the scan to target the `SQLPool01` dedicated SQL pool and make sure you test the connection before selecting `Continue`.
+
+    ![Configure scan in Azure Purview](./media/00/../00-purview-configure-scan.png)
+
+8. Select the `AzureSynapseSQL` scan rule set and `Continue`.
+9. Select `Once` in the scan trigger section and `Continue`.
+10. Select `Save and run` to start the scan. Wait until the scna completes successfully.
+
+## Task 6 - Import datasets, data flows, and pipelines
 
 ### Import datasets pointing to `PrimaryStorage`
 
@@ -157,6 +249,7 @@ The following datasets pointing to `PrimaryStorage` must be imported:
 | `wwi_factstockholding_adls`     | [wwi_factstockholding_adls.json](artifacts/00/datasets/adls/wwi_factstockholding_adls.json)         |
 | `wwi_facttransaction_adls`      | [wwi_facttransaction_adls.json](artifacts/00/datasets/adls/wwi_facttransaction_adls.json)           |
 | `wwi_sentiments_adls`           | [wwi_sentiments_adls.json](artifacts/00/datasets/adls/wwi_sentiments_adls.json)                     |
+| `wwi_sale_small_telemetry_adls` | [wwi_sale_small_telemetry_adls.json](artifacts/00/datasets/adls/wwi_sale_small_telemetry_adls.json) |
 
 ### Import datasets pointing to `SQLPool1`
 
@@ -193,6 +286,24 @@ The following datasets pointing to `SQLPool01` must be imported:
 | `wwi_staging_dimcustomer_asa`      | [wwi_staging_dimcustomer_asa.json](artifacts/00/datasets/asa/wwi_staging_dimcustomer_asa.json)           |
 | `wwi_staging_enrichedcustomer_asa` | [wwi_staging_enrichedcustomer_asa.json](artifacts/00/datasets/asa/wwi_staging_enrichedcustomer_asa.json) |
 
+### Import datasets pointing to the Data Explorer pool
+
+Perform the following steps for each dataset to be imported:
+
+1. Create a new, empty dataset with the same name as the one to be imported.
+
+2. Switch to code view and replace the code with the content of the associated JSON file.
+
+3. If the name used for the linked service does not match the one of the previously created Data Explorer linked service, replace the `properties.linkedServiceName.referenceName` value in JSON with the actual name of the linked service.
+
+4. Save and publish the dataset. Optionally, you can publish all datasets at once at the end of the import procedure.
+
+The following datasets pointing to the Data Explorer pool must be imported:
+
+| Dataset                            | Source code                                                                                              |
+|------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `wwi_sale_small_telemetry_ade`                  | [wwi_sale_small_telemetry_ade.json](artifacts/00/datasets/ade/wwi_sale_small_telemetry_ade.json)                                   |
+
 ### Import data flows
 
 Perform the following steps for each data flow to be imported:
@@ -228,10 +339,11 @@ The following pipelines must be imported:
 | `Import WWI Data - Fact Sale Full`      | [Import WWI Data - Fact Sale Full.json](./artifacts/00/pipelines/Import%20WWI%20Data%20-%20Fact%20Sale%20Full.json)             |
 | `Import WWI Perf Data - Fact Sale Fast` | [Import WWI Perf Data - Fact Sale Fast.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Fast.json) |
 | `Import WWI Perf Data - Fact Sale Slow` | [Import WWI Perf Data - Fact Sale Slow.json](./artifacts/00/pipelines/Import%20WWI%20Perf%20Data%20-%20Fact%20Sale%20Slow.json) |
+| `Exercise 5 - Import sales telemetry data` | [Exercise 5 - Import sales telemetry data](./artifacts/00/pipelines/Exercise%205%20-%20Import%20sales%20telemetry%20data.json)
 
 \* Make sure you are using the updated Pipeline file where you replaced the `REPLACE-WITH-YOUR-COGNITIVE-KEY` value with the actual Cognitive Services Key 1 value.
 
-## Task 5 - Populate `PrimaryStorage` with data
+## Task 7 - Populate `PrimaryStorage` with data
 
 1. Import the [Setup - Export Sales to Data Lake](./artifacts/00/notebooks/Setup%20-%20Export%20Sales%20to%20Data%20Lake.ipynb) notebook.
 
@@ -239,7 +351,7 @@ The following pipelines must be imported:
 
 3. Run the notebook to populate `PrimaryStorage` with data.
 
-## Task 6 - Configure the SQL on-demand pool
+## Task 8 - Configure the SQL on-demand pool
 
 1. Create a SQL on-demand database running the following script on the `master` database of the SQL on-demand pool:
 
@@ -256,7 +368,7 @@ The following pipelines must be imported:
 
     In the script above, replace `<primary_storage>` with the name of `PrimaryStorage`.
 
-## Task 7 - Configure `SQLPool01`
+## Task 9 - Configure `SQLPool01`
 
 1. Connect with either the SQL Active Directory admin or the `asa.sql.admin` account to `SQLPool01` using the tool of your choice.
 
@@ -310,7 +422,7 @@ The following pipelines must be imported:
 
 8. Run the `Import WWI Perf Data - Fact Sale Fast` and `Import WWI Perf Data - Fact Sale Slow` pipelines to import the large-sized sale facts into `SQLPool01`.
 
-## Task 8 - Configure Power BI
+## Task 10 - Configure Power BI
 
 1. Ensure the `MasterUser` has a Power BI Pro subscription assigned.
 
@@ -320,7 +432,19 @@ The following pipelines must be imported:
 
 4. In the Power BI portal, edit the security settings of the `wwifactsales` dataset and configure it to authenticate to `SQLPool01` using the credentials of the `asa.sql.admin` account. This allows the `Direct Query` option to work correctly for all participants in the exercise.
 
-## Task 9 - Import all SQL scripts and Spark notebooks
+## Task 11 - Create and configure the Azure Machine Learning workspace
+
+1. In the resource group, create a new Azure Machine Learning workspace (with default settings).
+
+2. Add the managed identity of the Synapse Analytics workspace as `Contributor` to the newly created Azure Machine Learning workspace.
+
+    ![AML Workspace contributor](./media/ex08-aml-workspace-contributor.png)
+
+3. In Synapse Analytics Studio, create a new Azure Machine Learning linked service pointing to the newly created Azure Machine Learning workspace. Set the linked service name to be the same as the Azure Machine Learning workspace name and select it from the subscription. Make sure you test the connection to validate that all settings are correct. After the linked service is created, make sure to publish it in Synapse Studio.
+
+    ![AML Workspace linked service](./media/ex08-aml-workspace-linked-service.png)
+
+## Task 12 - Import all SQL scripts and Spark notebooks
 
 Import the following SQL scripts into `Workspace`:
 
@@ -329,44 +453,17 @@ Import the following SQL scripts into `Workspace`:
 | `Exercise 1 - Read with serverless SQL Pool`  | [Exercise 1 - Read with serverless SQL Pool.sql](./artifacts/01/Exercise%201%20-%20Read%20with%20serverless%20SQL%20Pool.sql)   | `<primary_storage>` with the actual name of `PrimaryStorage`                                                                                |
 | `Exercise 3 - Analyze Transactions`           | [Exercise 3 - Analyze Transactions.sql](./artifacts/03/Exercise%203%20-%20Analyze%20Transactions.sql)                           | None                                                                                                                                        |
 | `Exercise 3 - Investigate query performance`  | [Exercise 3 - Investigate query performance.sql](./artifacts/03/Exercise%203%20-%20Investigate%20query%20performance.sql)       | None                                                                                                                                        |
-| `Exercise 8 - Create Sample Data for Predict` | [Exercise 8 - Create Sample Data for Predict.sql](./artifacts/08/Exercise%208%20-%20Create%20Sample%20Data%20for%20Predict.sql) | None                                                                                                                                        |
-| `Exercise 8 - Predict with model`             | [Exercise 8 - Predict with model.sql](./artifacts/08/Exercise%208%20-%20Predict%20with%20model.sql)                             | None                                                                                                                                        |
-| `Exercise 8 - Register model`                 | [Exercise 8 - Register model.sql](./artifacts/08/Exercise%208%20-%20Register%20model.sql)                                       | `<blob_storage_account_key>` with the storage account key of `BlobStorage`; `<blob_storage>` with the storage account name of `BlobStorage` |
 
 Import the following Spark notebooks into `Workspace`:
 
-| Spark notebook name                       | Source code                                                                                                               | Replacements                                                                                                                                                                                                                                                                                            |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Exercise 1 - Read with Spark`            | [Exercise 1 - Read with Spark.ipynb](./artifacts/01/Exercise%201%20-%20Read%20with%20Spark.ipynb)                         | `<primary_storage>` with the actual name of `PrimaryStorage`                                                                                                                                                                                                                                            |
-| `Exercise 2 - Ingest Sales Data`          | [Exercise 2 - Ingest Sales Data.ipynb](./artifacts/02/Exercise%202%20-%20Ingest%20Sales%20Data.ipynb)                     | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`                                                                                                                                                                                                                                |
-| `Exercise 2 - Bonus Notebook with CSharp` | [Exercise 2 - Bonus Notebook with CSharp.ipynb](./artifacts/02/Exercise%202%20-%20Bonus%20Notebook%20with%20CSharp.ipynb) | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`; In cell 3 - `<sql_staging_password>` with the password of `asa.sql.staging` created above in Task 4, step 3; In cell 3 - `<workspace>` with the name of the `Workspace`; In cell 3 - `<sql_pool>` with the name of `SQLPool1` |
+| Spark notebook name                       | Source code                                                                                                               | Spark Pool to use | Replacements                                                                                                                                                                                                                                                                                            |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Exercise 1 - Read with Spark`            | [Exercise 1 - Read with Spark.ipynb](./artifacts/01/Exercise%201%20-%20Read%20with%20Spark.ipynb)                         | `SparkPool01` | `<primary_storage>` with the actual name of `PrimaryStorage`                                                                                                                                                                                                                                            |
+| `Exercise 2 - Ingest Sales Data`          | [Exercise 2 - Ingest Sales Data.ipynb](./artifacts/02/Exercise%202%20-%20Ingest%20Sales%20Data.ipynb)                     | `SparkPool01` | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`                                                                                                                                                                                                                                |
+| `Exercise 2 - Bonus Notebook with CSharp` | [Exercise 2 - Bonus Notebook with CSharp.ipynb](./artifacts/02/Exercise%202%20-%20Bonus%20Notebook%20with%20CSharp.ipynb) |`SparkPool01` | In cell 1 - `<primary_storage>` with the actual name of `PrimaryStorage`; In cell 3 - `<sql_staging_password>` with the password of `asa.sql.staging` created above in Task 9, step 3; In cell 3 - `<workspace>` with the name of the `Workspace`; In cell 3 - `<sql_pool>` with the name of `SQLPool1` |
+| `Exercise 8 - AutoML with Spark` | [Exercise 8 - Automl with Spark.ipynb](./artifacts/08/Exercise%208%20-%20AutoML%20with%20Spark.ipynb) |`SparkPool02` | In cell 4 - `<subscription_id>` with the subscription id, `<resource_group_name>` with the name of the resource group, `<aml_workspace_name>` with the name of the Azure Machine Learning workspace, `<aml_workspace_location>` with the location of the Azure Machine Learning workspace. |
 
-## Task 10 - Prepare a machine learning model
-
-Prepare the `models` container in `BlobStorage` by creating two folders: `onnx` and `hex`.
-
-To prepare the machine learning model for Exercise 8, you have two options:
-
-* Use the already trained and converted machine learning model (available as a starter artifact)
-* Train and convert a new machine learning model
-
-### Import the already trained and converted machine learning model
-
-1. Upload the [model.onnx.hex](./artifacts/00/ml/model.onnx.hex) file to the `hex` folder in the `models` container of `BlobStorage`.
-
-2. Run the `Exercise 8 - Create Sample Data for Predict` SQL script to create sample data for machine learning predictions.
-
-3. Run the `Exercise 8 - Register model` SQL script to register the model with the `SQLPool01` SQL pool.
-
-### Train and convert a new machine learning model
-
-1. Run the `Exercise 8 - Model training` Spark notebook to train the machine learning model and save it in ONNX format. The model will be saved as `model.onnx` in the `onnx` folder in the `models` container of `BlobStorage`.
-
-2. Use the [convertion PowerShell script](./artifacts/00/ml/convert-to-hex.ps1) to transform `model.onnx` into `model.onnx.hex`.
-
-3. Perform steps 1, 2, and 3 described in the previous section.
-
-## Task 11 - Configure additional users to access the workspace
+## Task 13 - Configure additional users to access the workspace
 
 For each additional user that needs to have access to `Workspace` and run exercises 1 through 8, the following steps must be performed:
 
@@ -385,27 +482,9 @@ For each additional user that needs to have access to `Workspace` and run exerci
 
     In the script above, replace `<user_principal_name>` with Azure Active Directory user principal name of the user.
 
-5. Assign the `Contributor` role on the Power BI workspace of the `MasterUser` created in Task 5, step 2.
+5. Assign the `Contributor` role on the Power BI workspace of the `MasterUser` created in Task 10, step 2.
 
-## Task 12 - Create and configure an Azure Databricks workspace
-
-1. In the resource group, create a new Azure Databricks workspace.
-
-2. In the Azure Databricks workspace, create a new cluster with the following configuration:
-
-    ![Create new Databricks cluster](./media/00-create-databricks-cluster.png)
-
-3. On the newly created cluster, install the `onnxmltools` PyPi library:
-
-    ![Install Databricks cluster libraries](./media/00-install-databricks-cluster-libraries.png)
-
-4. Import the following Databricks notebooks into the `Shared` section of the Databricks workspace:
-
-    | Spark notebook name           | Source code                                                                                            | Replacements |
-    |-------------------------------|--------------------------------------------------------------------------------------------------------|--------------|
-    | `Exercise 8 - Model Training` | [Exercise 8 - Model Training.dbc](./artefacts/../artifacts/08/Exercise%205%20-%20Model%20Training.dbc) |
-
-## Task 13 - Setting Cognitive Services Access Key for Pipelines
+## Task 14 - Setting Cognitive Services Access Key for Pipelines
 
 1. In Synapse Workspace, open **Exercise 2 - Enrich Data (2)** pipeline. Select the **Edit (3)** button for Activities in the **ForEachComment** ForEach activity.
 

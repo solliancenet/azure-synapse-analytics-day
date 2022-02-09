@@ -1,0 +1,32 @@
+{
+    "name": "wwi_sale_small_telemetry_ade",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "asadataexplorer529607",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureDataExplorerTable",
+        "schema": [
+            {
+                "name": "CustomerId",
+                "type": "int"
+            },
+            {
+                "name": "ProductId",
+                "type": "int"
+            },
+            {
+                "name": "Timestamp",
+                "type": "datetime"
+            },
+            {
+                "name": "Url",
+                "type": "string"
+            }
+        ],
+        "typeProperties": {
+            "table": "SalesTelemetry"
+        }
+    }
+}
